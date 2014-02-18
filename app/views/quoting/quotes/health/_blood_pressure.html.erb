@@ -1,0 +1,27 @@
+<h4>Blood Pressure Information:</h4>
+
+<p class=pull-right>
+	<%= view_toggling_radio_and_label_tags :high_blood_pressure, input:{'data-disable-hidden' => 1} %>
+</p>
+<p class="bold top-10">Have you ever been diagnosed with or treated for high blood pressure?</p>
+
+<div id='_high_blood_pressure' class='indent hide'>
+
+	<span class="top-10">
+	<p class="bold inline-block">What is your systolic pressure?</p>&nbsp;&nbsp;
+	<%= f.select :bp_systolic, bp_options_for_select(APP_CONFIG['bp_systolic']) %>
+	</span>
+	<span class="top-10">
+	<p class="bold inline-block top-10">What is your diastolic pressure?</p>&nbsp;&nbsp;
+	<%= f.select :bp_diastolic, bp_options_for_select(APP_CONFIG['bp_diastolic']) %>
+	</span>
+	<span class="top-10">
+	<p class="bold inline-block top-10">When were last treated for high blood pressure?</p>&nbsp;&nbsp;
+	<%= f.text_field :last_bp_treatment, class:'date', placeholder:'mm/dd/yyyy' %>
+	</span>
+	<span class="top-10">
+	<p class="bold inline-block top-10">If currently taking blood pressure medication, how long has your blood pressure been successfully controlled by medication?</p>
+	<%= f.text_field :years_of_bp_control, style:'margin-left: 362px;' %>&nbsp;&nbsp;year(s)
+	</span>
+
+</div>

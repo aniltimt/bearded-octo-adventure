@@ -1,0 +1,16 @@
+<%= render :partial => "shared/tab/marketing", :locals => {:selected => "SnailMailMessages"} %>
+<div style="background-color:#fff;min-height: 500px;">
+  <%= link_to 'New SnailMail Message'.html_safe, new_marketing_snail_mail_message_path, :class => 'button', :remote => true%>
+  <div>
+    <span class="span4">
+      <label>MessageId</label>
+    </span>
+    <span class="span4">
+      <label>Recipient</label>
+    </span>
+    <span class="span4">
+      
+    </span>
+  </div>
+  <%= render :partial => :message, :collection => @messages%>
+</div>

@@ -1,0 +1,8 @@
+<b>Search Results For "<%= params[:search_tag] %>"</b><br />
+<% if @search_tags.blank?%>
+  <i>Nothing found</i>
+<% else %>
+  	<% @search_tags.each do |search_tag| %>
+	  <li class="icon-tag">&nbsp <%= search_tag.name %></li><br />
+	<% end %>
+<% end %>

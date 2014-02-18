@@ -1,0 +1,45 @@
+<h4>Residency</h4>
+
+<div class=clear>
+  <p class=pull-right>
+    <%= radio_and_label_tag_sets( :citizenship, {}, 
+      {input:{'data-hide' => '#_citizenship', 'onclick' => "$('#connection_citizenship_id').val(1);"}},
+      {input:{'data-show' => '#_citizenship', 'onclick' => "$('#connection_citizenship_id').val(2);"}}
+        ).join(' ').html_safe %>
+  </p>
+  <p>Are you a US Citizen?</p>
+</div>
+
+<div id='_citizenship' class=indent>
+  <%= connection_fields.collection_select :citizenship_id, Crm::Citizenship.all, :id, :name %>
+</div>
+
+<h4>Bankruptcy</h4>
+
+<div class=clear>
+  <p class=pull-right>
+    <%= view_toggling_radio_and_label_tags :bankruptcy %>
+  </p>
+  <p>Have you ever declared bankruptcy?</p>
+</div>
+
+<%= connection_fields.fields_for :financial_info do |financial_fields| %>
+  <div id='_bankruptcy' class=indent>
+    
+    <label>When?</label>
+    <%= financial_fields.text_field :bankruptcy, class:'date' %>
+
+    <div class=clear>
+      <p class=pull-right>
+        <%= view_toggling_radio_and_label_tags :bankruptcy_discharged %>
+      </p>
+      <label>Has the bankruptcy been discharged?</label>
+    </div>
+
+    <div id='_bankruptcy_discharged' class=indent>
+      <label>When?</label>
+      <%= financial_fields.text_field :bankruptcy_discharged, class:'date' %>
+    </div>
+
+  </div>
+<% end %>

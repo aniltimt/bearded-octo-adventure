@@ -1,0 +1,87 @@
+<% unless params[:connection_summary] %>
+  <%= render :partial => "shared/tab/agency_management", :locals => {:tab => "tagging"} %>
+<% end %>
+
+<style type="text/css">
+#ul
+  {
+      padding:0;
+            margin:0;
+            list-style-type:none;
+            font-size:12px;
+            color:#717171;
+            width:100%;
+}
+#ul li
+  {
+      border-bottom:0px solid #eeeeee;
+            padding:10px 0px 10px 20px;
+            color: #000;
+  }
+#ul li b
+  {
+   color:#000;
+  }
+</style>
+<div style="background:#fff;">
+  <div class="row title-row">
+   <div class="navbar-inner"><h4 class="title system-management-row">Tags&nbsp;<i class="icon-tag"></i>
+    <%= form_tag search_tagging_tags_path, :remote => true, :style => "float: right; margin-right: 10px; width: 280px;" do %>
+      <div style="margin-bottom: 0px;" class="input-prepend">
+        <span class="add-on"><i class="icon-tag"></i></span>
+        <%= text_field_tag "search_tag", nil, {:class => "span9", :id => "prependedInput", :placeholder => "Search...."} %>
+        <%= hidden_field_tag "connection_id", params[:connection_id] %>
+        <%= hidden_field_tag "user_id", params[:user_id] %>
+        <%= submit_tag "go", :class => "btn btn-primary", :style => "float: right;", :id => "submit"%>
+      </div>
+    </h4>
+    <% end %>
+  </div>
+</div>
+  <div style="height:40px; float-top:0px;"></div>
+  <div style=" width:3%; height:250px; float:left;"></div>
+  <div style="margin-bottom: 20px; color:#000; width:20%; height:300px; float:left; border: 1px solid #B7B7B7;border-radius: 8px 8px 8px 8px; overflow: auto;">
+     <ul id="ul" style="list-style-type:none; font-size:12px; color:#717171; width:100%;">
+       <li style="text-align: center; padding-left: 0px;"><b>Common Tags</b></li>
+             <li class="icon-tag">&nbsp; Referred by jeff Rose</li><br />
+             <li class="icon-tag">&nbsp; Referred by Bill Gates</li><br />
+             <li class="icon-tag">&nbsp; Referred by WSI</li><br />
+             <li class="icon-tag">&nbsp; 5 Member Home</li><br />
+             <li class="icon-tag">&nbsp; Likes Cheesecake</li><br />
+        </ul>
+    <ul id="ul">
+      <li style="text-align: center; padding-left: 0px;"><b>Recent Tags</b></li>
+      <% @recent_tags.each do |recent_tag| %>
+        <li class="icon-tag">&nbsp; <%= recent_tag.to_s %></li><br />
+      <% end %>
+        </ul>
+  </div>
+  <div style=" width:3%; height:250px; float:left;"></div>
+  <div style=" color:#000; width:20%; height:300px; float:left; border: 1px solid #B7B7B7;border-radius: 8px 8px 8px 8px; overflow: auto;">
+     <ul id="ul">
+       <li style="text-align: center; padding-left: 0px;"><b>Recommended Tags</b></li>
+        <% @recommended_tags.each do |common_tag| %>
+        <li class="icon-tag">&nbsp; <%= common_tag.name %></li><br />
+      <% end %>
+        </ul>
+  </div>
+  <div style="width:2%; height:300px; float:left;"></div>
+  <div id="search_tags" style=" float:left; height:100%; color:#000">
+    <%= render :partial => "search" %>
+  </div>
+  <div style=" color:#000; width:20%; height:300px; margin-right: 10px; float:right; border: 1px solid #B7B7B7;border-radius: 8px 8px 8px 8px; overflow: auto;">
+     <ul id="ul">
+       <li style="text-align: center; padding-left: 0px;"><b>Custom Tags</b></li>
+             <% @custom_tags.each do |custom_tag| %>
+         <li class="icon-tag">&nbsp; <%= custom_tag.to_s %></li><br />
+      <% end %>
+        </ul>
+    <ul id="ul">
+      <li style="text-align: center; padding-left: 0px;"><b>System Tags</b></li>
+             <% @system_tags.each do |system_tag| %>
+         <li class="icon-tag">&nbsp; <%= system_tag.to_s %></li><br />
+      <% end %>
+        </ul>
+  </div>
+  <div style="width:3%; height:300px; float:right; border-left: 3px solid #B7B7B7;"></div>
+</div>

@@ -1,0 +1,24 @@
+<%= render :partial => "shared/tab/agency_management", :locals => {:tab => "activity"} %>
+
+<div style="background-color:#fff;">
+  <div class="navbar">
+    <div class="navbar-inner">
+      <h4 style="color:black; width: 100px;float: left;">Activity</h4>
+    </div>
+  </div>
+</div>
+
+<%= form_for(@activity, :remote => true, :multipart => true) do |f| %>
+  <%= hidden_field_tag :mgr, params[:mgr]%>
+  <div class="row">
+    <div class="span4">
+      <%= f.hidden_field :connection_id%>
+      <%= f.text_area :description, :style => "width: 300px; height: 100px;"%>
+    </div>
+
+  </div>
+
+  <div style="margin-left: 400px;margin-bottom:10px;">
+    <%= f.submit "Create", :class => 'btn btn-primary' %>
+  </div>
+<% end %>

@@ -1,0 +1,211 @@
+<div class="row title-row">
+	<div class="navbar-inner">
+    <div class="span4">
+		<h4 class="title system-management-row">Financial</h4>
+    </div>
+		<ul style="margin-top: 15px; margin-bottom: 0px;" class="nav pull-right">
+			<li>
+				<button onclick="alert('In Progress');" class="btn btn-small btn-primary ajax">Financial Questionnaire</button>	
+				<button style="border: none;"><%= link_to "Financial Calculators", "/sales_tools/calculators", remote: true, :class => "btn btn-small btn-primary" %></button>
+			</li>
+		</ul>
+    
+	</div>
+</div>
+<input type="hidden" value="<%= @crm_connection.id %>" id="crm-connection-id">
+<div id="crm-connection-financial-info" data-id="<%= @crm_financial_info.try(:id) %>">
+  <div id="income-box">
+  <ul class="nav nav-list"><br />
+	<li><b>INCOME</b><br /><br /></li>
+  <div id="crm-connection-info" data-id="<%= @crm_financial_info.try(:id) %>">
+	<li><b>Occupation:</b></li>
+	<li><p><a href="#" data-type="text" class="editable-click " data-name="occupation" data-value="<%= @crm_connection.try(:occupation) %>">
+        <%= @crm_connection.try(:occupation)  || "Empty"%>
+         </a></p></li>
+  </div>    
+	<li><b>Employer:</b></li>
+  <div id="crm-contact-info" data-id="<%= @crm_connection.try(:id) %>">
+	<li><p><a href="#" data-type="text" class="editable-click" data-name="company" data-value="<%= @crm_connection.try(:contact_info).try(:company) %>">
+	    <%= @crm_connection.try(:contact_info).try(:company)  || "Empty"%>
+         </a></p></li>
+  </div>
+	<li><b>Income:</b></li>
+	<li><p>$<a href="#" data-type="text" class="editable-click financial-info-field " data-name="income" data-value="<%= @crm_financial_info.try(:income) %>">
+        <%= @crm_financial_info.try(:income)  || "Empty"%>
+      </a>annually</p></li>
+    <% if @crm_connection.spouse %>
+      <li>Spouse:</li>
+      <%= @crm_connection.spouse.try(:full_name) %>
+    <% else %>
+      none<br />
+      <a href="#myModal" data-toggle="modal">+Add spouse as new contact</a><br />
+	  <a id="add-spouse-to-connection" role="button" class="ajax" data-toggle="modal">
+        + Add spouse from existing contact
+      </a>
+    <% end %>
+	<li><b>Household Income:</b></li>
+	<li><p>$<%= @crm_financial_info.household_income(@crm_connection)  || "Empty"%>
+      </a>Annually</p></li>
+	</ul>
+  </div>  
+
+  <div id="liabilities-box">
+	<ul class="nav nav-list"><br />
+	<li><b>LIABILITIES</b><br /><br /></li>
+	<li><b>Mortgage:</b></li>
+	<li><p>$<a href="#" data-type="text" class="editable-click financial-info-field" data-name="liability_mortgage" data-value="<%= @crm_financial_info.try(:liability_mortgage) %>">
+        <%= @crm_financial_info.try(:liability_mortgage)  || "Empty"%>
+      </a></p></li>
+	<li><b>Auto:</b></li>
+	<li><p>$<a href="#" data-type="text" class="editable-click financial-info-field" data-name="liability_auto" data-value="<%= @crm_financial_info.try(:liability_auto) %>">
+        <%= @crm_financial_info.try(:liability_auto)  || "Empty"%>
+      </a></p></li>	
+	<li><b>Credit:</b></li>
+    <li><p>$<a href="#" data-type="text" class="editable-click financial-info-field" data-name="liability_credit" data-value="<%= @crm_financial_info.try(:liability_credit) %>">
+        <%= @crm_financial_info.try(:liability_credit)  || "Empty"%>
+      </a></p></li>
+    <li><b>Education:</b></li>
+    <li><p>$<a href="#" data-type="text" class="editable-click financial-info-field" data-name="liability_education" data-value="<%= @crm_financial_info.try(:liability_education) %>">
+        <%= @crm_financial_info.try(:liability_education)  || "Empty"%>
+      </a></p></li>
+    <li><b>Estate Settlement:</b></li>
+    <li><p>$<a href="#" data-type="text" class="editable-click financial-info-field" data-name="liability_estate_settlement" data-value="<%= @crm_financial_info.try(:liability_estate_settlement) %>">
+        <%= @crm_financial_info.try(:liability_estate_settlement)  || "Empty"%>
+      </a></p></li>
+    <li><b>Other cash needs:</b></li>
+    <li><p>$<a href="#" data-type="text" class="editable-click financial-info-field" data-name="liability_other" data-value="<%= @crm_financial_info.try(:liability_other) %>">
+        <%= @crm_financial_info.try(:liability_other)  || "Empty"%>
+      </a></p></li>
+  </div>
+
+  <div id="assets-box">
+	<ul class="nav nav-list"><br />
+	<li><b>ASSETS</b><br /><br /></li>
+	<li><b>401k:</b></li>
+	<li><p>$<a href="#" data-type="text" class="editable-click financial-info-field" data-name="asset_401k" data-value="<%= @crm_financial_info.try(:asset_401k) %>">
+        <%= @crm_financial_info.try(:asset_401k)  || "Empty"%>
+      </a></p></li>
+	<li><b>Savings:</b></li>
+	<li><p>$<a href="#" data-type="text" class="editable-click financial-info-field" data-name="asset_savings" data-value="<%= @crm_financial_info.try(:asset_savings) %>">
+        <%= @crm_financial_info.try(:asset_savings)  || "Empty"%>
+      </a></p></li>
+	<li><b>Home Equity:</b></li>
+    <li><p>$<a href="#" data-type="text" class="editable-click financial-info-field" data-name="asset_home_equity" data-value="<%= @crm_financial_info.try(:asset_home_equity) %>">
+        <%= @crm_financial_info.try(:asset_home_equity)  || "Empty"%>
+      </a></p></li>
+    <li><b>Pension:</b></li>
+    <li><p>$<a href="#" data-type="text" class="editable-click financial-info-field" data-name="asset_pension" data-value="<%= @crm_financial_info.try(:asset_pension) %>">
+        <%= @crm_financial_info.try(:asset_pension)  || "Empty"%>
+      </a></p></li>
+    <li><b>Real Estate:</b></li>
+    <li><p>$<a href="#" data-type="text" class="editable-click financial-info-field" data-name="asset_real_estate" data-value="<%= @crm_financial_info.try(:asset_real_estate) %>">
+        <%= @crm_financial_info.try(:asset_real_estate)  || "Empty"%>
+      </a></p></li>
+    <li><b>Investments:</b></li>
+    <li><p>$<a href="#" data-type="text" class="editable-click financial-info-field" data-name="asset_investments" data-value="<%= @crm_financial_info.try(:asset_investments) %>">
+        <%= @crm_financial_info.try(:asset_investments)  || "Empty"%>
+      </a></p></li>
+    <li><b>Existing Insurance:</b></li>
+    <% @crm_cases.each do |crm_case| %>
+      <%= crm_case.exam_company %><br />
+    <% end %>
+    <a href="#addInsurance" data-toggle="modal"><i class="icon-plus"></i>&nbsp;Add Insurance</a> 
+    </ul>
+ </div>
+</div>
+  <div style="float:left; width:30%; height:200px"><br /><br /><br /><br /><br /><br />
+    <button style="margin-left: 10px;" class="btn btn-large">Total Networth =$ <a href="#" data-type="text" class="editable-click financial-info-field" data-name="net_worth" data-value="<%= @crm_financial_info.try(:net_worth) %>">
+        <%= @crm_financial_info.try(:net_worth)  || "Empty"%>
+      </a></button>
+  </div>
+
+<div id="container-spouse-modal-pop-up" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="color:black;">
+</div>
+ 
+<!-- myModal -->
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+    <h3 id="myModalLabel">Add Spouse</h3>
+  </div> 
+  <div class="modal-body">
+	<%= form_tag("/new_connection_spouse", :remote => true) do %>
+  <div><%= label_tag :title %></div>
+    <%= text_field_tag :title %>
+  <div><%= label_tag :first_name %></div>
+    <%= text_field_tag :first_name %>
+  <div><%= label_tag :last_name %></div>
+    <%= text_field_tag :last_name %>
+    <%= hidden_field_tag :connection_id, @crm_connection.id %>
+  <div><%= submit_tag 'Save', :onclick => "$('#myModal').modal('hide'); "%>
+  <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button></div>
+  <% end %>
+  </div>
+</div>
+<!-- addInsurance -->
+<div id="addInsurance" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+    <h3 id="myModalLabel">Add Insurance</h3>
+  </div> 
+  <div class="modal-body"> 
+  <%= form_for(@crm_case, :remote => true) do |f| %>
+  <div><%= f.label :exam_company %></div>
+    <%= f.text_field "exam_company" %>
+  <div><%= f.label :exam_num %></div>
+    <%= f.text_field "exam_num" %>
+  <div><%= f.label :exam_status %></div>
+    <%= f.text_field "exam_status" %>
+  <div><%= f.label :policy_number %></div>
+    <%= f.text_field "policy_number" %>
+    <%= hidden_field_tag("connection_id", @crm_connection.id) %>
+  <div><%= submit_tag 'Save', :onclick => "$('#addInsurance').modal('hide');" %>
+  <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button></div>
+  <% end %>
+  </div>
+</div>  	
+<script>
+  $(document).ready(function(){
+    $('#crm-connection-financial-info').editable({
+	selector: 'a.financial-info-field',
+    pk: $('#crm-connection-financial-info').attr('data-id'),
+    url: '/crm/connections/financial_info_update'
+    });
+  	$('#crm-connection-info').editable({
+	selector: 'a',
+    pk: $('#crm-connection-info').attr('data-id'),
+    url: '/crm/connections/connection_info_update'
+    });
+    $('#crm-contact-info').editable({
+	selector: 'a',
+    pk: $('#crm-contact-info').attr('data-id'),
+    url: '/crm/connections/contact_info_update'
+    });
+  });
+  $(document).on("click","#add-spouse-to-connection.ajax",function(){
+  var connectionId = $('#crm-connection-id').val();
+  $.ajax({
+    url: CLU_BASE_URLS.crmConnectionBaseURL + 'add_spouse',
+    data: { connection_id: connectionId },
+    type: 'get',
+    success: function(data) {
+      $('#container-spouse-modal-pop-up').modal({show:true});
+      $('#container-spouse-modal-pop-up').html(data);
+    }
+  });
+});
+
+$(document).on('railsAutocomplete.select', '#add-spouse-to-crm-connection.ajax', function(event, data){
+  if (data.item.id==="") { return; }
+  var connectionId = $('#crm-connection-id').val();
+  $.ajax({
+    url: CLU_BASE_URLS.crmConnectionBaseURL + connectionId,
+    data: { connection_id: connectionId, name: 'spouse_id', value: data.item.id},
+    type: 'put',
+    success: function(data) {
+      $("#container-spouse-modal-pop-up").modal('hide');
+      loadPage('crm-connection-summary', CLU_BASE_URLS.crmConnectionBaseURL + 'financial?connection_id='+connectionId);
+    }
+  });
+});
+</script>

@@ -1,0 +1,14 @@
+<div id="new-edit-crm-system-task"></div>
+<%= form_for @crm_system_task, :remote => true do |f| %>
+
+  <%= hidden_field_tag :status_id, @crm_system_task.status_id%>
+
+  <%= render :partial => "form", :locals => {:f=>f}%>
+
+  <div class="row">
+    <div class="span3"></div>
+    <div class="span3">
+      <button id="update-follow-up-task" class="btn btn-primary ajax">Update</button>
+    </div>
+  </div>
+<% end %>

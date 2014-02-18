@@ -1,0 +1,13 @@
+<li style="text-align: center; color: black; font-size: 14px;" class="nav-header">Auto Task Rules</li>
+ <ul class="nav nav-list" style="color:black">
+ <% @marketing_auto_task_rules.each do |task_rule| %>
+    <li>
+  <%= link_to  "marketing/auto_task_rules/destroy?id=#{task_rule.id}", :remote => true, :id =>"delete-auto_task_rule-#{task_rule.id}", :style => "float:right;" do  %>Destroy
+    <% end%>
+  <%= link_to  "marketing/auto_task_rules/edit?id=#{task_rule.id}", :remote => true, :id =>"edit-auto_task_rule-#{task_rule.id}", :style => "float:right;" do  %> 
+    <i class="icon-pencil"></i>Edit |
+  <% end%>
+  <%= link_to "#{task_rule.id}", "/marketing/auto_task_rules?id=#{task_rule.id}", :remote => true   %> 
+    </li>
+  <% end %>
+</ul>

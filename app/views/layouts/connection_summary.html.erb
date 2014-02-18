@@ -1,0 +1,11 @@
+<% content_for :application do %>
+  <%= render :partial => "crm/connections/summary" %>
+  <%= render :partial => "shared/tab/client_management" %>
+  <div class="tab-content">
+    <div class="tab-pane active" id="crm-connection-summary">
+      <%= content_for?(:connection_summary) ? yield(:connection_summary) : yield %>
+    </div>
+  </div>
+<% end %>
+
+<%= render template:'layouts/application' %>

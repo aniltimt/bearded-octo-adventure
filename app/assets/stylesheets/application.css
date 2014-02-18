@@ -1,0 +1,412 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require jquery.ui.all
+ *= require_tree .
+ */
+
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+  background-color: #1B1B1B !important;
+  color: white !important;
+}
+
+.sidebar-nav {
+  padding: 9px 0;
+}
+
+.min-layout-size {
+  min-width: 1021px;
+  padding-left: 5px !important;
+}
+
+div.sidebar a {
+  color: white !important;
+}
+
+div.sidebar a:hover {
+  color: black !important;
+}
+
+a:hover {
+  color: black !important;
+  cursor: pointer;
+}
+
+#rightbar-cont {
+  width: 50px;
+  margin-left: 5px;
+}
+
+.nav-tabs>.active>a {
+  color: black !important;
+}
+
+.nav-stacked > .active > a, .nav-stacked > .active > a:hover {
+  border: none !important;
+  background:transparent !important;
+}
+
+.nav-tabs.nav-stacked > li > a {
+  border:none !important;
+}
+
+#main-container {
+  background-color: white;
+  color: black !important;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  min-width: 800px;
+  margin-left: 5px;
+}
+
+#main-container .row {
+  margin: 0px 0px 20px 10px;
+}
+
+#myTab {
+  background-color: #1B1B1B;
+}
+
+#myTab li {
+  -webkit-border-top-left-radius: 5px;
+  -webkit-border-top-right-radius: 5px;
+}
+
+#myTab a {
+  color: white;
+}
+
+#myTab .active a {
+  color: black !important;
+}
+
+#crm-case-policy .nav-tabs.nav-stacked > li > a {
+  border: none;
+}
+
+#crm-case-policy .nav-tabs.nav-stacked > li > a {
+  color: black !important;
+}
+
+#crm-case-policy {
+  background-color: white !important;
+}
+
+#crm-case {
+  background-color: #949494 !important;
+}
+
+ul#crm-cases-tabs {
+  padding-top: 10px;
+  margin:0;
+}
+
+ul#crm-cases-tabs > li {
+  list-style:none;
+  padding-left:15px;
+}
+
+ul#crm-cases-tabs > li.active {
+  background:#498AF4;
+}
+
+ul#crm-case-detail-tabs {
+  padding-top:10px;
+  margin-left:0px;
+}
+
+ul#crm-case-detail-tabs > li {
+  list-style:none;
+}
+
+ul#crm-case-detail-tabs > li > a {
+  padding-left:15px;
+  color:#fff;
+}
+
+ul#crm-case-detail-tabs > li > a:hover {
+  text-decoration:none;
+}
+
+ul#crm-case-detail-tabs > li.active {
+  background:#d9deec;
+}
+
+ul#crm-case-detail-tabs > li.active > a{
+  color:#222;
+  background:transparent !important;
+}
+
+.nav-tabs.nav-stacked > li:first-child > a {
+  -webkit-border-top-right-radius: 0px !important;
+  border-top-right-radius: 0px !important;
+  -webkit-border-top-left-radius: 0px !important;
+  border-top-left-radius: 0px !important;
+  -moz-border-radius-topright: 0px !important;
+  -moz-border-radius-topleft: 0px !important;
+}
+
+.nav-tabs.nav-stacked > li:last-child > a {
+  -webkit-border-bottom-right-radius: 0px !important;
+  border-bottom-right-radius: 0px !important;
+  -webkit-border-bottom-left-radius: 0px !important;
+  border-bottom-left-radius: 0px !important;
+  -moz-border-radius-bottomright: 0px !important;
+  -moz-border-radius-bottomleft: 0px !important;
+}
+
+#details-with-tab-content {
+  height:620px;
+  margin-left: 0px;
+  background:#d9deec;
+}
+
+.tab-content{
+  padding-left: 15px;
+}
+.case-details-tabs-container {
+  margin-left: 0px !important;
+  height:620px;
+  background:#498AF4;
+}
+a.default-button, a.accordion-toggle:hover, a.crm-case-tagging-pop-up:hover {
+  background-image: linear-gradient(to bottom, rgb(0, 136, 204), rgb(0, 68, 204));
+  background-color: rgb(0, 109, 204);
+}
+
+a.default-button:hover {
+  background-image: linear-gradient(to bottom, rgb(0, 136, 204), rgb(0, 68, 204));
+  background-color: rgb(0, 109, 204);
+}
+
+.nav-tabs > .active > a {
+  background-color: white;
+  margin: 0 10px;
+  color:black;
+}
+
+.logo {
+  color: white !important;
+}
+
+.profile-display-cont {
+  background-color: white !important;
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+  -webkit-border-bottom-right-radius: 4px;
+  -webkit-border-bottom-left-radius: 4px;
+  -moz-border-bottom-right-radius: 4px;
+  -moz-border-bottom-left-radius: 4px;
+}
+
+.profile-display {
+  text-align: center;
+  color: black;
+  font-size: 16px;
+  display: block;
+  margin-top: 5px;
+}
+
+#profile-select {
+  margin: 0;
+  width: 100%;
+}
+
+.flash-info {
+  margin: 5px 0px;
+  color: #C0C0C0;
+}
+
+#flash-notice {
+  color: green;
+}
+
+#flash-error {
+  color: red;
+}
+
+.title {
+  color: #686868;
+  font-size: 24px;
+  margin-left: 20px;
+  margin-top: 0px;
+}
+
+.title-no-tabs {
+  color: #686868;
+  font-size: 24px;
+  margin-left: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.title-row {
+  border-bottom: 1px solid black;
+  margin-left: 0px !important;
+  box-shadow: 0 7px 10px 0 #888;
+  border-top-left-radius: 3px;
+  -webkit-border-top-left-radius: 3px;
+}
+
+.calendar{
+  color:  #333333 !important;
+}
+
+.table-condensed{
+  color:  #333333 !important;
+}
+
+.blue {
+  color: #006DCC;
+}
+
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}
+
+.hide {
+  display: hidden;
+}
+
+.center {
+  margin: 0 auto;
+}
+
+#summary-bar-cont {
+  margin: 0 0 0 0 !important;
+  background-color: #447899;
+  color: white !important;
+  padding: 0 10px 0 10px;
+}
+
+#summary-bar-cont tr th {
+  text-align: left;
+  border-bottom: 1px solid #DCDCDA;
+  font-size: 11px;
+  padding: 5px 10px 0 10px;
+  font-family: arial black, gadget, sans-serif;
+}
+
+#summary-bar-cont tr td {
+  padding: 0 10px 5px 10px;
+  font-size: 12px;
+}
+
+#summary-bar div {
+  font-size: 14px;
+  color: white;
+}
+
+/* Summary Bar Custom columns */
+
+.summary-state {
+  width: 60px;
+}
+
+.summary-small {
+  width: 80px;
+}
+
+.summary-dob {
+  width: 100px;
+}
+
+.summary-medium {
+  width: 140px;
+}
+
+.summary-large {
+  width: 200px;
+}
+
+#primary-contact a {
+  color: white !important;
+  text-decoration: underline;
+}
+
+.selected_agent{
+  height:100px;
+  background:#ddd;
+}
+.label-no-bottom-margin {
+  margin-bottom: 0px !important;
+}
+
+#type_span {
+  width:6%;
+  display: inline-block;
+  min-width: 48px;
+}
+#due_span {
+  width:5%;
+  display: inline-block;
+  min-width: 56px;
+}
+#agent_span {
+  width:16%;
+  display: inline-block;
+  min-width: 120px;
+}
+#name_span {
+  width:16%;
+  display: inline-block;
+  min-width: 120px;
+}
+#desc_span {
+  width:19%;
+  display: inline-block;
+  min-width: 200px;
+}
+#check_span {
+  width:4%;
+  display: inline-block;
+  min-width: 200px;
+}
+
+.no-margin-bottom {
+  margin-bottom: 0px !important;
+}
+
+label {
+  font-weight: bold;
+}
+
+ul#crm-cases-tabs li {
+  padding-left: 0;
+}
+
+#container-rightbar-nav {
+	color: black;
+	background-color: white;
+	width: 400px;
+	float: right;
+	position: absolute;
+	right: 0px;
+	z-index: 9999;
+	top: 74px;
+}
+
+#container-rightbar-nav a {
+	color: #08c !important;
+	display: block;
+	height: 10px;
+	width: 10px;
+}
+
+.sidebar-position {
+	position:relative;
+}

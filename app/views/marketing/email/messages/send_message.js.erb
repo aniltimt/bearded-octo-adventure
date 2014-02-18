@@ -1,0 +1,6 @@
+<% unless @message.sent.blank? %>
+  $('#flash-container').html('Email message sent successfully.');
+<% else %>
+  $('#flash-container').html('Somthing is wrong with your smtp setting.');
+<% end %>
+$("#main-container" ).html( "<%= escape_javascript( render( :partial => "index" ) ) %>" );

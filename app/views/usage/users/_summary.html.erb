@@ -1,0 +1,23 @@
+<table id="user-summary">
+	<tr>
+		<th>Nickname:</th>
+		<th>Name:</th>
+		<th>State:</th>
+		<th>Relationship Manager:</th>
+		<th>Email:</th>
+		<th>Primary Phone:</th>
+		<th>Last Activity:</th>
+	</tr>
+	<tr>
+		<td><%= @user && @user.nickname %></td>
+		<td><%= @user && @user.first_name %>&nbsp;<%= @user && @user.last_name %></td>
+		<td><%= @user && @user.try(:contact_info).try(:state).try(:abbrev) %></td>
+		<td><%= @user && @user.try(:manager).try(:first_name) %>&nbsp;<%= @user && @user.try(:manager).try(:last_name) %></td>
+		<td><%= @user && @user.try(:contact_info).try(:email_address).try(:value) %></td>
+		<td><%= @user && @user.try(:contact_info).try(:phone).first(:value) %></td>
+		<!-- I can't find a model with 'Last Activity' -->
+		<td><%= @user %></td>
+	</tr>
+</table>
+
+bgcolor: #61B2FD

@@ -1,0 +1,6 @@
+<ul class="nav nav-tabs" id="myTab">
+	<li class="<%= yield(:faq_state) %>"><%= link_to "FAQs",				"/help/faq",			remote: true %></li>
+	<li class="<%= yield(:tutorials_state) %>"><%= link_to "Tutorials",		"/help/tutorials",		remote: true %></li>
+	<li class="<%= yield(:about_state) %>"><%= link_to "Help",				"/help/about",			remote: true %></li>
+	<li class="<%= yield(:suggestions_state) %>"><%= link_to "Suggestions",		"/help/suggestions",	remote: true %></li>
+</ul>

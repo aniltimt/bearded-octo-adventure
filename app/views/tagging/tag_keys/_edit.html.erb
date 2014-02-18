@@ -1,0 +1,21 @@
+<%= form_for(@tag_key, :remote => true) do |f| %>
+
+<table style="width:80%">
+	<tr class="field">
+		<td style="width:10%"></td>
+		<td>Ownership:</td>
+		<td><%= f.select "ownership_id", @ownerships.collect {|p| [ p.value, p.id ] }%></td>
+	</tr>
+	<tr class="field">
+		<td style="width:10%"></td>
+		<td>Name:</td>
+		<td><%= f.text_field "name" %></td>
+	</tr>
+	<tr>
+		<td style="width:10%"></td>
+		<td></td>
+		<td class="actions"><%= f.submit "Save Tag Key"%></td>
+	</tr>
+</table>
+
+<% end %>

@@ -1,0 +1,85 @@
+<span style="margin-top: 0px;">View:</span> <%= collection_select(:select_users, :for_permission, @users_for_select, :id, :full_name) %>
+<div style="margin-left: 25px;" class="row-fluid">
+  <div style="width: 480px; margin-left: 5px;" class="span8" id="permission-box4">
+    <form id="users-privilages-permissions">
+      <p><span style="font-size: 16px;">Actions</span>  <span style="color: red;">WARNING: Overrides the current settings and permissions</span></p>
+      <div class="row-fluid">
+        <div class="span2"></div>
+        <div class="span3 actions-radio">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Team</div>
+        <div class="span3 actions-radio">Team Downline</div>
+        <div class="span3 actions-radio">&nbsp;&nbsp;&nbsp;&nbsp;Downline</div>
+      </div>
+      <div class="row-fluid">
+        <div class="span2"></div>
+        <div class="span3 actions-radio">
+          None | View | Edit
+        </div>
+        <div class="span3 actions-radio">
+          None | View | Edit
+        </div>
+        <div class="span3 actions-radio">
+          None | View | Edit
+        </div>
+      </div>
+      <div class="row-fluid">
+        <div style="margin-top: 3px;" class="span2">User(s)</div>
+        <div class="span3 actions-radio">
+          &nbsp;&nbsp;&nbsp;<input type="radio" name="siblings" value="none">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;
+          <input type="radio" name="siblings" value="can_view_siblings"> &nbsp;&nbsp;|&nbsp;&nbsp;
+          <input type="radio" name="siblings" value="can_edit_siblings">
+        </div>
+        <div class="span3 actions-radio">
+          &nbsp;&nbsp;&nbsp;<input type="radio" name="nephews" value="none">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;
+          <input type="radio" name="nephews" value="can_view_nephews">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<input type="radio" name="nephews" value="can_edit_nephews">
+        </div>
+        <div class="span3 actions-radio">
+          &nbsp;&nbsp;&nbsp;<input type="radio" name="descendents" value="none">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;
+          <input type="radio" name="descendents" value="can_view_descendents">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;
+          <input type="radio" name="descendents" value="can_edit_descendents">
+        </div>
+      </div>
+      <div class="row-fluid">
+        <div style="margin-top: 3px;" class="span2">Resources</div>
+        <div class="span3 actions-radio">
+          &nbsp;&nbsp;&nbsp;<input type="radio" name="siblings_resources" value="none">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;
+          <input type="radio" name="siblings_resources" value="can_view_siblings_resources">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;
+          <input type="radio" name="siblings_resources" value="can_edit_siblings_resources">
+        </div>
+        <div class="span3 actions-radio">
+          &nbsp;&nbsp;&nbsp;<input type="radio" name="nephews_resources" value="none">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;
+          <input type="radio" name="nephews_resources" value="can_view_nephews_resources">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;
+          <input type="radio" name="nephews_resources" value="can_edit_nephews_resources">
+        </div>
+        <div class="span3 actions-radio">
+          &nbsp;&nbsp;&nbsp;<input type="radio" name="descendents_resources" value="none">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;
+          <input type="radio" name="descendents_resources" value="can_view_descendents_resources">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;
+          <input type="radio" name="descendents_resources" value="can_edit_descendents_resources">
+        </div>
+      </div>
+      <div class="row-fluid">
+        <div class="span12">
+          <input style="margin-top: -2px;" type="checkbox" name="can_edit_self"> Edit Self
+        </div>
+      </div>
+      <div class="row-fluid">
+        <div class="span12">
+          <input style="margin-top: -2px;" type="checkbox" name="assign_role"> Assign Role
+          <span style="margin-top: 7px;"><%= collection_select(:user_role, :role_id, Usage::Role.all, :id, :name) %></span>
+        </div>
+      </div>
+
+      <button type="button" class="btn btn-primary ajax" id="update-users-permissions">
+        Update Permissions
+      </button>
+    </form>
+  </div>
+</div>
+<div class="row-fluid">
+  <div class="span4" id="permission-box1" style="height: 280px; border: .1em solid #888; background-color: #D9DEEC; margin-left: -5px; margin-bottom: 5px;">
+    <%= render :partial => "permissions_box" %>
+  </div>
+  <div class="span4" id="permission-box2" style="height: 280px; border: .1em solid #888; background-color: #D9DEEC; margin-left: 5px; margin-bottom: 5px;">
+  </div>
+  <div class="span4" id="permission-box3" style="height: 280px; border: .1em solid #888; background-color: #D9DEEC; margin-left: 5px; margin-bottom: 5px;">
+  </div>
+</div>

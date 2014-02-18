@@ -1,0 +1,2 @@
+module Marketing::EmailsHelper
+end

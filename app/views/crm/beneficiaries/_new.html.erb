@@ -1,0 +1,16 @@
+<%= form_for @crm_beneficiary, url: '/crm/beneficiaries/', :remote => true do |f| %>
+
+  <%= f.hidden_field :contingent %>
+  <%= f.hidden_field :case_id, :value => @crm_case.id %>
+
+  <%= render :partial => "form", :locals => {:f=>f}%>
+
+  <div class="row">
+    <div class="span3"></div>
+    <div class="span3">
+      <button type="button" id="create-crm-beneficiary" class="btn btn-primary ajax">
+        Add
+      </button>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,64 @@
+<input id="crm-case-id" type="hidden" value="<%= @case_id %>">
+<input id="crm-status-id" type="hidden" value="<%= @crm_status && @crm_status.id %>">
+<div class="row">
+  <div class="span6">Last Status Change: <%= @crm_status && @crm_status.created_at %></div>
+  <div class="span6">
+    Status: <%= collection_select(:crm_status, :status_type_id, Crm::StatusType.all(current_user), :id, :name, {:prompt=>true}, {:class=>'ajax'}) %>
+  </div>
+</div>
+<% if @crm_status %>
+	<div class="row">
+			<div class="span6"></div>
+			<div class="span6">
+					Openness: <%= select("follow_up", :openness_id, Crm::Openness.all.collect {|p| [ p.name, p.id ] }, {:prompt => "Select openness", :selected => @crm_status.openness_id}, {:class=>"ajax"} ) %>
+			</div>
+	</div>
+
+	<div class="row">
+			<div class="span2">Completed</div>
+			<div class="span2">Type</div>
+			<div class="span2">Name</div>
+			<div class="span2">Assigned To</div>
+			<div class="span2">Due Date</div>
+			<div class="span1">Completed At</div>
+			<div class="span1"></div>
+	</div>
+
+	<% @crm_system_tasks.each do |system_task|%>
+			<div class="row" style="padding-top:10px;" data-id="<%= system_task.id %>">
+					<div class="span2">
+							<input type="checkbox" class="crm-system-task-completed-checkbox ajax" id="<%= system_task.id %>" <%= system_task.completed_at.blank? ? '' : 'checked' %>>
+					</div>
+					<div class="span2">
+							<%= select("crm_system_task#{system_task.id}", :task_type_id, Crm::SystemTaskType.all.collect {|p| [ p.name, p.id ] } + [ [ 'User', nil ] ], {:selected => system_task.task_type_id.blank? ? "" : system_task.task_type_id}, {:disabled=> system_task.completed_at.blank? ? false : true, :style=>"width:80px;", :class=>"crm-system-task#{system_task.id} crm-system-task-task-type-id ajax"} ) %>
+					</div>
+					<div class="span2">
+							<input id="crm_system_task<%= system_task.id%>_template_name" class="crm-system-task<%= system_task.id%> ajax crm-system-task-template-id" type="text" data-autocomplete="/marketing/memberships/membership_templates?task_type=1" value="<%= system_task.template_name %>" style="width: 80px;" <%= system_task.completed_at.blank? ? (system_task.task_type_id.blank? ? 'disabled' : '') : 'disabled' %>>
+					</div>
+					<div class="span2">
+							<%= select("crm_system_task#{system_task.id}", :assigned_to_id, Usage::User.sales_support.collect {|p| [ p.full_name, p.id ] }, {:prompt => "Select user to assign", :selected => system_task.assigned_to_id}, {:disabled=> system_task.completed_at.blank? ? (system_task.task_type_id.blank? ? false : true) : true, :style=>"width:80px;", :class=>"crm-system-task#{system_task.id} crm-system-task-assigned-to ajax"}) %>
+					</div>
+					<div class="span2">
+							<%= system_task.due_at %>
+					</div>
+					<div class="span1" id="crm-system-task-completed-at<%= system_task.id%>">
+							<%= system_task.completed_at %>
+					</div>
+					<div class="span1">
+							<% if system_task.task_type.try(:name) == "letter" %>
+									<a id="show-system-task-template-letter-body" class="ajax">
+											<i class="icon icon-envelope"></i>
+									</a>
+							<% end %>
+					</div>
+			</div>
+	<% end %>
+
+	<div class="row" style="padding-top:30px;">
+			<div class="span3">
+					<a class="btn btn-primary ajax" id="add-new-follow-up-task">Add Follow Up</a>
+			</div>
+	</div>
+
+	<div id="modal-container-for-follow-up-task" style="color:black;"></div>
+<% end %>

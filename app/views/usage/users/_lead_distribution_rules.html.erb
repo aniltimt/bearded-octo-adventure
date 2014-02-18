@@ -1,0 +1,20 @@
+<%= render :partial => "shared/tab/system_management", :locals => {:selected => "lead_distribution"} %>
+<div style="background-color:#fff; height:500px">
+<div class="navbar">
+	<div class="navbar-inner"><h4 class="title system-management-row" >Auto Assigning</h4></div>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Agent</th>
+      <th></th>
+      <th>Type</th>
+    </tr>
+  </thead>
+  <tbody style="background:#fff;">
+    <% @children.each do |ch|%>
+      <%= render :partial => "lead_distribution_children", :locals => { :ch => ch } %>
+    <% end %>
+  </tbody>
+</table>

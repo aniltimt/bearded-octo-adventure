@@ -1,0 +1,27 @@
+<ul class="nav nav-tabs" style="margin-bottom: -1px" id="myTab">
+ 
+  <li><a href="http://pq2.pinneyapps.com" target="_blank">Quoter</a></li>
+
+  <%= content_tag :li, class:('active' if selected == 'Links') do %>
+    <%= link_to 'Links', controller:'/marketing/marketing_base', action:'links', remote:true %>
+  <% end %>
+  
+  <% if current_user.role.super? %>
+    <li class="<%= selected == 'Memberships' ? active : '' %>" ><%= link_to "Memberships", marketing_memberships_path, :remote => true %></li>
+  <% end %>
+
+  <li class="<%=  selected == 'Campaigns' ? 'active' : '' %>" ><%= link_to "Campaigns", marketing_campaigns_path, :remote => true %></li>
+
+  <li class="<%= selected == 'AutoTaskRule' ? 'active' : '' %>" ><%= link_to "AutoTaskRule", marketing_auto_task_rules_path, :remote => true %></li>
+  
+  <li class="<%= selected == 'EmailTemplates' ? 'active' : '' %>" ><%= link_to "Email Templates", marketing_email_templates_path, :remote => true %></li>
+  
+  <li class="<%= selected == 'SnailMailTemplates' ? 'active' : '' %>" ><%= link_to "SnailMail Templates", marketing_snail_mail_templates_path, :remote => true %></li>
+  
+  <li class="<%= selected == 'EmailMessages' ? 'active' : '' %>" ><%= link_to "Email Messages", marketing_email_messages_path, :remote => true %></li>
+
+  <li class="<%= selected == 'SnailMailMessages' ? 'active' : '' %>" ><%= link_to "SnailMail Messages", marketing_snail_mail_messages_path, :remote => true %></li>
+  
+  <li class="<%= selected == 'SmtpServer' ? 'active' : '' %>" ><%= link_to "Configure Smtp Server", new_marketing_email_smtp_server_path, :remote => true %></li>
+
+</ul>

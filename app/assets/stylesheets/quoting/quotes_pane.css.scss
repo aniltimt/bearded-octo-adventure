@@ -1,0 +1,44 @@
+#quotes_pane {
+
+  div#coverage-detail, div#planning-considerations {
+    border: 1px solid gray;
+    border-radius: 8px;
+    padding: 8px;
+  }
+
+  .quote {
+
+    .general {
+      border: 1px solid gray;
+      border-radius: 8px;
+      padding: 8px;
+      margin-bottom: 0;
+
+      > .mid {
+        height: 60px;
+        line-height: 60px;
+      }
+    }
+
+    .details {
+      border: 1px solid gray;
+      border-top: 0;
+      cursor: pointer;
+      margin: 0 24px 0 32px;
+      padding: 8px;
+    }
+
+    .tab {
+      background: gray;
+      border-radius: 0 0 20px 20px;
+      color: white;
+      cursor: pointer;
+      font-size: 11px;
+      margin: 0 auto 20px;
+      text-align: center;
+      width: 200px;
+    }
+
+  }
+
+}

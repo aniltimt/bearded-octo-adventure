@@ -1,0 +1,19 @@
+<%= render :partial => "shared/tab/agency_management", :locals => {:tab => params[:tab] == "users" ? "users" : "privileges"} %>
+
+<div style="float:right; width:175px;">
+  <%= link_to 'Back', usage_staff_assignment_index_path(:tab=> params[:tab]), :remote => true %>
+</div>
+
+<h1>Staff Assignment</h1>
+<div class="span2">
+  <%= form_for @staff_assignment, :url => { :action => "create" } do |staff| %>
+    <br />Administrative Assistant <%= staff.autocomplete_field :administrative_assistant_name, autocomplete_usage_user_first_name_usage_staff_assignment_path(:role_name => "administrative_assistant"), :id_element => '#usage_staff_assignment_administrative_assistant_id', :style => "width:150px" %><%= staff.hidden_field :administrative_assistant_id %>
+    <br />Case Manager <%= staff.autocomplete_field :case_manager_name, autocomplete_usage_user_first_name_usage_staff_assignment_path(:role_name => "case_manager"),:id_element => '#usage_staff_assignment_case_manager_id', :style => "width:150px" %><%= staff.hidden_field :case_manager_id %>
+    <br />Manager <%= staff.autocomplete_field :manager_name, autocomplete_usage_user_first_name_usage_staff_assignment_path(:role_name => "manager"), :id_element => '#usage_staff_assignment_manager_id',:style => "width:150px" %><%= staff.hidden_field :manager_id %>
+    <br />Policy Specialist <%= staff.autocomplete_field :policy_specialist_name, autocomplete_usage_user_first_name_usage_staff_assignment_path(:role_name => "policy_specialist"),:id_element => '#usage_staff_assignment_policy_specialist_id', :style => "width:150px" %><%= staff.hidden_field :policy_specialist_id %>
+    <br />Sales Assistant <%= staff.autocomplete_field :sales_assistant_name, autocomplete_usage_user_first_name_usage_staff_assignment_path(:role_name => "sales_assistant"),:id_element => '#usage_staff_assignment_sales_assistant_id', :style => "width:150px" %><%= staff.hidden_field :sales_assistant_id %>
+    <br />Sales Coordinator <%= staff.autocomplete_field :sales_coordinator_name, autocomplete_usage_user_first_name_usage_staff_assignment_path(:role_name => "sales_coordinator"),:id_element => '#usage_staff_assignment_sales_coordinator_id', :style => "width:150px" %><%= staff.hidden_field :sales_coordinator_id %>
+    <br />Sales Support <%= staff.autocomplete_field :sales_support_name, autocomplete_usage_user_first_name_usage_staff_assignment_path(:role_name => "sales_support"),:id_element => '#usage_staff_assignment_sales_support_id', :style => "width:150px" %><%= staff.hidden_field :sales_support_id %>
+    <br /><%= staff.submit :Save %>
+  <% end %>
+</div>

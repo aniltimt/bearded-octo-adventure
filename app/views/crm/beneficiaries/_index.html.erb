@@ -1,0 +1,105 @@
+<div id="crm-case-beneficiaries">
+  <input type="hidden" id="crm-beneficiary-case-id" value="<%= @crm_case.id %>">
+  <div class="row">
+    <div class="span12">
+      <h4>Primary Beneficiary</h4>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="span2">
+      Name:
+    </div>
+    <div class="span1">
+      Genre:
+    </div>
+    <div class="span2">
+      Date of Birth:
+    </div>
+    <div class="span1">
+      Gender:
+    </div>
+    <div class="span2">
+      Relationship:
+    </div>
+    <div class="span1">
+      SSN:
+    </div>
+    <div class="span1">
+      Percent:
+    </div>
+    <div class="span1">
+    </div>
+    <div class="span1">
+    </div>
+  </div>
+
+  <div id="container-primary-beneficiaries">
+    <%= render :partial => "beneficiary", :collection => @primary_crm_beneficiaries %>
+  </div>
+
+  <div class="row">
+    <div class="span12">
+      <a class="btn btn-primary ajax add-new-crm-beneficiary" data-container="container-for-new-primary-beneficiary">
+        Add New
+      </a>
+    </div>
+  </div>
+
+  <div id="container-for-new-primary-beneficiary">
+  </div>
+
+  <div class="row">
+    <div class="span12">
+      <h4>Secondary Beneficiary</h4>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="span2">
+      Name:
+    </div>
+    <div class="span1">
+      Genre:
+    </div>
+    <div class="span2">
+      Date of Birth:
+    </div>
+    <div class="span1">
+      Gender:
+    </div>
+    <div class="span2">
+      Relationship:
+    </div>
+    <div class="span1">
+      SSN:
+    </div>
+    <div class="span1">
+      Percent:
+    </div>
+    <div class="span1">
+    </div>
+    <div class="span1">
+    </div>
+  </div>
+
+  <div id="container-secondary-beneficiaries">
+    <%= render :partial => "beneficiary", :collection => @secondary_crm_beneficiaries %>
+  </div>
+
+  <div class="row">
+    <div class="span9">
+      <a class="btn btn-primary ajax add-new-crm-beneficiary" data-container="container-for-new-secondary-beneficiary" data-beneficiary-type="secondary">
+        Add New
+      </a>
+    </div>
+    <div class="span3">
+      <a class="btn btn-primary ajax" id="update-crm-beneficiaries-percentage">
+        Save
+      </a>
+    </div>
+  </div>
+
+  <div id="container-for-new-secondary-beneficiary">
+  </div>
+</div>

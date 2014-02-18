@@ -1,0 +1,696 @@
+<% content_for :questionnaires_state,"active" #sets state for tab bar -%>
+<%= render :partial => "underwriting/tabs" %>
+<div class="nestedTabbedArea">
+	<div>
+	<table id="impaired_risk_table">
+	  <thead>
+	    <tr>
+	      <th>Impairment/A.T.U.</th>
+	      <th>Questionnaire</th>
+	      <th>Rx</th>
+	      <th>Matrix</th>
+	      <th>XRAE</th>
+	      <th>E-mail</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	            <tr>
+	              <td>Alcohol Abuse</td>
+	              <td>
+	              </td>
+	              <td>
+	              </td>
+	              <td>
+	              </td>
+	              <td class="checkmarked">
+	              </td>
+	              <td>
+	                <a href="mailto:underwriting@pinneyinsurance.com?subject=Alcohol Abuse
+	&amp;body=Please send me more information on Alcohol Abuse. Thank you!" target="_blank" title="Send us an email">
+	                </a>
+	              </td>
+	            </tr>
+	            <tr>
+	              <td>Anxiety</td>
+	              <td></td>
+	              <td>
+	                <a href="http://www.pinneyinsurance.com/emails/PDFs/Rx-for-success/Depression-and-AnxietyRx.pdf" title="View our Prescription for Success with Anxiety">
+	                </a>
+	              </td>
+	              <td>
+	              </td>
+	              <td class="checkmarked">
+	              </td>
+	              <td>
+	                <a href="mailto:underwriting@pinneyinsurance.com?subject=Anxiety
+	&amp;body=Please send me more information on Anxiety. Thank you!" target="_blank" title="Send us an email">
+	                </a>
+	              </td>
+	            </tr>
+	            <tr>
+	              <td>Arthritis Rheumatoid</td>
+	              <td></td>
+	              <td></td>
+	              <td></td>
+	              <td class="checkmarked">
+	              </td>
+	              <td>
+	                <a href="mailto:underwriting@pinneyinsurance.com?subject=Arthritis Rheumatoid
+	&amp;body=Please send me more information on Arthiritis Rheumatoid. Thank you!" target="_blank" title="Send us an email">
+	                </a>
+	            </td>
+	            </tr>
+	            <tr>
+	              <td>Asthma</td>
+	              <td></td>
+	              <td>
+	                <a href="http://www.pinneyinsurance.com/emails/PDFs/Rx-for-success/AsthmaRx.pdf" title="View our Prescription for Success with Asthma">
+	                </a>
+	              </td>
+	              <td>
+	              </td>
+	              <td class="checkmarked">
+	              </td>
+	              <td>
+	                <a href="mailto:underwriting@pinneyinsurance.com?subject=Asthma
+	&amp;body=Please send me more information on Asthma. Thanks you!" target="_blank" title="Send us an email">
+	                </a>
+	              </td>
+	            </tr>
+	            <tr>
+	              <td>Atrial Fibrillation</td>
+	              <td>
+	              </td>
+	              <td>
+	                <a href="http://www.pinneyinsurance.com/emails/PDFs/Rx-for-success/Atrial-Fibrillation.pdf" title="View our Prescription for Success with Atrial Fibrillation">
+	                  
+	                </a>
+	              </td>
+	              <td></td>
+	              <td class="checkmarked">
+	              </td>
+	              <td>
+	                <a href="mailto:underwriting@pinneyinsurance.com?subject=Atrial Fibrillation
+	&amp;body=Please send me more information on Atrial Fibrillation. Thank you!" target="_blank" title="Send us an email">
+	                </a>
+	              </td>
+	            </tr>
+	            <tr>
+	              <td>
+	                Aviation
+	                </a>
+	              </td>
+	              <td></td>
+	              <td></td>
+	              <td>
+	                <a href="http://www.pinneyinsurance.com/emails/PDFs/Pinney_Aviation-Matrix.pdf" target="_blank">
+	                  
+	                </a>
+	              </td>
+	              <td class="checkmarked">
+	              </td>
+	              <td>
+	                <a href="mailto:underwriting@pinneyinsurance.com?subject=Aviation
+	&amp;body=Please send me more information on Aviation. Thank you!" target="_blank" title="Send us an email">
+	                </a>
+	              </td>
+	            </tr>
+	            <tr>
+	              <td>Blood Pressure</td>
+	              <td></td>
+	              <td></td>
+	              <td>
+	                <a href="http://www.pinneyinsurance.com/emails/PDFs/Pinney_BP-Matrix.pdf" target="_blank">
+	                  
+	                </a>
+	              </td>
+	              <td class="checkmarked">
+	              </td>
+	              <td>
+	                <a href="mailto:underwriting@pinneyinsurance.com?subject=Blood Pressure
+	&amp;body=Please send me more information on Blood Pressure. Thanks you!" target="_blank" title="Send us an email">
+	                </a>
+	              </td>
+	            </tr>
+	            <tr>
+	              <td>
+	                <a href="http://www.pinneyinsurance.com/underwriting/ask-the-underwriter-breast-cancer.html" target="_blank" title="Ask the Underwriter About Breast Cancer">Breast Cancer
+	                </a>
+	              </td>
+	              <td>
+	                <a href="http://www.pinneyinsurance.com/emails/PDFs/Cancer-Breast.pdf" target="_blank" title="Take Our Breast Cancer Questionnaire">
+	                  
+	                </a>
+	              </td>
+	              <td></td>
+	              <td></td>
+	              <td class="checkmarked">
+	              </td>
+	              <td>
+	                <a href="mailto:underwriting@pinneyinsurance.com?subject=Breast Cancer
+	&amp;body=Please send me more information on Breast Cancer. Thank you!" target="_blank" title="Send us an email">
+	                </a>
+	              </td>
+	            </tr>
+	            <tr>
+	              <td>
+	                <a href="http://www.pinneyinsurance.com/underwriting/ask-the-underwriter-cancer.html" target="_blank" title="Ask the Underwriter About Cancer">Cancer
+	                </a>
+	              </td>
+	              <td>
+	                <a href="http://www.pinneyinsurance.com/emails/PDFs/Cancer-General.pdf" target="_blank" title="Take Our Cancer Questionnaire">
+	                </a>
+	              </td>
+	              <td></td>
+	              <td></td>
+	              <td></td>
+	              <td>
+	                <a href="mailto:underwriting@pinneyinsurance.com?subject=Cancer
+	&amp;body=Please send me more information on Cancer. Thank you!" target="_blank" title="Send us an email">
+	                </a>
+	              </td>
+	            </tr>
+	            <tr>
+	              <td>
+	                <a href="http://www.pinneyinsurance.com/underwriting/ask-the-underwriter-cardiomyopathy.html" target="_blank" title="Ask the Underwriter About Cardiomyopathy">Cardiomyopathy
+	                </a>
+	              </td>
+	              <td>
+	                <a href="http://tools.pinneyinsurance.com/doclib/files/PINNEY/27348/Hepatitis-B.pdf" target="_blank" title="Take Our Cardiomyopathy Questionnaire">
+	                  
+	                </a>
+	              </td>
+	              <td></td>
+	              <td></td>
+	              <td></td>
+	              <td>
+	                <a href="mailto:underwriting@pinneyinsurance.com?subject=Cardiomyopathy
+	&amp;body=Please send me more information on Cardiomyopathy. Thank you!" target="_blank" title="Send us an email">
+	                </a>
+	              </td>
+	            </tr>
+	            <tr>
+	              <td>Cholesterol</td>
+	              <td></td>
+	              <td></td>
+	              <td>
+	                <a href="http://www.pinneyinsurance.com/emails/PDFs/Pinney_Chol-Matrix.pdf" target="_blank">
+	                  
+	                </a>
+	              </td>
+	              <td class="checkmarked">
+	              </td>
+	              <td>
+	                <a href="mailto:underwriting@pinneyinsurance.com?subject=Cholesterol
+	&amp;body=Please send me more information on Cholesterol. Thank you!" target="_blank" title="Send us an email">
+	                </a>
+	              </td>
+	            </tr>
+	            <tr>
+	              <td>
+	                <a href="http://www.pinneyinsurance.com/underwriting/ask-the-underwriter-chronic-hepatitis-b.html" target="_blank" title="Ask the Underwriter About Hepatitus B">Chronic Hepatitis B
+	                </a>
+	              </td>
+	              <td>
+	                <a href="http://tools.pinneyinsurance.com/doclib/files/PINNEY/27348/Hepatitis-B.pdf" target="_blank" title="Take Our Hepatitus-B Questionnaire">
+	                  
+	                </a>
+	              </td>
+	              <td></td>
+	              <td></td>
+	              <td></td>
+	              <td>
+	                <a href="mailto:underwriting@pinneyinsurance.com?subject=Chronic Hepatitis B
+	&amp;body=Please send me more information on Chronic Hepatitis B. Thank you!" target="_blank" title="Send us an email">
+	                </a>
+	              </td>
+	            </tr>
+	            <tr>
+	              <td>Crohn's Disease</td>
+	              <td></td>
+	              <td></td>
+	              <td></td>
+	              <td class="checkmarked">
+	              </td>
+	              <td>
+	                <a href="mailto:underwriting@pinneyinsurance.com?subject=Crohn's Disease
+	&amp;body=Please send me more information on Crohn's Disease. Thank you!" target="_blank" title="Send us an email">
+	                </a>
+	              </td>
+	            </tr>
+	            <tr>
+	              <td>COPD</td>
+	              <td></td>
+	              <td>
+	                <a href="http://www.pinneyinsurance.com/emails/PDFs/Rx-for-success/COPDRx.pdf" title="View our Prescription for Success with COPD">
+	                  
+	                </a>
+	              </td>
+	              <td></td>
+	              <td class="checkmarked">
+	              </td>
+	              <td>
+	                <a href="mailto:underwriting@pinneyinsurance.com?subject=COPD
+	&amp;body=Please send me more information on COPD. Thank you!" target="_blank" title="Send us an email">
+	                </a>
+	              </td>
+	            </tr>
+	            <tr>
+	              <td>Depression</td>
+	              <td></td>
+	              <td>
+	                <a href="http://www.pinneyinsurance.com/emails/PDFs/Rx-for-success/Depression-and-AnxietyRx.pdf" title="View our Prescription for Success with Depression">
+	                  
+	                </a>
+	              </td>
+	              <td></td>
+	              <td class="checkmarked">
+	              </td>
+	              <td>
+	                <a href="mailto:underwriting@pinneyinsurance.com?subject=Depression
+	&amp;body=Please send me more information on Depression. Thank you!" target="_blank" title="Send us an email">
+	                </a>
+	              </td>
+	            </tr>
+	            <tr>
+	              <td>Diabetes</td>
+	              <td></td>
+	              <td></td>
+	              <td></td>
+	              <td class="checkmarked">
+	              </td>
+	              <td>
+	                <a href="mailto:underwriting@pinneyinsurance.com?subject=Diabetes
+	&amp;body=Please send me more information on Diabetes. Thank you!" target="_blank" title="Send us an email">
+	                </a>
+	              </td>
+	            </tr>
+	            <tr>
+	              <td>
+	                <a href="http://www.pinneyinsurance.com/underwriting/ask-the-underwriter-diabetes-mellitus" target="_blank" title="Ask the Underwriter About Diabetes Mellitus">Diabetes Mellitus
+	                </a>
+	              </td>
+	              <td>
+	                <a href="http://tools.pinneyinsurance.com/doclib/files/PINNEY/27348/Underwriting%20Diabetes%20Questionnaire.pdf" target="_blank" title="Take Our Diabetes Questionnaire">
+	                  
+	                </a>
+	              </td>
+	              <td></td>
+	              <td></td>
+	              <td class="checkmarked">
+	              </td>
+	              <td>
+	                <a href="mailto:underwriting@pinneyinsurance.com?subject=Diabetes Mellitus
+	&amp;body=Please send me more information on Diabetes Mellitus. Thank you!" target="_blank" title="Send us an email">
+	                  
+	                </a>
+	              </td>
+	            </tr>
+	            <tr>
+	              <td>Drug Abuse</td>
+	              <td></td>
+	              <td></td>
+	              <td></td>
+	              <td class="checkmarked">
+	              </td>
+	              <td>
+	                <a href="mailto:underwriting@pinneyinsurance.com?subject=Drug Abuse
+	&amp;body=Please send me more information on Drug Abuse. Thank you!" target="_blank" title="Send us an email">
+	                </a>
+	              </td>
+	            </tr>
+	            <tr>
+	              <td>
+	                <a href="http://www.pinneyinsurance.com/underwriting/ask-the-underwriter-ELFTs.html" target="_blank" title="Ask the Underwriter About Elevated Liver Enzymes">ELFT's
+	                </a>
+	              </td>
+	              <td>
+	                <a href="http://www.pinneyinsurance.com/emails/PDFs/Liver_Enzyme_Elevations.pdf" target="_blank" title="Take Our Elevated Liver Enzyme Questionnaire">
+	                  
+	                </a>
+	              </td>
+	              <td></td>
+	              <td></td>
+	              <td></td>
+	              <td>
+	                <a href="mailto:underwriting@pinneyinsurance.com?subject=ELFT's
+	&amp;body=Please send me more information on Diabetes ELFT's. Thank you!" target="_blank" title="Send us an email">
+	                  
+	                </a>
+	              </td>
+	            </tr>
+	            <tr>
+	              <td>Epilepsy</td>
+	              <td></td>
+	              <td></td>
+	              <td></td>
+	              <td class="checkmarked">
+	              </td>
+	              <td>
+	                <a href="mailto:underwriting@pinneyinsurance.com?subject=Epilepsy
+	&amp;body=Please send me more information on Epilepsy. Thank you!" target="_blank" title="Send us an email">
+	                </a>
+	              </td>
+	            </tr>
+	            <tr>
+	              <td>Family History</td>
+	              <td></td>
+	              <td></td>
+	              <td>
+	                <a href="http://www.pinneyinsurance.com/emails/PDFs/Pinney_familyHx-matrix.pdf" target="_blank">
+	                  
+	                </a>
+	              </td>
+	              <td class="checkmarked">
+	              </td>
+	              <td>
+	                <a href="mailto:underwriting@pinneyinsurance.com?subject=Family History
+	&amp;body=Please send me more information on Family History. Thank you!" target="_blank" title="Send us an email">
+	                  
+	                </a>
+	              </td>
+	            </tr>
+	            <tr>
+	              <td>Heart Murmur/ Valve Disease</td>
+	              <td></td>
+	              <td></td>
+	              <td></td>
+	              <td class="checkmarked">
+	              </td>
+	              <td>
+	                <a href="mailto:underwriting@pinneyinsurance.com?subject=heart Murmur/ Valve Disease
+	&amp;body=Please send me more information on Heart Murmur/ Valve Disease. Thank you!" target="_blank" title="Send us an email">
+	                </a>
+	              </td>
+	            </tr>
+	            <tr>
+	              <td>
+	                <a href="http://www.pinneyinsurance.com/underwriting/ask-the-underwriter-hepatitis-c" target="_blank" title="Ask the Underwriter About Hepatitus C">Hepatitis C
+	                </a>
+	              </td>
+	              <td>
+	                <a href="http://www.pinneyinsurance.com/emails/PDFs/Chronic-Hepatitis-C.pdf" target="_blank" title="Take Our Hepatitus-C Questionnaire">
+	                  
+	                </a>
+	              </td>
+	              <td></td>
+	              <td></td>
+	              <td></td>
+	              <td>
+	                <a href="mailto:underwriting@pinneyinsurance.com?subject=Hepatitis C
+	&amp;body=Please send me more information on Hepatitis C. Thank you!" target="_blank" title="Send us an email">
+	                  
+	                </a>
+	              </td>
+	            </tr>
+	            <tr>
+	              <td>
+	                <a href="http://www.pinneyinsurance.com/underwriting/ask-the-underwriter-pinney-informal-review-process.html" target="_blank" title="Ask the Underwriter About Our Informal Review Process">Informal <br />
+	                Review <br />
+	                Process
+	              </a>
+	            </td>
+	              <td>
+	                <a href="http://www.pinneyinsurance.com/emails/PDFs/Pinney_Informal-Ap_Fillable-Saveable.pdf" target="_blank" title="Take Our Informal Review Process Questionnaire">
+	                  
+	                </a>
+	              </td>
+	              <td></td>
+	              <td></td>
+	              <td></td>
+	              <td>
+	                <a href="mailto:underwriting@pinneyinsurance.com?subject=Informal Review Process
+	&amp;body=Please send me more information on Informal Review Process. Thank you!" target="_blank" title="Send us an email">
+	                  
+	                </a>
+	              </td>
+	            </tr>
+	            <tr>
+	              <td>Irregular Heartbeat/ Palpitations</td>
+	              <td></td>
+	              <td></td>
+	              <td></td>
+	              <td class="checkmarked">
+	              </td>
+	              <td>
+	                <a href="mailto:underwriting@pinneyinsurance.com?subject=Irregular Heartbeat/ Palpitations
+	&amp;body=Please send me more information on Irregular Heartbeat/ Palpitations. Thank you!" target="_blank" title="Send us an email">
+	                </a>
+	              </td>
+	            </tr>
+	            <tr>
+	              <td>
+	                <a href="http://www.pinneyinsurance.com/underwriting/ask-the-underwriter-mike-woods" target="_blank" title="Ask the Underwriter About Our Field Underwriting">Issue 1
+	                </a>
+	              </td>
+	              <td>
+	                <a href="http://www.pinneyinsurance.com/emails/PDFs/Pinney-Field-Underwriting-Questionnaire.pdf" target="_blank" title="Take Our Field Underwriting Questionnaire">
+	                  
+	                </a>
+	              </td>
+	              <td></td>
+	              <td></td>
+	              <td></td>
+	              <td>
+	                <a href="mailto:mwoods@pinneyinsurance.com" target="_blank">
+	                  
+	                </a>
+	              </td>
+	            </tr>
+	            <tr>
+	              <td>LFT (Elevated Liver Functions)</td>
+	              <td></td>
+	              <td></td>
+	              <td></td>
+	              <td class="checkmarked">
+	              </td>
+	              <td>
+	                <a href="mailto:underwriting@pinneyinsurance.com?subject=LFT (Elevated Liver Functions)
+	&amp;body=Please send me more information on LFT (Elevated Liver Functions). Thank you!" target="_blank" title="Send us an email">
+	                </a>
+	              </td>
+	            </tr>
+	            <tr>
+	              <td>
+	                <a href="http://www.pinneyinsurance.com/underwriting/ask-the-underwriter-multiple-sclerosis.html" title="Ask the Underwriter About Multiple Sclerosis">Multiple Sclerosis
+	                </a></td>
+	              <td>
+	                <a href="http://www.pinneyinsurance.com/emails/PDFs/Multiple-Sclerosis.pdf" target="_blank" title="Take Our Multiple Sclerosis Questionnaire">
+	                  
+	                </a>
+	              </td>
+	              <td>
+	                <a href="http://www.pinneyinsurance.com/emails/PDFs/Rx-for-success/MS-Rx-fillable-Pru.pdf" title="View our Prescription for Success with Multiple Sclerosis">
+	                  
+	                </a>
+	              </td>
+	              <td></td>
+	              <td></td>
+	              <td><a href="mailto:underwriting@pinneyinsurance.com?subject=Multiple Sclerosis
+	&amp;body=Please send me more information on Multiple Sclerosis. Thank you!" target="_blank" title="Send us an email">
+	                    
+	                  </a>
+	                </td>
+	            </tr>
+	            <tr>
+	              <td>MVR (Motor Vehicle Records)</td>
+	              <td></td>
+	              <td></td>
+	              <td>
+	                <a href="http://www.pinneyinsurance.com/emails/PDFs/Pinney_MVR-Matrix.pdf" target="_blank">
+	                  
+	                </a>
+	              </td>
+	              <td class="checkmarked">
+	              </td>
+	              <td>
+	                <a href="mailto:underwriting@pinneyinsurance.com?subject=Motor Vehicle Records
+	&amp;body=Please send me more information on Motor Vehicle Records. Thank you!" target="_blank" title="Send us an email">
+	                  
+	                </a>
+	              </td>
+	            </tr>
+	            <tr>
+	              <td><a href="http://www.pinneyinsurance.com/underwriting/ask-the-underwriter-pancreatitis.html" target="_blank" title="Ask the Underwriter About Pancreatitus">Pancreatitis</a></td>
+	              <td>
+	                <a href="http://www.pinneyinsurance.com/emails/PDFs/Pancreatitis.pdf" target="_blank" title="Take Our Pancreatitus Questionnaire">
+	                  
+	                </a>
+	              </td>
+	              <td></td>
+	              <td></td>
+	              <td></td>
+	              <td>
+	                <a href="mailto:underwriting@pinneyinsurance.com?subject=Pancreatitis
+	&amp;body=Please send me more information on Pancreatitis. Thank you!" target="_blank" title="Send us an email">
+	                  
+	                </a>
+	              </td>
+	            </tr>
+	            <tr>
+	              <td>Parkinson's Disease</td>
+	              <td></td>
+	              <td></td>
+	              <td></td>
+	              <td class="checkmarked">
+	              </td>
+	              <td>
+	                <a href="mailto:underwriting@pinneyinsurance.com?subject=Parkinson's Disease
+	&amp;body=Please send me more information on Parkinson's Disease. Thank you!" target="_blank" title="Send us an email">
+	                </a>
+	              </td>
+	            </tr>
+	            <tr>
+	              <td>
+	                <a href="http://www.pinneyinsurance.com/underwriting/ask-the-underwriter-prostate-cancer.html" target="_blank" title="Ask the Underwriter About Prostate Cancer">Prostate Cancer
+	                </a>
+	              </td>
+	              <td>
+	                <a href="http://www.pinneyinsurance.com/emails/AskTheUnderwriter-ProstateCancer.html" target="_blank">
+	                  
+	                </a>
+	              </td>
+	              <td></td>
+	              <td></td>
+	              <td></td>
+	              <td>
+	                <a href="mailto:underwriting@pinneyinsurance.com?subject=Prostate Cancer
+	&amp;body=Please send me more information on Prostate Cancer. Thank you!" target="_blank" title="Send us an email">
+	                  
+	                </a>
+	              </td>
+	            </tr>
+	            <tr>
+	              <td>Scuba Diving</td>
+	              <td></td>
+	              <td></td>
+	              <td>
+	                <a href="http://www.pinneyinsurance.com/emails/PDFs/Pinney_SCUBAaMatrix.pdf" target="_blank">
+	                  
+	                </a>
+	              </td>
+	              <td></td>
+	              <td>
+	                <a href="mailto:underwriting@pinneyinsurance.com?subject=Scuba Diving
+	&amp;body=Please send me more information on Scuba Diving. Thank you!" target="_blank" title="Send us an email">
+	                  
+	                </a>
+	              </td>
+	            </tr>
+	            <tr>
+	              <td>Sky Diving</td>
+	              <td></td>
+	              <td></td>
+	              <td>
+	                <a href="http://www.pinneyinsurance.com/emails/PDFs/Pinney_SkyDivingMatrix.pdf" target="_blank">
+	                  
+	                </a>
+	              </td>
+	              <td></td>
+	              <td>
+	                <a href="mailto:underwriting@pinneyinsurance.com?subject=Sky Diving
+	&amp;body=Please send me more information on Sky Diving. Thank you!" target="_blank" title="Send us an email">
+	                  
+	                </a>
+	              </td>
+	            </tr>
+	            <tr>
+	              <td>
+	                <a href="http://www.pinneyinsurance.com/underwriting/ask-the-underwriter-sleep-apnea.html" target="_blank" title="Ask the Underwriter About Sleep Apnea">Sleep Apnea
+	                </a>
+	              </td>
+	              <td>
+	                <a href="file:///M:/Brokerage/e-marketing/e-newsletters/PDFs/Sleep-Apnea.pdf" target="_blank" title="Take Our Sleep Apnea Questionnaire">
+	                  
+	                </a>
+	              </td>
+	              <td></td>
+	              <td></td>
+	              <td></td>
+	              <td>
+	                <a href="mailto:underwriting@pinneyinsurance.com?subject=Sleep Apnea
+	&amp;body=Please send me more information on Sleep Apnea. Thank you!" target="_blank" title="Send us an email">
+	                  
+	                </a>
+	              </td>
+	            </tr>
+	            <tr>
+	              <td>
+	                <a href="http://www.pinneyinsurance.com/underwriting/ask-the-underwriter-stroke.html" target="_blank" title="Ask the Underwriter About Stroke">Stroke
+	                </a>
+	              </td>
+	              <td>
+	                <a href="http://www.pinneyinsurance.com/emails/PDFs/Stroke.pdf" target="_blank" title="Take Our Stroke Questionnaire">
+	                  
+	                </a>
+	              </td>
+	              <td>
+	                <a href="http://www.pinneyinsurance.com/emails/PDFs/Rx-for-success/StrokeRx.pdf" title="View our Prescription for Success with Stroke">
+	                  
+	                </a>
+	              </td>
+	              <td></td>
+	              <td></td>
+	              <td>
+	                <a href="mailto:underwriting@pinneyinsurance.com?subject=Stroke
+	&amp;body=Please send me more information on Stroke. Thank you!" target="_blank" title="Send us an email">
+	                  
+	                </a>
+	              </td>
+	            </tr>
+	            <tr>
+	              <td>
+	                <a href="http://www.pinneyinsurance.com/underwriting/ask-the-underwriter-testicular-cancer" target="_blank" title="Ask the Underwriter About Testicular Cancer">Testicular Cancer
+	               </a>
+	             </td>
+	              <td>
+	                <a href="http://tools.pinneyinsurance.com/doclib/files/PINNEY/27348/Cancer-Testicular.pdf" target="_blank" title="Take Our Testicular Cancer Questionnaire">
+	                  
+	                </a>
+	              </td>
+	              <td></td>
+	              <td></td>
+	              <td></td>
+	              <td>
+	                <a href="mailto:underwriting@pinneyinsurance.com?subject=Testicular Cancer
+	&amp;body=Please send me more information on Testicular Cancer. Thank you!" target="_blank" title="Send us an email">
+	                  
+	                </a>
+	              </td>
+	            </tr>
+	            <tr>
+	              <td>Tobacco</td>
+	              <td></td>
+	              <td></td>
+	              <td>
+	                <a href="http://www.pinneyinsurance.com/emails/PDFs/Pinney_tobacco_matrix.pdf" target="_blank">
+	                  
+	                </a>
+	              </td>
+	              <td></td>
+	              <td>
+	                <div class="bucket-border mutable">
+	                  <a href="mailto:underwriting@pinneyinsurance.com?subject=Tobacco
+	&amp;body=Please send me more information on Tobacco. Thank you!" target="_blank" title="Send us an email">
+	                    
+	                  </a>                  
+	                </td>
+	            </tr>
+	            <tr>
+	              <td>Weight Reduction Surgery</td>
+	              <td></td>
+	              <td></td>
+	              <td></td>
+	              <td class="checkmarked">
+	              </td>
+	              <td>
+	                <a href="mailto:underwriting@pinneyinsurance.com?subject=Weight Reduction Surgery
+	&amp;body=Please send me more information on Weight Reduction Surgery. Thank you!" target="_blank" title="Send us an email">
+	                  
+	                </a>
+	              </td>
+	            </tr>
+	  </tbody>
+	</table>
+	</div>
+</div>

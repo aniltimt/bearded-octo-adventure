@@ -1,0 +1,5 @@
+<% if @template.persisted? %>
+  $( "#main-container" ).html( "<%= escape_javascript( render( :partial => "edit" ) ) %>" );
+<% else %>
+  $( "#main-container" ).html( "<%= escape_javascript( render( :partial => "new" ) ) %>" );
+<% end %>

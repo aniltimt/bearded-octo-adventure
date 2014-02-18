@@ -1,0 +1,36 @@
+<%= form_for(@marketing_membership, :remote => true) do |f| %>
+  <% if @marketing_membership.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@marketing_membership.errors.count, "error") %> prohibited this tagging_membership from being saved:</h2>
+
+      <ul>
+      <% @marketing_membership.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <tr class="field">
+    <td style="width:10%"></td>
+    <td><%= f.check_box "custom_template_privilege" %></td>
+	<td>Custom Template Privilege:</td>
+	</tr>
+	<tr class="field">
+	    <td style="width:10%"></td>
+	    <td><%= f.check_box "canned_template_privilege" %></td>
+		<td>Canned Template Privilege:</td>
+		</tr>
+	<tr class="field">
+		<td style="width:10%"></td>
+		<td>Ownership:</td>
+		<td><%= f.autocomplete_field :ownership_name, autocomplete_usage_user_first_name_marketing_memberships_path, :id_element => '#marketing_membership_owner_id'  %></td>
+		<%= f.hidden_field :owner_id %>
+	</tr>
+	
+  <div class="actions"><br />
+    <%= f.submit %>
+  </div>
+<% end %>
+  <%= link_to "Show All", marketing_memberships_path, :remote => true   %>
+

@@ -1,0 +1,138 @@
+<%= render :partial => "connection_cases_tabs", :locals => {:tab => action} %>
+
+<input type="hidden" id="get-tab-value-to-display" value="<%= params[:tab_selected] %>">
+<input type="hidden" id="user-is-manager" value="<%= params[:mgr] %>">
+
+<div class="row title-row">
+  <div class="span6"><h4 class="title system-management-row"><%= action.try(:capitalize) %></h4></div>
+  <div class="span1"></div>
+  <div style="margin-top: 15px;" class="span1">
+    <button id="create-crm-connection" class="btn btn-primary ajax" data-action="<%= action %>" data-base-url="/crm/cases/">
+        New
+    </button>
+  </div>
+  <div style="margin-top: 15px;" class="span4">
+    <%= render :partial => "shared/search_client", :locals => {:base_url => '/crm/cases/', :action => "#{action}"} %>
+  </div>
+</div>
+<div>
+  <%= render :partial => 'shared/search_filter_bar' %>
+</div>
+<div class="row lead-row" id="lead-header">
+  <div class="lead-check">
+    <input style="margin-top: -2px;" type="checkbox" id="select-all-checkbox">
+  </div>
+  <div class="lead-type">Type</div>
+  <div class="lead-added">Added</div>
+  <div class="lead-updated">Updated</div>
+  <div class="lead-name">Name</div>
+  <div class="lead-state">State</div>
+  <div class="lead-assigned">Assigned</div>
+  <div class="lead-personal">P</div>
+  <div class="lead-quote">Q</div>
+  <div class="lead-health">H</div>
+  <div class="lead-exam">E</div>
+  <div class="lead-followup">Follow up</div>
+  <div class="lead-tag"><span class="icon-large icon-tag blue"></span></div>
+</div>
+
+<% @crm_cases.each do |crm_case|%>
+    <div class="row lead-row" style="padding-top:10px;">
+      <div class="lead-check">
+        <input style="margin-top: -3px;" type="checkbox" class="select-checkbox" value="<%= crm_case.crm_connection.try(:id) %>" data-id="<%= crm_case.id %>">
+    </div>
+    <div class="lead-type">
+    <%= crm_case.try(:crm_connection).try(:lead_type) || "&nbsp;".html_safe %>
+      </div>
+      <div class="lead-added">
+        <a data-remote='true' href="<%= connection_summary_crm_connections_url(:case_id => crm_case.id) %>" title="click here to see connection summary">
+          <%= strf_date(crm_case.created_at) %>
+        </a>
+      </div>
+      <div class="lead-updated">
+        <a data-remote='true' href="<%= connection_summary_crm_connections_url(:case_id => crm_case.id) %>" title="click here to see connection summary">
+          <%= strf_date(crm_case.updated_at) %>
+        </a>
+      </div>
+      <div class="lead-name">
+        <a data-remote='true' href="<%= connection_summary_crm_connections_url(:case_id => crm_case.id) %>" title="click here to see connection summary">
+          <%= truncate(crm_case.try(:crm_connection).try(:full_name), :length => 20) %>
+        </a>
+      </div>
+      <div class="lead-state">
+        <a data-remote='true' href="<%= connection_summary_crm_connections_url(:case_id => crm_case.id) %>" title="click here to see connection summary">
+          <%= crm_case.try(:crm_connection).try(:contact_info).try(:state).try(:abbrev) %>
+        </a>
+      </div>
+      <div class="lead-assigned">
+        <a data-remote='true' href="<%= connection_summary_crm_connections_url(:case_id => crm_case.id) %>" title="click here to see connection summary">
+          <%= truncate(crm_case.agent.try(:full_name), :length => 15) || "&nbsp;".html_safe %>
+        </a>
+      </div>
+      <div class="lead-personal crm-case-personal ajax check-left-margin" connection_id="<%= crm_case.crm_connection.try(:id) %>"></div>
+      <div style="margin-left: 1px;" class="lead-quote crm-case-quote ajax" case_id="<%= crm_case.id %>"></div>
+      <div class="lead-health crm-case-health ajax check-left-margin" connection_id="<%= crm_case.crm_connection.try(:id) %>"></div>
+      <div class="lead-exam crm-case-exam ajax check-left-margin" case_id="<%= crm_case.id %>"></div>
+      <div class="lead-followup crm-case-follow-up ajax check-left-margin" case_id="<%= crm_case.id %>">&nbsp;</div>
+      <div class="lead-tag">
+        <a class="crm-case-tagging-pop-up ajax" connection_id="<%= crm_case.crm_connection.try(:id) %>" role="button" data-toggle="modal">
+          <i class="icon-tags"></i>
+        </a>
+      </div>
+    </div>
+<% end %>
+
+<div class="row" style="padding-top:30px;">
+  <div class="span4">
+    <button id="assigning-agent" class="btn btn-small btn-primary ajax" data-action="<%= action %>" data-base-url="/crm/cases/">
+      Assign
+    </button>&nbsp;&nbsp;
+    <a href="#container-for-tagging-tags" id="save_value" role="button" class="btn btn-small btn-primary ajax" name="save_value" data-toggle="modal">Tag</a>&nbsp;&nbsp;
+    <a href="#" id="delete-crm-cases" class="ajax" data-action="<%= action %>" data-base-url="/crm/cases/">
+      <i class="icon-trash icon-large"></i>
+    </a>
+  </div>
+  <div class="span8">
+    <%= ajax_will_paginate @crm_cases %>
+  </div>
+</div>
+
+<div id="container-for-tagging-tags" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="color:black;">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Tagging Tags</h3>
+  </div>
+  <div class="modal-body">
+  <%= form_tag(create_multiple_tagging_tags_path, :remote => true) do %>
+    <%= render :partial => "tagging/tags/form" %>
+  <% end %>
+  </div>
+</div>
+
+<div id="assign-agent-modal-pop-up" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="color:black;width:750px;">
+</div>
+
+<script>
+  $(document).ready(function(){
+
+    $('.crm-case-personal.ajax').each(function() {
+      $(this).load('/crm/connections/personal_completion?connection_id=' + $(this).attr("connection_id"));
+    });
+
+    $('.crm-case-quote.ajax').each(function() {
+      $(this).load('/crm/cases/quoter_completion?case_id=' + $(this).attr("case_id"));
+    });
+
+    $('.crm-case-health.ajax').each(function() {
+      $(this).load('/crm/connections/health_completion?connection_id=' + $(this).attr("connection_id"));
+    });
+
+    $('.crm-case-exam.ajax').each(function() {
+      $(this).load('/crm/cases/exam_completion?case_id=' + $(this).attr("case_id"));
+    });
+
+    $('.crm-case-follow-up.ajax').each(function() {
+      $(this).load('/crm/cases/follow_up?case_id=' + $(this).attr("case_id"));
+    });
+  });
+</script>

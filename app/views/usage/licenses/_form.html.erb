@@ -1,0 +1,70 @@
+<%= form_for(@usage_license, :remote => true) do |f| %>
+  <% if @usage_license.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@usage_license.errors.count, "error") %> prohibited this usage_license from being saved:</h2>
+
+      <ul>
+      <% @usage_license.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <tr class="field"><br />
+    <td style="width:10%"></td>
+    <td>Number:</td>
+    <td><%= f.text_field "number" %></td>
+        <%= f.hidden_field "agent_field_set_id", :value => (@usage_user.try(:agent_field_set_id) || @usage_license.try(:agent_field_set_id)) %>
+  </tr>
+  <tr class="field"><br />
+    <td style="width:10%"></td>
+    <td>Effective Date:</td>
+    <td><%= f.datepicker "effective_date" %></td>
+  </tr>
+  <tr class="field"><br />
+    <td style="width:10%"></td>
+    <td>Expiration Date:</td>
+    <td><%= f.datepicker "expiration" %></td>
+  </tr>
+  <tr class="field"><br />
+    <td style="width:10%"></td>
+    <td>Status:</td>
+    <td><%= f.select "status_id", @license_statuses.collect {|p| [ p.value, p.id ] }, {:include_blank => 'None'} %></td>
+  </tr>
+  <tr class="field"><br />
+    <td style="width:10%"></td>
+    <td>State:</td>
+    <td><%= f.select "state_id", @states.collect {|p| [ p.name, p.id ] }, {:include_blank => 'None'} %></td>
+  </tr>
+  <tr class="field"><br />
+    <td style="width:10%"></td>
+    <td>&nbsp;&nbsp;<%= f.check_box "corporate" %></td>
+  <td>Corporate:</td>
+  </tr>
+  <tr class="field"><br />
+    <td style="width:10%"></td>
+    <td>&nbsp;&nbsp;<%= f.check_box "home" %></td>
+  <td>Home</td>
+  </tr>
+  <tr class="field"><br />
+    <td style="width:10%"></td>
+    <td>&nbsp;&nbsp;<%= f.check_box "life" %></td>
+  <td>Life</td>
+  </tr>
+  <tr class="field"><br />
+    <td style="width:10%"></td>
+    <td>&nbsp;&nbsp;<%= f.check_box "p_and_c" %></td>
+  <td>P and C</td>
+  </tr>
+  <tr class="field"><br />
+    <td style="width:10%"></td>
+    <td>&nbsp;&nbsp;<%= f.check_box "vehicle" %></td>
+  <td>Vehicle</td>
+  </tr>
+  <div class="actions"><br />
+    <%= f.submit %>
+  </div>
+<% end %>
+<%#= link_to "Back Page", l_and_c_usage_users_path, :remote => true %>
+  

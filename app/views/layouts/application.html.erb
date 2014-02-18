@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.0/css/font-awesome.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js"></script>
+    <%= csrf_meta_tags %>
+    <%= javascript_include_tag "bootstrap-editable.min.js" %>
+    <%= yield :head %>
+  </head>
+  
+  <body class="min-layout-size">
+    <%# fixed bar at top %>
+    <div class="min-layout-size navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="min-layout-size container-fluid">
+          <div class="row-fluid">
+            <%# logo %>
+            <div class="span3"><a><%= image_tag "/images/drlogo.png" %></a></div>
+            <%# profile select %>
+            <div class="span2 profile-display-cont">
+              <% if current_user %>
+                <%= select_tag 'profile-select', options_from_collection_for_select(current_user.profiles, :id, :name, session[:profile_id]), {include_blank: true, prompt: '--select profile--', onchange:'updateProfile(this)'} %>
+              <% end %>
+            </div>
+            <%# flash/status %>
+            <div class="span7">
+              <div class="flash-info">
+                <i id="ajax-status"></i>
+                <span id="flash-container">
+                  <span id='flash-notice'><%= flash[:notice] %></span>
+                  <span id='flash-error'><%= flash[:error] %></span>
+                </span>
+              </div>
+            </div>
+            <%# end impersonation link %>
+            <div style="float:right; padding-right: 100px;" id="rightbar" class="sidebar pull-right">
+              <ul style="display: block;" class="unstyled nav nav-tabs nav-stacked">
+                <li>
+                  <% if current_user and session[:ostensible_user_id] %>
+                    <%= link_to "/usage/users/end_impersonate", 'data-original-title' => "you are impersonating#{current_user.full_name}" do %>
+                      End Impersonation
+                    <% end %>
+                  <% end %>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%# body %>
+    <div style="margin-top: 15px; padding-left: 5px; padding-right: 5px;" class="min-layout-size container-fluid">
+      <div class="row-fluid">
+          <div class="span2">
+            <%= render "shared/left_sidebar" %>
+          </div>
+          <div class="span9" id="main-container">
+            <%= content_for?(:application) ? yield(:application) : yield %>
+          </div>
+          <div id="rightbar-cont" class="span1">
+            <%= render "shared/right_sidebar" %>
+          </div>
+        </div>  
+      </div>
+    </div>      
+
+    <%# footer %>
+    <div class="pagination-left">
+      &copy; Copyright 2012&ndash;2013
+    </div>
+  </body>
+</html>
+<!--
+  Back-end design by Markham Anderson
+  Graphic design by Cameron Cunningham
+  Contributions by:
+  Maurice Ferguson
+  John Jurow
+  Matthew Storm
+-->

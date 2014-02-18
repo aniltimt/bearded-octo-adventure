@@ -1,0 +1,16 @@
+<input type="hidden" id="update-crm-beneficiary-case-id" value="<%= @crm_case.id %>">
+
+<%= form_for @crm_beneficiary, :remote => true do |f| %>
+
+  <%= f.hidden_field :id %>
+  <%= render :partial => "form", :locals => {:f=>f}%>
+
+  <div class="row">
+    <div class="span3"></div>
+    <div class="span3">
+      <button type="button" id="update-crm-beneficiary" class="btn btn-primary ajax">
+        Update
+      </button>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,7 @@
+<% if @smtp_server.persisted? %>
+  $('#flash-container').html("Successfully Created.");
+  $( "#main-container" ).html( "<%= escape_javascript( render( :partial => "edit" ) ) %>" );
+<% else %>
+  $('#flash-container').html("Not Created.");
+  $( "#main-container" ).html( "<%= escape_javascript( render( :partial => "new" ) ) %>" );
+<% end %>

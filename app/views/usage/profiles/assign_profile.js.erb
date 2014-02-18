@@ -1,0 +1,6 @@
+<% if !@assigned.blank? && @assigned.persisted? %>
+  $('#flash-container').html('Successfully Assigned');
+<% else %>
+  $('#flash-container').html('Not Assigned');
+<% end %>
+$( "#main-container" ).html( "<%= escape_javascript( render( :partial => "form", :locals => {:action_path_info => "/usage/profiles/"+"#{@profile.id}" , :method_type => 'put'} ) )%>" );

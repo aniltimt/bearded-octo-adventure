@@ -1,0 +1,33 @@
+<div class='quote'>
+  <div class='general row'>
+    <div class='span3'><%= carrier_sprite quote %></div>
+    <div class='span2'><%= quote.product_name %></div>
+    <div class='span1 mid'><%= monthly_premium quote %></div>
+    <div class='span1 mid'><%= annual_premium quote %></div>
+    <div class='span1'><%= star_rating quote.rating.try(:to_i) %></div>
+    <%= content_tag :button, 'Apply', class:'btn btn-success', onclick:"chooseQuote(#{ quote.attributes.to_json })" %>
+  </div>
+  <div class='nether'>
+    <div class='details row hide'>
+      <div class='row center-text'>
+        <%= link_to 'carrier details', "http://quoter.pinneyapps.com/company_details/#{quote.company_code}/select", target:'_blank', 'data-width' => 600, 'data-height' => 480 %>
+      </div>
+      <% %w[
+        company_name
+        company_code
+        product_code
+        health_category
+        policy_fee
+        am_best
+        ].each do |field| %>
+        <div class=row>
+          <%= content_tag :div, field.titleize, class:'span3' %>
+          <%= content_tag :div, quote.send(field), class:'span6' %>
+        </div>
+      <% end %>
+    </div>
+    <div class='tab'>
+      click for details
+    </div>
+  </div>
+</div>

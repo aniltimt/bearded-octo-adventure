@@ -1,0 +1,44 @@
+<%= tinymce_assets %>
+<%= render :partial => "shared/tab/marketing", :locals => {:selected => "SnailMailTemplates"} %>
+<div style="background-color:#fff; height:500px">
+<div class="navbar">
+	<div class="navbar-inner"><h4 style="color:black">View Template</h4></div>
+</div>
+
+<%= form_for(@template) do |f| %>
+  <div class="row">
+    <div class="span4">
+
+      <label>Template Name</label>
+      <%= f.text_field :name, :readonly => true %>
+
+      <label>Description</label>
+      <%= f.text_field :description, :readonly => true %>
+
+      <label>Thumbnail</label>
+      <%= image_tag @template.thumbnail.url(:thumb) %>
+
+    </div>
+
+    <div class="span4">
+      <label>Subject</label>
+      <%= f.text_field :subject %>
+      
+      <label>Body</label>
+      <%= f.text_area :body, :readonly => true, :class => "tinymce", :rows => 13, :cols => 20, :readonly => true %>      
+    </div>
+
+    <div class="span4">
+      <%= link_to '<i class="icon-pencil"></i>'.html_safe, edit_marketing_snail_mail_template_path(:id => @template.id), :remote => true, :method => :get %>
+      <%= link_to "<i class='icon-trash'></i>".html_safe, marketing_snail_mail_template_path(:id => @template.id), :confirm => "Are you sure?", :remote => true, :method => :delete %>
+    </div>
+    
+  </div>
+<% end %>
+
+<script type="text/javascript">
+  tinyMCE.init({
+    mode: 'textareas',
+    theme: 'advanced'
+  });
+</script>

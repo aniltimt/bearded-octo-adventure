@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <% if @message %>
+      <%= content_tag :p, @message %>
+      <hr>
+    <% end %>
+    <p>
+      <% if @exception.is_a? Array %>
+        <%= @exception.join("<br>") %>
+      <% else %>
+        <%= @exception.backtrace.join("<br>") %>
+      <% end %>
+    </p>
+  </body>
+</html>

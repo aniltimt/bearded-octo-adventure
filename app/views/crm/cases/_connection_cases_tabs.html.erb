@@ -1,0 +1,14 @@
+<ul style="margin-bottom: 0px !important;" class="nav nav-tabs" id="myTab">
+  <li class=<%= "active" if tab == "leads"%>>
+    <%= link_to 'Leads', leads_crm_cases_url, :remote => true %>
+  </li>
+  <li class=<%= "active" if tab == "books"%>>
+    <%= link_to 'Book of Business', book_of_business_crm_cases_url, :remote => true %>
+  </li>
+  <li class=<%= "active" if tab == "prospects"%>>
+    <%= link_to 'Prospects', prospects_crm_cases_url, :remote => true %>
+  </li>
+  <li class=<%= "active" if tab == "contacts"%>>
+    <%= link_to 'Contacts', contacts_crm_connections_url, :remote => true %>
+  </li>
+</ul>

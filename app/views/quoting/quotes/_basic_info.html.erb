@@ -1,0 +1,65 @@
+<div id="progress_area">
+  <div id="progress_bar" class="third_state"></div>
+<%= render 'pane_buttons', partials:[:initial_discovery, :advanced_discovery, :basic_info] %>
+</div>
+<h2>Basic Quote Information</h2>
+
+<%= builder.fields_for :contact_info do |f| %>
+  <label class="bot-10 inline-block bold">State of Residence</label>&nbsp;&nbsp;
+  <%= f.collection_select :state_id, State.all, :id, :name %><br />
+<% end %>
+
+<%= fields_for @case do |fff| %>
+  <%= fff.fields_for :quoted_details do |f| %>
+
+    <label class="bot-10 inline-block bold">Guaranteed Term</label>&nbsp;&nbsp;
+    <%= f.collection_select :category_id, Quoting::TliCategoryOption.all, :id, :name %><br />
+
+    <label class="bot-10 inline-block bold">Coverage Amount</label>&nbsp;&nbsp;
+    <%= f.select :face_amount, options_for_select( APP_CONFIG['face_amounts'].map{|x| [number_to_currency(x), x] }, f.object.face_amount ) %><br />
+
+    <label class="bot-10 inline-block bold">Payment Mode</label>&nbsp;&nbsp;
+    <%= f.collection_select :premium_mode_id, Quoting::PremiumModeOption.all, :id, :name %>
+
+  <% end %>
+<% end %>
+
+<hr>
+
+<h2>Information About the Proposed Insured</h2>
+
+<p>
+  <label class="inline-block bold bot-10">Gender:</label>&nbsp;&nbsp;
+  <%= radio_and_label_tag_sets( :gender, label_values:['Male','Female'], form:builder ).join(' ').html_safe %>
+</p>
+
+<p>
+  <label class="inline-block bold bot-10">Date of Birth:</label>&nbsp;&nbsp;
+  <%= builder.date_field :birth %>
+</p>
+
+<%= builder.fields_for :health_info do |f| %>
+  <p>
+    <label class="inline-block bold bot-10">Height / Weight:</label>&nbsp;&nbsp;
+    <%= f.text_field :feet, style:'width:2em' %> ft
+    <%= f.text_field :inches, style:'width:2em' %> in
+    <%= f.text_field :weight, style:'width:3em' %> lbs.
+  </p>
+<% end %>
+
+<hr>
+
+<%= builder.fields_for :health_info do |f| %>
+  <%= render 'health/tobacco', connection_fields:builder, f:f %>
+<% end %>
+
+<hr>
+
+<div class="pagination-centered bot-10">
+  <a class='btn btn-primary' onclick='showFromSiblings("#health", true)'>Next</a>
+</div>
+
+<p>
+  If you have confirmed a specific underwriting class:&nbsp;&nbsp;&nbsp;
+  <%= submit_tag 'Bypass Health Analyzer', onclick:"this.form.dest.value='bypass_health_analyzer'", class:'btn btn-primary', style:'margin-left: 3px;' %>
+</p>

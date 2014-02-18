@@ -1,0 +1,45 @@
+<h1>Listing crm_financial_infos</h1>
+
+<table>
+  <tr>
+    <th>Asset 401k</th>
+    <th>Asset home equity</th>
+    <th>Asset investments</th>
+    <th>Asset pension</th>
+    <th>Asset real estate</th>
+    <th>Asset savings</th>
+    <th>Liability auto</th>
+    <th>Liability credit</th>
+    <th>Liability education</th>
+    <th>Liability estate settlement</th>
+    <th>Liability mortgage</th>
+    <th>Liability other</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @crm_financial_infos.each do |crm_financial_info| %>
+  <tr>
+    <td><%= crm_financial_info.asset_401k %></td>
+    <td><%= crm_financial_info.asset_home_equity %></td>
+    <td><%= crm_financial_info.asset_investments %></td>
+    <td><%= crm_financial_info.asset_pension %></td>
+    <td><%= crm_financial_info.asset_real_estate %></td>
+    <td><%= crm_financial_info.asset_savings %></td>
+    <td><%= crm_financial_info.liability_auto %></td>
+    <td><%= crm_financial_info.liability_credit %></td>
+    <td><%= crm_financial_info.liability_education %></td>
+    <td><%= crm_financial_info.liability_estate_settlement %></td>
+    <td><%= crm_financial_info.liability_mortgage %></td>
+    <td><%= crm_financial_info.liability_other %></td>
+    <td><%= link_to 'Show', crm_financial_info %></td>
+    <td><%= link_to 'Edit', edit_crm_financial_info_path(crm_financial_info) %></td>
+    <td><%= link_to 'Destroy', crm_financial_info, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Financial info', new_crm_financial_info_path %>

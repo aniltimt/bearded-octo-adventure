@@ -1,0 +1,33 @@
+<div >
+  <h3>Assign profile to User</h3>
+  <div class="input-prepend">
+    <input id="profile-assign-to-user" data-profile-id=<%= @contact_info.profile.id %>  class="ajax" type="text" data-autocomplete="/usage/users/autocomplete_users_first_name" data-top_tab_bar=<%= params[:top_tab_bar]%> >
+    <span class="add-on"><i class="icon-plus"></i></span>
+  </div>
+</div>
+<table>
+  <thead>
+    <th>Assignee</th>
+    <th></th>
+  </thead>
+  <tbody>
+    <% @profile.reload.users.each do |usr| %>
+      <tr>
+        <td><%= usr.first_name %></td>
+        <% if current_user.can_edit_user?(usr) && current_user != usr %>
+          <td>
+            <% if params[:top_tab_bar] == "my_account" %>
+              <%= link_to '<i class="icon-trash"></i>'.html_safe, remove_profile_usage_profiles_path(:user_id => usr.id, :profile_id => @profile.id, :top_tab_bar=> "my_account"), :remote => true, :method => :put  %>
+            <% else %>
+              <%= link_to '<i class="icon-trash"></i>'.html_safe, remove_profile_usage_profiles_path(:user_id => usr.id, :profile_id => @profile.id), :remote => true, :method => :put  %>
+            <% end %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+

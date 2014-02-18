@@ -1,0 +1,4 @@
+$("#suspension_status_<%= @usr.id %>").html("<%= escape_javascript(render :partial => 'temporary_suspension', :locals => {:ch => @usr} )%>");
+$('#flash-container').html('Successfully updated');
+$("#field_set_premium_limit_<%= @usr.id %>").val(<%= @usr.agent_field_set.premium_limit %>);
+

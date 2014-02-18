@@ -1,0 +1,10 @@
+
+<table class="table table-condensed">
+	<tr>
+		<th colspan="8">Status Change<span style="float:right"> <%= link_to "crm/auto_system_task_rules/new?id=#{params[:id]}", :remote => true  do %>
+	       Add new auto system task rule
+	    <% end %></span><br/><hr/><th>
+	</tr>
+</table>
+
+<%= render :partial => "form" %>

@@ -1,0 +1,28 @@
+<%= render :partial => "shared/tab/agency_management", :locals => {:tab => "memberships"} %>
+
+<div style="background-color:#fff; height:500px">
+	<div class="navbar">
+		
+		<div class="navbar-inner"><h4 style="color:black">Memberships</h4>
+		</div>
+		<% @user_memberships.each do |user_membership| %>
+		  <ul>
+	      <li>
+	        <%=  user_membership %>&nbsp;&nbsp;
+	        <% params[:id] ||= params[:user_id] %>
+	        <% if check_membership(params[:id], user_membership) %>
+	          <%= link_to "Show", link_to_show(user_membership, @membership), :remote => true %> |
+	          <% if current_user.role.super? %>
+		        <%= link_to "Edit", link_to_edit(user_membership, @membership), :remote => true %>
+		      <% end %>
+	        <% else %>
+	          <% if current_user.role.super? %>
+	            <%= link_to "New", link_to_new(user_membership, @membership), :remote => true   %>
+	          <% end %>
+	        <% end %>
+	
+	       
+	      </li>
+	    </ul>
+		
+		<% end %>

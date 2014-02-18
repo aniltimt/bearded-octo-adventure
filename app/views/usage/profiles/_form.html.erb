@@ -1,0 +1,73 @@
+<% if params[:top_tab_bar] == "my_account" %>
+  <%= render :partial => "shared/tab/my_account", :locals => {:selected => "profiles"} %>
+<% else %>
+  <%= render :partial => "shared/tab/agency_management", :locals => {:tab => "profiles"} %>
+<% end %>
+<div class="row title-row">
+  <div class="span6"><h4 class="title system-management-row"><%= @usage_user.first_name.capitalize %>'s <%= @title %></h4></div>
+  <div class="span6"></div>
+</div>
+<%= form_for @contact_info, :url => action_path_info, :method => method_type, :html => { :multipart => true }, :remote => true do |f| %>
+  <%= hidden_field_tag :owner_id , params[:owner_id] %>
+  <%= hidden_field_tag :top_tab_bar , params[:top_tab_bar] %>
+  <div class="row">
+    <div style="margin-left: 20px;" class="span4">
+      <%= f.fields_for :profile do |p|%>
+        <%= p.label :name %> 
+        <%= p.text_field :name %>
+        <%= p.label :ownership_id, "Ownership" %>
+        <%= p.select :ownership_id, Ownership.all.map{ |c| [c.value, c.id] } %>
+        <%= p.label :logo %>
+        <%= p.file_field :logo %>
+      <% end %>
+
+      <label>Company</label>
+      <%= f.text_field :company %>
+
+      <label>Email</label>
+      <%= f.fields_for :emails do |em|%>
+        <%= em.text_field :value %>
+      <% end %>
+
+      <label>Phone</label>
+      <%= f.fields_for :phones do |ph|%>
+        <%= ph.select(:phone_type_id, options_from_collection_for_select(PhoneType.all, :id, :name), {}, {:style=> "width:75px;"} )%>
+        <%= ph.text_field :value, :style => "width: 125px;" %><br>
+      <% end %>
+
+      Fax: <%= f.text_field :fax, :style => "width: 175px;" %>
+      
+    </div>
+
+    <div class="span4">
+
+      <% addresses = ['Physical Address', 'Mailing Address']%>
+      <% addresses_count = 0 %>
+      <%= f.fields_for :addresses do |ad|%>
+        <label><%= addresses[addresses_count] %></label>
+        <%= ad.text_field :value %>
+      <% end %>
+
+      <label>City</label>
+      <%= f.text_field :city %>
+      
+      <label>State</label>
+      <%= f.text_field :state_id %>
+
+      <label>Zip</label>
+      <%= f.text_field :zip %>
+                  
+    </div>
+    <% if @contact_info.persisted? %>
+      <div class="span4">
+        <%= render :partial => "assign_profile" %>
+      </div>
+    <% end %>
+  </div>
+  <div style="margin-left: 400px;">
+      <%= f.submit "Submit", :class => 'btn btn-primary' %>
+  </div>
+
+<% end %>
+
+

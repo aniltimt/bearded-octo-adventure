@@ -1,0 +1,53 @@
+<%= builder.fields_for :family_diseases, *args do |f| %>
+  <div class='family-disease indent'>
+
+    <p><%= text_field_tag :identifier, nil, placeholder:'identifier' %> <em>(this field shall not be recorded but may be helpful when entering data)</em></p>
+
+    <div class=indent>
+          
+      <label>Age of illness contraction</label>
+      <%= f.text_field :age_of_contraction %>
+      
+      <label>Age of death &mdash; <em>leave blank if this family member died of something OTHER THAN one of the aforementioned illnesses</em></label>
+      <%= f.text_field :age_of_death %>
+      
+      <label>Was this individual your parent?</label>
+      <p><%= radio_and_label_tag_sets( :parent, form:f ).join(' ').html_safe %></p>
+
+      <p>Please check off any and all illnesses which this family member experienced:</p>
+
+      <table>
+        <tr style='vertical-align:top'>
+          <%
+          [
+            [:basal_cell_carcinoma,
+            :breast_cancer,
+            :cardiovascular_disease,
+            :cardiovascular_impairments,
+            :cerebrovascular_disease,
+            :colon_cancer,
+            :coronary_artery_disease,],
+            [:diabetes,
+            :intestinal_cancer,
+            :kidney_disease,
+            :malignant_melanoma,
+            :other_internal_cancer,
+            :ovarian_cancer,
+            :prostate_cancer]
+          ].each do |field_list|
+          %>
+            <td>
+              <% field_list.each do |field| %>
+                <%= check_and_label_tags field, field.to_s.titleize, form:f %><br>
+              <% end %>
+            </td>
+          <% end %>
+        </tr>
+      </table>
+
+      <p></p>
+
+    </div>
+
+  </div>
+<% end %>

@@ -1,0 +1,6 @@
+<% if @message.valid? %>
+  $('#flash-container').html("<%= @msg %>")
+  $( "#main-container" ).html( "<%= escape_javascript( render( :partial => "index" ) ) %>" );
+<% else %>
+  $( "#main-container" ).html( "<%= escape_javascript( render( :partial => "edit" ) ) %>" );
+<% end %>

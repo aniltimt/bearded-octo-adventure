@@ -1,0 +1,7 @@
+<% if params[:box] == "1" %>
+  $("<%= "#" + @container_to_be_replaced %>").html( "<%= escape_javascript( render( :partial => "permissions_boxes" ) ) %>" );
+<% elsif ["2", "3"].include?(params[:box]) %>
+  $("<%= "#" + @container_to_be_replaced %>").html("<%= escape_javascript( render( :partial => "permissions_box" ) ) %>");
+<% else %>
+  $("<%= "#" + @container_to_be_replaced %>").html( "<%= escape_javascript( render( :partial => "permissions" ) ) %>" );
+<% end %>

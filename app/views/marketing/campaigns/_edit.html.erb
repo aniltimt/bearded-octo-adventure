@@ -1,0 +1,22 @@
+<%= form_for(@marketing_campaign, :remote => true) do |f| %>
+
+	<table style="width:80%">
+	    <tr class="field">
+		  <td style="width:10%"></td>
+		  <td>Ownership:</td>
+		  <td><%= f.select "ownership_id", @ownerships.collect {|p| [ p.value, p.id ] }%></td>
+		  <%= f.hidden_field :owner_id %>
+		</tr>
+		<tr class="field">
+			<td style="width:10%"></td>
+			<td>Campaign:</td>
+			<td><%= f.text_field "name" %></td>
+		</tr>
+		<tr>
+			<td style="width:10%"></td>
+			<td></td>
+			<td class="actions"><%= f.submit "Update Campaign"%></td>
+		</tr>
+	</table>
+
+<% end %>

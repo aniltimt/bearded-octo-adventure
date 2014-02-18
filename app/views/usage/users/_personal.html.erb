@@ -1,0 +1,196 @@
+<% if params[:top_tab_bar] == "my_account" %>
+  <%= render :partial => "shared/tab/my_account", :locals => {:selected => "personal"} %>
+<% else %>
+  <%= render :partial => "shared/tab/agency_management", :locals => {:tab => "personal"} %>
+<% end %>
+<div class="row title-row">
+<h4 class="title system-management-row">Personal</h4>
+</div>
+
+<input type="hidden" value="<%= @usage_user.id %>" id="usage-user-id">
+<div style="width: 99%;" class="row-fluid" id="update-usage-user">
+
+  <div style="margin-left: 20px;" class="span4">
+    <label class="personal_label">First Name</label>
+    <a href="#" class="editable-click usage-user-field" data-name="first_name" data-type="text" data-value="<%= @usage_user.first_name %>">
+      <%= get_field_name_for_inline_editing(@usage_user.first_name) %>
+    </a>
+
+    <label class="personal_label">Middle Name</label>
+    <a href="#" class="editable-click usage-user-field" data-name="middle_name" data-type="text" data-value="<%= @usage_user.middle_name %>">
+      <%= get_field_name_for_inline_editing(@usage_user.middle_name) %>
+    </a>
+
+    <label class="personal_label">Last Name</label>
+    <a href="#" class="editable-click usage-user-field" data-name="last_name" data-type="text" data-value="<%= @usage_user.last_name %>">
+      <%= get_field_name_for_inline_editing(@usage_user.last_name) %>
+    </a>
+
+    <label class="personal_label">Login</label>
+    <a href="#" class="editable-click usage-user-field" data-name="login" data-type="text" data-value="<%= @usage_user.login %>">
+      <%= get_field_name_for_inline_editing(@usage_user.login) %>
+    </a>
+
+    <%= form_for :usage_user, :url=>(update_password_usage_user_path(:id=>@usage_user.id)), remote: true, method: 'put' do |f| %>
+
+      <label class="personal_label">Password</label>
+      <%= f.password_field :password %>
+
+      <label style="margin-top: 0px;" class="personal_label">Password Confirmation</label>
+      <%= f.password_field :password_confirmation %>
+      <br/>
+      <%= f.submit "Update Password", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+
+  <div id="users-personal-row2" class="span3">
+    <label>Company</label>
+    <a href="#" class="usage-user-contact-info" data-type="text" class="editable-click" data-name="company" data-value="<%= @usage_user.contact_info.try(:company) %>" data-pk="<%= @usage_user.contact_info.try(:id) %>">
+      <%= get_field_name_for_inline_editing(@usage_user.contact_info.try(:company)) %>
+    </a>
+
+    <label>Home Address:</label>
+    <a href="#" id="home-address-value" data-type="text" class="editable-click" data-name="value" data-value="<%= @usage_user.contact_info.try(:addresses).try(:first).try(:value) %>" data-pk="<%= @usage_user.contact_info.try(:addresses).try(:first).try(:id) %>">
+      <%= @usage_user.contact_info.try(:addresses).try(:first).try(:value) %>
+    </a>
+
+    <label>Mailing Address:</label>
+    <a href="#" id="mailing-address-value" data-type="text" class="editable-click" data-name="value" data-value="<%= @usage_user.contact_info.try(:addresses).try(:last).try(:value) %>" data-pk="<%= @usage_user.contact_info.try(:addresses).try(:last).try(:id) %>">
+      <%= @usage_user.contact_info.try(:addresses).try(:last).try(:value) %>
+    </a>
+
+    <label>City:</label>
+    <a href="#" data-type="text" class="editable-click usage-user-contact-info" data-name="city" data-value="<%= @usage_user.contact_info.try(:city) %>" data-pk="<%= @usage_user.contact_info.try(:id) %>">
+    <%= get_field_name_for_inline_editing(@usage_user.contact_info.try(:city)) %>
+    </a>
+
+    <label>State:</label>
+    <a href="#" data-type="select" data-source="/home/get_states" class="editable-click usage-user-contact-info" data-name="state_id" data-value="<%= @usage_user.contact_info.try(:state_id) %>" data-pk="<%= @usage_user.contact_info.try(:id) %>">
+    <%= @usage_user.contact_info.try(:state).try(:name) || "Empty" %>
+    </a>
+
+    <label>Zip Code:</label>
+    <a href="#" data-type="text" class="editable-click usage-user-contact-info" data-name="zip" data-value="<%= @usage_user.contact_info.try(:zip) %>" data-pk="<%= @usage_user.contact_info.try(:id) %>">
+    <%= get_field_name_for_inline_editing(@usage_user.contact_info.try(:zip)) %>
+    </a>
+
+    <label>Email(s):</label>
+    <% if @usage_user.contact_info.try(:emails) %>
+      <% @usage_user.contact_info.try(:emails).each do |email| %>
+        <a href="#" id="email-value<%=email.id%>" data-type="text" class="editable-click" data-name="value" data-value="<%= email.value %>" data-pk="<%= email.id %>">
+          <%= email.value %>
+        </a><br>
+        <script>
+          $("#email-value<%=email.id%>").editable({
+            url: "/email_address/<%=email.id%>",
+            ajaxOptions: {
+              type: 'PUT'
+            },
+            params: function(params) {
+              params.user_id = <%= @usage_user.id %>;
+              return params;
+            }
+          });
+        </script>
+      <% end %>
+    <% end %>
+    <a id="add-usage-user-email-address" role="button" class="ajax" data-contact-info-id="<%= @usage_user.contact_info.try(:id)%>" data-toggle="modal">
+      + Add More
+    </a>
+
+    <label>Phone(s):</label>
+    <% if @usage_user.contact_info.try(:phones) %>
+      <% @usage_user.contact_info.try(:phones).each do |p| %>
+        <a class="update-usage-user-phone ajax" id="<%= p.id %>" data-toggle="modal">
+          <% output = "#{p.phone_type.try(:name).try(:capitalize)}: #{p.value}" %>
+          <% output << " ext. #{p.ext}" unless p.ext.blank? %>
+          <%= output %>
+        </a><br>
+      <% end %>
+    <% end %>
+    Fax:
+    <a href="#" class="usage-user-contact-info" data-type="text" class="editable-click" data-name="fax" data-value="<%= @usage_user.contact_info.try(:fax) %>" data-pk="<%= @usage_user.contact_info.try(:id) %>">
+      <%= @usage_user.contact_info.try(:fax) || 'none' %>
+    </a><br>
+    <a id="add-usage-user-phone" role="button" class="ajax" data-contact-info-id="<%= @usage_user.contact_info.try(:id)%>" data-toggle="modal">
+      + Add More
+    </a>
+
+  </div>
+
+  <% if params[:mgr].present? %>
+    <div class="span4">
+      <label class="personal_label">Personal Notes(ex: hobbies/interests):</label>
+      <div id="user-notes">
+        <a href="#" class="editable-click usage-user-field" data-name="note" data-type="textarea" data-value="<%= @usage_user.note %>">
+          <%= get_field_name_for_inline_editing(@usage_user.note) %>
+        </a>
+      </div>
+    </div>  
+  <% end %>
+  
+  <div class="span4">
+  </div>
+</div>
+
+<div id="container-contact-info-modal-pop-up" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="color:black;">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+  </div>
+  <div class="modal-body">
+  </div>
+</div>
+
+<script>
+  $(function(){
+    $('#update-usage-user').editable({
+      selector: 'a.usage-user-field',
+      url: '/usage/users/'+<%= @usage_user.id %>,
+      ajaxOptions: {
+        type: 'PUT',
+      },
+      pk: <%= @usage_user.id %>
+    });
+
+    $('#home-address-value').editable({
+      url: '/address/' + $('#home-address-value').data('pk'),
+      ajaxOptions: {
+        type: 'PUT',
+      },
+      params: function(params) {
+        params.user_id = <%= @usage_user.id %>;
+        return params;
+      }
+    });
+
+    $('#mailing-address-value').editable({
+      url: '/address/' + $('#mailing-address-value').data('pk'),
+      ajaxOptions: {
+        type: 'PUT',
+      },
+      params: function(params) {
+        params.user_id = <%= @usage_user.id %>;
+        return params;
+      }
+    });
+
+    $('.usage-user-contact-info').editable({
+      url: '/contact_info/' + $('.usage-user-contact-info').data('pk'),
+      ajaxOptions: {
+        type: 'PUT',
+      },
+      params: function(params) {
+        params.user_id = <%= @usage_user.id %>;
+        return params;
+      }
+    });
+
+  });
+</script>
+
+<style>
+  .personal_label {
+    margin-top: 20px;
+    font-weight: bold;
+  }
+</style>

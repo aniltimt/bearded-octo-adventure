@@ -1,0 +1,25 @@
+<%= f.hidden_field :connection_id, :value => @crm_connection.id %>
+<%= f.hidden_field :case_id, :value => @crm_case.try(:id) %>
+
+<div class="row">
+  <% if @is_edit_page %>
+      <%= f.hidden_field :note_type_id, :value => Crm::NoteType.find_by_name('user created').id %>
+  <% else %>
+    <div class="span2"><%= f.label :note_type %></div>
+    <div class="span10">
+      <%= f.select(:note_type_id, Crm::NoteType.all.collect {|p| [ p.name, p.id ] }) %>
+    </div>
+  <% end %>
+</div>
+<div class="row">
+  <div class="span2"><%= f.label :title %></div>
+  <div class="span10">
+    <%= f.text_field :title, {:style => "width:300px"} %>
+  </div>
+</div>
+<div class="row">
+  <div class="span2"><%= f.label :text %></div>
+  <div class="span10">
+    <%= f.text_area :text, {:style => "height:150px; width:300px"} %>
+  </div>
+</div>

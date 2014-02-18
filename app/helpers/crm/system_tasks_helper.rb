@@ -1,0 +1,2 @@
+module Crm::SystemTasksHelper
+end

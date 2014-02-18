@@ -1,0 +1,2 @@
+module Usage::LicensesHelper
+end

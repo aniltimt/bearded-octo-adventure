@@ -1,0 +1,6 @@
+<% if @activity.persisted? %>
+  $('#flash-container').html('Noe Deleted.');
+<% else %>
+  $('#flash-container').html('Successfully Deleted.');
+<% end %>
+$( "#main-container" ).html( "<%= escape_javascript( render( :partial => "index" ) ) %>" );

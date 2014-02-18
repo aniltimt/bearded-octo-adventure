@@ -1,0 +1,11 @@
+<ul class="nav nav-list" style="color:black">
+  <li id="status-rules-header" class="nav-header">Status</li>  
+  <% @status_types.each do |status_type| %>
+    <li>
+	<%= link_to  "crm/status_types/edit?id=#{status_type.id}", :remote => true, :style => "float:right;", :id => "status_type_edit#{status_type.id}"  do %> 
+	  <i class="icon-pencil"></i>Edit
+	<% end %>
+	<%= link_to "#{status_type.name}", "/crm/auto_system_task_rules?id=#{status_type.id}", :remote => true %> 
+	</li>
+  <% end %>
+</ul>

@@ -1,0 +1,90 @@
+// Place all the styles related to the Usage::Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#user-summary {
+  background-color: #447899;
+  width: 100%;
+  font-size: 14px;
+  font-color: white;
+  border-radius: 2px;
+}
+
+#user-summary th {
+  border-bottom: 1px solid #AFAFAF;
+}
+
+#user-summary th, td {
+  text-align: left;
+  
+}
+
+#login {
+  margin-left: 60px;
+}
+
+#login h1 {
+  color: #686868;
+  font-size: 24px;
+}
+
+#new-user div label {
+  font-weight: bold;  
+}
+
+/* User Management Styles - um-sec and um-actions id's broke code. No longer used. */
+
+#um-sec1 {
+  width: 200px !important;
+  height: 280px !important; 
+  border: .1em solid #888 !important;
+}
+
+#um-sec2 {
+  width: 200px !important;
+}
+
+#um-sec3 {
+  width: 200px !important;
+}
+
+#um-actions {
+  width: 480px !important;
+  margin-left: 0px;
+}
+
+#update-crm-connection div label {
+  margin: 10px 0 0px 0;
+  font-weight: bold;
+}
+
+#user-notes {
+  width: 100%;
+  min-height: 250px;
+  border: 1px solid #888; 
+  padding: 5px 5px 5px 5px;
+  margin-top: 5px;
+}
+
+.system-management-row {
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
+.actions-radio {
+  width: 115px !important;
+}
+
+.actions-radio input {
+  margin-top: -5px;
+}
+
+#users-personal-row2 label {
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.agency-management-row {
+  padding-top: 20px;
+  padding-bottom: 10px;
+}

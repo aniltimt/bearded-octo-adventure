@@ -1,0 +1,77 @@
+$.fn.editable.defaults.mode = 'inline';
+
+$('#edit-crm-connection').modal({show:true});
+$('#edit-crm-connection').html("<%= escape_javascript( render( :partial => "edit" ) ) %>")
+
+$(document).ready(function(){
+  loadPage("connection-notes.ajax", '/crm/notes?connection_id=' + <%= @crm_connection.id %>);
+  loadPage("connection-system-tasks.ajax", '/crm/system_tasks/cases_current_status_system_tasks?connection_id=' + <%= @crm_connection.id %>);
+
+  $.ajax({
+    url: '/crm/connections/connection_tags',
+    data: { connection_id: <%= @crm_connection.id %> },
+    type: 'get'
+  });
+
+  $('#update-crm-connection').editable({
+    selector: 'a.connection-field',
+    url: '/crm/connections/' + <%= @crm_connection.id %>,
+    ajaxOptions: {
+      type: 'PUT',
+    },
+    pk: <%= @crm_connection.id %>
+  });
+
+  $('#home-address-value').editable({
+    url: '/address/' + $('#home-address-value').data('pk'),
+    ajaxOptions: {
+      type: 'PUT',
+    },
+    params: function(params) {
+      params.connection_id = <%= @crm_connection.id %>;
+      return params;
+    }
+  });
+
+  $('.crm-connection-contact-info').editable({
+    url: '/contact_info/' + $('.crm-connection-contact-info').data('pk'),
+    ajaxOptions: {
+      type: 'PUT',
+    },
+    params: function(params) {
+      params.connection_id = <%= @crm_connection.id %>;
+      return params;
+    }
+  });
+
+  <% if @crm_connection.contact_info.try(:emails) %>
+    <% @crm_connection.contact_info.try(:emails).each do |email| %>
+      $("#email-value<%=email.id%>").editable({
+        url: "/email_address/<%=email.id%>",
+        ajaxOptions: {
+          type: 'PUT'
+        },
+        params: function(params) {
+          params.connection_id = <%= @crm_connection.id %>;
+          return params;
+        }
+      });
+    <% end %>
+  <% end %>
+
+  <% if @crm_connection.contact_info.try(:websites) %>
+    <% @crm_connection.contact_info.try(:websites).each do |website| %>
+      $("#website-value<%=website.id%>").editable({
+        url: "/website/<%=website.id%>",
+        ajaxOptions: {
+          type: 'PUT'
+        },
+        params: function(params) {
+          params.connection_id = <%= @crm_connection.id %>;
+          return params;
+        }
+      });
+    <% end %>
+  <% end %>
+
+});

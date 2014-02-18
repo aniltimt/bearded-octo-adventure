@@ -1,0 +1,218 @@
+<h3>Policy Selection</h3>
+
+<div id='summary'></div>
+
+<h2>Online Application</h2>
+
+<p>* denotes a required field</p>
+
+<h3>Insured Information</h3>
+
+<%= form_for @case, as:'crm_case', url:{controller:'/quoting/leads', action:'create', crm_connection_id:@case.crm_connection}, html:{remote:true, multipart:true} do |f| %>
+
+  <%= f.fields_for :quoted_details do |qdf| %>
+    <%= qdf.hidden_field :face_amount %>
+    <%= qdf.hidden_field :category_id %>
+    <%= qdf.hidden_field :premium_mode_id %>
+    <%= qdf.hidden_field :policy_type_id %>
+  <% end %>
+
+  <%= fields_for @case.crm_connection do |cf| %>
+
+    <%= nested_text_field 'First Name: *', cf, :first_name %>
+    <%= nested_text_field 'Middle Name:', cf, :middle_name %>
+    <%= nested_text_field 'Last Name: *', cf, :last_name %>
+    <%= nested_text_field 'Birth Country: *', cf, :birth_country %>
+    <%= nested_form_field 'Birth State: *', cf, :collection_select, :birth_state_id, State.all, :id, :name %>
+    <div class=row>
+      <div class=span4>Gender: *</div>
+      <%= radio_and_label_tag_sets(:gender, form:cf, label_values:['Male','Female'], input_values:[true,false]).join(' ').html_safe %>
+    </div>
+    <%= nested_text_field 'Driver\'s License: *', cf, :dln %>
+    <%= nested_form_field 'Driver\'s License State: *', cf, :collection_select, :dl_state_id, State.all, :id, :name %>
+    <%= nested_text_field 'SSN: *', cf, :ssn, placeholder:'XXX-XX-XXXX', 'data-mask' => '999-99-9999' %>
+    <%= nested_form_field 'Residency Status:', cf, :collection_select, :citizenship_id, Crm::Citizenship.all, :id, :name %>
+    
+    <hr>
+    
+    <%= cf.fields_for :contact_info do |cif| %>
+      <%= nested_form_field 'Street Address: *', cif, :text_area, :address_value, rows:3 %>
+      <%= nested_text_field 'City: *', cif, :city %>
+      <%= nested_form_field 'State: *', cif, :collection_select, :state_id, State.all, :id, :name %>
+      <%= nested_text_field 'Zip: *', cif, :zip, placeholder:'00000', size:5 %>
+      
+      <hr>
+      
+      <%= nested_form_field 'Home Phone: *', cif, :phone_field, :home_phone_value %>
+      <div class=row>
+        <div class=span4>Work Phone:</div>
+        <%= cif.phone_field :work_phone_value %>
+        <%= cif.text_field :work_phone_ext, class:'phone-ext' %>
+      </div>
+      <%= nested_form_field 'Cell Phone:', cif, :phone_field, :cell_phone_value %>
+      <%= nested_form_field 'Fax:', cif, :phone_field, :fax %>
+      <%= nested_text_field 'Best Time to Contact: *', cif, :preferred_contact_time %>
+      <%= nested_form_field 'Best Method of Contact: *', cif, :collection_select, :preferred_contact_method_id, Crm::ContactMethod.all, :id, :name %>
+      <%= nested_text_field 'Email Address: *', cif, :email_value %>
+    <% end %>
+
+    <hr>
+
+    <h3>Other Information</h3>
+
+    <%= nested_text_field 'Reason for Insurance: *', f, :reason %>
+    <%= nested_text_field 'Employer:', [cf, :contact_info], :company %>
+    <%= nested_text_field 'Occupation:', cf, :occupation %>
+    <%= cf.fields_for :financial_info do |fif| %>
+      <%= nested_text_field 'Annual Income: *', fif, :income %>
+      <%= nested_text_field 'Total Assets: *', fif, :asset_total %>
+      <%= nested_text_field 'Total Liabilities: *', fif, :liability_total %>
+    <% end %>
+
+    <hr>
+    
+    <div class=row>
+      <div class=span8>How should the format application be signed?</div>
+      <%= radio_and_label_tag_sets(:esign, label_values:['E-sign','Traditional'], input_values:[true, false], form:f).join(' ').html_safe %>
+    </div>
+
+    <hr>
+
+    <div class=row>
+      <div class=span8>Do you want coverage, if available, during underwriting?</div>
+      <%= radio_and_label_tag_sets(:bind, label_values:['Yes','No'], input_values:[true, false], form:f).join(' ').html_safe %>
+    </div>
+
+    <hr>
+
+    <h3>Existing Coverage</h3>
+
+    <p>Do you have any existing insurance policy(ies)?</p>
+
+    <%= content_tag :div, id:'_existing-coverage', class:(cf.object.cases.present? ? nil : 'hide') do %>
+      <div id='existing-coverage-container'>
+        <%= cf.fields_for :cases do |kf| %>
+          <%= render 'case_fields', builder:kf %>
+        <% end %>
+      </div>
+      <a class=btn onclick='addFromTemplate("#existing-coverage-container","existing-coverage-template")'>
+        Add Policy
+      </a>
+      <script type='text/template' id='existing-coverage-template'>
+        <%= cf.fields_for :cases, Crm::Case.new, child_index:'__i__' do |kf| %>
+          <%= render 'case_fields', builder:kf %>
+        <% end %>
+      </script>
+    <% end %>
+
+    <hr>
+
+    <h3>Beneficiaries</h3>
+    
+    <p>
+      <%= f.check_box :equal_share_primary_bens %>
+      <label for=primary_beneficiaries_get_equal_shares style='display:inline'>Check box if primary beneficiaries get equal shares</label>
+    </p>
+    <p>
+      <%= f.check_box :equal_share_contingent_bens %>
+      <label for=contingent_beneficiaries_get_equal_shares style='display:inline'>Check box if contingent beneficiaries get equal shares</label>
+    </p>
+    <div id='beneficiaries-container'>
+      <%= f.fields_for :beneficiaries do |bf| %>
+        <%= render 'beneficiary_fields', builder:bf %>
+      <% end %>
+    </div>
+    <a class=btn onclick='addFromTemplate("#beneficiaries-container","beneficiary-template")'>
+      Add Beneficiary
+    </a>
+    <span>(at least one primary beneficiary is required)</span>
+    <script type='text/template' id='beneficiary-template'>
+      <%= f.fields_for :beneficiaries, Crm::Beneficiary.new(contingent:false), child_index:'__i__' do |bf| %>
+        <%= render 'beneficiary_fields', builder:bf %>
+      <% end %>
+    </script>
+
+    <hr>
+
+    <h3>Owner</h3>
+
+    <div class=pull-right>
+      <%= view_toggling_radio_and_label_tags( :insured_is_owner, form:f, input_values:[false, true], label_values:['No','Yes'], return:'array' ).reverse.join(' ').html_safe %>
+    </div>
+    <p>Is the insured the owner of the policy?</p>
+
+    <div id='_insured_is_owner' class=hide>
+      <%= f.fields_for :owner, (Crm::Owner.new unless f.object.owner) do |owner_f| %>
+        <%= render 'owner', builder:owner_f %>
+      <% end %>
+    </div>
+
+    <hr>
+
+    <h3>Premium Payer</h3>
+
+    <div class=pull-right>
+      <%= view_toggling_radio_and_label_tags( :insured_is_premium_payer, form:f, input_values:[false, true], label_values:['No','Yes'], return:'array' ).reverse.join(' ').html_safe %>
+    </div>
+    <p>Is the insured the premium payer of the policy?</p>
+
+    <div id='_insured_is_premium_payer' class=hide>
+      <div class=pull-right>
+        <%= view_toggling_radio_and_label_tags( :owner_is_premium_payer, form:f, input_values:[false, true], label_values:['No','Yes'], return:'array' ).reverse.join(' ').html_safe %>
+      </div>
+      <p>Is the owner the premium payer of the policy?</p>
+
+      <div id='_owner_is_premium_payer' class=hide>
+        <%= f.fields_for :premium_payer, (Crm::Owner.new unless f.object.premium_payer) do |ppf| %>
+          <%= render 'owner', builder:ppf %>
+        <% end %>
+      </div>
+    </div>
+
+    <hr>
+
+    <h3>Business Insurance</h3>
+
+    <div class=pull-right>
+      <%= view_toggling_radio_and_label_tags( :business_insurance ) %>
+    </div>
+    <p>Is insurance for business?</p>
+
+    <div id='_business_insurance' class=hide>
+      <div class=row>
+        <div class=span4>Purpose of Insurance:</div>
+        <%= text_field_tag :business_reason, nil, 'data-dup' => "##{f.object_name}_reason" %>
+      </div>
+    </div>
+
+    <h3>Illustration Information</h3>
+
+    <div class=pull-right>
+      <%= view_toggling_radio_and_label_tags( :illustration_provided ) %>
+    </div>
+    <p>Were you provided an illustration?</p>
+
+    <div id='_illustration_provided' class='hide indent'>
+      <%= nested_form_field nil, [f, :quoted_details], :file_field, :illustration %>
+    </div>
+
+    <hr>
+
+    <h3>Agent Information</h3>
+
+    <%= nested_text_field 'Relation to insured', cf, :relationship_to_agent %>
+    <%= nested_text_field 'Number of years known', cf, :years_of_agent_relationship %>
+
+    <hr>
+
+    <h3>Comments and Remarks</h3>
+
+    <%= cf.text_area :note, rows:4 %>
+
+  <% end %>
+
+  <hr>
+
+  <p class=pagination-centered><%= submit_tag %></p>
+
+<% end %>

@@ -1,0 +1,21 @@
+<div class="modal-header">
+  <button type="button" class="close" id="button-close-crm-note-modal">×</button>
+  <h3 id="myModalLabel">Edit Note</h3>
+</div>
+<div class="modal-body">
+  <%= form_for @crm_note, :remote => true do |f| %>
+    <%= f.hidden_field :id %>
+    <%= render :partial => "form", :locals => {:f=>f}%>
+    <div class="row">
+      <div class="span2"></div>
+      <div class="span3">
+        <%= f.check_box :confidential %> Confidential
+      </div>
+      <div class="span3">
+        <button type="button" id="edit-note-modal-form-submit" class="btn btn-primary" data-id="<%= @crm_note.id %>">
+          Update
+        </button>
+      </div>
+    </div>
+  <% end %>
+</div>

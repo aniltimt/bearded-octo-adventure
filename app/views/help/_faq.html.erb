@@ -1,0 +1,138 @@
+<% content_for :faq_state,"active" #sets state for tab bar -%>
+<%= render :partial => "help/tabs" %>
+<div class="nestedTabbedArea">
+	<%= render :partial => "help/header" %>
+	<div>
+		<h3>Frequently Asked Questions</h3>
+
+			<style type="text/css">
+			.faq_question{
+				cursor:pointer;
+				font-weight:500;
+				color:#0369b1;
+				text-decoration:underline;
+			}
+			</style>
+
+		    <ol id="faq_list" start="1" >
+		    	<li>
+		            <span class="faq_question" id="q_1">
+		            	How do I complete agent contracting with a specific carrier?
+		            </span>
+		            <div class="faq_answer" id="a_1">
+		            	Contracting is a simple online process and can be completed by clicking the "Contracting" link under the My Account tab.  If you need assistance in completing your contracting, contact our contracting specialist at 866-795-4244 or via email at <a href="mailto:Contracting@LifeInsuranceDivision.com">Contracting@LifeInsuranceDivision.com</a>.
+		            </div>
+		        </li>
+		                        
+		    	<li>
+		            <span class="faq_question" id="q_2">
+		            	Do I need to complete a paper application, schedule exams & labs, or order APS records?
+		            </span>
+		            <div class="faq_answer" id="a_2">No, EZLife was designed as an application fulfillment system.  We only require you to initiate the transaction by soliciting the client, providing them with a quote, selecting the carrier, and completing a short, one-page application form.  The EZLife Team then obtains signatures, completes the paperwork, follows-up directly with the client, and does anything else that is needed to process the case.  It’s that easy!
+		            </div
+		        </li>
+		                        
+		    	<li>
+		            <span class="faq_question" id="q_3">
+		            	How are agent signatures collected and affixed to applications submitted through EZLife?
+		            </span>
+		            <div class="faq_answer" id="a_3">Agent signatures are affixed to the application electronically.  Your agent signature will be collected with an authorization allowing its use as part of the EZLife process.  Normally, this will be done when you complete the licensing/contracting process.  In the event that an agent signature is not on file, an email notification will be send to the agent indicating the deficiency.
+		                                    
+		            </div>
+		        </li>
+		                        
+		    	<li>
+		            <span class="faq_question" id="q_4">
+		            	How are client signatures collected and affixed to applications submitted through EZLife?
+		            </span>
+		                                
+		            <div class="faq_answer" id="a_4">Client signatures are obtained one of two ways:<br /><ol><li>Through an E-signature process with pre-approved carriers.</li><p>Or</p><li>By mailing/e-mailing the client an application for collection of original signatures.</li></ol><p>In the event that the application is mailed/e-mailed, a postage paid return envelope will be provided or arrangements to have the examiner collect and return the signed application will be made.</p>   
+		            </div>
+		        </li>
+		                        
+		    	<li>
+		            <span class="faq_question" id="q_5">
+		            	What happens if a health issue or avocation prevents the EZLife system from generating a valid quote?
+		            </span>
+		            <div class="faq_answer" id="a_5">The EZLife system will generate an onscreen warning directing you to call your Brokerage Direct or use the XRAE health screening tool to obtain an accurate quote.  You will also be given the option of bypassing the health analyzer once an accurate health class is determined by clicking on the “click here” link below the message.  An example of the screen provided to the agent is shown below.
+		                                    
+		                <br />
+		                <img src="/img/faqs/faq_warning.png" />
+		            </div>
+		        </li>
+		        <li class="faq">
+		            <span class="faq_question" id="q_6">
+		            	Can I use a carrier that isn’t listed on the quote section of the website?
+		            </span>
+		            <div class="faq_answer" id="a_6">Yes, the system can accommodate applications for numerous carriers (over 30) by clicking the “Bypass Health Analyzer” button on the Quote Your Client page.  Just fill in the appropriate information from the available dropdown lists and click the “Continue” button to go directly to the online application.
+		                                    
+		            </div>
+		        </li>          
+		        <li class="faq">
+		            <span class="faq_question" id="q_7">
+		            	On the EZLife client quote section of the website, why do some carriers show up more than once?
+		            </span>           
+		            <div class="faq_answer" id="a_7">This is a common occurrence on the EZLife quoting system.  It occurs when a particular carrier has competitive pricing in multiple health categories for a specific client.  The first listing of the carrier in question will be the best health rating and pricing option available from that carrier.  The second listing will be a lower health rating and corresponding price.
+		                                    
+		                                        <br />
+		                                        <img src="/img/faqs/faq_multiple.png" />
+		                                    
+		            </div>
+		        </li>     
+		        <li class="faq">
+		            <span class="faq_question" id="q_8">
+		            	On the EZLife client quote section of the website, what do the carrier “Service” (Star) ratings mean and how are they determined?
+		            </span>            
+		            <div class="faq_answer" id="a_8"><p>The EZLife system represents many different insurance companies.  Some process applications quickly and efficiently.  Others are less efficient.  Our “Service” (Star) rating system is based on seven key criteria: </p>
+		                <ol>
+			                <li>the ease of filling out an application, </li>
+							<li>the time it takes to "underwrite" an application, </li>
+							<li>the flexibility in underwriting (will they bend their rules on close situations to allow a client to qualify for the lowest rates?), </li>
+							<li>the percentage of cases requiring additional information, </li>
+							<li>the time it takes to retrieve additional information, </li>
+							<li>the effectiveness and timeliness of their communication with us, and </li>
+							<li>the time to reissue a policy.</li>
+						</ol>
+						<p>Our highest rating is 5 and our lowest is 1.  If there is only a few dollars difference between a company with a 5-Star rating and one with a lower rating, we recommend the 5-Star rated company.  However, you and your client ultimately make the choice.  We simply want the process to be as smooth and efficient as possible for you and your client and feel this information may be important to your decision making process.</p>                      
+		            </div>
+		        </li>  
+		        <li class="faq">
+		            <span class="faq_question" id="q_9">
+		            	How can I check case status or see the progress of a specific case?
+		            </span>      
+		            <div class="faq_answer" id="a_9"><p>Basic case status and progress information is listed on the My Business tab next to each clients name under the “Status” heading.  Additionally, the EZLife Team will send you regular case status updates via email a minimum of:</p>
+						<ul>
+						<li><strong>Once every 5 business days</strong></li>
+						<li><strong>Whenever the case is touched</strong></li>
+						<li><strong>When there is a change in status</strong></li>
+						</ul>
+						<p>You can also see detail case status at any time by clicking the case status tab on the EZLife dashboard.</p>
+		            </div>
+		        </li>
+		                        
+		        <li>
+		            <span class="faq_question" id="q_10">
+		            	How do I login to the case status portion of the EZLife.com website?
+		            </span>      
+		            <div class="faq_answer" id="a_10">To login to the case status system, you will need to enter your case status login and password.  These are normally your Social Security Number for the login and your Last Name for the password.  If the defaults don’t work please contact the EZLife Team at 866-795-4244 to have your password assigned/reset.            
+		            </div>
+		        </li>
+		    </ol>
+		<script type="text/javascript">
+		$(document).ready(function() {
+		            $(".faq_answer").hide();
+		            $(".faq_question").click(showAnswer);
+
+		            $("#numDropdown").change(function() {
+		                $("#numPerPage").val($(this).val());
+		                $("#targetPage").val(1);
+		                $("#repostForm").submit();
+		            });
+		        });
+		function showAnswer() {
+		            var idParts = $(this).attr("id").split("_");
+		            $("#a_" + idParts[1]).toggle();
+		        }
+		</script>
+	</div>
+</div>

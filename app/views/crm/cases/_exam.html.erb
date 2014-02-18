@@ -1,0 +1,42 @@
+<div class=span8 id='tab-content'>
+  <div class="row">
+    <div class="span10">
+      <b>Exam Company:</b>
+      <%= select(:crm_case, :exam_company, [['ExamOne', Processing::ExamOne.new().schedule_url(@crm_case.crm_connection, @crm_case)], ['SMM', Processing::Smm.new().schedule_url(@crm_case, @crm_case.crm_connection)]]), :style => 'margin-top: 10px;' %>
+      <a class="btn btn-primary" href="" id="exam-company-order-button" data-case-id="<%= @crm_case.id %>">
+        Order
+      </a>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="span10">
+      <b>Exam Company:</b> <%= @crm_case.exam_company %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="span10">
+      <b>Exam Number:</b> <%= @crm_case.exam_num %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="span10">
+      <b>Exam Status:</b> <%= @crm_case.exam_status %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="span10">
+      <b>Exam Time:</b> <%= @crm_case.exam_time %>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function(){
+    var scheduleURL = $('#crm_case_exam_company').val();
+    $('#exam-company-order-button').attr('href', scheduleURL);
+  });
+</script>

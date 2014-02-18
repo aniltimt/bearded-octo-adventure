@@ -1,0 +1,30 @@
+<table id="summary-bar-cont">
+  <div class="row hide">
+    Client id: <%= content_tag :span, @crm_connection.id.inspect, id:'connection-id' %>
+  </div>
+  <tr>
+    <th class="summary-large">Name:</th>
+    <th class="summary-dob">DOB:</th>
+    <th class="summary-small">Gender:</th>
+    <th class="summary-state">State:</th>
+    <th class="summary-large">Primary Contacts:</th>
+    <th class="summary-large">Email:</th>
+    <th class="summary-medium">Primary Phone:</th>
+    <th class="summary-small">Updated:</th>
+    <th class="summary-medium">Case Manager:</th>
+  </tr>
+  <tr>
+    <td class="summary-large"><%= @crm_connection.full_name %></td>
+    <td class="summary-small"><%= @crm_connection.birth %></td>
+    <td class="summary-small"><%= Usage::User::GENDER[@crm_connection.gender] %></td>
+    <td class="summary-state"><%= @crm_connection.try(:contact_info).try(:state).try(:abbrev) %></td>
+    <td id="primary-contact" class="summary-large"><%= get_connection_primary_contact(@crm_connection) %></td>
+    <td class="summary-large"><%= @crm_connection.try(:contact_info).try(:emails).try(:first).try(:value) %></td>
+    <td class="summary-medium"><%= @crm_connection.try(:contact_info).try(:phones).try(:first).try(:value) %></td>
+    <td class="summary-small"><%= strf_date(@crm_connection.updated_at) %></td>
+    <td class="summary-medium">
+      <%= @crm_connection.staff_assignment.try(:case_manager).try(:full_name) %>
+    </td>
+  </tr>
+</table>
+<div style="background-color: #1B1B1B; min-height: 35px; margin: 0 0 0 0;"></div>

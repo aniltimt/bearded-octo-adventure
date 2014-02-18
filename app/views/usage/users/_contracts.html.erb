@@ -1,0 +1,29 @@
+ 
+<tr>
+  <th>Carrier</th>
+  <th>APPT#</th>
+  <th>Effective</th>
+  <th>Expires</th>
+  <th>Status</th>
+  <td></td>
+  <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AML</th>
+</tr>
+<%  @usage_user.agent_field_set.contracts.where("state_id = #{state} ").each do |usage_contract|%>
+<tr>
+  <td><%= link_to "Edit", edit_usage_contract_path(usage_contract), :remote => true %>|<%= usage_contract.carrier.try(:name) %></td>
+  <td><%= usage_contract.appointment %></td>
+  <td><%= usage_contract.effective_date %></td>
+  <td><%= usage_contract.expiration %></td>
+  <td><%= usage_contract.status.try(:value) %>
+  <% if usage_contract.corporate == true %>
+    <i class="icon-building"></i>
+  <% else %>
+    <i class="icon-user-md"></i>
+  <% end %></td>
+  <th></th>
+  <td><%= @aml_vendor.try(:name) %>&nbsp;&nbsp;&nbsp;<%= @aml.try(:completion)%></td>
+</tr>
+<% end %>
+
+
+

@@ -1,0 +1,12 @@
+<div class="row-fluid">
+  <% @connection_tags[0..1].each do |tag| %>
+    <div style="width: 130px !important; margin-top: -6px;"class="span5">
+      <div class="alert alert-info crm-tag" style="height:10px; line-height:12px;" title="<%= get_tagging_tag_name(tag) %>">
+        <button type="button" id="connection-tag-<%= tag.id %>" class="close ajax delete-connection-tag" style="line-height:12px;" data-tag-id="<%= tag.id%>" data-connection-id="<%= @crm_connection.id%>">
+          ×
+        </button>
+        <%= truncate(get_tagging_tag_name(tag), :length => 8) %>
+      </div>
+    </div>
+  <% end %>
+</div>

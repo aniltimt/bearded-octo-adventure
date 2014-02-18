@@ -1,0 +1,16 @@
+<div id="message<%=message.id%>">
+  <span class="span2">
+    <%= message.id %>
+  </span>
+  <span class="span7">
+    <%= receiver_emails(message).html_safe %>
+  </span>
+  <span class="span3">
+    <% if message.sent.blank? %>
+      <%= link_to '<i class="icon-pencil"></i>'.html_safe, edit_marketing_email_message_path(:id => message.id), :remote => true, :method => :get, class: "edit_message" %>
+      <%= link_to "Send".html_safe, send_message_marketing_email_message_path(:id => message.id), :remote => true, :method => :post, class: "send_message" %>
+      <%= link_to "<i class='icon-trash'></i>".html_safe, marketing_email_message_path(:id => message.id), :confirm => "Are you sure?", :remote => true, :method => :delete, class: "delete_message" %>
+    <% end %>
+
+  </span>
+</div>

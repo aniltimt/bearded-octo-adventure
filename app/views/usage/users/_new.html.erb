@@ -1,0 +1,80 @@
+<div class="row title-row">
+  <div class="navbar-inner"><h4 style="color:black">New User</h4></div>
+</div>
+
+<%= form_for @contact_info, :url => { :action => "create" } do |f| %>
+  <div id="new-user" class="row">
+    <div class="span1">
+    </div>
+    <div class="span3">
+      <%= f.fields_for :user do |usr|%>
+        <%= usr.hidden_field :parent_id, :value => @usage_user.id %>
+        <%= usr.hidden_field :manager_id, :value => @usage_user.id %>
+
+        <%= usr.label :first_name %>
+        <%= usr.text_field :first_name %>
+
+        <%= usr.label :middle_name %>
+        <%= usr.text_field :middle_name %>
+
+        <%= usr.label :last_name %>
+        <%= usr.text_field :last_name %>
+
+        <%= usr.label :login %>
+        <%= usr.text_field :login %>
+
+        <%= usr.label :password %>
+        <%= usr.password_field :password %>
+
+        <%= usr.label :password_confirmation %>
+        <%= usr.password_field :password_confirmation %>
+      <% end %>
+    </div>
+
+    <div class="span4">
+
+      <label>Company</label>
+      <%= f.text_field :company %>
+
+      <% addresses = ['Physical Address', 'Mailing Address']%>
+      <% addresses_count = 0 %>
+      <%= f.fields_for :addresses do |ad|%>
+        <label><%= addresses[addresses_count] %></label>
+        <%= ad.text_field :value %>
+        <% addresses_count = addresses_count + 1 %>
+      <% end %>
+
+      <label>Phone(s)</label>
+      <%= f.fields_for :phones do |ph|%>
+        <%= ph.select(:phone_type_id, options_from_collection_for_select(PhoneType.all, :id, :name), {}, {:style=> "width:75px;"} )%>
+        <%= ph.text_field :value, :style => "width: 125px;" %><br>
+      <% end %>
+
+      <strong>Fax:</strong> <%= f.text_field :fax, :style => "width: 175px;" %>
+    </div>
+
+    <div class="span4">
+      <label>Email(s)</label>
+      <%= f.fields_for :emails do |em|%>
+        <%= em.text_field :value %>
+      <% end %>
+
+      <%= f.fields_for :user do |usr|%>
+        <label>Personal Notes (ex: hobbies/interests)</label>
+        <%= usr.text_area :note, {:style => "height:150px; width:250px"} %>
+      <% end %>
+      <br />
+      <br />
+      <div>
+    <%= f.submit "Create", :class => 'btn btn-primary', :id => "create-new-user" %>
+      </div>
+    </div>
+
+    <!--
+      <button type="button" id="create-new-user" class="btn btn-primary ajax" data-user_id="<%= @usage_user.id%>">
+        Create
+      </button>
+    -->
+  </div>
+
+<% end %>

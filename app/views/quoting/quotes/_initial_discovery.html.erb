@@ -1,0 +1,226 @@
+<div id="progress_area">
+  <div id="progress_bar" class="first_state"></div>
+  <%= render 'pane_buttons', partials:[:initial_discovery] %>
+</div>
+<h2>Introduction & Disclosure</h2>
+
+<p>A life insurance purchase is a very personal, very important decision. And you can count on me to help.  At WholesaleInsurance.net, we don't believe in "one-size-fits-all" solutions.  We work to understand what you're working for, and we're committed to helping you select the right product and price.</p>
+<p>I've been specially trained to work closely with you to help assess your insurance needs, your overall financial situation,  your tolerance for risk, and the type of insurance that would be most appropriate for your unique situation.</p>
+<p class="bold">Before we begin, do you have any questions for me?</p>
+
+<p class="left-indent">
+  <%= radio_and_label_tags( :has_questions, 1, 'yes', label:{class:'inline'}, input:{'data-show' => '#has_questions>#_1', 'data-hide' => '#has_questions>*'} ).html_safe %>
+  <%= radio_and_label_tags( :has_questions, 0, 'no', label:{class:'inline'}, input:{'data-show' => '#has_questions>#_2', 'data-hide' => '#has_questions>*'} ).html_safe %>
+</p>
+<div id='has_questions'>
+  <div id='_1' class=hide>
+    Response to questions/restate value statements
+  </div>
+  <div id='_2' class=hide>
+    Great, then let's get started.
+  </div>
+</div>
+
+<h2>Initial Discovery</h2>
+
+<!-- question 1 -->
+<p class="top-20"></p>
+<p class="bold"><span class="question-number">1.&nbsp;</span>Are you looking to replace the existing policy or this in addition to?</p>
+<p class="left-indent">
+  <%= radio_and_label_tags( :is_replacing, 0, 'No coverage', label:{class:'inline'}, input:{'data-show' => '#is_replacing>#_0', 'data-hide' => '#is_replacing>*'} ).html_safe %>
+  <br>
+  <%= radio_and_label_tags( :is_replacing, 'replacing', 'Yes, replacing', label:{class:'inline'}, input:{'data-show' => '#is_replacing>#_1', 'data-hide' => '#is_replacing>*'} ).html_safe %>
+  <br>
+  <%= radio_and_label_tags( :is_replacing, 'adding', 'Yes, adding to', label:{class:'inline'}, input:{'data-show' => '#is_replacing>#_2', 'data-hide' => '#is_replacing>*'} ).html_safe %>
+</p>
+
+<div id='is_replacing'>
+  <div id='_0' class=hide>
+  </div>
+  <div id='_1' class=hide style="margin-left: 20px;">
+    <%= builder.fields_for :cases, Crm::Case.new(approved_details:Quoting::Quote.new), child_index:'replacing' do |case_f| %>
+      <%= case_f.hidden_field :replaced_by_id, value:0 %>
+      <%= case_f.fields_for :approved_details do |f| %>
+        <label class="bold">How much are we replacing?</label>
+        <%= f.text_field :face_amount %>
+        <label class="bold">What company is it with currently?</label>
+        <%= f.autocomplete_field :carrier_name, autocomplete_carrier_name_crm_cases_path, placeholder:'(field autocompletes)' %>
+      <% end %>
+      <label class="bold">How many years are left on that policy, if any?</label>
+      <%= case_f.text_field :years_until_termination_date %>
+    <% end %>
+  </div>
+  <div id='_2' class=hide style="margin-left: 20px;">
+    <%= builder.fields_for :cases, Crm::Case.new(approved_details:Quoting::Quote.new), child_index:'adding' do |case_f| %>
+      <label class="bold">What is the coverage amount on that policy?</label>
+      <%= nested_text_field nil, [case_f, :approved_details], :face_amount %>
+      <label class="bold">How many years are left on that policy, if any?</label>
+      <%= case_f.text_field :years_until_termination_date %>
+      <%= case_f.fields_for :approved_details do |f| %>
+        <label class="bold">How much does this coverage cost currently?</label>
+        <%= f.text_field :modal_premium %>&nbsp;&nbsp;
+        <%= radio_and_label_tags( :premium_mode, :monthly, 'Monthly', label: {class:'inline'}, form: f ).html_safe %>&nbsp;&nbsp;
+        <%= radio_and_label_tags( :premium_mode, :annual, 'Annual', label: {class:'inline'}, form: f ).html_safe %>
+        <label class="bold">What company is it with?</label>
+        <%= f.autocomplete_field :carrier_name, autocomplete_carrier_name_crm_cases_path, placeholder:'(field autocompletes)' %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<!-- question 2 -->
+<p class="top-20"></p>
+<%= fields_for @case do |kase_fields| %>
+  <p class="bold"><span class="question-number">2.&nbsp;</span>If something happens to you, who or what is this policy going to protect financially?</p>
+  <p class="left-indent">
+    <% ['Spouse/Partner','Children','Business','Other'
+      ].each_with_index do |name, i| %>
+      <% 
+      data_show = "#_protect_whom>#_#{i}"
+      data_hide = '#_protect_whom>*'
+      if i < 2
+        data_show += ', #_marital_status'
+      else
+        data_hide += ', #_marital_status'
+      end
+      %>
+      <%= radio_and_label_tags( :protect_whom, name.underscore, name, label:{class:'inline'}, input:{'data-show' => data_show, 'data-hide' => data_hide} ).html_safe %>
+      <br>
+    <% end %>
+  </p>
+  <div id='_protect_whom' style="padding-left: 20px;">
+    <div id='_0' class=hide>
+      <%= kase_fields.fields_for :beneficiaries, Crm::Beneficiary.new, child_index:'spouse_partner' do |bf| %>
+        <%= bf.hidden_field :genre_id, value:1 %>
+        <%= bf.hidden_field :relationship, value:'spouse' %>
+        <p>
+          <%= bf.label :primary, 'Will (s)he be the primary beneficiary?', class:'inline bold' %>&nbsp;&nbsp;
+          <%= bf.check_box :primary %>
+          <%= bf.label :primary, 'Yes', class:'inline' %>
+        </p>
+        <p>
+          <label class="bold">What's his/her name?</label>
+          <%= bf.text_field :name, 'data-mirror'=>true %>
+        </p>
+        <p>
+          <label class="bold">How many children do you have?</label>
+          <%= text_field_tag :child_count, nil, 'data-mirror'=>true %>
+        </p>
+      <% end %>
+    </div>
+    <div id='_1' class=hide>
+      <p>
+        <label  class="bold">How many children do you have?</label>
+        <%= text_field_tag :child_count, nil, 'data-mirror'=>true %>
+      </p>
+      <p>
+        <%= label_tag :child_is_primary_bene, 'Will they/(s)he be the primary beneficiary?', class:'inline bold' %>&nbsp;&nbsp;
+        <%= check_box_tag :child_is_primary_bene %>
+        <%= label_tag :child_is_primary_bene, 'Yes', class:'inline' %>
+      </p>
+    </div>
+    <div id='_2' class=hide>
+      <%= kase_fields.fields_for :beneficiaries, Crm::Beneficiary.new, child_index:'business' do |bf| %>
+        <%= bf.hidden_field :relationship, value:'business' %>
+        <p>
+          <label class="bold">What's the company's name?</label>
+          <%= bf.text_field :name, 'data-mirror'=>true %>
+        </p>
+        <p>
+          <label  class="bold">Will the primary beneficiary be the business or an individual?</label>
+          <span style="margin-left: 12px;">
+          <%= radio_and_label_tag_sets( :genre_id, {form:bf, input_value:[3,1], label_values:['Business','Partner/Individual'], label:{class:'inline'}} ).join(' ').html_safe %>
+        </span>
+        </p>
+        <p>
+          <%= label_tag :owner_is_beneficiary, 'Will (s)he also be the owner?', class:'inline bold' %>
+          <%= check_box_tag :owner_is_beneficiary %>
+          <%= label_tag :owner_is_beneficiary, 'Yes', class:'inline' %>
+        </p>
+      <% end %>
+    </div>
+    <div id='_3' class=hide>
+      <%= kase_fields.fields_for :beneficiaries, Crm::Beneficiary.new, child_index:'other' do |bf| %>
+        <p class="inline-block">
+          <%= bf.label :primary, 'Will it/they/(s)he be the primary beneficiary?', class:'inline-block bold' %>&nbsp;&nbsp;
+          <%= bf.check_box :primary %>
+          <%= bf.label :primary, 'Yes?', class:'inline-block' %>
+        </p>
+        <p class="inline-block">
+          <label class="inline-block bold">What is your relationship? (may be self-evident)</label>
+          <%= bf.text_field :relationship %>
+        </p>
+        <p class="inline-block">
+          <label class="inline-block bold">What's its/their/his/her name?</label>
+          <%= bf.text_field :name, 'data-mirror'=>true %>
+        </p>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<!-- question 3 -->
+<p class="top-20"></p>
+<p style="display: inline-block;"><span class="question-number">3.</span>
+  <%= label_tag :bene_will_also_apply, 'Will <beneficiary name> be applying for coverage as well?', class:'inline bold', style:'margin-bottom: 8px; display: inline-block !important;' %>&nbsp;&nbsp;
+  <span style="margin-top: -3px;"><%= check_box_tag :bene_will_also_apply %></span>
+  <%= label_tag :bene_will_also_apply, 'Yes', class:'inline', style:'display: inline-block; margin-top: -3px;' %>
+</p>
+
+<div id='_marital_status' class=hide>
+  
+  <!-- question 4 -->
+  <p class="top-20"></p>
+  <p style="display: inline-block;"><span class="question-number">4.</span>
+    <label class="bold" style="display: inline-block;">What is your marital status?</label>&nbsp;&nbsp;
+  <%= builder.collection_select :marital_status_id, MaritalStatus.all, :id, :name %>
+  </p>
+  <p style="display: inline-block; margin-left: 22px;">
+    <label class="bold" style="display: inline-block;">What is your spouse's name</label>
+    <%= builder.fields_for :spouse, builder.object.spouse || Crm::Connection.new do |spouse_fields| %>
+      <%= spouse_fields.text_field :full_name, 'data-mirror'=>true %>
+    <% end %>
+  </p>
+  <p>
+    <label class="bold" style="display: inline-block;  margin-left: 22px;">How many children do you have?</label>
+    <%= text_field_tag :child_count, nil, 'data-mirror'=>true %>
+  </p>
+</div>
+
+<!-- question 5 -->
+<p class="top-20"></p>
+<p><span class="question-number">5.</span>
+  <label class="bold" style="display: inline-block">What amount of coverage are you looking to obtain?</label>
+  <div class=indent>
+    <p><%= text_field_tag :face_amount %></p>
+    <div>
+      <p>
+        <label style="margin-left: -3px;" class="bold">What formula or financial calculator did you use to arrive at that amount?</label>
+        <%= select_tag :face_amount_method, options_for_select(['None', 'Guess', 'Recommendation', 'Formula/Calculator']), style:'margin-left: 8px;' %>
+      </p>
+    </div>
+    <p>"Not sure." - No problem. We will get to that.</p>
+    <p>"What do you recommend?" - Let me ask you a few more questions and I can help you determine what makes the most sense.</p>
+  </div>
+</p>
+
+<!-- question 6 -->
+<p class="top-20"></p>
+<span style="margin-bottom: 10px;" class="inline-block">
+<label class="bold inline-block"><span class="question-number">6.&nbsp;</span>What's your occupation?</label>
+<%= builder.text_field :occupation %></span>
+<span class="inline-block">
+<label style="margin-left: 15px;" class="bold inline-block">What's your approximate annual income?</label>
+<%= nested_text_field nil, [builder, :financial_info], :income %>
+</span>
+
+<!-- question 7 -->
+<p class="top-20"></p>
+<label class="bold"><span class="question-number">7.&nbsp;</span>Ideally, how long would you like your insurance protection to last?</label>
+<%= select_tag :duration, options_for_select(['Retirement', 'Lifetime (Forever)', '\'Til I die', 'Kids Graduate', 'Mortgage Paid Off', 'Other']), style:'margin-left: 15px;' %>
+
+<hr>
+
+<div class=pagination-centered>
+  <a class='btn btn-primary' onclick="showFromSiblings('#advanced_discovery', true)">Next</a>
+</div>

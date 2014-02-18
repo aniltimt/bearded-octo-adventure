@@ -1,0 +1,33 @@
+<%= form_for(@marketing_auto_task_rule, :remote => true) do |f| %>
+  <% if @marketing_auto_task_rule.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@marketing_auto_task_rule.errors.count, "error") %> prohibited this marketing_auto_task_rule from being saved:</h2>
+
+      <ul>
+      <% @marketing_auto_task_rule.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+	<table style="width:70%">
+		<tr class="field">
+			<td style="width:10%"></td>
+			<td>Campaign:</td>
+			<td><%= f.autocomplete_field :campaign_id, autocomplete_marketing_campaigns_name_marketing_auto_task_rules_path, :id_element => '#marketing_auto_task_rule_campaign_id'  %></td>
+		</tr>
+		<tr class="field">
+			<td style="width:10%"></td>
+			<td>Auto System Task Rule:</td>
+			<td><%= f.autocomplete_field :auto_system_task_rule_id, autocomplete_auto_system_task_rules_name_marketing_auto_task_rules_path, :id_element => '#marketing_auto_task_rule_auto_system_task_rule_id'  %></td>
+		</tr>
+		<tr>
+			<td style="width:10%"></td>
+			<td></td>
+			<td class="actions"><%= f.submit "Update Task Rule"%></td>
+		</tr>
+	</table>
+
+<% end %>
+

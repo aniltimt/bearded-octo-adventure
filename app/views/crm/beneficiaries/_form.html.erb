@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="span2"><%= f.label :task_type %></div>
+  <div class="span10">
+    <%= f.select(:genre_id, Crm::BeneficiaryOrOwnerType.all.collect {|p| [ p.name, p.id ] }, {:prompt => "Select type"}, {:class => ""}) %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span2"><%= f.label :name %></div>
+  <div class="span10">
+    <%= f.text_field :name, {:style => "width:220px"} %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span2"><%= f.label :birth_or_trust_date %></div>
+  <div class="span10">
+    <%= f.datepicker :birth_or_trust, :value => (@crm_beneficiary.birth_or_trust_date.strftime("%m/%d/%Y") rescue nil) %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span2"><%= f.label :relationship %></div>
+  <div class="span10">
+    <%= f.text_field :relationship, {:style => "width:220px"} %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span2"><%= f.label :gender %></div>
+  <div class="span10">
+    <%= f.select(:gender, [["Male", MALE], ["Female", FEMALE]]) %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span2"><%= f.label :ssn %></div>
+  <div class="span10">
+    <%= f.text_field :ssn_field, :value => @crm_beneficiary.decrypt_ssn, :style => "width:220px;" %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span2"><%= f.label :trustee %></div>
+  <div class="span10">
+    <%= f.text_field :trustee, {:style => "width:220px"} %>
+  </div>
+</div>

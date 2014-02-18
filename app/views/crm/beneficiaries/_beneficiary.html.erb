@@ -1,0 +1,31 @@
+<div class="row" data-id="<%= beneficiary.id %>">
+  <div class="span2">
+    <%= beneficiary.name %>
+  </div>
+  <div class="span1">
+    <%= beneficiary.genre.try(:name).try(:capitalize) %>
+  </div>
+  <div class="span2">
+    <%= beneficiary.birth_or_trust_date %>
+  </div>
+  <div class="span1">
+    <%= beneficiary.gender? ? "Male" : "Female" %>
+  </div>
+  <div class="span2">
+    <%= beneficiary.relationship %>
+  </div>
+  <div class="span1">
+    <%= beneficiary.decrypt_ssn %>
+  </div>
+  <div class="span1">
+    <%= text_field_tag :beneficiaries_percentage, beneficiary.percentage, :style=>"width:30px;", :class=>"beneficiaries_percentage" %>
+  </div>
+  <div class="span1">
+    <a class="btn btn-primary ajax edit-crm-beneficiary">
+      Edit
+    </a>
+  </div>
+  <div class="span1">
+    <a class="btn btn-primary ajax delete-crm-beneficiary">Delete</a>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<div>
+</div>
+<% @tags.uniq.each do |tag| %>
+  <% if ["lead type", "lead source", "search term", "source code", "source id"].include?(tag.tag_key.try(:name)) %>
+    <div class="span2">
+      <div style="margin-bottom: 5px;">
+        <b>
+          <%= tag.tag_key.name.titleize %>:
+        </b>
+        </br>
+        <%= tag.tag_value.blank? ? 'not exist' : tag.tag_value.value%>
+      </div>
+    </div>
+  <% end %>
+<% end %>

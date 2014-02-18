@@ -1,0 +1,10 @@
+development:
+  wsdl: "https://ws2.agencyworks.com/EServices/services/StatusSession/wsdl/StatusSession.wsdl"
+  xml_username: "PinneyTest"
+  xml_password: "Pinney2008"
+  log_directory: "log/agency_works/"
+
+production:
+  wsdl: "https://ws2.agencyworks.com/EServices/services/StatusSession/wsdl/StatusSession.wsdl"
+  xml_username: ""
+  xml_password: ""

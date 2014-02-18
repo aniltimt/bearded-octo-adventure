@@ -1,0 +1,34 @@
+<%= render :partial => "shared/tab/marketing", :locals => {:selected => "SnailMailTemplates"} %>
+<div style="background-color:#fff;min-height: 500px;">
+  <%= render :partial => "templates_autocomplate" %>
+  <%= link_to 'Create New Template', new_marketing_snail_mail_template_path, :class => 'button', :remote => true%>
+  
+  <hr style="background-color:#B40404; height:5px; width:90%">
+  <div class="row">
+      <div class="span4">
+        <b> Template Name</b>
+      </div>
+      <div class="span7">
+      <b> Description</b>
+      </div>
+    </div>
+    <hr style="width:90%" />
+  <%  @templates.each  do |template| %>
+    <div class="row">
+      <div class="span4">
+        <%= template.try(:name) %>
+      </div>
+      <div class="span7">
+      <%= template.try(:description) %>
+      </div>
+    </div>
+    <hr style="width:90%" />
+  <% end %>
+  <div class="row">
+    <div class="span8"></div>
+    <div class="span4">
+      <%= ajax_will_paginate  @templates %>
+    </div>
+  </div>
+  
+</div>

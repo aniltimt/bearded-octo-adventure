@@ -1,0 +1,104 @@
+<div id="crm-connection-edit-js-page"></div>
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+  <h4 style="font-size: 22px;"><%= @crm_connection.full_name %></h4>
+</div>
+<div class="modal-body">
+  <input type="hidden" value="<%= @crm_connection.id %>" id="crm-connection-id">
+  <div style="padding-left: 0px;" class="row-fluid" id="update-crm-connection">
+    <div class="span5" id="crm-edit-labels">
+      <label>Phone(s):</label>
+
+      <% if @crm_connection.contact_info.try(:phones) %>
+        <% @crm_connection.contact_info.try(:phones).each do |p| %>
+          <a class="update-crm-connection-phone ajax" id="<%= p.id %>" data-toggle="modal">
+            <% output = "#{p.phone_type.try(:name).try(:capitalize)}: #{p.value}" %>
+            <% output << " ext. #{p.ext}" unless p.ext.blank? %>
+            <%= output %>
+          </a><br>
+        <% end %>
+      <% end %>
+      Fax:
+      <a href="#" class="crm-connection-contact-info" data-type="text" class="editable-click" data-name="fax" data-value="<%= @crm_connection.contact_info.try(:fax) %>" data-pk="<%= @crm_connection.contact_info.try(:id) %>">
+        <%= get_field_name_for_inline_editing(@crm_connection.contact_info.try(:fax)) %>
+      </a><br>
+      <a id="add-crm-connection-phone" role="button" class="ajax" data-connection-id="<%= @crm_connection.id %>" data-contact-info-id="<%= @crm_connection.contact_info.try(:id)%>" data-toggle="modal">
+        + Add More
+      </a>
+      <br><br>
+      <label>Email(s):</label>
+
+      <% if @crm_connection.contact_info.try(:emails) %>
+        <% @crm_connection.contact_info.try(:emails).each do |email| %>
+          <a href="#" id="email-value<%=email.id%>" data-type="text" class="editable-click" data-name="value" data-value="<%= email.value %>" data-pk="<%= email.id %>">
+            <%= email.value %>
+          </a><br>
+        <% end %>
+      <% end %>
+      <a id="add-crm-connection-email-address" role="button" class="ajax" data-connection-id="<%= @crm_connection.id %>" data-contact-info-id="<%= @crm_connection.contact_info.try(:id)%>" data-toggle="modal">
+        + Add More
+      </a>
+      <br><br>
+      <label>Address:</label>
+      <a href="#" id="home-address-value" data-type="text" class="editable-click" data-name="value" data-value="<%= @crm_connection.contact_info.try(:addresses).try(:first).try(:value) %>" data-pk="<%= @crm_connection.contact_info.try(:addresses).try(:first).try(:id) %>">
+        <%= @crm_connection.contact_info.try(:addresses).try(:first).try(:value) %>
+      </a>
+
+      <br><br>
+      <label>Company:</label>
+      <a href="#" class="crm-connection-contact-info" data-type="text" class="editable-click" data-name="company" data-value="<%= @crm_connection.contact_info.try(:company) %>" data-pk="<%= @crm_connection.contact_info.try(:id) %>">
+        <%= get_field_name_for_inline_editing(@crm_connection.contact_info.try(:company)) %>
+      </a>
+
+      <br><br>
+      <label>Title:</label>
+      <a href="#" class="editable-click connection-field" data-type="text" data-name="title" data-value="<%= @crm_connection.title %>">
+        <%= get_field_name_for_inline_editing(@crm_connection.title) %>
+      </a>
+
+      <br><br>
+      <label>Website(s):</label>
+
+      <% if @crm_connection.contact_info.try(:websites) %>
+        <% @crm_connection.contact_info.try(:websites).each do |website| %>
+          <a href="#" id="website-value<%=website.id%>" data-type="text" class="editable-click" data-name="url" data-value="<%= website.url %>" data-pk="<%= website.id %>">
+            <%= website.url %>
+          </a><br>
+        <% end %>
+      <% end %>
+      <a id="add-crm-connection-website" role="button" class="ajax" data-connection-id="<%= @crm_connection.id %>" data-toggle="modal">
+        + Add More
+      </a>
+      <br><br>
+
+      <label>Facebook:</label>
+      <label>Twitter:</label>
+      <label>Linkedin:</label>
+      <br>
+      <label style="margin-bottom: 10px;">Tags:</label>
+      <div class="connection-tag-<%= @crm_connection.id%> ajax">
+      </div>
+    </div>
+    <div class="span7">
+      <div>
+        <a id="expand-crm-notes">Expand All</a>
+        <div id="connection-notes" class="ajax">
+        </div>
+      </div>
+      <div>
+        <strong>Schedule a Follow up</strong>
+        <div id="connection-system-tasks" class="ajax">
+        </div>
+        <a id="add-new-connection-system-tasks" class="btn btn-primary ajax">
+          Schedule new
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div id="container-contact-info-modal-pop-up" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="color:black;">
+    <button type="button" class="close" id="close-contact-info-modal" aria-hidden="true">×</button>
+    <div class="modal-body">
+    </div>
+  </div>
+</div>

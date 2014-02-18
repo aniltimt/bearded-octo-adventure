@@ -1,0 +1,50 @@
+<%= render :partial => "shared/tab/system_management", :locals => {:selected => "auto_assigning"} %>
+<div style="background-color:#fff; height:500px">
+<div class="row title-row">
+	<div class="span6"><h4 class="title">Auto Assigning</h4></div>
+  <div class="span3"></div>
+  <div class="span3">
+    <%= render :partial => "shared/search_client", :locals => {:base_url => '/crm/cases/', :action => 'leads'} %>
+  </div>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Weight</th>
+      <th>Premium Limit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @agent_lead_distribution_weights.each do | ldw |%>
+      <tr>
+        <td>
+          <%= ldw.tag_value.value %>
+        </td>
+        <span id="ldw_container_<%= ldw.id %>" class="ldw_container" data-ldw_id="<%= ldw.id%>" >
+          <td>
+            <%= text_field_tag :weight, ldw.weight, 'data-id' => ldw.id %>
+          </td>
+          <td>
+            <%= text_field_tag :premium_limit, ldw.premium_limit, 'data-id' => ldw.id %>
+          </td>
+        </span>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<script>
+  $(function(){
+    $('input').change(function(){
+      var data = {};
+      data[$(this).attr("name")] = $(this).val();
+      $.ajax({
+        url: '/usage/lead_distribution_weights/'+$(this).data('id'),
+        type: 'PUT',
+        data: data
+      });
+    });
+  });
+</script>

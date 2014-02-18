@@ -1,0 +1,24 @@
+$("#user-activity-list").html("<%= escape_javascript( render :partial => 'crm_activity', :collection => @crm_activities ) %>");
+$('.activity_date').editable({
+  format: 'MMMM DD YYYY h:mm a',
+  viewformat: 'YYYY-MM-DD',
+  template: 'D / MMMM / YYYY h:mm a',
+  ajaxOptions: {
+    type: 'PUT',
+  }
+});
+
+$('.activity_status').editable({
+  ajaxOptions: {
+    type: 'PUT',
+  }
+});
+
+$('.activity_description').editable({
+  title: 'Enter description',
+  rows: 4,
+  ajaxOptions: {
+    type: 'PUT',
+  }
+});
+

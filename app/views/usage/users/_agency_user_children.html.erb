@@ -1,0 +1,20 @@
+<%= link_to "/usage/users/personal?user_id=#{agency_user_children.id}", :remote => true do %>
+<i class="icon icon-link" id = "personal-link<%=agency_user_children.id%>"  ></i>
+<% end %>
+<%= link_to "/usage/users/impersonate?id=#{agency_user_children.id}" do %>
+<i class="icon icon-beaker" id = "lead-link<%=agency_user_children.id%>"  ></i>
+<% end %>
+<%= link_to "/usage/staff_assignment/index?tab=users", :remote => true do %>
+<i class="icon icon-group" id = "staff-assignment-link"  ></i>
+<% end %>
+
+<a href="javascript: void(0);" id="permission-user-select<%= agency_user_children.id %>" class="agency-user-select-event ajax" data-user-id="<%= agency_user_children.id %>" data-box-id="<%= @box_id %>" title="<%= agency_user_children.full_name.to_s %>">
+<%= agency_user_children.full_name.to_s %>
+</a>
+<a href="javascript: void(0);" id="make-user-parent<%= agency_user_children.id %>" class="make-user-agency-parent ajax" data-user-id="<%= agency_user_children.id %>" title="Click to make this user a parent user">
+<i class="icon icon-link"></i>
+</a>
+<a href=<%= tagging_tags_path(:user_id=> agency_user_children.id) %> data-remote="true" title="Click to view tags">
+<i class="icon-tags"></i>
+</a>
+<br>

@@ -1,0 +1,147 @@
+.carrier-sprite {
+  background-image: url(http://quoter.pinneyapps.com/images/carriers.png);
+}
+
+.carrier-sprite, .carrier-sprite-alt {
+  height: 60px;
+  width: 162px;
+}
+
+input.phone-ext {
+  width: 3em;
+}
+
+#initial_discovery {
+
+}
+
+#initial_discovery a h1 h2 p label input select {
+	margin-left: 20px !important;
+}
+
+#advanced_discovery a h4 {
+	margin-left: 20px !important;
+}
+
+#basic_info label select p h2 h4 {
+	margin-left: 20px !important;
+}
+
+.question-number {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.top-20 {
+	margin-top: 20px;
+}
+
+#quote-template {
+	margin-left: 20px;
+	margin-right: 20px;
+	width: 800px !important;
+}
+
+#quote-template h2 {
+	color: #686868;
+}
+
+#quote-template input[type="radio"] {
+	margin-top: 0 !important;
+}
+
+#quote-template input[type="checkbox"] {
+	margin-top: 0 !important;
+}
+
+#quote-template input[type="text"] {
+	margin-left: 10px !important;
+}
+
+.left-indent {
+	margin-left: 30px !important;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.left-5 {
+	margin-left: 10px !important;
+}
+
+.bot-10 {
+	margin-bottom: 10px !important;
+}
+
+.top-10 {
+	margin-top: 10px !important;
+}
+
+#progress_area {
+	width:800px;
+	height:75;
+}
+
+#progress_bar {
+	margin: 15px 15px 0px 15px;
+	width: 753px;
+	height: 38px;
+}
+
+.first_state {
+	background: url(/images/progress.png) no-repeat -23px -6px;
+}
+
+.second_state {
+	background: url(/images/progress.png) no-repeat -23px -46px;
+}
+
+.third_state {
+	background: url(/images/progress.png) no-repeat -23px -86px;
+}
+
+.fourth_state {
+	background: url(/images/progress.png) no-repeat -23px -128px;
+}
+
+.progress_initial_discovery {
+	margin-left:25px;
+}
+
+.progress_advanced_discovery {
+	margin-left:40px;
+}
+
+.progress_basic_info {
+	margin-left:67px;
+}
+
+.progress_health {
+	margin-left:124px;
+}
+
+#progress_area li {
+	font-size:14px;
+	font-weight:bold;
+	display:inline-block;
+}
+
+#progress_area li a {
+	color:#498af4;
+	text-shadow: 1px 1px 2px rgba(150, 150, 150, 1);
+	text-decoration:none;
+}
+
+#progress_area li.active {
+}
+
+.blue-header {
+	font-weight: bold;
+	font-size: 16px;
+	padding: 3px 0px 3px 20px;
+}
+
+.calc-child-left {
+	margin-left: 20px;
+}

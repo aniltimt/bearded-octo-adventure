@@ -1,0 +1,26 @@
+<div class="modal-header">
+  <h3>To Do</h3>
+</div>
+<div class="modal-body">
+  <% @incomplete_tasks.each do |task| %>
+    <div class="row-fluid" style="color: black; padding-bottom: 5px;">
+      <div class="span2">
+        <a id="user-follow-up-task-link" class="ajax" data-case-id="<%= task.status.try(:case).try(:id) %>">
+          <i class="icon icon-link"></i>
+        </a>
+      </div>
+      <div class="span6">
+        <%= task.crm_connection.try(:full_name) %>
+      </div>
+      <div class="span4">
+        <%= task.label %>
+      </div>
+    </div>
+  <% end %>
+  <div class="row-fluid">
+    <div class="span8"></div>
+    <div class="span4">
+      <%= ajax_will_paginate @incomplete_tasks %>
+    </div>
+  </div>
+</div>

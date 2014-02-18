@@ -1,0 +1,12 @@
+<%= render "summary" %>
+<%= render :partial => "shared/tab/client_management" %>
+<div style="margin: 0 0 0 0; padding-left: 0px;" class="tab-content">
+  <div class="tab-pane active" id="crm-connection-summary"></div>
+</div>
+
+<script>
+  $(document).ready(function(){
+    var actionUrl = $("ul#client-connection-tabs li.active a").attr("href");
+    loadPage('crm-connection-summary', actionUrl);
+  });
+</script>

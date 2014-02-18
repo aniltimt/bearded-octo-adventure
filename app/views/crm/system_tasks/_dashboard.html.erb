@@ -1,0 +1,39 @@
+<input type="hidden" id="task-status-user-id" value="<%= current_user.id %>">
+
+<div class="navbar">
+  <div class="navbar-inner">
+    <h4 style="color:black">To Do</h4>
+  </div>
+</div>
+
+<div style="width:820px; padding-left:10px;" id="current-user-dashboard">
+  <div class="row-fluid" style >
+    <div class="span1"></div>
+    <div class="span2">
+      Type
+    </div>
+    <div class="span2">
+      Due
+    </div>
+    <div class="span2">
+      Staff
+    </div>
+    <div class="span2">
+      Recipient
+    </div>
+    <div class="span2">
+      Description
+    </div>
+    <div class="span1">
+      Complete
+    </div>
+  </div>
+
+  <%= render :partial => "usage/users/task", :collection=>@incomplete_tasks, :locals => {:task_type=>'incomplete'} %>
+  <div class="row-fluid">
+    <div class="span8"></div>
+    <div class="span4">
+      <%= ajax_will_paginate @incomplete_tasks, :param_name => 'incomplete_tasks_page' %>
+    </div>
+  </div>
+</div>

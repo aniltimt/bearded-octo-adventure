@@ -1,0 +1,65 @@
+<%= form_for(@crm_financial_info) do |f| %>
+  <% if @crm_financial_info.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@crm_financial_info.errors.count, "error") %> prohibited this crm_financial_info from being saved:</h2>
+
+      <ul>
+      <% @crm_financial_info.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :asset_401k %><br />
+    <%= f.number_field :asset_401k %>
+  </div>
+  <div class="field">
+    <%= f.label :asset_home_equity %><br />
+    <%= f.number_field :asset_home_equity %>
+  </div>
+  <div class="field">
+    <%= f.label :asset_investments %><br />
+    <%= f.number_field :asset_investments %>
+  </div>
+  <div class="field">
+    <%= f.label :asset_pension %><br />
+    <%= f.number_field :asset_pension %>
+  </div>
+  <div class="field">
+    <%= f.label :asset_real_estate %><br />
+    <%= f.number_field :asset_real_estate %>
+  </div>
+  <div class="field">
+    <%= f.label :asset_savings %><br />
+    <%= f.number_field :asset_savings %>
+  </div>
+  <div class="field">
+    <%= f.label :liability_auto %><br />
+    <%= f.number_field :liability_auto %>
+  </div>
+  <div class="field">
+    <%= f.label :liability_credit %><br />
+    <%= f.number_field :liability_credit %>
+  </div>
+  <div class="field">
+    <%= f.label :liability_education %><br />
+    <%= f.number_field :liability_education %>
+  </div>
+  <div class="field">
+    <%= f.label :liability_estate_settlement %><br />
+    <%= f.number_field :liability_estate_settlement %>
+  </div>
+  <div class="field">
+    <%= f.label :liability_mortgage %><br />
+    <%= f.number_field :liability_mortgage %>
+  </div>
+  <div class="field">
+    <%= f.label :liability_other %><br />
+    <%= f.number_field :liability_other %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

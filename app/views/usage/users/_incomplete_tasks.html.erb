@@ -1,0 +1,29 @@
+<div class="row-fluid">
+  <div class="span1"></div>
+  <div class="span2">
+    Type
+  </div>
+  <div class="span2">
+    Due
+  </div>
+  <div class="span2">
+    Staff
+  </div>
+  <div class="span2">
+    Recipient
+  </div>
+  <div class="span2">
+    Description
+  </div>
+  <div class="span1">
+    Complete
+  </div>
+</div>
+
+<%= render :partial => "task", :collection=>@incomplete_tasks, :locals => {:task_type=>'incomplete'} %>
+<div class="row-fluid">
+  <div class="span8"></div>
+  <div class="span4">
+    <%= ajax_will_paginate @incomplete_tasks, :param_name => 'incomplete_tasks_page' %>
+  </div>
+</div>

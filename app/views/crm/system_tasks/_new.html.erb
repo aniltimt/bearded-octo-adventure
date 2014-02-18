@@ -1,0 +1,15 @@
+<div id="new-edit-crm-system-task"></div>
+<%= form_for @crm_system_task, url: '/crm/system_tasks/', :remote => true do |f| %>
+
+  <%= f.hidden_field :status_id, :value => @crm_status.id %>
+  <%= f.hidden_field :connection_id, :value => @crm_status.case.connection_id %>
+
+  <%= render :partial => "form", :locals => {:f=>f}%>
+
+  <div class="row">
+    <div class="span3"></div>
+    <div class="span3">
+      <button type="button" id="create-follow-up-task" class="btn btn-primary ajax">Add</button>
+    </div>
+  </div>
+<% end %>

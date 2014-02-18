@@ -1,0 +1,97 @@
+
+a:hover{
+	background-color:inherit;/* not sure why, but without this, links were going to black text on black background when moused over */
+}
+.dashedList{/* like a bulleted list, but with dashes*/
+	list-style:none;
+	margin:0 0 10px 10px;
+}
+.dashedList li:before{
+content:'- ';
+color:#08c;
+}
+
+h3{
+	font-size:16px !important;
+}
+
+#impaired_risk_table{
+  border:1px solid #979797;
+  border-collapse:collapse;
+}
+#impaired_risk_table td{
+  border:1px solid #EBEBEB;
+  padding:3px 15px;
+  min-width:40px;
+  vertical-align:middle;
+}
+#impaired_risk_table tbody tr:nth-child(even) td{
+  border:1px solid #fff;
+}
+#impaired_risk_table thead{
+  background:url("http://www.pinneyinsurance.com/images/bg/bluex39.png");
+}
+#impaired_risk_table thead{
+  height: 39px;
+  line-height:39px;
+  color:#fff;
+}
+#impaired_risk_table tbody tr:nth-child(even){
+  background:#dce8f1;
+}
+
+#impaired_risk_table td.checkmarked{/* XRAE cell will display a checkmark when it has this class */
+  background:url("http://www.pinneyinsurance.com/images/icons/checkmark.png") center center no-repeat;
+}
+#impaired_risk_table a{
+  text-decoration:underline;
+  margin:0 auto;
+}
+#impaired_risk_table a[href$=".pdf"]{/* links ending with ".pdf" will display a pdf icon */
+  display:block;
+  height:28px;
+  width:29px;
+  background:url("http://www.pinneyinsurance.com/images/icons/pdf.png") center center no-repeat;
+}
+#impaired_risk_table a[href^="mailto:"]{/* links starting with "mailto:" will display an envelope symbol */
+  display:block;
+  height:32px;
+  width:32px;
+  background:url("http://www.pinneyinsurance.com/images/uploads/1355512638_mail.png") center center no-repeat;
+}
+/* everything below this point is actually focused on tab bars. */
+.nestedTabbedArea{
+
+}	
+.nestedTabbedArea > div{
+	padding:1em 2em;
+}
+.tabBar{
+	margin:0;
+	padding:2px 0 0 0;
+	list-style:none;
+	background-color: #1B1B1B;
+}
+.tabBar li{
+	border:0;
+	margin:0;
+	padding:0;
+	display:inline-block;
+}
+.tabBar li a{
+	display:block;
+	border:0;
+	margin:0;
+	padding:0.25em;
+	border-top-right-radius:5px;
+	border-top-left-radius:5px;
+	color:white;
+}
+.tabBar a.active, .tabBar a:hover{
+	background:white;
+	color:black;
+	text-decoration:none;
+}
+.tabBar a:hover{
+	background:lightgray;
+}

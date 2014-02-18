@@ -1,0 +1,46 @@
+<% if params[:top_tab_bar] == "my_account" %>
+  <%= render :partial => "shared/tab/my_account", :locals => {:selected => "profiles"} %>
+<% else %>
+  <%= render :partial => "shared/tab/agency_management", :locals => {:tab => "profiles"} %>
+<% end %>
+<div style="margin-left:300px;"></div>
+<div class="row title-row">
+<div class="navbar-inner"><h4 class="title system-management-row"><%= @usage_user.first_name.capitalize %>'s <%= @title %></h4>
+</div>
+</div>
+<% if params[:top_tab_bar] == "my_account" %>
+  <%= link_to 'Create New Profile', new_usage_profile_path(:top_tab_bar=> "my_account"), :remote =>true, :style => 'margin-left: 40px;'%>
+<% else %>
+  <%= link_to 'Create New Profile', new_usage_profile_path, :remote =>true, :style => 'margin-left: 40px;'%>
+<% end %>
+<table class="table">
+  <thead>
+    <tr>
+      <th><input type="checkbox" name="assign_profile" id="select-all-checkbox"></th>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>Logo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render :partial => "profile", :collection => Usage::Profile.editables(@usage_user) %>
+    <tr>
+      <td>
+        <button id="assigning-profile-model" class="btn btn-small btn-primary ajax" data-action="assign_profile_model" data-base-url="/usage/users">
+          Assign
+        </button>
+      </td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
+<div id="assign-profile-modal-pop-up" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="color:black;width:750px;">
+</div>
+
+
+
+

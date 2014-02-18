@@ -1,0 +1,17 @@
+<%= nested_form_field 'Entity', builder, :collection_select, :genre_id, Crm::BeneficiaryOrOwnerType.all, :id, :name %>
+<%= nested_text_field 'Name: *', builder, :name %>
+<%= nested_text_field 'Trustee (if any):', builder, :trustee %>
+<%= builder.fields_for :contact_info do |cif| %>
+  <%= nested_form_field 'Home Phone: *', cif, :phone_field, :home_phone_value %>
+  <div class=row>
+    <div class=span4>Work Phone:</div>
+    <%= cif.phone_field :work_phone_value %>
+    <%= cif.text_field :work_phone_ext, size:3, class:'phone-ext' %>
+  </div>
+  <%= nested_form_field 'Address: *', cif, :text_area, :address_value, rows:3 %>
+  <%= nested_text_field 'City: *', cif, :city %>
+  <%= nested_form_field 'State: *', cif, :collection_select, :state_id, State.all, :id, :name %>
+  <%= nested_text_field 'Zip: *', cif, :zip %>
+<% end %>
+<%= nested_text_field 'Relationship: *', builder, :relationship %>
+<%= nested_text_field 'SSN/Tax ID:', builder, :ssn %>

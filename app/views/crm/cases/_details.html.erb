@@ -1,0 +1,144 @@
+<div class="test" id='tab-content'>
+  <div class="tab-content">
+    <div class="tab-pane active" id="details">
+      <div class="row" style="margin-left:0px;">
+        <div class="span4">
+          <label class="crm-case-policy-detail-label">Quoted:<%= strf_date(@quoted_details.try(:created_at))%></label>
+
+          <label class="crm-case-policy-detail-label">Carrier:</label>
+          <input id="crm-case-quoted-details-carrier" class="ajax" type="text" data-autocomplete="/crm/cases/autocomplete_carrier_name" value="<%= @quoted_details.try(:carrier).try(:name)%>">
+
+          <div id="crm-case-quoted-details" data-id="<%= @quoted_details.try(:id) %>">
+            <label class="crm-case-policy-detail-label">Plan:</label>
+            <a href="#" data-type="text" class="editable-click" data-name="plan_name" data-value="<%= @quoted_details.try(:plan_name)%>">
+              <%= @quoted_details.try(:plan_name) || "Empty" %>
+            </a>
+
+            <label class="crm-case-policy-detail-label">Term:</label>
+            <a href="#" data-type="select" data-source="/crm/cases/get_policy_types" data-type="text" class="editable-click" data-name="policy_type_id" data-value="<%= @quoted_details.try(:policy_type_id)%>">
+              <%= @quoted_details.try(:policy_type).try(:name) || "Empty" %>
+            </a>
+
+            <label class="crm-case-policy-detail-label">Rate Class:</label>
+            <a href="#" data-type="text" class="editable-click" data-name="carrier_health_class" data-value="<%= @quoted_details.try(:carrier_health_class)%>">
+              <%= @quoted_details.try(:carrier_health_class) || "Empty"%>
+            </a>
+
+            <label class="crm-case-policy-detail-label">Coverage Amount:</label>
+            <a href="#" class="editable-click" data-type="text" data-name="face_amount" data-value="<%= @quoted_details.try(:face_amount)%>">
+              <%= @quoted_details.try(:face_amount) || "Empty" %>
+            </a>
+
+            <label class="crm-case-policy-detail-label">Monthly Rate:</label>
+            <a href="#" data-type="text" class="editable-click" data-name="monthly_premium" data-value="<%= @quoted_details.try(:monthly_premium)%>">
+              <%= @quoted_details.try(:monthly_premium) || "Empty"%>
+            </a>
+
+            <label class="crm-case-policy-detail-label">Annual Rate:</label>
+            <a href="#" data-type="text" class="editable-click" data-name="annual_premium" data-value="<%= @quoted_details.try(:annual_premium)%>" >
+              <%= @quoted_details.try(:annual_premium) || "Empty"%>
+            </a>
+          </div>
+        </div>
+
+        <div class="span4">
+          <label class="crm-case-policy-detail-label">Placed:</label>
+
+          <label class="crm-case-policy-detail-label">Carrier:</label>
+          <input id="crm-case-approved-details-carrier" class="ajax" type="text" data-autocomplete="/crm/cases/autocomplete_carrier_name" value="<%= @approved_details.try(:carrier).try(:name)%>">
+
+          <div id="crm-case-approved-details" data-id="<%= @approved_details.try(:id) %>">
+            <label class="crm-case-policy-detail-label">Plan:</label>
+            <a href="#" data-type="text" class="editable-click" data-name="plan_name" data-value="<%= @approved_details.try(:plan_name)%>">
+              <%= @approved_details.try(:plan_name) || "Empty"%>
+            </a>
+
+            <label class="crm-case-policy-detail-label">Term:</label>
+            <a href="#" data-type="select" data-source="/crm/cases/get_policy_types" data-type="text" class="editable-click" data-name="policy_type_id" data-value="<%= @approved_details.try(:policy_type_id)%>">
+              <%= @approved_details.try(:policy_type).try(:name) || "Empty" %>
+            </a>
+
+            <label class="crm-case-policy-detail-label">Rate Class:</label>
+            <a href="#" data-type="text" class="editable-click" data-name="carrier_health_class" data-value="<%= @approved_details.try(:carrier_health_class)%>">
+              <%= @approved_details.try(:carrier_health_class) || "Empty" %>
+            </a>
+
+            <label class="crm-case-policy-detail-label">Coverage Amount:</label>
+            <a href="#" class="editable-click" data-type="text" data-name="face_amount" data-value="<%= @approved_details.try(:face_amount)%>">
+              <%= @approved_details.try(:face_amount) || "Empty" %>
+            </a>
+
+            <label class="crm-case-policy-detail-label">Monthly Rate:</label>
+            <a href="#" data-type="text" class="editable-click" data-name="monthly_premium" data-value="<%= @approved_details.try(:monthly_premium)%>" >
+              <%= @approved_details.try(:monthly_premium) || "Empty"%>
+            </a>
+
+            <label class="crm-case-policy-detail-label">Annual Rate:</label>
+            <a href="#" data-type="text" class="editable-click" data-name="annual_premium" data-value="<%= @approved_details.try(:annual_premium)%>">
+              <%= @approved_details.try(:annual_premium) || "Empty"%>
+            </a>
+          </div>
+
+          <label class="crm-case-policy-detail-label">Policy Number:</label>
+          <%= @crm_case.policy_number %>
+
+          <label class="crm-case-policy-detail-label">Policy Date:</label>
+          <%= @crm_case.effective_date %>
+        </div>
+        <div class="span4">
+          <button class="btn-primary" style="float:right; margin:15px; border-radius:3px;">Policy Status</button>
+        </div>
+      </div>
+
+      <script>
+        $(document).ready(function(){
+          $('#crm-case-quoted-details').editable({
+            selector: 'a',
+            url: CLU_BASE_URLS.crmCaseBaseURL + 'update_details_attribute',
+            pk: $('#crm-case-quoted-details').attr('data-id'),
+            params: function(params) {
+              params.case_id = <%= @crm_case.id %>;
+              return params;
+            }
+          });
+
+          $('#crm-case-approved-details').editable({
+            selector: 'a',
+            url: CLU_BASE_URLS.crmCaseBaseURL + 'update_details_attribute',
+            pk: $('#crm-case-approved-details').attr('data-id'),
+            params: function(params) {
+              params.case_id = <%= @crm_case.id %>;
+              return params;
+            }
+          });
+
+          $('#crm-case-quoted-details-carrier.ajax').bind('railsAutocomplete.select', function(event, data){
+            $.ajax({
+              url: CLU_BASE_URLS.crmCaseBaseURL + 'update_details_attribute',
+              data: { case_id: <%= @crm_case.id %>, name: 'carrier_id', value: data.item.id,
+              pk: $('#crm-case-quoted-details').attr('data-id') },
+              type: 'post'
+            });
+          });
+
+          $('#crm-case-approved-details-carrier.ajax').bind('railsAutocomplete.select', function(event, data){
+            $.ajax({
+              url: CLU_BASE_URLS.crmCaseBaseURL + 'update_details_attribute',
+              data: { case_id: <%= @crm_case.id %>, name: 'carrier_id', value: data.item.id,
+              pk: $('#crm-case-approved-details').attr('data-id') },
+              type: 'post'
+            });
+          });
+        });
+      </script>
+
+      <style>
+        .crm-case-policy-detail-label {
+          margin-top: 20px;
+          font-weight: bold;
+        }
+      </style>
+
+    </div>
+  </div>
+</div>

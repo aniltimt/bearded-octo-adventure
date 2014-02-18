@@ -1,0 +1,8 @@
+<% if @activity.persisted? %>
+  $('#flash-container').html('Successfully created');
+  $( "#main-container" ).html( "<%= escape_javascript( render( :partial => "index" ) ) %>" );
+<% else %>
+  $('#flash-container').html('Not created');
+  $( "#main-container" ).html( "<%= escape_javascript( render( :partial => "form" ) ) %>" );
+<% end %>
+

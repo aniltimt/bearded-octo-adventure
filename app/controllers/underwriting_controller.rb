@@ -1,0 +1,3 @@
+class UnderwritingController < ApplicationController
+
+end

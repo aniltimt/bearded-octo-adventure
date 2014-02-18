@@ -1,0 +1,25 @@
+<div style='padding:8px' id='quotingbuttons'>
+
+  <% partials = %w[initial_discovery advanced_discovery basic_info health] %>
+
+  <%= render 'pane_buttons', partials:partials %>
+
+  <%= form_for @connection, as:'connection', url:quotes_form_action, html:{id:'quoter_form', 'target' => '_blank', remote:true} do |f| %>
+    <div>
+      <%= submit_tag 'hidden submit', onclick:"this.form.dest.value=null" %>
+    </div>
+
+    <% partials.each_with_index do |partial, i| %>
+      <%= content_tag :div, id:partial, class:('hide' if i > 0) do %>
+        <%= render partial, builder: f %>
+      <% end %>
+    <% end %>
+
+    <%= f.hidden_field :agent_id %>
+    <%= f.hidden_field :profile_id %>
+    <%= hidden_field_tag :dest %>
+  <% end %>
+
+</div>
+
+<script>showFromSiblings('#initial_discovery');</script>

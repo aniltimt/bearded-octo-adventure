@@ -1,0 +1,8 @@
+<ul class="nav nav-tabs" style="margin-bottom: -1px" id="myTab">
+  <li class="<%= selected=='personal' ? 'active' : ''%>">
+    <%= link_to "Personal", personal_usage_users_path(:user_id=>current_user.id, :top_tab_bar=>"my_account"), :remote => true %>
+  </li>
+  <li class="<%= selected == 'profiles' ? 'active' : ''%>">
+    <%= link_to "Profiles", usage_profiles_path(:top_tab_bar=>"my_account"), :remote => true %>
+  </li>
+</ul>

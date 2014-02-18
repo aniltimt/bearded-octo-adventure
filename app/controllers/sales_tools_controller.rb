@@ -1,0 +1,4 @@
+class SalesToolsController < ApplicationController
+
+
+end

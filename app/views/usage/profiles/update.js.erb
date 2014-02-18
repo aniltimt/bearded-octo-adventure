@@ -1,0 +1,6 @@
+<% if  @profile.valid? %>
+  $('#flash-container').html('Successfully updated');
+  $( "#main-container" ).html( "<%= escape_javascript( render( :partial => "index" ) )%>" );
+<% else %>
+  $( "#main-container" ).html( "<%= escape_javascript( render( :partial => "form", :locals => {:action_path_info => { :action => "update" }, :method_type => 'put'} ) )%>" );
+<% end %>

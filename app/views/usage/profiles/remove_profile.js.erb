@@ -1,0 +1,6 @@
+<% if @removed %>
+  $('#flash-container').html('Successfully Removed');
+<% else %>
+  $('#flash-container').html('Not Removed');
+<% end %>
+$( "#main-container" ).html( "<%= escape_javascript( render( :partial => "form", :locals => {:action_path_info => "/usage/profiles/"+"#{@profile.id}" , :method_type => 'put'} ) )%>" );

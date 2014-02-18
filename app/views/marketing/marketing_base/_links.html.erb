@@ -1,0 +1,21 @@
+<p>The following customized link will allow your clients to access your custom EZLIFESALES portal.</p>
+
+<h1>EZ Life Link</h1>
+
+<p>This link provides client access to the entire lead generation process. Your client will:</p>
+
+<ul>
+  <li>run the health analyzer</li>
+  <li>receive quotes</li>
+  <li>select a product and a carrier</li>
+  <li>complete the EZLifeSales application</li>
+</ul>
+
+<p>Once completed, you will be notified via email alert and can review, edit as needed, and approve the application for submission.</p>
+
+<p>Note: This link is ideal for marketing efforts and for use with clients that are able to follow the process without your assistance. To use the EZ Life Link, simply copy the URL below and send to your clients.</p>
+
+<p>
+  EZ Life Link URL for current profile: (<%= current_user.current_profile(cookies).try(:name) || '<em>-none-</em>'.html_safe %>)<br>
+  <%= text_field_tag :quoter_link, new_quoting_quote_url(agent_id:current_user.id, profile_id:current_user.current_profile(cookies).try(:id)), readonly:true, style:'cursor:pointer; width:100%;', onclick:"this.select();" %>
+</p>

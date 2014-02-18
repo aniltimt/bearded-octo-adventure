@@ -1,0 +1,14 @@
+<ul class="nav nav-list" style="color:black">
+  <li class="nav-header">Campaigns</li>
+
+  <% @marketing_campaigns.each do |marketing_campaign| %>
+    <li style="width:200px;">
+      <%= link_to  "marketing/campaigns/destroy?id=#{marketing_campaign.id}", :remote => true, :id =>"delete-campaign-#{marketing_campaign.id}", :style => "float:right;" do  %>Destroy
+      <% end %>
+      <%= link_to  "marketing/campaigns/edit?id=#{marketing_campaign.id}", :remote => true, :id =>"edit-campaign-#{marketing_campaign.id}", :style => "float:right;" do  %> 
+        <i class="icon-pencil"></i>Edit|
+      <% end %>
+      <%= link_to "#{marketing_campaign.name}", "marketing/campaigns?id=#{marketing_campaign.id}", :remote => true   %>
+    </li>
+  <% end %>
+</ul>

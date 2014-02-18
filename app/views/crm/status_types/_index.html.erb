@@ -1,0 +1,19 @@
+<%= render :partial => "shared/tab/system_management", :locals => {:selected => "status"} %>
+<div style="margin-bottom: 3px;" class="row title-row">
+	<div class="navbar-inner"><h4 class="title system-management-row">Status Rules</h4></div>
+</div>
+
+<div style="min-height: 600px;">
+<div style="width: 19.6%; height: 100%;" id="status-rules-left">
+<%= render :partial =>  "status_types" %><br /><br />
+&nbsp;
+<%= link_to "Add new Status type", 'crm/status_types/new', :remote => true, :class => "btn btn-primary"%>
+</div>
+
+<div style="" id="auto_system_task_rules" class="status-rules-main">
+	<h5 class="status-change-header">Status Change Follow Ups</h5>
+	<br />
+	<br />
+	<h5 class="status-change-header">Exam Follow Ups</h5>
+</div>
+</div>

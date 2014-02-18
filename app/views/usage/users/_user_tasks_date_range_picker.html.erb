@@ -1,0 +1,15 @@
+<%= form_tag( tasks_usage_users_path(:user_id=>@usage_user.id), :remote => true, :id => "user-#{task_type}-tasks-between-dates",
+              :class => "user-#{task_type}-tasks-between-dates ajax" , :method => :get, :style=>"margin: 10px 0;" ) do  %>
+  <fieldset>
+    <div class="control-group">
+      <div class="controls">
+        <div class="input-prepend">
+          <input type="hidden" name="from_date" id="from-date-range">
+          <input type="hidden" name="to_date" id="to-date-range">
+          <input type="text" name="user-<%= task_type %>-tasks-date-range-field" id="user-<%= task_type %>-tasks-date-range-field" readonly>
+          <span class="add-on"><i class="icon-calendar"></i></span>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+<% end %>

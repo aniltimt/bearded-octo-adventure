@@ -1,0 +1,13 @@
+<% @crm_system_tasks.each do |system_task| %>
+  <div class="row-fluid" style="background-color: #9EEDDC; width: auto; padding: 5px 0 0 10px; margin-bottom: 5px;">
+    <div class="span4">
+      <%= system_task.try(:task_type).try(:name) %>
+    </div>
+    <div class="span4">
+      <%= system_task.label %>
+    </div>
+    <div class="span4">
+      <%= system_task.due_at %>
+    </div>
+  </div>
+<% end %>

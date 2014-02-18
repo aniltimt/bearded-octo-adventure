@@ -1,0 +1,57 @@
+<%= render :partial => "shared/tab/agency_management", :locals => {:tab => "l_and_c"} %>
+
+<div style="background-color:#fff; height:700px">
+  <div class="row title-row">
+    <div class="navbar-inner"><h4 class="title system-management-row">Licensing & Contracting</h4></div>
+  </div>
+  <div style="margin-top: 15px;" class="row">
+    <div class="span1">
+      <h3 style="margin-left: 20px; margin-top: 5px;">AML</h3>
+    </div>
+    <div class="span5">
+      <label style="font-weight: bold;">Aml Vendor Name:</label>
+      <a href="#" id="name" data-type="text" data-pk="<%= @aml_vendor.try(:id)%>" data-url="/usage/users/update_aml_vendor"><%=  @aml_vendor.try(:name) %></a>
+    </div>
+    <div class="span5">
+      <label style="font-weight: bold;">Aml Completion:</label>
+      <a href="#" id="completion" data-type="text" data-pk="<%= @usage_user.try(:id)%>" data-url="/usage/users/update_aml_vendor"><%= @aml.try(:completion)%></a>
+	  </div>
+  </div>
+  <div style="margin-bottom: 0px;" class="row">
+    <div style="margin-left: 35px; font-size: 18px;" class="span2">
+      <%= link_to "New Contract","usage/contracts/new?id=#{@usage_user.try(:id)}",:remote => true %>
+    </div>
+    <div style="font-size: 18px;" class="span2">
+      <%= link_to "New License", "usage/licenses/new?id=#{@usage_user.try(:id)}",:remote => true %>
+    </div>
+  </div>
+  <script>
+   	$(document).ready(function(){
+	  $('#name').editable();
+	  $('#completion').editable();
+	});
+  </script>	
+  <div class="row">
+    <div class="span11">
+      <% @states.each do |state|%>
+        <% state_id = State.find_by_name(state).id %>
+        <div class="accordion-group">
+          <div class="row" style="margin-left:0px;">
+            <a class="accordion-toggle">
+              <div data-toggle = "collapse", data-target = ".collapse<%= state_id %>"><i class="icon-play"></i><b>
+                <%= state %>(<%= @usage_user.agent_field_set.contracts.where("state_id = #{state_id} ").count %>)</b>
+                <%= @usage_user.agent_field_set.licenses.where("state_id = #{state_id}")[0].try(:number) %>
+              </div>
+            </a>
+            <div class = "collapse<%= state_id %>">
+              <table class="table table-striped" style="border-width:2px; border-style:solid; border-color:#DCDCDC;">
+                <%= render :partial => "usage/users/licenses", :locals => {:state =>state_id} %>
+                <%= render :partial => "usage/users/contracts", :locals => {:state =>state_id} %>
+              </table>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>  
+</div>

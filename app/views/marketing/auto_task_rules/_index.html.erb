@@ -1,0 +1,16 @@
+<%= render :partial => "shared/tab/marketing", :locals => {:selected => "AutoTaskRules"} %>
+<div class="row title-row">
+<div class="navbar">
+  <div class="navbar-inner"><h4 class="title system-management-row" >Auto Task Rules</h4></div>
+</div>
+
+<div style="float:left; width:20%;">
+  <%= render :partial =>  "auto_task_rules" %><br /><br />
+  &nbsp;
+<i style="margin-left: 10px;" class="icon-plus-sign icon-blue"></i>
+<%= link_to "New Auto Task Rule", new_marketing_auto_task_rule_path, :remote => true, :class => "btn btn-primary"%>
+</div>
+
+<div id="new_marketing_auto_task_rule" style="float:right; background-color:#d9deec; color:#000; width:79%; margin-top: -20px; height:435px; overflow: auto;  ">
+</div>
+ </div>

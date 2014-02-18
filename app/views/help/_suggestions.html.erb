@@ -1,0 +1,20 @@
+<% content_for :suggestions_state,"active" #sets state for tab bar -%>
+<%= render :partial => "help/tabs" %>
+<div class="nestedTabbedArea">
+	<%= render :partial => "help/header" %>
+	<div>
+		<% if flash[:notice] %>
+    		<p class="flash-notice"><%= flash[:notice] %></p>
+    	<% else %>
+    		<h3>We Welcome Feedback!</h3>
+		    <p>Please submit suggestions or comments on system upgrades or additional features below.</p>
+
+		    <form id="suggestion_form" action="/help/post_suggestion" method="POST" data-remote="true" >
+		        <label for="suggestion">Suggestions:</label>
+		        <textarea name="suggestion" cols="60" rows="10" style="width:100%;"></textarea><br />
+		        <input type="submit" value="Submit" />
+		    </form>
+  		<% end %>
+		
+	</div>
+</div>

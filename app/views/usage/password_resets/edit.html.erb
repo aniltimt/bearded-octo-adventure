@@ -1,0 +1,15 @@
+<div style="margin-left:300px;">
+<h1>Reset Password</h1>
+<%= form_for @user, :url => usage_password_reset_path(params[:id])  do |f| %>
+  <div class="row">
+    <div class="span12" style>
+      <%= f.label :password %>
+      <%= f.password_field :password %><br />
+
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation %>
+    </div>
+    <%= f.submit "Update Password" %>
+  </div>
+<% end %>
+</div>

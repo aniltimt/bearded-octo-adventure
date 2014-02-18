@@ -1,0 +1,5 @@
+development:
+  web_url: "https://www.smminsurance.com/NewOrder?"
+
+production:
+  web_url: "https://www.smminsurance.com/NewOrder?"

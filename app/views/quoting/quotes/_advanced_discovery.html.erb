@@ -1,0 +1,150 @@
+<div id="progress_area">
+  <div id="progress_bar" class="second_state"></div>
+<%= render 'pane_buttons', partials:[:initial_discovery, :advanced_discovery] %>
+</div>
+<h2>Advanced Discovery</h2>
+
+<p>Financial needs analysis based on results of Initial Discovery</p>
+
+<div id='financial-needs-calculator'>
+  <small>
+    <p>Enter only numbers, no commas or dollar signs.</p>
+    <p>Click a line item's <i class='icon-question-sign'></i> to display advice on completing a particular section of the calculator.</p>
+  </small>
+
+  <div id='general'>
+    <p class="header blue-header">General</p>
+    <span class="bold">
+    <%= financial_needs_calculator_row 'Final expenses', {input_prefix:'$'}, value:15000, class:'liability' %>
+    <%= financial_needs_calculator_row 'Outstanding debts (other than mortgage)', {input_prefix:'$'}, class:'liability' %>
+    <%= financial_needs_calculator_row 'Outstanding mortgage', {input_prefix:'$'}, class:'liability' %>
+  </span>
+  </div>
+  <div id='children'>
+    <p class="header blue-header">Children</p>
+    <div id='children-container'></div>
+    <a class='btn btn-primary' style="margin-top: 10px; margin-left: 20px;" onclick='addFromTemplate("#children-container","calculator-child-template")'>Add Child</a>
+    <script type='text/template' id='calculator-child-template'>
+      <div class='child calc-child-left'>
+        <span class=label>Age</label>
+        <input class=age value='9'>
+        <span class=label>Cost of college years</label>
+        $<input class=tuition value='17500'>
+        <a class=btn onclick='rmFromTemplate(this, ".child")'>Remove child</a>
+      </div>
+    </script>
+  </div>
+  <div class="top-20"></div>
+  <div id='income'>
+    <p class="header blue-header">Estimate your family's income needs if you died today</p>
+    <span class="bold">
+    <%= financial_needs_calculator_row 'Total annual income', {input_prefix:'$'} %>
+    <%= financial_needs_calculator_row 'How many years should income be provided?' %>
+    <%= financial_needs_calculator_row 'What is your current savings and investments (excluding retirement funds)?', {input_prefix:'$'}, class:'asset' %>
+    <%= financial_needs_calculator_row 'What are your current retirement savings?', {input_prefix:'$'}, class:'asset' %>
+    <%= financial_needs_calculator_row 'What is the value of the life insurance in force on your life?', {input_prefix:'$'}, class:'asset' %>
+  </span>
+  </div>
+  <div id='spouse'>
+    <p class="header blue-header">If your spouse would work following your death&hellip;</p>
+    <span class="bold">
+    <%= financial_needs_calculator_row 'What is your spouse\'s annual income?', {input_prefix:'$'} %>
+    <%= financial_needs_calculator_row 'How many years does your spouse expect to work?' %>
+    <%= financial_needs_calculator_row 'Your spouse\'s marginal tax rate?', {input_prefix:'%'}, value:25, id:'spouse-tax-rate' %>
+  </span>
+  </div>
+  <div id='misc'>
+    <p class="header blue-header">Projections</p>
+    <span class="bold">
+    <%= financial_needs_calculator_row 'Estimated inflation rate', {input_prefix:'%'}, value:3 %>
+    </span>
+    <%#= financial_needs_calculator_row 'After-tax net investment yield', value:6, input_prefix:'%' %>
+  </div>
+  <div id='analyze'>
+    <p style="margin-left: 20px; margin-top: 10px;">
+      <a class="btn btn-primary" onclick='runFinancialNeedsCalculator()'>Analyze</a>
+      &nbsp; &nbsp;<span class="bold">(analysis appears below)</span>
+    </p>
+  </div>
+</div>
+
+<h4>Initial Coverage Recommendation(s):</h4>
+
+<p>Based on your &lt;inputs&gt; (Exp. Marital Sttus, Mortgage, Debt, Final Expenses, and Future Income Needs), we've calculated your personalized solutions.</p>
+
+<p>Remember that your insurance coverage solution can be adjusted up or down to satisfy your personal needs and budget.</p>
+
+<table id='coverage-recommendations' class=hide>
+  <tr>
+    <th colspan=2>A Good Start</th>
+    <th colspan=2>Your Calculation</th>
+    <th colspan=2>Financial Security</th>
+  </tr>
+  <tr class='children'>
+    <td>Child needs</td>
+    <td><input readonly class='a'></td>
+    <td>Child needs</td>
+    <td><input readonly class='b'></td>
+    <td>Child needs</td>
+    <td><input readonly class='c'></td>
+  </tr>
+  <tr class='continue-income' valign=top>
+    <td>Continue income</td>
+    <td>
+      <input readonly class='a years' value='25 yrs'>
+      <br>
+      <input readonly class='a' value='85%'>
+      <br>
+      <input readonly class='c income'>
+    </td>
+    <td>Continue income</td>
+    <td>
+      <input readonly class='b years'>
+      <br>
+      <input readonly class='b' value='100%'>
+      <br>
+      <input readonly class='c income'>
+    </td>
+    <td>Continue income</td>
+    <td>
+      <input readonly class='c years' value='25 yrs'>
+      <br>
+      <input readonly class='c' value='100%'>
+      <br>
+      <input readonly class='c income'>
+    </td>
+  </tr>
+  <tr class='other-cash'>
+    <td>Other needs</td>
+    <td><input readonly class='a'></td>
+    <td>Other needs</td>
+    <td><input readonly class='b'></td>
+    <td>Other needs</td>
+    <td><input readonly class='c'></td>
+  </tr>
+  <tr class='current-assets'>
+    <td>Current assets</td>
+    <td><input readonly class='a'></td>
+    <td>Current assets</td>
+    <td><input readonly class='b'></td>
+    <td>Current assets</td>
+    <td><input readonly class='c'></td>
+  </tr>
+  <tr class='need'>
+    <td>Need</td>
+    <td><input readonly class='a'></td>
+    <td>Need</td>
+    <td><input readonly class='b'></td>
+    <td>Need</td>
+    <td><input readonly class='c'></td>
+  </tr>
+  <tr style="margin-top: 10px !important;" align=center>
+    <td class=pagination-centered colspan=2><a style="margin-top: 10px !important; margin-left: 62px !important;" class="btn btn-primary" onclick="selectCoverageRecommendation(this, 0)">Use this</a></td>
+    <td class=pagination-centered colspan=2><a style="margin-top: 10px !important; margin-left: 62px !important;" class="btn btn-primary" onclick="selectCoverageRecommendation(this, 1)">Use this</a></td>
+    <td class=pagination-centered colspan=2><a style="margin-top: 10px !important; margin-left: 62px !important;" class="btn btn-primary" onclick="selectCoverageRecommendation(this, 2)">Use this</a></td>
+  </tr>
+</table>
+<div class="top-20">
+<div class=pagination-centered>
+  <a class='btn btn-primary' onclick="showFromSiblings('#initial_discovery')">Prev</a>
+</div>

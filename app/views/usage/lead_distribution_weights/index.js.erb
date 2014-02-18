@@ -1,0 +1,10 @@
+<% if params[:auto_assigning] == "true" %>
+  $("#main-container" ).html( "<%= escape_javascript( render( :partial => "index" ) ) %>" );
+<% else %>
+  $(".only_tag_value").show();
+  $(".ldw_container").remove();
+  $("#weights_container_<%= params[:agent_id] %> .only_tag_value" ).hide();
+  $(".agent_container_div").css('background', 'transparent');
+  $("#agent_container_div_<%= params[:agent_id] %>").css('background-color', '#EFEFEF');
+  $("#weights_container_<%= params[:agent_id] %>" ).append( "<%= escape_javascript( render( :partial => "index" ) ) %>" );
+<% end %>

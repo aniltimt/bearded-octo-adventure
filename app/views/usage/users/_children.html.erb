@@ -1,0 +1,19 @@
+<input type="checkbox" data-user-id="<%= children.id %>" class="permissions-user-checkbox<%= @box_id %> select-checkbox">
+
+<%= link_to "/usage/users/personal?user_id=#{children.id}", :remote => true do %>
+  <i class="icon icon-link" id = "personal-link<%=children.id%>"  ></i>
+<% end %>
+<%= link_to "/usage/users/impersonate?id=#{children.id}" do %>
+  <i class="icon icon-beaker" id = "lead-link<%=children.id%>"  ></i>
+<% end %>
+<%= link_to "/usage/staff_assignment/index?tab=privileges", :remote => true do %>
+  <i class="icon icon-group" id = "staff-assignment-link"  ></i>
+<% end %>
+
+<a href="javascript: void(0);" id="permission-user-select<%= children.id %>" class="permission-user-select-event ajax" data-user-id="<%= children.id %>" data-box-id="<%= @box_id %>" title="<%= children.full_name.to_s %>">
+  <%= children.full_name.to_s %>
+</a>
+<a href="javascript: void(0);" id="make-user-parent<%= children.id %>" class="make-user-parent ajax" data-user-id="<%= children.id %>" title="Double click to make this user a parent user">
+  <i class="icon icon-link"></i>
+</a>
+<br>

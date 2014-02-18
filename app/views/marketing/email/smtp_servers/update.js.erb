@@ -1,0 +1,6 @@
+<% if @smtp_server.valid? %>
+  $('#flash-container').html("Successfully Updated.");
+<% else %>
+  $('#flash-container').html("Not Updated.");
+<% end %>
+$( "#main-container" ).html( "<%= escape_javascript( render( :partial => "edit" ) ) %>" );

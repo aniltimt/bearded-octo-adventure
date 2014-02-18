@@ -1,0 +1,47 @@
+<h4>Tobacco</h4>
+
+<p style="margin-right: 390px;" class=pull-right>
+  <%= view_toggling_radio_and_label_tags :tobacco_use, input:{'data-disable-hidden' => 1} %>
+</p>
+<p class="bold">Have you ever used tobacco products?</p>
+
+<div id='_tobacco_use' class='indent hide'>
+  <p>Check products you have used:</p>
+  <div class=indent>
+    
+    <p><%= view_toggling_check_and_label_tags :cigarettes_use, 'Cigarettes' %></p>
+    <div id='_cigarettes_use' class=indent>
+      <label>Cigarettes per month</label>
+      <%= f.text_field :cigarettes_per_month %>
+      <label>Last cigarette</label>
+      <%= f.text_field :last_cigarette, class:'date' %>
+    </div>
+
+    <p><%= view_toggling_check_and_label_tags :cigars_use, 'Cigars' %></p>
+    <div id='_cigars_use' class=indent>
+      <label>Cigars per month</label>
+      <%= f.text_field :cigars_per_month %>
+      <label>Last cigar</label>
+      <%= f.text_field :last_cigar, class:'date' %>
+    </div>
+
+    <p><%= view_toggling_check_and_label_tags :pipe_use, 'Pipe' %></p>
+    <div id='_pipe_use' class=indent>
+      <label>Last pipe</label>
+      <%= f.text_field :last_pipe, class:'date' %>
+    </div>
+
+    <p><%= view_toggling_check_and_label_tags :chewing_tobacco_use, 'Chewing tobacco' %></p>
+    <div id='_chewing_tobacco_use' class=indent>
+      <label>Last chewing_tobacco</label>
+      <%= f.text_field :last_tobacco_chewed, class:'date' %>
+    </div>
+
+    <p><%= view_toggling_check_and_label_tags :patch_or_gum_use, 'Nicotine patch or gum' %></p>
+    <div id='_patch_or_gum_use' class=indent>
+      <label>Last patch or gum</label>
+      <%= f.text_field :last_nicotine_patch_or_gum, class:'date' %>
+    </div>
+
+  </div>
+</div>

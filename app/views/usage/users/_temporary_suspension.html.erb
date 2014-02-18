@@ -1,0 +1,3 @@
+<span id="suspension_status_<%= ch.id %>">
+  <%= link_to suspension_status(ch), update_agent_field_set_usage_user_path(:id => ch, :agent_field_set => { :temporary_suspension => !ch.agent_field_set.temporary_suspension } ), :remote => true, :method => :put%>
+</span>

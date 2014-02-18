@@ -1,0 +1,119 @@
+<input type="hidden" id="get-tab-value-to-display" value="<%= params[:tab_selected] %>">
+<input type="hidden" id="user-is-manager" value="<%= params[:mgr] %>">
+
+<% if params[:tab_selected]=="a_mng_tab" %>
+  <%= render :partial => "shared/tab/agency_management", :locals => {:tab => 'bookofbus'} %>
+<% else %>
+  <%= render :partial => "/crm/cases/connection_cases_tabs", :locals => {:tab => 'books'} %>
+<% end %>
+
+<div class="row title-row">
+  <div class="span6"><h4 class="title system-management-row">Book of Business</h4></div>
+  <div class="span1"></div>
+  <div style="margin-top: 15px;" class="span5">
+    <button style="margin-top: -9px;" id="create-crm-connection" class="btn btn-primary ajax" data-action="book_of_business" data-base-url="/crm/cases/">
+        New
+    </button>
+    <%= render :partial => "shared/search_client", :locals => {:base_url => '/crm/cases/', :action => 'book_of_business'} %>
+  </div>
+</div>
+<div>
+  <%= render :partial => 'shared/search_filter_bar' %>
+</div>
+<div class="row" style="margin-bottom: 0px !important;" id="lead-row"><strong>
+  <div class="bob-check-client span3"><input style="margin-top: -2px;" type="checkbox" id="select-all-checkbox">&nbsp;&nbsp;&nbsp;&nbsp;Client</div>
+  <div class="span1">Product</div>
+  <div class="span1">Carrier</div>
+  <div class="span1">Plan</div>
+  <div class="bob-policy span1">Policy #</div>
+  <div class="span1">Premium</div>
+  <div class="bob-status span1">Status</div>
+  <div class="span1">Effective</div>
+  <div class="span1 bob-expires">Expires&nbsp;&nbsp;<span style="float: right;" class="icon-large icon-tag blue"></span></div></strong>
+</div>
+
+
+<% @crm_cases.each do |crm_case|%>
+    <div class="row" style="margin-bottom: 0px !important;">
+      <div class="bob-check-client span3">
+        <input style="margin-top: -2px;" type="checkbox" class="select-checkbox" data-id="<%= crm_case.id %>">&nbsp;&nbsp;&nbsp;&nbsp;
+        <a data-remote='true' href="<%= connection_summary_crm_connections_url(:case_id => crm_case.id) %>">
+          <%= truncate(crm_case.crm_connection.try(:full_name), :length => 25) %>
+        </a>
+      </div>
+      <div class="span1">
+        <a data-remote='true' href="<%= connection_summary_crm_connections_url(:case_id => crm_case.id, :connection_tab=>"cases_index") %>">
+          <%= truncate(crm_case.current_details.try(:plan_name), :length => 10) %>
+        </a>
+      </div>
+      <div class="span1">
+        <a data-remote='true' href="<%= connection_summary_crm_connections_url(:case_id => crm_case.id) %>">
+          <%= truncate(crm_case.current_details.try(:carrier_name), :length => 10) %>
+        </a>
+      </div>
+      <div class="span1">
+        <a data-remote='true' href="<%= connection_summary_crm_connections_url(:case_id => crm_case.id) %>">
+          <%= truncate(crm_case.current_details.try(:category).try(:name), :length => 10) %>
+        </a>
+      </div>
+      <div class="bob-policy span1">
+        <a data-remote='true' href="<%= connection_summary_crm_connections_url(:case_id => crm_case.id) %>">
+          <%= truncate(crm_case.policy_number, :length => 10) %>
+        </a>
+      </div>
+      <div class="span1">
+        <a data-remote='true' href="<%= connection_summary_crm_connections_url(:case_id => crm_case.id) %>">
+          <%= crm_case.approved_premium_due %>
+        </a>
+      </div>
+      <div class="bob-status span1">
+        <a data-remote='true' href="<%= connection_summary_crm_connections_url(:case_id => crm_case.id) %>">
+          <%= crm_case.status_string %>
+        </a>
+      </div>
+      <div class="span1">
+        <a data-remote='true' href="<%= connection_summary_crm_connections_url(:case_id => crm_case.id) %>">
+          <%= strf_date(crm_case.effective_date) %>
+        </a>
+      </div>
+      <div style="width: 10%;" class="span1">
+        <a data-remote='true' href="<%= connection_summary_crm_connections_url(:case_id => crm_case.id) %>">
+          <%= strf_date(crm_case.termination_date) %>
+        </a>&nbsp;&nbsp;
+        <a style="float: right;" class="crm-case-tagging-pop-up ajax" connection_id="<%= crm_case.crm_connection.try(:id) %>" role="button" data-toggle="modal">
+          <i class="icon-tags"></i>
+        </a>
+      </div>
+    </div>
+<% end %>
+
+<div class="row" style="padding-top:30px;">
+  <div class="span1">
+    <button id="assigning-agent" class="btn btn-small btn-primary ajax" data-action="book_of_business" data-base-url="/crm/cases/">
+      Assign
+    </button>
+  </div>
+  <div class="span4">
+    <a href="#container-for-tagging-tags" id="save_value" role="button" class="btn btn-small btn-primary ajax" name="save_value" data-toggle="modal">
+      Tag
+    </a>
+  </div>
+  <div class="span8">
+    <%= ajax_will_paginate @crm_cases %>
+  </div>
+</div>
+
+<div id="container-for-tagging-tags" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="color:black;">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Tagging Tags</h3>
+  </div>
+  <div class="modal-body">
+  <%= form_tag(create_multiple_tagging_tags_path, :remote => true) do %>
+    <%= render :partial => "tagging/tags/form" %>
+  <% end %>
+  </div>
+</div>
+
+<div id="assign-agent-modal-pop-up" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="color:black;width:750px;">
+</div>

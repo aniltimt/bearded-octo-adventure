@@ -1,0 +1,8 @@
+development:
+  xml_web_service_url: "http://184.106.112.25/Service1.asmx?op=getXML"
+
+test:
+  xml_web_service_url: "http://184.106.112.25/Service1.asmx?op=getXML"
+
+production:
+  xml_web_service_url: ""

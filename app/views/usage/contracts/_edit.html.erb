@@ -1,0 +1,12 @@
+<%= render :partial => "shared/tab/agency_management", :locals => {:tab => "l_and_c"} %>
+<%#= render :partial => "shared/tab/contracts", :locals => {:selected => "Contracts"} %>
+<div style="background-color:#fff; height:500px">
+<div class="navbar">
+	<div class="navbar-inner"><h4 style="color:black">Usage Contracts</h4></div>
+</div>
+<div style="float:left; width:175px;">
+	<br /><br /><br /><br /><br /><br /><br /><br /><i class="icon-plus-sign icon-blue"></i>
+  	<%#= link_to "New Contract", new_usage_contract_path, :remote => true   %> 
+ </div>
+<div id="tag_keys" style="float:right; background-color:#d9deec; color:#000; width:80%; height:435px; overflow: auto;  ">
+<%= render 'form' %>

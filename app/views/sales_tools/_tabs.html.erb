@@ -1,0 +1,8 @@
+<ul class="nav nav-tabs" id="myTab">
+	<li class="<%= yield(:calculators_state) %>"><%= link_to "Financial Calculators",	"/sales_tools/calculators",		remote: true %></li>
+	<li class="<%= yield(:contracting_state) %>"><%= link_to "Contracting",				"/sales_tools/contracting",		remote: true %></li>
+	<li class="<%= yield(:planning_state) %>"><%= link_to "Planning",					"/sales_tools/planning",		remote: true %></li>
+	<li class="<%= yield(:productivity_state) %>"><%= link_to "Productivity",				"/sales_tools/productivity",	remote: true %></li>
+	<li class="<%= yield(:quoters_state) %>"><%= link_to "Quoters",					"/sales_tools/quoters",			remote: true  %></li>
+	<li class="<%= yield(:training_state) %>"><%= link_to "Training",					"/sales_tools/training",		remote: true %></li>
+</ul>

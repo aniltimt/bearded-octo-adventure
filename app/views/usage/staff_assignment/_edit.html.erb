@@ -1,0 +1,38 @@
+<%= render :partial => "shared/tab/agency_management", :locals => {:tab => params[:tab] == "users" ? "users" : "privileges"} %>
+
+<div style="background-color:#fff; height:750px">
+
+<div style="float:right; width:175px;">
+  <%= link_to 'Back', usage_staff_assignment_index_path(:tab=> params[:tab]), :remote => true %>
+</div>
+    
+<h4>Edit Staff Assignment</h4>
+
+
+<%= form_for(@staff, :remote => true) do |staff| %>
+<%= hidden_field_tag :tab, params[:tab] %>
+  <% if @staff.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@staff.errors.count, "error") %> prohibited this staff assignment from being saved:</h2>
+
+      <ul>
+      <% @staff.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <br />Administrative Assistant <%= staff.autocomplete_field :administrative_assistant_name, autocomplete_usage_user_first_name_usage_staff_assignment_path(:role_name => "administrative_assistant"), :id_element => '#usage_staff_assignment_administrative_assistant_id', :value => @staff.try(:administrative_assistant).try(:first_name), :style => "width:150px" %><%= staff.hidden_field :administrative_assistant_id %>
+  <br />Case Manager <%= staff.autocomplete_field :case_manager_name, autocomplete_usage_user_first_name_usage_staff_assignment_path(:role_name => "case_manager"), :id_element => '#usage_staff_assignment_case_manager_id', :value => @staff.try(:case_manager).try(:first_name), :style => "width:150px" %><%= staff.hidden_field :case_manager_id %>
+  <br />Manager <%= staff.autocomplete_field :manager_name, autocomplete_usage_user_first_name_usage_staff_assignment_path(:role_name => "manager"), :id_element => '#usage_staff_assignment_manager_id', :value => @staff.try(:manager).try(:first_name), :style => "width:150px" %><%= staff.hidden_field :manager_id %>
+  <br />Policy Specialist <%= staff.autocomplete_field :policy_specialist_name, autocomplete_usage_user_first_name_usage_staff_assignment_path(:role_name => "policy_specialist"),:id_element => '#usage_staff_assignment_policy_specialist_id', :value => @staff.try(:policy_specialist).try(:first_name), :style => "width:150px" %><%= staff.hidden_field :policy_specialist_id %>
+  <br />Sales Assistant <%= staff.autocomplete_field :sales_assistant_name, autocomplete_usage_user_first_name_usage_staff_assignment_path(:role_name => "sales_assistant"),:id_element => '#usage_staff_assignment_sales_assistant_id', :value => @staff.try(:sales_assistant).try(:first_name), :style => "width:150px" %><%= staff.hidden_field :sales_assistant_id %>
+  <br />Sales Coordinator <%= staff.autocomplete_field :sales_coordinator_name, autocomplete_usage_user_first_name_usage_staff_assignment_path(:role_name => "sales_coordinator"),:id_element => '#usage_staff_assignment_sales_coordinator_id', :value => @staff.try(:sales_coordinator).try(:first_name), :style => "width:150px" %><%= staff.hidden_field :sales_coordinator_id %>
+  <br />Sales Support <%= staff.autocomplete_field :sales_support_name, autocomplete_usage_user_first_name_usage_staff_assignment_path(:role_name => "sales_support"),:id_element => '#usage_staff_assignment_sales_support_id', :value => @staff.try(:sales_support).try(:first_name), :style => "width:150px" %><%= staff.hidden_field :sales_support_id %>
+  <br /><%= staff.submit %>
+<% end %>
+
+<script type="text/javascript">
+
+</script>

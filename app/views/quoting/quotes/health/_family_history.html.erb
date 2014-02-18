@@ -1,0 +1,15 @@
+<h4>Family History</h4>
+
+<p class='pull-right'>
+  <%= text_field_tag :family_diseases_count, nil, onchange:'addOrRemoveFamilyDiseaseFieldSets(this)' %>
+  <button class=btn onclick='addOrRemoveFamilyDiseaseFieldSets($(this.form.family_diseases_count)); return false;'>show fields</button>
+</p>
+<p>Please indicate the total number of family members (parents or siblings who have contracted it cardiovascular disease (heart attacks or strokes), cancer, diabetes, or kidney disease before the age of 70:</p>
+
+<div id='family-disease-field-sets'>
+  <%= render 'health/family_disease_field_set', builder:f, args:[] %>
+</div>
+
+<script type='text/template' id='family-disease-template'>
+  <%= render 'health/family_disease_field_set', builder:f, args:[Quoting::RelativesDisease.new, child_index:'__i__'] %>
+</script>

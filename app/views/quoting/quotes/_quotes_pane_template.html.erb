@@ -1,0 +1,111 @@
+<div class=nav>
+  <a class=btn onclick='showFromSiblings("#initial_discovery");showFromSiblings("#quoter_pane");'>Initial Discovery</a>
+  <a class=btn onclick='showFromSiblings("#advanced_discovery");showFromSiblings("#quoter_pane");'>Advanced Discovery</a>
+  <a class=btn onclick='showFromSiblings("#basic_info");showFromSiblings("#quoter_pane");'>Basic Info</a>
+  <a class=btn onclick='showFromSiblings("#health_info");showFromSiblings("#quoter_pane");'>Health Info</a>
+</div>
+
+<h2>Quotes</h2>
+<div id='coverage-detail'>
+
+  <h3>Coverage Detail</h3>
+
+  <p>
+    <strong>Coverage Details:</strong>
+    {{full_name}}
+  </p>
+
+  <table>
+    <tr>
+      <td>
+        <% %w[birthdate gender tobacco height/weight].each do |field| %>
+          <%= content_tag :p, id:field.gsub('/','_') do %>
+            <%= content_tag :strong, field.titleize + ':' %>
+            <%= content_tag :span, "{{#{field}}}", class:'value' %>
+          <% end %>
+        <% end %>
+      </td>
+      <td>
+        <% %w[state coverage term health].each do |field| %>
+          <%= content_tag :p, id:field.gsub('/','_') do %>
+            <%= content_tag :strong, field.titleize + ':' %>
+            <%= content_tag :span, "{{#{field}}}", class:'value' %>
+          <% end %>
+        <% end %>
+      </td>
+    </tr>
+  </table>
+
+  <strong>Health &amp; Lifestyle:</strong>
+
+  <table rules=cols>
+    <tr>
+      <td>
+        <strong>Items included for quoting purposes</strong>
+      </td>
+      <td>
+        <strong>Items not considered for quoting purposes</strong>
+      </td>
+    </tr>
+  </table>
+
+  <p id='beneficiary'>
+    <strong>Beneficiary:</strong>
+    <span class=value>{{beneficiary}}</span>
+  </p>
+
+</div>
+
+<div id='planning-considerations'>
+  
+  <h3>Planning Considerations</h3>
+
+  <table>
+    <tr>
+      <th></th>
+      <th>Age</th>
+      <th>Days to Change</th>
+    </tr>
+    <tr>
+      <td>Actual</td>
+      <td>{{actual_age}}</td>
+      <td>{{actual_days_to_age_change}}</td>
+    </tr>
+    <tr>
+      <td>Nearest</td>
+      <td>{{nearest_age}}</td>
+      <td>{{nearest_days_to_age_change}}</td>
+    </tr>
+  </table>
+
+  <table>
+    <tr>
+      <td>Approximate Life Expectancy</td>
+      <td>{{coming soon}}</td>
+    </tr>
+    <tr>
+      <td>Years to Approx. Life Expectancy</td>
+      <td>{{coming soon}}</td>
+    </tr>
+  </table>
+
+  <table>
+    <tr>
+      <td>Annual Income Provided</td>
+      <td>{{coming soon. depends on life expectancy}}</td>
+    </tr>
+    <tr>
+      <td>Monthly Income Provided</td>
+      <td>{{coming soon. depends on life expectancy}}</td>
+    </tr>
+    <tr>
+      <td>Income Duration</td>
+      <td>{{coming soon. depends on life expectancy}}</td>
+    </tr>
+  </table>
+
+  <small>(Assumes 5% Pre-tax return &amp; 25% combine tax bracket)</small>
+
+</div>
+
+<div id='quotes'><i class='icon-spinner icon-spin'></i></div>

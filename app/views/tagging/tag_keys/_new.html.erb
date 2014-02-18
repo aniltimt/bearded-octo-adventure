@@ -1,0 +1,32 @@
+<%= form_for(@tag_key, :url => 'tagging/tag_keys', :remote => true) do |f| %>
+  <% if @tag_key.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tag_key.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+      <% @tag_key.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+	<table style="width:80%">
+		<tr class="field">
+			<td style="width:10%"></td>
+			<td>Ownership:</td>
+			<td><%= f.select "ownership_id", @ownerships.collect {|p| [ p.value, p.id ] }%></td>
+		</tr>
+		<tr class="field">
+			<td style="width:10%"></td>
+			<td>Name:</td>
+			<td><%= f.text_field "name" %></td>
+		</tr>
+		<tr>
+			<td style="width:10%"></td>
+			<td></td>
+			<td class="actions"><%= f.submit "Save Tag Key"%></td>
+		</tr>
+	</table>
+
+<% end %>

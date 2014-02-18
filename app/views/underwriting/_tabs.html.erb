@@ -1,0 +1,7 @@
+<ul class="nav nav-tabs" id="myTab">
+	<li class="<%= yield(:ask_state) if :ask_state %>"><%= link_to "Ask the Underwriter",	"/underwriting/ask",			remote: true %></li>
+	<li class="<%= yield(:guides_state) if :guides_state %>"><%= link_to "Guides",				"/underwriting/guides",			remote: true %></li>
+	<li class="<%= yield(:questionnaires_state) if :questionnaires_state %>"><%= link_to "Questionnaires",		"/underwriting/questionnaires",	remote: true %></li>
+	<li class="<%= yield(:xrae_state) if :xrae_state %>"><%= link_to "XRAE",					"/underwriting/xrae",			remote: true %></li>
+	<li class="<%= yield(:table_shave_state) if :table_shave_state %>"><%= link_to "Table Shave Programs",	"/underwriting/table_shave",	remote: true %></li>
+</ul>

@@ -1,0 +1,16 @@
+<% builder.object.build_approved_details unless builder.object.approved_details %>
+<div class='case-fields indent'>
+  <h4>Policy <%= builder.object.id %></h4>
+  <%= builder.hidden_field :connection_id, value:@case.connection_id %>
+  <%= nested_form_field 'Carrier', [builder, :approved_details], :autocomplete_field, :carrier_name, autocomplete_carrier_name_crm_cases_path, placeholder:'(field autocompletes)' %>
+  <%= nested_form_field 'Effective date', builder, :date_field, :effective_date %>
+  <%= nested_text_field 'Coverage amount', [builder, :approved_details], :face_amount %>
+  <%= nested_text_field 'Policy number', builder, :policy_number %>
+  <%= nested_form_field 'Policy type', [builder, :approved_details], :collection_select, :policy_type_id, Crm::PolicyType.all, :id, :name %>
+  <%= nested_form_field 'Replacing?', builder, :check_box, :replaced_by_id, {}, (builder.object.replaced_by_id || 0), nil %>
+  <p>
+    <a class=btn onclick='rmFromTemplate(this,".case-fields")'>
+      Destroy Policy
+    </a>
+  </p>
+</div>

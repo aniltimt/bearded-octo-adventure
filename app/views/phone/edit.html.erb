@@ -1,0 +1,15 @@
+<h4>Update Phone Detail</h4>
+
+<%= form_for @phone, :remote => true do |f| %>
+
+  <%= render :partial => "form", :locals => {:f=>f}%>
+
+  <div class="row">
+    <div class="span3"></div>
+    <div class="span3">
+      <button type="button" id="update<%= get_contact_info_for %>-phone-detail" class="btn btn-primary ajax" data-id="<%= @phone.id %>">
+        Update
+      </button>
+    </div>
+  </div>
+<% end %>

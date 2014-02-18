@@ -1,0 +1,94 @@
+<input type="hidden" id="task-status-user-id" value="<%= @usage_user.id %>">
+
+<%= render :partial => "shared/tab/agency_management", :locals => {:tab => "tasks"} %>
+<div class="navbar">
+  <div class="navbar-inner">
+    <div class="row-fluid">
+      <div class="span4">
+        <h4 class="title system-management-row">To Do</h4>
+      </div>
+      <div class="span4">
+        <%= form_tag( incomplete_tasks_usage_users_path(:user_id=>@usage_user.id, :container_id=>'user-incomplete-tasks-container'), :remote => true, :id => "user-incomplete-tasks-between-dates",
+                      :class => "user-incomplete-tasks-between-dates ajax" , :method => :get, :style=>"margin: 10px 0;" ) do  %>
+          <fieldset>
+            <div class="control-group">
+              <div class="controls">
+                <div class="input-prepend">
+                  <input type="hidden" name="incomplete_from_date" id="incomplete-from-date-range">
+                  <input type="hidden" name="incomplete_to_date" id="incomplete-to-date-range">
+                  <input type="text" name="user-incomplete-tasks-date-range-field" id="user-incomplete-tasks-date-range-field" readonly>
+                  <span class="add-on"><i class="icon-calendar"></i></span>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        <% end %>
+      </div>
+      <div class="span4" style="margin-top:10px;">
+        <input class="input-medium" type="text" placeholder="Search" id="input-search-user-incomplete-tasks" style="width:150px;" value="<%= params[:search_incomplete_tasks] %>">
+        <a style="margin-top: -10px;" class="btn btn-small btn-primary ajax" id="button-search-user-incomplete-tasks" type="button" >
+          <i class="icon-search icon-white"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="user-incomplete-tasks-container">
+</div>
+<div style="background-color: #1B1B1B; min-height: 35px; margin: 0 0 0 0;"></div>
+<div class="navbar">
+  <div class="navbar-inner">
+    <div class="row-fluid">
+      <div class="span4">
+        <h4 class="title system-management-row">Completed</h4>
+      </div>
+      <div class="span4">
+        <%= form_tag( completed_tasks_usage_users_path(:user_id=>@usage_user.id, :container_id=>'user-completed-tasks-container'), :remote => true, :id => "user-completed-tasks-between-dates",
+                      :class => "user-completed-tasks-between-dates ajax" , :method => :get, :style=>"margin: 10px 0;" ) do  %>
+          <fieldset>
+            <div class="control-group">
+              <div class="controls">
+                <div class="input-prepend">
+                  <input type="hidden" name="completed_from_date" id="completed-from-date-range">
+                  <input type="hidden" name="completed_to_date" id="completed-to-date-range">
+                  <input type="text" name="user-completed-tasks-date-range-field" id="user-completed-tasks-date-range-field" readonly>
+                  <span class="add-on"><i class="icon-calendar"></i></span>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        <% end %>
+      </div>
+      <div class="span4" style="margin-top:10px;">
+        <input class="input-medium" type="text" placeholder="Search" id="input-search-user-completed-tasks" style="width:150px;" value="<%= params[:search_completed_tasks] %>">
+        <a style="margin-top: -10px;" class="btn btn-small btn-primary ajax" id="button-search-user-completed-tasks" type="button" >
+          <i class="icon-search icon-white"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="user-completed-tasks-container">
+</div>
+
+<script>
+  $(document).ready(function() {
+    loadPage('user-incomplete-tasks-container', '/usage/users/incomplete_tasks?user_id=<%=@usage_user.id%>')
+    loadPage('user-completed-tasks-container', '/usage/users/completed_tasks?user_id=<%=@usage_user.id%>')
+
+    $('#user-incomplete-tasks-date-range-field').daterangepicker('change',function(start, end){
+      $("#incomplete-from-date-range").val(start.toString('MMMM d, yyyy'));
+      $("#incomplete-to-date-range").val(end.toString('MMMM d, yyyy'));
+      $("#user-incomplete-tasks-between-dates.ajax").submit();
+    });
+
+    $('#user-completed-tasks-date-range-field').daterangepicker('change',function(start, end){
+      $("#completed-from-date-range").val(start.toString('MMMM d, yyyy'));
+      $("#completed-to-date-range").val(end.toString('MMMM d, yyyy'));
+      $("#user-completed-tasks-between-dates.ajax").submit();
+    });
+
+  });
+</script>

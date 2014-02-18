@@ -1,0 +1,56 @@
+<%= tinymce_assets %>
+<%= nested_form_for(@message, :remote => true, :multipart => true, :html => { :multipart => true }) do |f| %>
+  <div class="row">
+
+    <div class="span4">
+      <label>Recipent</label>
+      <%= f.text_field :recipient, :placeholder => "Recipient email" %>
+      
+      <label>Connection</label>
+      <input id="crm-connection-for-liquid" placeholder = "Connection Autocomplete" type="text" data-autocomplete="/crm/connections/autocomplete_connections_first_name">
+      <%= f.hidden_field :connection_id %>
+
+      <label>User</label>
+      <input id="usage-user-for-liquid" placeholder = "User Autocomplete" type="text" data-autocomplete="/usage/users/autocomplete_users_first_name">
+      <%= f.hidden_field :user_id %>
+      <%= f.hidden_field :send_email_message %>
+      
+      <%= f.fields_for :attachments do |at_form| %>
+        <%= at_form.file_field :file %>
+        <%= at_form.link_to_remove '<i class="icon-minus"></i>'.html_safe %>
+      <% end %>
+      <p><%= f.link_to_add '<i class="icon-file"></i><i class="icon-plus"></i>'.html_safe, :attachments %></p>
+      
+    </div>
+    <div class="span4">
+      <label>Template</label>
+      <%= f.select(:template_id, current_user.marketing_email_templates.map{ |c| [c.name, c.id] }, :include_blank => true) %>
+            
+      <label>Subject</label>
+      <%= f.text_field :subject %>
+      
+      <label>Parameters for template body</label>
+      <input id="set-message-body-parameters" type="text" data-autocomplete="/marketing/email/templates/template_liquid_options">
+
+      <label>Body</label>
+      <%= f.text_area :body, :class => "tinymce", :rows => 13, :cols => 20 %>
+    </div>
+
+    <%if @message.persisted? %>
+      <div class="span4">
+        <%= link_to "<i class='icon-trash'></i>".html_safe, marketing_email_message_path(:id => @message.id), :confirm => "Are you sure?", :remote => true, :method => :delete %>
+      </div>
+    <% end %>
+  </div>
+  <div style="margin-left: 400px;margin-bottom:10px;">
+    <%= f.submit "Submit", :class => 'btn btn-primary' %>
+    <%= f.button "Send", :class => 'btn btn-primary', :id =>"send_email_message" %>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+  tinyMCE.init({
+    mode: 'textareas',
+    theme: 'advanced'
+  });
+</script>

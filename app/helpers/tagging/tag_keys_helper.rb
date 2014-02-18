@@ -1,0 +1,2 @@
+module Tagging::TagKeysHelper
+end

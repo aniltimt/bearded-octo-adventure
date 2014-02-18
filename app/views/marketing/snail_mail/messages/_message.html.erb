@@ -1,0 +1,15 @@
+<div>
+  <span class="span4">
+    <%= message.id %>
+  </span>
+  <span class="span4">
+    <%= receiver_emails(message).html_safe %>
+  </span>
+  <span class="span4">
+    <% if message.sent.blank? %>
+      <%= link_to '<i class="icon-pencil"></i>'.html_safe, edit_marketing_snail_mail_message_path(:id => message.id), :remote => true, :method => :get %>
+    <% end %>
+    <%= link_to "<i class='icon-trash'></i>".html_safe, marketing_snail_mail_message_path(:id => message.id), :confirm => "Are you sure?", :remote => true, :method => :delete %>
+    <%= link_to "<i class='icon-envelope'></i>".html_safe, marketing_snail_mail_message_path(:id => message.id), :remote => true %>
+  </span>
+</div>

@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="span2"><%= f.label :label %></div>
+  <div class="span10">
+    <%= f.text_field :label, {:style => "width:220px"} %>
+  </div>
+</div>
+<div class="row">
+  <div class="span2"><%= f.label :task_type %></div>
+  <div class="span10">
+    <%= f.select(:task_type_id, Crm::SystemTaskType.all.collect {|p| [ p.name, p.id ] } + [ [ 'User', nil ] ], {:prompt => "Select task type"}, {:class => "crm-system-task-task-type-id ajax"}) %>
+  </div>
+</div>
+<div class="row">
+  <div class="span2"><%= f.label :template_name %></div>
+  <div class="span10">
+    <%= text_field_tag :crm_system_task_template_name %>
+    <%= f.hidden_field :template_id %>
+  </div>
+</div>
+<div class="row">
+  <div class="span2"><%= f.label :assigned_to %></div>
+  <div class="span10">
+    <%= f.select(:assigned_to_id, Usage::User.sales_support.all.collect {|p| [ p.full_name, p.id ] }, :prompt => "Select user to assign") %>
+  </div>
+</div>
+<div class="row">
+  <div class="span2"><%= f.label :due_at %></div>
+  <div class="span10">
+    <%= f.datepicker :due_at_date, :value => (@crm_system_task.due_at.strftime("%m/%d/%Y") rescue nil) %>
+  </div>
+</div>

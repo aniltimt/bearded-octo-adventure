@@ -1,0 +1,21 @@
+# Ignore bundler config
+/.bundle
+
+# Ignore the default SQLite database.
+/db/*.sqlite3
+/db/.*
+
+# Ignore all logfiles and tempfiles.
+/log/*.log
+/tmp
+/public/system/
+/config/database.yml
+Gemfile.lock
+~*.docx
+~*.xlsx
+.gitconfig
+.gitattributes
+
+# Misc
+coverage
+*.orig

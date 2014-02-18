@@ -1,0 +1,33 @@
+<%= form_for(@marketing_campaign, :remote => true) do |f| %>
+  <% if @marketing_campaign.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@marketing_campaign.errors.count, "error") %> prohibited this marketing_campaign from being saved:</h2>
+
+      <ul>
+      <% @marketing_campaign.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+	<table style="width:80%">
+		<tr class="field">
+			<td style="width:10%"></td>
+			<td>Ownership:</td>
+			<td><%= f.select "ownership_id", @ownerships.collect {|p| [ p.value, p.id ] }%></td>
+				<%= f.hidden_field :owner_id %>
+		</tr>
+		<tr class="field">
+			<td style="width:10%"></td>
+			<td>Campaign:</td>
+			<td><%= f.text_field "name" %></td>
+		</tr>
+		<tr>
+			<td style="width:10%"></td>
+			<td></td>
+			<td class="actions"><%= f.submit "Save Campaign"%></td>
+		</tr>
+	</table>
+
+<% end %>

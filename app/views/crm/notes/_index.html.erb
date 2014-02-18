@@ -1,0 +1,46 @@
+<input type="hidden" id="container-to-load-notes" value='<%= container %>'>
+
+<div class="row title-row" style="margin-bottom: 5px;">
+  <div class="span8"><h4 class="title system-management-row">Notes</h4></div>
+  <div class="span4">
+    <div style="margin-top: 20px; margin-bottom: 15px; margin-right: 10px"class="pull-right">
+      <a id="new-note-modal-pop-up" role="button" class="btn btn-primary ajax" data-case-id="<%= @crm_case.try(:id) %>" data-connection-id="<%= @crm_connection.id %>" data-toggle="modal">
+        Create note
+      </a>
+    </div>
+  </div>
+</div>
+<input type="hidden" value="<%= @crm_connection.id %>" id="crm-note-connection-id">
+<input type="hidden" value="<%= @crm_case.try(:id) %>" id="crm-note-case-id">
+
+<% @crm_notes.each do |note|%>
+  <div style="margin-bottom: 4px;" class="accordion">
+    <div class="accordion-group">
+      <div class="accordion-heading" style="border: 1px solid #888; background-color: <%= current_user === note.user ? "#9EEDDC;" : "orange;" %>">
+          <div class="row" style="padding-top: 10px; margin-left:0px; margin-bottom: 0px;">
+             <a style="padding: 0 15px;" class="accordion-toggle" data-toggle="collapse" href="#collapse<%= note.id %>">
+            <div class="span3"><%= note.user.try(:full_name) %></div>
+            <div class="span4"><%= note.title %></div>
+            <div class="span3"><%= note.created_at %></div>
+            <div style="margin-top: -5px;" class="span2">
+              <a style="float: right;"id="delete-note-<%= note.id %>"  class="ajax delete-crm-note" data-note-id="<%= note.id %>">
+                <i class="icon icon-trash font-awesome"></i>
+              </a>
+        <a style="float: right; margin-right: 2px;"id="edit-note-<%= note.id %>" role="button" data-case-id="<%= @crm_case.try(:id) %>" data-connection-id="<%= @crm_connection.id %>" class="ajax edit-note-modal-pop-up" data-note-id="<%= note.id %>" data-toggle="modal">
+                <i class="icon icon-edit font-awesome"></i>
+              </a>
+            </div>
+        </a>
+      </div>
+     <div id="collapse<%= note.id %>" class="accordion-body collapse" style="height: 0px; ">
+        <div style="background-color: white;" class="accordion-inner">
+          <%= sanitize(note.text) %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<div id="modal-container-for-add-edit-note" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="color:black;">
+</div>

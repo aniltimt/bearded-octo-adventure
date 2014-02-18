@@ -1,0 +1,6 @@
+<% if @message.persisted? %>
+  $('#flash-container').html("<%= @msg %>")
+  $( "#main-container" ).html( "<%= escape_javascript( render( :partial => "index" ) ) %>" );
+<% else %>
+  $( "#main-container" ).html( "<%= escape_javascript( render( :partial => "new" ) ) %>" );
+<% end %>

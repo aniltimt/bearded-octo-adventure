@@ -1,0 +1,76 @@
+<h4>Health History</h4>
+
+<p>Have you ever been diagnosed or treated for any of the following health conditions? (Select ALL that apply.)</p>
+
+<%= f.fields_for :health_history do |hf| %>
+  <div class=indent>
+  
+    <table>
+      <col width='33%'></col>
+      <col width='33%'></col>
+      <col width='33%'></col>
+      <tr style='vertical-align:top'>
+
+        <%= health_history_td hf, 'Diabetes', 
+        [:diabetes_1, 'Type I (Juvenile)'],
+        [:diabetes_2, 'Type II'],
+        [:diabetes_neuropathy, 'Neuropathy / Diabetic Complications']
+        %>
+
+        <%= health_history_td hf, 'Respiratory',
+        :asthma,
+        [:copd, 'COPD'],
+        :emphysema,
+        :sleep_apnea
+        %>
+
+        <%= health_history_td hf, 'Cancer',
+        :breast_cancer,
+        :prostate_cancer,
+        :skin_cancer,
+        [:internal_cancer, raw('Other Internal Cancer <small>(Colon, Kidney, Liver, Lung, etc.)</small>')]
+        %>
+
+      </tr>
+      <tr style='vertical-align:top'>
+
+        <%= health_history_td hf, 'Mental / Nervous',
+        :anxiety,
+        :depression,
+        :epilepsy,
+        [:parkinsons, 'Parkinson\'s Disease'],
+        [:mental_illness, raw('Other Mental Illness <small>(Bipolar, Schizophrenia, etc.)</small>')]
+        %>
+
+        <%= health_history_td hf, 'Gastro-Intestinal',
+        :crohns,
+        :ulcerative_colitis_iletis,
+        :weight_loss_surgery
+        %>
+
+        <%= health_history_td hf, 'Cardiovascular / Cerebral Vascular',
+        :atrial_fibrillations,
+        :heart_murmur_valve_disorder,
+        :irregular_heart_beat,
+        :heart_attack,
+        :stroke,
+        :vascular_disease
+        %>
+
+      </tr>
+      <tr>
+
+        <%= health_history_td hf, 'Other Medical Conditions',
+        :alcohol_abuse,
+        :drug_abuse,
+        :elft,
+        :hepatitis_c,
+        :rheumatoid_arthritis
+        %>
+
+      </tr>
+
+    </table>
+
+  </div>
+<% end %>

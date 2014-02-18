@@ -1,0 +1,5 @@
+<ul class="nav nav-tabs" id="myTab">
+	<li id="underwriting" class="<%= yield(:underwriting_state) %>"><%= link_to "Underwriting",	"/underwriting/ask", remote: true %></li>
+	<li id="salestools" class="<%= yield(:sales_tools_state) %>"><%= link_to "Sales Tools",	"/sales_tools/quoters",	remote: true %></li>
+	<li id="helpfaq" class="<%= yield(:help_state) %>"><%= link_to "Help/FAQ",		"/help/faq", remote: true %></li>
+</ul>

@@ -1,0 +1,6 @@
+<% if  @contact_info.valid? %>
+  $('#flash-container').html('Successfully created');
+  $( "#main-container" ).html( "<%= escape_javascript( render( :partial => "index" ) )%>" );
+<% else %>
+  $( "#main-container" ).html( "<%= escape_javascript( render( :partial => "form", :locals => {:action_path_info => { :action => "create" }, :method_type => 'post'} ) )%>" );
+<% end %>

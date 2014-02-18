@@ -1,0 +1,27 @@
+<tr>
+  <td>
+    <%= link_to ch.full_name,  usage_lead_distribution_weights()%>
+    <%= ch.full_name %>
+  </td>
+  <td>
+    <% if ch.agent_field_set%>
+      <% if ch.agent_field_set.temporary_suspension %>
+        <i class="icon-play green"></i>
+      <% else %>
+        <i class="icon-pause red"></i>      
+      <% end %>
+    <% end %>
+  </td>
+  <td>
+  <div id="weights_container_<%= ch.id %>">
+    <% ch.lead_distribution_weights.each do |weight|%>
+      <%= weight.tag_value.value %>
+    <% end %>
+  </div>
+  </td>
+  <td>
+    <% if ch.agent_field_set%>
+      <%= text_field_tag :premium_limit, ch.agent_field_set.premium_limit %>
+    <% end %>
+  </td>
+</tr>

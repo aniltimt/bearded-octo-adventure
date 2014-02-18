@@ -1,0 +1,104 @@
+<% if params[:tab_selected]=="a_mng_tab" %>
+  <%= render :partial => "shared/tab/agency_management", :locals => {:tab => 'conn_prospects'} %>
+<% else %>
+  <%= render :partial => "/crm/cases/connection_cases_tabs", :locals => {:tab => 'contacts'} %>
+<% end %>
+
+<input type="hidden" id="get-tab-value-to-display" value="<%= params[:tab_selected] %>">
+<input type="hidden" id="user-is-manager" value="<%= params[:mgr] %>">
+<input type="hidden" id="connection-action" value="<%= params[:action] %>">
+
+<div class="row title-row">
+  <div class="span6"><h4 class="title system-management-row">Contacts</h4></div>
+  <div class="span1"></div>
+  <div style="margin-top: 15px;" class="span5">
+    <button style="margin-top: -9px;" id="create-crm-connection" class="btn btn-primary ajax" data-action="<%= params[:action] %>" data-base-url="/crm/connections/">
+        New
+    </button>
+    <%= render :partial => "shared/search_client", :locals => {:base_url => '/crm/connections/', :action => params[:action]} %>
+  </div>
+</div>
+<% @crm_connections.each do |connection|%>
+    <div class="row" style="margin-bottom: 0px;">
+      <div class="span1">
+        <a data-remote='true' href="<%= connection_summary_crm_connections_url(:connection_id => connection.id) %>" title="click here to see connection summary">
+          <i class="icon icon-link"></i>
+        </a>&nbsp;&nbsp;
+        <input style="margin-top: -2px;" type="checkbox" class="select-checkbox" data-id="<%= connection.id %>" value=<%= connection.id %> id="check-box-<%= connection.id %>">
+      </div>
+      <div class="span2">
+        <a href="#" id="crm-connection-edit-form" class="ajax" data-connection-id="<%= connection.id %>" data-toggle="modal">
+          <p title="<%= connection.full_name %>">
+            <%= truncate(connection.full_name, :length => 25) %>
+          </p>
+        </a>
+      </div>
+      <div class="span2">
+        <a href="#" id="crm-connection-edit-form" class="ajax" data-connection-id="<%= connection.id %>" data-toggle="modal">
+          <p title="<%= connection.try(:email) %>">
+            <%= truncate(connection.try(:email), :length => 15) %>
+          </p>
+        </a>
+      </div>
+      <div class="span2">
+        <a href="#" id="crm-connection-edit-form" class="ajax" data-connection-id="<%= connection.id %>" data-toggle="modal">
+          <p title="<%= connection.try(:phone) %>">
+            <%= truncate(connection.try(:phone), :length => 13) %>
+          </p>
+        </a>
+      </div>
+      <div class="span5 connection-tags ajax" connection-id="<%= connection.id %>">
+        <div class="connection-tag-<%= connection.id%>">
+        </div>
+      </div>
+    </div>
+<% end %>
+
+<div class="row" style="padding-top:30px;">
+  <div class="span4">
+    <button id="assigning-agent" class="btn btn-small btn-primary ajax" data-action="<%= params[:action] %>" data-base-url="/crm/connections/">
+      Assign
+    </button>
+    <a href="#container-for-tagging-tags" id="save_value" role="button" class="btn btn-small btn-primary ajax" name="save_value" data-toggle="modal">
+      Tag
+    </a>&nbsp;&nbsp;
+    <a href="#" id="delete-crm-connections" class="ajax">
+      <i class="icon-trash icon-large blue"></i>
+    </a>
+  </div>
+  <div class="span5"></div>
+  <div class="span3">
+    <%= ajax_will_paginate @crm_connections %>
+  </div>
+</div>
+
+<div id="edit-crm-connection" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="color:black;width:850px; margin-top: 0px; margin-right: 450px;">
+</div>
+
+<div id="assign-agent-modal-pop-up" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="color:black;width:750px;">
+</div>
+
+<div id="container-for-tagging-tags" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="color:black;">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Tagging Tags</h3>
+  </div>
+  <div class="modal-body">
+  <%= form_tag(create_multiple_tagging_tags_path, :remote => true) do %>
+    <%= render :partial => "tagging/tags/form" %>
+  <% end %>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function(){
+    $('.connection-tags.ajax').each(function() {
+      var connectionId = $(this).attr("connection-id");
+      $.ajax({
+        url: '/crm/connections/connection_tags',
+        data: { connection_id: connectionId },
+        type: 'get'
+      });
+    });
+  });
+</script>

@@ -1,0 +1,32 @@
+<tr>
+  <td>
+    <a href="#" data-name="created_at" class="activity_date" data-pk="<%= crm_activity.id %>" data-type="combodate" data-url="<%= crm_activity_path(crm_activity) %>" data-created_at="<%= crm_activity.created_at %>" data-original-title="Select date">
+      <%= crm_activity.created_at.to_date %>
+    </a>
+  </td>
+  <td id="activity_time_<%=crm_activity.id%>">
+    <%= crm_activity.created_at.strftime("%H:%M %P") %>
+  </td>
+  <td>
+    <% if false %>
+      <a href="#" class="activity_type" data-pk="<%= crm_activity.id %>"  data-type="text" data-url="<%= crm_activity_path(crm_activity) %>" data-activity_type_id="<%= crm_activity.created_at.to_date %>" data-original-title="Select type">
+        <%= crm_activity.activity_type.try(:name) %>
+      </a>
+    <% end %>
+    <%= crm_activity.activity_type.try(:name) %>
+  </td>
+  <td>
+    <a href="#" data-name="status_id" class="activity_status" data-source="<%= all_activity_statuses_crm_activities_url %>" data-pk="<%= crm_activity.id %>" data-type="select" data-url="<%= crm_activity_path(crm_activity) %>" data-value="<%= crm_activity.status.try(:name) %>" data-original-title="Select status">
+      <%= crm_activity.status.try(:name) %>
+    </a>
+  </td>
+  <td>
+    <a href="#" data-name="description" class="activity_description" data-pk="<%= crm_activity.id %>" data-type="textarea" data-url="<%= crm_activity_path(crm_activity) %>" data-value="<%= crm_activity.description %>" data-original-title="Change subscription">
+      <%= crm_activity.description %>
+    </a>
+  </td>
+  <td>
+    <%#= link_to '<i class="icon-pencil"></i>'.html_safe, edit_crm_activity_path(:id => crm_activity.id), :remote => true, :method => :get %>
+    <%= link_to "<i class='icon-trash'></i>".html_safe, crm_activity_path(:id => crm_activity.id, :mgr => params['mgr']), :confirm => "Are you sure?", :remote => true, :method => :delete, id: "delete-activity#{crm_activity.id}" %>
+  </td>
+</tr>

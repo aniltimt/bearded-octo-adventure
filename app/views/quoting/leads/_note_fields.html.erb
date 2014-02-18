@@ -1,0 +1,15 @@
+<div class=note-fields>
+  <h3>Note</h3>
+  <%= builder.hidden_field :user_id %>
+  <%= builder.label :title %>
+  <%= builder.text_field :title %>
+  <%= builder.check_box :confidential %>
+  <%= builder.label :confidential, class:'inline' %>
+  <%= builder.label :text %>
+  <%= builder.text_area :text, rows:3 %>
+  <p>
+    <a class=btn onclick='rmFromTemplate(this,".note-fields")'>
+      Destroy Note
+    </a>
+  </p>
+<div>

@@ -1,0 +1,32 @@
+<%= render :partial => "shared/tab/marketing", :locals => {:selected => "EmailTemplates"} %>
+<div style="background-color:#fff;min-height: 500px;">
+  <%= render :partial => "templates_autocomplate" %>
+  <%= link_to 'Create New Template', new_marketing_email_template_path, :class => 'button', :remote => true%>
+  
+  <hr style="background-color:#B40404; height:5px; width:90%">
+  <div class="row">
+    <div class="span4">
+      <b>Template name</b>  
+    </div>
+    <div class="span7">
+      <b>Description</b>
+    </div>
+  </div>
+  <% @current_user_templates.each  do |current_template| %>
+    <div class="row">
+      <div class="span4">
+        <%= current_template.try(:name) %>
+      </div>
+      <div class="span7">
+      <%= current_template.try(:description) %>
+      </div>
+    </div>
+    <hr style="width:90%" />
+  <% end %>
+  <div class="row">
+    <div class="span8"></div>
+    <div class="span4">
+      <%= ajax_will_paginate @current_user_templates %>
+    </div>
+  </div>
+</div>

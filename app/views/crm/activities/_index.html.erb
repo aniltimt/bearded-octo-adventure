@@ -1,0 +1,100 @@
+<%= render :partial => "shared/tab/agency_management", :locals => {:tab => "activity"} %>
+<div style="background-color:#fff; min-height:500px">
+  <div class="row title-row">
+    <div class="navbar-inner">
+      <div class="span5">
+      <h4 class="title system-management-row">Activity</h4>
+      </div>
+    <div class="span2"></div>
+      <div class="span5">
+      <%= form_tag( crm_activities_url , :remote => true, :id => "activities-between-dates",
+                    :class => "activities-between-dates ajax" , :method => :get, :style=>"margin: 10px 0;" ) do  %>
+        <fieldset>
+          <div class="control-group">
+            <div class="controls">
+              <div class="input-prepend">
+                <input type="hidden" name="mgr" value="<%= params[:mgr]%>" >
+                <input type="hidden" name="from_date" id="from-date-range">
+                <input type="hidden" name="to_date" id="to-date-range">
+                <input type="text" name="activities-date-range-field" id="activities-date-range-field" readonly>
+                <span class="add-on"><i class="icon-calendar"></i></span>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      <% end %>
+    </div>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Type</th>
+        <th>Status</th>
+        <th>Description</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody id="user-activity-list">
+      <%= render :partial => 'crm_activity', :collection => @crm_activities %>
+    </tbody>
+  </table>
+  <div class="row-fluid">
+    <div class="span8"></div>
+    <div class="span4">
+      <%= ajax_will_paginate @crm_activities %>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  $(function(){
+    $('.activity_date').editable({
+      format: 'MMMM DD YYYY h:mm a',
+      viewformat: 'YYYY-MM-DD',
+      template: 'D / MMMM / YYYY h:mm a',
+      ajaxOptions: {
+        type: 'PUT',
+      }
+    });
+
+    $('.activity_status').editable({
+      ajaxOptions: {
+        type: 'PUT',
+      }
+    });
+
+    $('.activity_description').editable({
+      title: 'Enter description',
+      rows: 4,
+      ajaxOptions: {
+        type: 'PUT',
+      }
+    });
+  });
+
+  $(function() {
+    $( "#from" ).datepicker({
+      defaultDate: "+1w",
+      changeMonth: true,
+      numberOfMonths: 3,
+      onClose: function( selectedDate ) {
+        $( "#to" ).datepicker( "option", "minDate", selectedDate );
+      }
+    });
+    $( "#to" ).datepicker({
+      defaultDate: "+1w",
+      changeMonth: true,
+      numberOfMonths: 3,
+      onClose: function( selectedDate ) {
+        $( "#from" ).datepicker( "option", "maxDate", selectedDate );
+      }
+    });
+    $('#activities-date-range-field').daterangepicker('change',function(start, end){
+      $("#from-date-range").val(start.toString('MMMM d, yyyy'));
+      $("#to-date-range").val(end.toString('MMMM d, yyyy'));
+      $("#activities-between-dates.ajax").submit();
+    });
+  });

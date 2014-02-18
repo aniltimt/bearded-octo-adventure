@@ -1,0 +1,59 @@
+<%= form_for(@auto_system_task_rules, :remote => true) do |f| %>
+  <% if @auto_system_task_rules.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@auto_system_task_rules.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+      <% @auto_system_task_rules.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+	<table style="width:80%">
+		<tr class="field">
+			<td style="width:10%"></td>
+			<td>Task Type:</td>
+			<td><%= f.select "task_type_id", @task_types.collect {|p| [ p.name, p.id ] }, {:include_blank => 'User'},:onchange => "hide_role(this.value);", :class => "crm-auto-system-task-rule-task-type-id" %></td>
+		</tr>
+		<tr class="field" id="role">
+			<td style="width:10%"></td>
+			<td>Role:</td>
+			<td><%= f.select "role_id", @roles.collect {|p| [ p.name, p.id ] }%></td>
+		</tr>
+		<tr class="field" id="auto-complete-template" style="display: none;">
+			<td style="width:10%"></td>
+			<td>Template:</td>
+			<td><%= text_field_tag "crm_auto_system_task_rule_template_name" %>
+        <%= f.hidden_field :template_id%>
+      </td>
+		</tr>
+		<tr class="field">
+			<td style="width:10%"></td>
+			<td>Delay:</td>
+			<td><%= f.text_field "delay" %></td>
+		</tr>
+		<tr class="field">
+			<td style="width:10%"></td>
+			<td>Label:</td>
+			<td><%= f.text_field "label" %></td>
+		</tr>
+		<tr class="field">
+			<td style="width:10%"></td>
+			<td>Name:</td>
+			<td><%= f.text_field "name" %></td>
+		</tr>
+		<tr class="field">
+			<td style="width:10%"></td>
+			<td></td>
+			<td><%= f.hidden_field :status_type_id, :value => params[:id] %></td>
+		</tr>
+		<tr>
+			<td style="width:10%"></td>
+			<td></td>
+			<td class="actions"><%= f.submit %></td>
+		</tr>
+	</table>
+
+<% end %>

@@ -1,0 +1,88 @@
+// Place all the styles related to the Crm::Case controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* CRM - Leads list sizing */
+
+#lead-header {
+	font-weight: bold;
+}
+
+.lead-row {
+	margin-bottom: 0px !important;
+}
+
+.lead-row div {
+	float: left;
+	text-align: center;
+	margin-bottom: 0px;
+}
+
+.lead-check {
+	width: 2%;
+}
+
+.lead-type {
+	width: 4%;
+}
+
+.lead-added {
+	width: 8%;
+}
+
+.lead-updated {
+	width: 8%;
+}
+
+.lead-name {
+	width: 16%;
+}
+
+.lead-state {
+	width: 4%;
+}
+
+.lead-assigned {
+	width: 16%;
+}
+
+.lead-personal {
+	width: 2%;
+}
+
+.lead-quote {
+	width: 2%;
+}
+
+.lead-health {
+	width: 2%;
+}
+
+.lead-exam {
+	width: 2%;
+}
+
+.lead-followup {
+	width: 31%;
+	height: 20px;
+}
+
+.lead-tag {
+	width: 2%;
+}
+
+.bob-expires {
+	width: 10% !important;
+}
+
+.bob-status {
+	width: 8% !important;
+}
+
+.bob-check-client {
+	width: 18% !important;
+}
+
+.bob-policy {
+	width: 7% !important;
+}

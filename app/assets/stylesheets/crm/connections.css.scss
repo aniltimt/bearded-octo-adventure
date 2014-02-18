@@ -1,0 +1,49 @@
+// Place all the styles related to the Crm::Connections controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#client-connection-tabs li a {
+	color: white;
+}
+
+#update-crm-connection {
+	padding-left: 25px;
+	padding-right: 10px;
+}
+
+#crm-edit-labels label {
+	margin-bottom: 5px;
+}
+
+#income-box {
+	margin-left: 10px;
+	float: left;
+	border: 7px solid #447899;
+	border-radius: 2px;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	margin-bottom: 15px;
+	width: 20%;
+}
+
+#liabilities-box {
+	margin-left: -7px;
+	float: left;
+	border: 7px solid #447899;
+	border-radius: 2px;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	margin-bottom: 15px;
+	width: 20%;
+}
+
+#assets-box {
+	margin-left: -7px;
+	float: left;
+	border: 7px solid #447899;
+	border-radius: 2px;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	margin-bottom: 15px;
+	width: 20%;
+}

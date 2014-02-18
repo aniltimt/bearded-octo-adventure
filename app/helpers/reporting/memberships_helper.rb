@@ -1,0 +1,2 @@
+module Reporting::MembershipsHelper
+end

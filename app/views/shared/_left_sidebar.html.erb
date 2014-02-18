@@ -1,0 +1,81 @@
+<div id="leftbar" class="sidebar">
+  <ul style="display: block;" class="unstyled nav nav-pills nav-stacked">
+    <li>
+      <%= link_to dashboard_crm_system_tasks_path, :remote => true do %>
+        <i class="icon icon-th"></i>
+        <span>Dashboard</span>
+      <% end %>
+      </a>
+    </li>
+    <li>
+      <%= link_to new_quoting_quote_path, remote:true do %>
+        <i class="icon icon-plus-sign"></i>
+        <span>New Quote</span>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to leads_crm_cases_url, :remote => true  do %>
+        <i class="icon icon-suitcase"></i>
+        <span>Client Management</span>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to reporting_searches_path, :remote => true  do %>
+        <i class="icon icon-bar-chart"></i>
+        <span>Reportings</span>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to marketing_email_templates_path, :remote => true  do %>
+          <i class="icon icon-bullhorn"></i>
+          <span>Marketing</span>
+        <% end %>
+    </li>
+    <li>
+      <%= link_to "/sales_tools/quoters", :remote => true  do %>
+        <i class="icon icon-wrench"></i>
+        <span>Sales Tools</span>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to "/underwriting/guides", :remote => true  do %>
+        <i class="icon icon-list-alt"></i>
+        <span>Underwiting / Suitability</span>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to contacts_crm_connections_url, :remote => true  do %>
+        <i class="icon icon-group"></i>
+        <span>Contacts</span>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to "/crm/status_types/index", :remote => true  do %>
+
+       <i class="icon icon-cog"></i>
+        <span>System Management</span>
+    <% end %>
+    </li>
+    <li>
+      <%= link_to "/help/faq", :remote => true  do %>
+        <i class="icon icon-question-sign"></i>
+        <span>Help</span>
+      <% end %>
+    </li>
+    <% if current_user %>
+      <li>
+        <%= link_to personal_usage_users_path(:user_id=>current_user.id, :top_tab_bar=>"my_account"), :remote => true  do %>
+          <i class="icon icon-user"></i>
+          <span>My Account</span>
+        <% end %>
+      </li>
+    <% end %>
+    <!-- Will need to display only if current_user.role.management? = true -->
+    <li>
+      <%= link_to  crm_activities_path(:mgr => true), :remote => true  do %>
+        <i class="icon icon-globe"></i>
+        <span>Agency Management</span>
+      <% end %>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,6 @@
+<% if @contact_info.persisted? %>
+  $('#flash-container').html('Not deleted');
+<% else %>
+  $('#flash-container').html('Successfully deleted');
+<% end %>
+$( "#main-container" ).html( "<%= escape_javascript( render( :partial => "index" ) )%>" );

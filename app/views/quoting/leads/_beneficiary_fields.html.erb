@@ -1,0 +1,18 @@
+<div class=beneficiary-fields>
+  <h4>Beneficiary <%= builder.object.id %></h4>
+  <%= nested_text_field 'Name *', builder, :name %>
+  <%= nested_text_field 'SSN (optional)', builder, :ssn %>
+  <div class=row>
+    <div class=span4>Gender *</div>
+    <%= radio_and_label_tag_sets(:gender, form:builder, label_values:['Male','Female'], input_values:[true,false]).join(' ').html_safe %>
+  </div>
+  <%= nested_text_field 'Relationship *', builder, :relationship %>
+  <%= nested_text_field 'Date of Birth *', builder, :birth_or_trust_date, class:'date', placeholder:'mm/dd/yyyy' %>
+  <%= nested_text_field 'Percent *', builder, :percentage %>
+  <%= nested_form_field 'Contingent', builder, :check_box, :contingent %>
+  <p>
+    <a class=btn onclick='rmFromTemplate(this,".beneficiary-fields")'>
+      Destroy Beneficiary
+    </a>
+  </p>
+</div>

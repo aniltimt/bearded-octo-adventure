@@ -1,0 +1,14 @@
+<% if params[:auto_assigning] == "true" %>
+  <%= render :partial => "shared/tab/system_management", :locals => {:selected => "auto_assigning"} %>
+  <div class="row" style="margin-left: 0;">
+    <div class="navbar-inner"><h4 class="title system-management-row">Auto Assigning</h4></div>
+  </div>
+<% end %>
+<% @agent_lead_distribution_weights.each do | ldw |%>
+    <span id="ldw_container_<%= ldw.id %>" class="ldw_container span5">
+      <%= ldw.tag_value.value %><br>
+      <%= text_field_tag :weight, ldw.weight, 'data-id' => ldw.id, :class => "ldw_weight", :style => "width:20px;" %>
+      /<%= text_field_tag :premium_limit, ldw.premium_limit, 'data-id' => ldw.id, :class => "ldw_premium_limit", :style => "width:50px;" %>
+    </span>
+<% end %>
+

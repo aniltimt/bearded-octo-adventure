@@ -1,0 +1,22 @@
+<h4>Cholesterol Information</h4>
+
+<p class=pull-right>
+	<%= view_toggling_radio_and_label_tags :cholesterol, input:{'data-disable-hidden' => 1} %>
+</p>
+<p>Have you ever been diagnosed with or treated for high cholesterol?</p>
+
+<div id='_cholesterol' class='indent hide'>
+
+	<p>What is your cholesterol level?</p>
+	<%= f.select :cholesterol, options_for_select( [['Don\'t know',-1]] + APP_CONFIG['cholesterol'] ) %>
+
+	<p>What is your HDL ratio?</p>
+	<%= f.select :cholesterol_hdl, options_for_select( [['Don\'t know',-1]] + APP_CONFIG['cholesterol_hdl'] ) %>
+
+	<p>When were last treated for high cholesterol?</p>
+	<%= f.text_field :last_cholesterol_treatment, class:'date', placeholder:'mm/dd/yyyy' %>
+
+	<p>If currently taking cholesterol medication, how long has your cholesterol been successfully controlled by medication?</p>
+	<%= f.text_field :years_of_cholesterol_control %> years
+
+</div>

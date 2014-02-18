@@ -1,0 +1,18 @@
+<div class="span2" style="margin-left:0px; background:#498AF4; height:645px;">
+  <div class="tabbable">
+    <ul class="nav nav-tabs nav-stacked" id="crm-case-detail-tabs">
+      <%= case_nav_item "Policy Details", "javascript:void(0);", {"data-href"=>"/crm/cases/details", "class"=>"ajax"}, class:(@detail_tab ? '' : 'active')%>
+      <%= case_nav_item "Owner", "javascript:void(0);", {"data-href"=>"/crm/cases/owner", "class"=>"ajax"}, class:(@detail_tab=="owner" ? 'active' : '')%>
+      <%= case_nav_item "Beneficiary", "javascript:void(0);", {"data-href"=>"/crm/beneficiaries/", "class"=>"ajax"}, class:(@detail_tab=="beneficiary" ? 'active' : '')%>
+      <%= case_nav_item "Exam", "javascript:void(0);", {"data-href"=>"/crm/cases/exam", "class"=>"ajax"}, class:(@detail_tab=="exam" ? 'active' : '')%>
+      <%= case_nav_item "Follow up", "javascript:void(0);", {"data-href"=>"/crm/statuses/show", "class"=>"ajax"}, class:(@detail_tab=="follow_up" ? 'active' : '')%>
+      <%= case_nav_item "Case Requirements", "javascript:void(0);", {"data-href"=>"/crm/cases/requirements", "class"=>"ajax"}, class:(@detail_tab=="requirements" ? 'active' : '')%>
+      <%= case_nav_item "Comments", "javascript:void(0);", {"data-href"=>"/crm/notes/", "class"=>"ajax"}, class:(@detail_tab=="comments" ? 'active' : '')%>
+      <% if @crm_case.try(:crm_connection)%>
+        <li>
+          <%= link_to "EZLink", action:'edit', controller:'/quoting/leads', id:@crm_case.crm_connection.id, container:'#main-container', remote:true %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

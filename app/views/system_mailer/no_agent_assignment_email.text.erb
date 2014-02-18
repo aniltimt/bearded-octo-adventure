@@ -1,0 +1,10 @@
+<% if @message %><%= content_tag :p, @message %>
+-------------------<% end %>
+
+CASE
+
+<%= @case.to_yaml %>
+
+CLIENT
+    
+<%= @case.crm_connection.try :to_yaml %>

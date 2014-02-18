@@ -1,0 +1,16 @@
+<ul class="nav nav-tabs" style="margin-bottom: -1px" id="myTab">
+  <% selected ||= "status"%>
+  <% if selected == "lead_distribution" %>
+    <li class="active"><%= link_to "Lead Distributions", lead_distribution_rules_usage_users_path, :remote => true %></li>
+  <% else %>
+    <li><%= link_to "Lead Distributions", lead_distribution_rules_usage_users_path, :remote => true %></li>
+  <% end %>
+  <li class="<%= 'active' if selected == 'status'%>">
+    <%= link_to "Status Rules", "/crm/status_types/index", :remote => true %>
+  </li>
+  <% if current_user.role.super? %>
+    <li class="<%= 'active' if selected == 'Tagging Memberships'%>">
+      <%= link_to "Tagging Memberships", tagging_memberships_path, :remote => true %>
+    </li>
+  <% end %>
+</ul>

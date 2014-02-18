@@ -1,0 +1,18 @@
+<div id="progress_area">
+  <div id="progress_bar" class="fourth_state"></div>
+<%= render 'pane_buttons', partials:[:initial_discovery, :advanced_discovery, :basic_info, :health] %>
+</div>
+<%= builder.fields_for :health_info do |f| %>
+  
+  <h2>Health Screening</h2>
+
+  <% %w[blood_pressure cholesterol driving_history criminal_history avocation health_history family_history misc].each do |partial| %>
+  	<%= render "health/#{partial}", f:f, connection_fields:builder %>
+  <% end %>
+
+<% end %>
+
+<p class=center-text>
+  <%= submit_tag 'Save changes', onclick:"this.form.dest.value='connection_summary'", class:'btn btn-primary' %>
+  <%= submit_tag 'View rates', onclick:"this.form.dest.value=null", class:'btn btn-primary' %>
+</p>

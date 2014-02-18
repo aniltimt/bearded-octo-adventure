@@ -1,0 +1,1141 @@
+<div style="float:left; width:175px; height:700px; overflow:auto; ">
+
+
+<table>
+	  	<thead>
+		<div><input type=checkbox id="select_all" onclick="show_ele(select_all, First, first_name, Middle, middle_name, Last, last_name, Birth_Date, birth, age_label, Address, address_value, State, state_name, City, city, Zip, zip, Email, email_id, client_id, web_client_id, lead, client_date, policy_date, Client_created, Policy_created, Sales_Support, App_Sent_Banner_App_Assist, App_Sent_Docusign, App_Sent_Exam_Complete, App_Sent_Instant_Issue, App_Sent_LQR_Genworth, App_Sent_NER, App_Sent_No_Exam_EZ, App_Sent_Paper, App_Sent_Paper_EZ, App_Sent_Reg_60, App_Sent_Vendor, App_Sent_eSign, Application_Submitted_Application_Received, Application_Submitted_App_Submitted, Application_Submitted_Awaiting_Missing_Info, Application_Submitted_Banner_App_Assist, Application_Submitted_Instant_Issue, Application_Submitted_Pre_Appointment_Hold, Approved_Awaiting_Funds, Approved_Other_Than_Applied, Approved_Reissued_Case, Approved_Tentative_Offer, Approved_as_Applied, Contact_Attempted, Contact_Attempted_EZ, Contact_Attempted_PEM, Contact_Made, Contact_Made_EZ, Contact_Made_PEM, Issued_Del_Reqs, Issued_Holding, Issued_Inforce, Request_Received_Datalot_Warm_Transfer, Request_Received_EZ, Request_Received_GSFP, Request_Received_LI2D, Request_Received_Request_Received, Request_Received_Request_Received_VFP, Request_Received_Sent_to_Dialer, Request_Received_Special_Contact_Time, Withdrawn_App_Sent_No_Response, Withdrawn_App_Sent_Not_Interested, Withdrawn_Bogus, Withdrawn_Deceased, Withdrawn_Declined, Withdrawn_Incomplete, Withdrawn_Invalid_Number_Bogus, Withdrawn_NTO, Withdrawn_No_Response, Withdrawn_Not_Interested, Withdrawn_Postponed, Withdrawn_Rated_Rejected, Withdrawn_Test_Lead, Withdrawn_Uninsurable, Current_Status, Current_Status_Date, Days_in_Current_Status, Current_Status_Category, Quoted_Qualified, quote_car, Quoted_Carrier, quote_car, Quoted_Policy_Type, quote_policy, Quoted_Plan_Name, quote_plan, Quoted_Table_Rating, Quoted_Health_Class, Quoted_Carrier_Health_Class, quote_car_health, Quoted_Term_Category, Quoted_Coverage_Amount, Quoted_Premium_Mode, Quoted_Planned_Modal_Premium, quote_plan_mod, Quoted_Annual_Premium, quote_an_pre, Submitted_Carrier, sub_car, Submitted_Policy_Type, sub_policy, Submitted_Plan_Name, sub_plan, Submitted_Table_Rating, Submitted_Health_Class, Submitted_Carrier_Health_Class, sub_car_health, Submitted_Term_Category, Submitted_Coverage_Amount, Submitted_Premium_Mode, Submitted_Planned_Modal_Premium, sub_plan_mod, Submitted_Annual_Premium, sub_an_pre, Approved_Carrier, ap_car, Approved_Policy_Type, ap_policy, Approved_Plan_Name, ap_plan, Approved_Table_Rating, Approved_Health_Class, Approved_Carrier_Health_Class, ap_car_health, Approved_Term_Category, Approved_Coverage_Amount, Approved_Premium_Mode, Approved_Planned_Modal_Premium, ap_plan_mod, Approved_Annual_Premium, ap_an_pre);show_checks(select_all, Name, first, middle, last, date_of_birth, age_box, Contact_info, address, contact_state, contact_city, contact_zip, contact_email, Tracking_info, client, web_client, lead_name, create_dates, client_date, policy_date, ic, Sales_support, Statuses, app_sent_banner_app_assist, app_sent_docusign, app_sent_exam_complete, app_sent_instant_issue, app_sent_LQR_genworth, app_sent_NER, app_sent_no_exam_EZ, app_sent_paper, app_sent_paper_EZ, app_sent_reg_60, app_sent_vendor, app_sent_eSign, application_submitted_application_received, application_submitted_app_submitted, application_submitted_awaiting_missing_info, application_submitted_banner_app_assist, application_submitted_instant_issue, application_submitted_pre_appointment_hold, approved_awaiting_funds, approved_other_than_applied, approved_reissued_case, approved_tentative_offer, approved_as_applied, contact_attempted, contact_attempted_EZ, contact_attempted_PEM, contact_made, contact_made_EZ, contact_made_PEM, issued_del_reqs, issued_holding, issued_inforce, request_received_datalot_warm_transfer, request_received_EZ, request_received_GSFP, request_received_LI2D, request_received_request_received, request_received_request_received_VFP, request_received_sent_to_dialer, request_received_special_contact_time, withdrawn_app_sent_no_response, withdrawn_app_sent_not_interested, withdrawn_bogus, withdrawn_deceased, withdrawn_declined, withdrawn_incomplete, withdrawn_invalid_number_bogus, withdrawn_NTO, withdrawn_no_response, withdrawn_not_interested, withdrawn_postponed, withdrawn_rated_rejected, withdrawn_test_lead, withdrawn_uninsurable, Current_status, current_status, current_status_date, current_status_days, current_status_category, Quoted_info, quoted_qualified, quoted_carrier, quoted_policy_type, quoted_plan_name, quoted_table_rating, quoted_health_class, quoted_carrier_health_class, quoted_term_category, quoted_coverage_amount, quoted_premium_mode, quoted_planned_modal_premium, quoted_annual_premium, Submitted_policy_info, submitted_carrier, submitted_policy_type, submitted_plan_name, submitted_table_rating, submitted_health_class, submitted_carrier_health_class, submitted_term_category, submitted_coverage_amount, submitted_premium_mode, submitted_planned_modal_premium, submitted_annual_premium, Approved_policy_info, approved_carrier, approved_policy_type, approved_plan_name, approved_table_rating, approved_health_class, approved_carrier_health_class, approved_term_category, approved_coverage_amount, approved_premium_mode, approved_planned_modal_premium, approved_annual_premium);"> Select All</div>
+		</thead>
+		<tbody>
+		  <br /><input type=checkbox id="Name" onclick="show_ele(Name, First, Middle, Last, first_name, middle_name, last_name);show_checks(Name, first, middle, last);"><label id="name_list" onclick="show_div(name_div)"> + Name</label>
+		  <div id="name_div" style="display:none">
+			<input type=checkbox id="first" onclick="show_ele(first, First, first_name)"> First
+			<br /><input type=checkbox id="middle" onclick="show_ele(middle, Middle, middle_name)"> Middle
+			<br /><input type=checkbox id="last" onclick="show_ele(last, Last, last_name)"> Last
+		  </div>
+		  <br /><input type=checkbox id="date_of_birth" onclick="show_ele(date_of_birth, Birth_Date, birth)" > Date of Birth
+		  <br /><input type=checkbox id="age_box" onclick="show_ele(age_box, age_label)" > Age 
+		  <br /><input type=checkbox id="Contact_info" onclick="show_ele(Contact_info, Address, State, City, Zip, Email, address_value, state_name, city, zip, email_id);show_checks(Contact_info, address, contact_state, contact_city, contact_zip, contact_email);"><label id="contact_list" onclick="show_div(contacts)"> + Contact Info</label>
+		  <div id="contacts" style="display:none">
+			<input type=checkbox id="address" onclick="show_ele(address, Address, address_value)"> Address
+			<br /><input type=checkbox id="contact_state" onclick="show_ele(contact_state, State, state_name)"> State
+			<br /><input type=checkbox id="contact_city" onclick="show_ele(contact_city, City, city)"> City
+			<br /><input type=checkbox id="contact_zip" onclick="show_ele(contact_zip, Zip, zip)"> Zip
+			<br /><input type=checkbox id="contact_email" onclick="show_ele(contact_email, Email, email_id)"> Email
+		  </div>
+		  <br /><input type=checkbox id="Tracking_info" onclick="show_ele(Tracking_info, client_id, web_client_id, lead);show_checks(Tracking_info, client, web_client, lead_name);"><label id="Tracking_list" onclick="show_div(tracks)"> + Tracking Info</label>
+		  <div id="tracks" style="display:none">
+			<input type=checkbox id="client" onclick="show_ele(client, client_id)"> Client ID
+			<br /><input type=checkbox id="web_client" onclick="show_ele(web_client, web_client_id)"> Web Client ID
+			<br /><input type=checkbox id="lead_name" onclick="show_ele(lead_name, lead)"> Lead
+		  </div>
+		  <br /><input type=checkbox id="create_dates" onclick="show_ele(create_dates, Client_created, Policy_created);show_checks(create_dates, client_date, policy_date);"><label id="date_list" onclick="show_div(dates)"> + Create Dates</label>
+		  <div id="dates" style="display:none">
+			<input type=checkbox id="client_date" onclick="show_ele(client_date, Client_created)"> Client Created
+			<br /><input type=checkbox id="policy_date" onclick="show_ele(policy_date, Policy_created)"> Policy Created
+		  </div>
+		  <br /><input type=checkbox id="ic" onclick="show_ele(ic, IC)"> IC
+		  <br /><input type=checkbox id="Sales_support" onclick="show_ele(Sales_support, Sales_Support)"> Sales Support
+		  <br /><input type=checkbox id="Statuses" onclick="show_ele(Statuses, App_Sent_Banner_App_Assist, App_Sent_Docusign, App_Sent_Exam_Complete, App_Sent_Instant_Issue, App_Sent_LQR_Genworth, App_Sent_NER, App_Sent_No_Exam_EZ, App_Sent_Paper, App_Sent_Paper_EZ, App_Sent_Reg_60, App_Sent_Vendor, App_Sent_eSign, Application_Submitted_Application_Received, Application_Submitted_App_Submitted, Application_Submitted_Awaiting_Missing_Info, Application_Submitted_Banner_App_Assist, Application_Submitted_Instant_Issue, Application_Submitted_Pre_Appointment_Hold, Approved_Awaiting_Funds, Approved_Other_Than_Applied, Approved_Reissued_Case, Approved_Tentative_Offer, Approved_as_Applied, Contact_Attempted, Contact_Attempted_EZ, Contact_Attempted_PEM, Contact_Made, Contact_Made_EZ, Contact_Made_PEM, Issued_Del_Reqs, Issued_Holding, Issued_Inforce, Request_Received_Datalot_Warm_Transfer, Request_Received_EZ, Request_Received_GSFP, Request_Received_LI2D, Request_Received_Request_Received, Request_Received_Request_Received_VFP, Request_Received_Sent_to_Dialer, Request_Received_Special_Contact_Time, Withdrawn_App_Sent_No_Response, Withdrawn_App_Sent_Not_Interested, Withdrawn_Bogus, Withdrawn_Deceased, Withdrawn_Declined, Withdrawn_Incomplete, Withdrawn_Invalid_Number_Bogus, Withdrawn_NTO, Withdrawn_No_Response, Withdrawn_Not_Interested, Withdrawn_Postponed, Withdrawn_Rated_Rejected, Withdrawn_Test_Lead, Withdrawn_Uninsurable);show_checks(Statuses, app_sent_banner_app_assist, app_sent_docusign, app_sent_exam_complete, app_sent_instant_issue, app_sent_LQR_genworth, app_sent_NER, app_sent_no_exam_EZ, app_sent_paper, app_sent_paper_EZ, app_sent_reg_60, app_sent_vendor, app_sent_eSign, application_submitted_application_received, application_submitted_app_submitted, application_submitted_awaiting_missing_info, application_submitted_banner_app_assist, application_submitted_instant_issue, application_submitted_pre_appointment_hold, approved_awaiting_funds, approved_other_than_applied, approved_reissued_case, approved_tentative_offer, approved_as_applied, contact_attempted, contact_attempted_EZ, contact_attempted_PEM, contact_made, contact_made_EZ, contact_made_PEM, issued_del_reqs, issued_holding, issued_inforce, request_received_datalot_warm_transfer, request_received_EZ, request_received_GSFP, request_received_LI2D, request_received_request_received, request_received_request_received_VFP, request_received_sent_to_dialer, request_received_special_contact_time, withdrawn_app_sent_no_response, withdrawn_app_sent_not_interested, withdrawn_bogus, withdrawn_deceased, withdrawn_declined, withdrawn_incomplete, withdrawn_invalid_number_bogus, withdrawn_NTO, withdrawn_no_response, withdrawn_not_interested, withdrawn_postponed, withdrawn_rated_rejected, withdrawn_test_lead, withdrawn_uninsurable);"><label id="statuses_list" onclick="show_div(statuses)"> + Statuses</label>
+		  <div id="statuses" style="display:none">
+			<input type=checkbox id="app_sent_banner_app_assist" onclick="show_ele(app_sent_banner_app_assist, App_Sent_Banner_App_Assist)"> - App Sent - Banner App Assist
+			<br /><input type=checkbox id="app_sent_docusign" onclick="show_ele(app_sent_docusign, App_Sent_Docusign)"> - App Sent - Docusign
+			<br /><input type=checkbox id="app_sent_exam_complete" onclick="show_ele(app_sent_exam_complete, App_Sent_Exam_Complete)"> - App Sent - Exam Complete
+			<br /><input type=checkbox id="app_sent_instant_issue" onclick="show_ele(app_sent_instant_issue, App_Sent_Instant_Issue)"> - App Sent - Instant Issue
+			<br /><input type=checkbox id="app_sent_LQR_genworth" onclick="show_ele(app_sent_LQR_genworth, App_Sent_LQR_Genworth)"> - App Sent - LQR- Genworth
+			<br /><input type=checkbox id="app_sent_NER" onclick="show_ele(app_sent_NER, App_Sent_NER)"> - App Sent - NER
+			<br /><input type=checkbox id="app_sent_no_exam_EZ" onclick="show_ele(app_sent_no_exam_EZ, App_Sent_No_Exam_EZ)"> - App Sent - No Exam EZ
+			<br /><input type=checkbox id="app_sent_paper" onclick="show_ele(app_sent_paper, App_Sent_Paper)"> - App Sent - Paper
+			<br /><input type=checkbox id="app_sent_paper_EZ" onclick="show_ele(app_sent_paper_EZ, App_Sent_Paper_EZ)"> - App Sent - Paper EZ
+			<br /><input type=checkbox id="app_sent_reg_60" onclick="show_ele(app_sent_reg_60, App_Sent_Reg_60)"> - App Sent - Reg 60
+			<br /><input type=checkbox id="app_sent_vendor" onclick="show_ele(app_sent_vendor, App_Sent_Vendor)"> - App Sent - Vendor
+			<br /><input type=checkbox id="app_sent_eSign" onclick="show_ele(app_sent_eSign, App_Sent_eSign)"> - App Sent - eSign
+			<br /><input type=checkbox id="application_submitted_application_received" onclick="show_ele(application_submitted_application_received, Application_Submitted_Application_Received)"> - Application Submitted - App Received
+			<br /><input type=checkbox id="application_submitted_app_submitted" onclick="show_ele(application_submitted_app_submitted, Application_Submitted_App_Submitted)"> - Application Submitted - App Submitted
+			<br /><input type=checkbox id="application_submitted_awaiting_missing_info" onclick="show_ele(application_submitted_awaiting_missing_info, Application_Submitted_Awaiting_Missing_Info)"> - Application Submitted - Awaiting Missing Info
+			<br /><input type=checkbox id="application_submitted_banner_app_assist" onclick="show_ele(application_submitted_banner_app_assist, Application_Submitted_Banner_App_Assist)"> - Application Submitted - Banner App Assist
+			<br /><input type=checkbox id="application_submitted_instant_issue" onclick="show_ele(application_submitted_instant_issue, Application_Submitted_Instant_Issue)"> - Application Submitted - Instant Issue
+			<br /><input type=checkbox id="application_submitted_pre_appointment_hold" onclick="show_ele(application_submitted_pre_appointment_hold, Application_Submitted_Pre_Appointment_Hold)"> - Application Submitted - Pre-Appointment Hold
+			<br /><input type=checkbox id="approved_awaiting_funds" onclick="show_ele(approved_awaiting_funds, Approved_Awaiting_Funds)"> - Approved - Awaiting Funds/1035 Exchange
+			<br /><input type=checkbox id="approved_other_than_applied" onclick="show_ele(approved_other_than_applied, Approved_Other_Than_Applied)"> - Approved - Other Than Applied
+			<br /><input type=checkbox id="approved_reissued_case" onclick="show_ele(approved_reissued_case, Approved_Reissued_Case)"> - Approved - Reissued Case
+			<br /><input type=checkbox id="approved_tentative_offer" onclick="show_ele(approved_tentative_offer, Approved_Tentative_Offer)"> - Approved - Tentative Offer
+			<br /><input type=checkbox id="approved_as_applied" onclick="show_ele(approved_as_applied, Approved_as_Applied)"> - Approved - as Applied
+			<br /><input type=checkbox id="contact_attempted" onclick="show_ele(contact_attempted, Contact_Attempted)"> - Contact - Attempted
+			<br /><input type=checkbox id="contact_attempted_EZ" onclick="show_ele(contact_attempted_EZ, Contact_Attempted_EZ)"> - Contact - Attempted EZ
+			<br /><input type=checkbox id="contact_attempted_PEM" onclick="show_ele(contact_attempted_PEM, Contact_Attempted_PEM)"> - Contact - Attempted PEM
+			<br /><input type=checkbox id="contact_made" onclick="show_ele(contact_made, Contact_Made)"> - Contact - Made
+			<br /><input type=checkbox id="contact_made_EZ" onclick="show_ele(contact_made_EZ, Contact_Made_EZ)"> - Contact - Made EZ
+			<br /><input type=checkbox id="contact_made_PEM" onclick="show_ele(contact_made_PEM, Contact_Made_PEM)"> - Contact - Made PEM
+			<br /><input type=checkbox id="issued_del_reqs" onclick="show_ele(issued_del_reqs, Issued_Del_Reqs)"> - Issued - Del Reqs.
+			<br /><input type=checkbox id="issued_holding" onclick="show_ele(issued_holding, Issued_Holding)"> - Issued - Holding
+			<br /><input type=checkbox id="issued_inforce" onclick="show_ele(issued_inforce, Issued_Inforce)"> - Issued - Inforce
+			<br /><input type=checkbox id="request_received_datalot_warm_transfer" onclick="show_ele(request_received_datalot_warm_transfer, Request_Received_Datalot_Warm_Transfer)"> - Request Received - Datalot Warm Transfer
+			<br /><input type=checkbox id="request_received_EZ" onclick="show_ele(request_received_EZ, Request_Received_EZ)"> - Request Received - EZ
+			<br /><input type=checkbox id="request_received_GSFP" onclick="show_ele(request_received_GSFP, Request_Received_GSFP)"> - Request Received - GSFP
+			<br /><input type=checkbox id="request_received_LI2D" onclick="show_ele(request_received_LI2D, Request_Received_LI2D)"> - Request Received - LI2D
+			<br /><input type=checkbox id="request_received_request_received" onclick="show_ele(request_received_request_received, Request_Received_Request_Received)"> - Request Received - Request Received
+			<br /><input type=checkbox id="request_received_request_received_VFP" onclick="show_ele(request_received_request_received_VFP, Request_Received_Request_Received_VFP)"> - Request Received - Request Received VFP
+			<br /><input type=checkbox id="request_received_sent_to_dialer" onclick="show_ele(request_received_sent_to_dialer, Request_Received_Sent_to_Dialer)"> - Request Received - Sent to Dialer
+			<br /><input type=checkbox id="request_received_special_contact_time" onclick="show_ele(request_received_special_contact_time, Request_Received_Special_Contact_Time)"> - Request Received - Special Contact Time
+			<br /><input type=checkbox id="withdrawn_app_sent_no_response" onclick="show_ele(withdrawn_app_sent_no_response, Withdrawn_App_Sent_No_Response)"> - Withdrawn - App Sent No Response
+			<br /><input type=checkbox id="withdrawn_app_sent_not_interested" onclick="show_ele(withdrawn_app_sent_not_interested, Withdrawn_App_Sent_Not_Interested)"> - Withdrawn - App Sent Not Interested
+			<br /><input type=checkbox id="withdrawn_bogus" onclick="show_ele(withdrawn_bogus, Withdrawn_Bogus)"> - Withdrawn - Bogus
+			<br /><input type=checkbox id="withdrawn_deceased" onclick="show_ele(withdrawn_deceased, Withdrawn_Deceased)"> - Withdrawn - Deceased
+			<br /><input type=checkbox id="withdrawn_declined" onclick="show_ele(withdrawn_declined, Withdrawn_Declined)"> - Withdrawn - Declined
+			<br /><input type=checkbox id="withdrawn_incomplete" onclick="show_ele(withdrawn_incomplete, Withdrawn_Incomplete)"> - Withdrawn - Incomplete
+			<br /><input type=checkbox id="withdrawn_invalid_number_bogus" onclick="show_ele(withdrawn_invalid_number_bogus, Withdrawn_Invalid_Number_Bogus)"> - Withdrawn - Invalid Number--Bogus
+			<br /><input type=checkbox id="withdrawn_NTO" onclick="show_ele(withdrawn_NTO, Withdrawn_NTO)"> - Withdrawn - NTO
+			<br /><input type=checkbox id="withdrawn_no_response" onclick="show_ele(withdrawn_no_response, Withdrawn_No_Response)"> - Withdrawn - No Response
+			<br /><input type=checkbox id="withdrawn_not_interested" onclick="show_ele(withdrawn_not_interested, Withdrawn_Not_Interested)"> - Withdrawn - Not Interested
+			<br /><input type=checkbox id="withdrawn_postponed" onclick="show_ele(withdrawn_postponed, Withdrawn_Postponed)"> - Withdrawn - Postponed
+			<br /><input type=checkbox id="withdrawn_rated_rejected" onclick="show_ele(withdrawn_rated_rejected, Withdrawn_Rated_Rejected)"> - Withdrawn - Rated-Rejected
+			<br /><input type=checkbox id="withdrawn_test_lead" onclick="show_ele(withdrawn_test_lead, Withdrawn_Test_Lead)"> - Withdrawn - Test Lead
+			<br /><input type=checkbox id="withdrawn_uninsurable" onclick="show_ele(withdrawn_uninsurable, Withdrawn_Uninsurable)"> - Withdrawn - Uninsurable
+		  </div>
+		  <br /><input type=checkbox id="Current_status" onclick="show_ele(Current_status, Current_Status, Current_Status_Date, Days_in_Current_Status, Current_Status_Category);show_checks(Current_status, current_status, current_status_date, current_status_days, current_status_category);"><label id="Current_status_list" onclick="show_div(status_list)"> + Current Status</label>
+		  <div id="status_list" style="display:none">
+			<input type=checkbox id="current_status" onclick="show_ele(current_status, Current_Status)"> Current Status
+			<br /><input type=checkbox id="current_status_date" onclick="show_ele(current_status_date, Current_Status_Date)"> Current Status Date
+			<br /><input type=checkbox id="current_status_days" onclick="show_ele(current_status_days, Days_in_Current_Status)"> Days in Current Status
+			<br /><input type=checkbox id="current_status_category" onclick="show_ele(current_status_category, Current_Status_Category)"> Current Status Category
+		  </div>
+		  <br /><input type=checkbox id="Quoted_info" onclick="show_ele(Quoted_info, Quoted_Qualified, Quoted_Carrier, quote_car, Quoted_Policy_Type, quote_policy, Quoted_Plan_Name, quote_plan, Quoted_Table_Rating, Quoted_Health_Class, Quoted_Carrier_Health_Class, quote_car_health, Quoted_Term_Category, Quoted_Coverage_Amount, Quoted_Premium_Mode, Quoted_Planned_Modal_Premium, quote_plan_mod, Quoted_Annual_Premium, quote_an_pre);show_checks(Quoted_info, quoted_qualified, quoted_carrier, quoted_policy_type, quoted_plan_name, quoted_table_rating, quoted_health_class, quoted_carrier_health_class, quoted_term_category, quoted_coverage_amount, quoted_premium_mode, quoted_planned_modal_premium, quoted_annual_premium);"><label id="Quoted_list" onclick="show_div(quotes)"> + Quoted Info</label>
+		  <div id="quotes" style="display:none">
+			<input type=checkbox id="quoted_qualified" onclick="show_ele(quoted_qualified, Quoted_Qualified)"> Quoted Qualified
+			<br /><input type=checkbox id="quoted_carrier" onclick="show_ele(quoted_carrier, Quoted_Carrier, quote_car)"> Quoted Carrier
+			<br /><input type=checkbox id="quoted_policy_type" onclick="show_ele(quoted_policy_type, Quoted_Policy_Type, quote_policy)"> Quoted Policy Type
+			<br /><input type=checkbox id="quoted_plan_name" onclick="show_ele(quoted_plan_name, Quoted_Plan_Name, quote_plan)"> Quoted Plan Name
+			<br /><input type=checkbox id="quoted_table_rating" onclick="show_ele(quoted_table_rating, Quoted_Table_Rating)"> Quoted Table Rating
+			<br /><input type=checkbox id="quoted_health_class" onclick="show_ele(quoted_health_class, Quoted_Health_Class)"> Quoted Health Class
+			<br /><input type=checkbox id="quoted_carrier_health_class" onclick="show_ele(quoted_carrier_health_class, Quoted_Carrier_Health_Class, quote_car_health)"> Quoted Carrier Health Class
+			<br /><input type=checkbox id="quoted_term_category" onclick="show_ele(quoted_term_category, Quoted_Term_Category)"> Quoted Term Category
+			<br /><input type=checkbox id="quoted_coverage_amount" onclick="show_ele(quoted_coverage_amount, Quoted_Coverage_Amount)"> Quoted Coverage Amount
+			<br /><input type=checkbox id="quoted_premium_mode" onclick="show_ele(quoted_premium_mode, Quoted_Premium_Mode)"> Quoted Premium Mode
+			<br /><input type=checkbox id="quoted_planned_modal_premium" onclick="show_ele(quoted_planned_modal_premium, Quoted_Planned_Modal_Premium, quote_plan_mod)"> Quoted Planned Modal Premium
+			<br /><input type=checkbox id="quoted_annual_premium" onclick="show_ele(quoted_annual_premium, Quoted_Annual_Premium, quote_an_pre)"> Quoted Annual Premium
+		  </div>
+		  <br /><input type=checkbox id="Submitted_policy_info" onclick="show_ele(Submitted_policy_info, Submitted_Carrier, sub_car, Submitted_Policy_Type, sub_policy, Submitted_Plan_Name, sub_plan, Submitted_Table_Rating, Submitted_Health_Class, Submitted_Carrier_Health_Class, sub_car_health, Submitted_Term_Category, Submitted_Coverage_Amount, Submitted_Premium_Mode, Submitted_Planned_Modal_Premium, sub_plan_mod, Submitted_Annual_Premium, sub_an_pre);show_checks(Submitted_policy_info, submitted_carrier, submitted_policy_type, submitted_plan_name, submitted_table_rating, submitted_health_class, submitted_carrier_health_class, submitted_term_category, submitted_coverage_amount, submitted_premium_mode, submitted_planned_modal_premium, submitted_annual_premium);"><label id="submitted_policy_list" onclick="show_div(submitted_list)"> + Submitted Policy Info</label>
+		  <div id="submitted_list" style="display:none">
+			<input type=checkbox id="submitted_carrier" onclick="show_ele(submitted_carrier, Submitted_Carrier, sub_car)"> Submitted Carrier
+			<br /><input type=checkbox id="submitted_policy_type" onclick="show_ele(submitted_policy_type, Submitted_Policy_Type, sub_policy)"> Submitted Policy Type
+			<br /><input type=checkbox id="submitted_plan_name" onclick="show_ele(submitted_plan_name, Submitted_Plan_Name, sub_plan)"> Submitted Plan Name
+			<br /><input type=checkbox id="submitted_table_rating" onclick="show_ele(submitted_table_rating, Submitted_Table_Rating)"> Submitted Table Rating
+			<br /><input type=checkbox id="submitted_health_class" onclick="show_ele(submitted_health_class, Submitted_Health_Class)"> Submitted Health Class
+			<br /><input type=checkbox id="submitted_carrier_health_class" onclick="show_ele(submitted_carrier_health_class, Submitted_Carrier_Health_Class, sub_car_health)"> Submitted Carrier Health Class
+			<br /><input type=checkbox id="submitted_term_category" onclick="show_ele(submitted_term_category, Submitted_Term_Category)"> Submitted Term Category
+			<br /><input type=checkbox id="submitted_coverage_amount" onclick="show_ele(submitted_coverage_amount, Submitted_Coverage_Amount)"> Submitted Coverage Amount
+			<br /><input type=checkbox id="submitted_premium_mode" onclick="show_ele(submitted_premium_mode, Submitted_Premium_Mode)"> Submitted Premium Mode
+			<br /><input type=checkbox id="submitted_planned_modal_premium" onclick="show_ele(submitted_planned_modal_premium, Submitted_Planned_Modal_Premium, sub_plan_mod)"> Submitted Planned Modal Premium
+			<br /><input type=checkbox id="submitted_annual_premium" onclick="show_ele(submitted_annual_premium, Submitted_Annual_Premium, sub_an_pre)"> Submitted Annual Premium
+		  </div>
+		  <br /><input type=checkbox id="Approved_policy_info" onclick="show_ele(Approved_policy_info, Approved_Carrier, ap_car, Approved_Policy_Type, ap_policy, Approved_Plan_Name, ap_plan, Approved_Table_Rating, Approved_Health_Class, Approved_Carrier_Health_Class, ap_car_health, Approved_Term_Category, Approved_Coverage_Amount, Approved_Premium_Mode, Approved_Planned_Modal_Premium, ap_plan_mod, Approved_Annual_Premium, ap_an_pre);show_checks(Approved_policy_info, approved_carrier, approved_policy_type, approved_plan_name, approved_table_rating, approved_health_class, approved_carrier_health_class, approved_term_category, approved_coverage_amount, approved_premium_mode, approved_planned_modal_premium, approved_annual_premium);"><label id="approved_policy_list" onclick="show_div(approved_list)"> + Approved Policy Info</label>
+		  <div id="approved_list" style="display:none">
+			<input type=checkbox id="approved_carrier" onclick="show_ele(approved_carrier, Approved_Carrier, ap_car)"> Approved Carrier
+			<br /><input type=checkbox id="approved_policy_type" onclick="show_ele(approved_policy_type, Approved_Policy_Type, ap_policy)"> Approved Policy Type
+			<br /><input type=checkbox id="approved_plan_name" onclick="show_ele(approved_plan_name, Approved_Plan_Name, ap_plan)"> Approved Plan Name
+			<br /><input type=checkbox id="approved_table_rating" onclick="show_ele(approved_table_rating, Approved_Table_Rating)"> Approved Table Rating
+			<br /><input type=checkbox id="approved_health_class" onclick="show_ele(approved_health_class, Approved_Health_Class)"> Approved Health Class
+			<br /><input type=checkbox id="approved_carrier_health_class" onclick="show_ele(approved_carrier_health_class, Approved_Carrier_Health_Class, ap_car_health)"> Approved Carrier Health Class
+			<br /><input type=checkbox id="approved_term_category" onclick="show_ele(approved_term_category, Approved_Term_Category)"> Approved Term Category
+			<br /><input type=checkbox id="approved_coverage_amount" onclick="show_ele(approved_coverage_amount, Approved_Coverage_Amount)"> Approved Coverage Amount
+			<br /><input type=checkbox id="approved_premium_mode" onclick="show_ele(approved_premium_mode, Approved_Premium_Mode)"> Approved Premium Mode
+			<br /><input type=checkbox id="approved_planned_modal_premium" onclick="show_ele(approved_planned_modal_premium, Approved_Planned_Modal_Premium, ap_plan_mod)"> Approved Planned Modal Premium
+			<br /><input type=checkbox id="approved_annual_premium" onclick="show_ele(approved_annual_premium, Approved_Annual_Premium, ap_an_pre)"> Approved Annual Premium
+		  </div>
+		</tbody>
+		</table>
+</div>
+
+<div id="tag_keys" style="float:right; background-color:#d9deec; color:#000; width:80%; height:700px; overflow-y:hidden;overflow-x:scroll;  ">
+	<div>
+	<table style="background-color:#fff; border-radius:4px; width:100%; border-width:4px; border-style:solid;">
+	  <tr>
+	        <td><label id="client_id" style="display:none; width:100px;">Client ID</label></td>
+		<td class="divider-vertical"></td>
+		<td><label id="web_client_id" style="display:none; width:100px;">Web Client ID</label></td>
+		<td class="divider-vertical"></td>
+		<td><label id="lead" style="display:none; width:100px;">Lead</label><td>
+		<td class="divider-vertical"></td>
+		<td><label id="First" style="display:none; width:100px;">First</label> </td>
+		<td class="divider-vertical"></td>
+		<td><label id="Middle" style="display:none; width:100px;">Middle</label> </td>
+		<td class="divider-vertical"></td>
+		<td><label id="Last" style="display:none; width:100px;">Last</label></td>
+		<td class="divider-vertical"></td>
+		<td><label id="Gender">Gender</label></td>
+		<td class="divider-vertical"></td>
+		<td><label id="Birth_Date" style="display:none; width:100px;">Birth Date</label></td>
+		<td class="divider-vertical"></td>
+		<td><label id="age_label" style="display:none; width:100px;">Age</label></td>
+		<td class="divider-vertical"></td>
+		<td><label id="Address" style="display:none; width:100px;">Address</label></td>
+		<td class="divider-vertical"></td>
+		<td><label id="State" style="display:none; width:100px;">State</label></td>
+		<td class="divider-vertical"></td>
+		<td><label id="City" style="display:none; width:100px;">City</label></td>
+		<td class="divider-vertical"></td>
+		<td><label id="Zip" style="display:none; width:100px;">Zip</label></td>
+		<td class="divider-vertical"></td>
+		<td><label id="Phone">Phone</label></td>
+		<td class="divider-vertical"></td>
+		<td><label id="Email" style="display:none; width:100px;">Email</label></td>
+		<td class="divider-vertical"></td>
+		<td><label id="Source Code" style="display:none; width:100px;">Source Code</label></td>
+		<td class="divider-vertical"></td>
+		<td><label id="Source ID" style="display:none; width:100px;">Source ID</label></td>
+		<td class="divider-vertical"></td>
+		<td><label id="Client_created" style="display:none; width:100px;">Client Created</label></td>
+		<td class="divider-vertical"></td>
+		<td><label id="Policy_created" style="display:none; width:100px;">Policy Created</label></td>
+		<td class="divider-vertical"></td>
+		<td><label id="Policy ID">Policy ID</label></td>
+		<td class="divider-vertical"></td>
+		<td><label id="IC" style="display:none; width:100px;">IC</label></td>
+		<td class="divider-vertical"></td>
+		<td><label id="Sales_Support" style="display:none; width:100px;">Sales Support</label></td>
+		<td class="divider-vertical"></td>
+		<td><label id="Current_Status" style="display:none; width:100px;">Current Status</label></td>
+		<td class="divider-vertical"></td>
+		<td><label id="Current_Status_Date" style="display:none; width:100px;">Current Status Date</label></td>
+		<td class="divider-vertical"></td>
+		<td><label id="Days_in_Current_Status" style="display:none; width:100px;">Days in Current Status</label></td>
+		<td class="divider-vertical"></td>
+		<td><label id="Current_Status_Category" style="display:none; width:100px;">Current Status Category</label></td>
+		<td class="divider-vertical"></td>
+		<td><label id="Request_Received_Request_Received" style="display:none; width:100px;">Request Received - Request Received</label></td>
+		<td class="divider-vertical"></td>
+		<td><label id="Contact_Made" style="display:none; width:100px;">Contact - Made</label><td>
+		<td class="divider-vertical"></td>
+		<td><label id="App_Sent_Paper"  style="display:none; width:100px;">App Sent - Paper</label><td>
+		<td class="divider-vertical"></td>
+		<td><label id="Approved_as_Applied" style="display:none; width:100px;">Approved - as Applied</label><td>
+		<td class="divider-vertical"></td>
+		<td><label id="App_Sent_Exam_Complete" style="display:none; width:100px;">App Sent - Exam Complete</label><td>
+		<td class="divider-vertical"></td>
+		<td><label id="Approved_Other_Than_Applied" style="display:none">Approved - Other Than Applied</label><td>
+		<td class="divider-vertical"></td>
+		<td><label id="Issued_Del_Reqs" style="display:none; width:100px;">Issued - Del Reqs.</label><td>
+		<td class="divider-vertical"></td>
+		<td><label id="Withdrawn_Postponed" style="display:none; width:100px;">Withdrawn - Postponed</label><td>
+		<td class="divider-vertical"></td>
+		<td><label id="Withdrawn_Declined" style="display:none; width:100px;">Withdrawn - Declined</label><td>
+		<td class="divider-vertical"></td>
+		<td><label id="Withdrawn_Not_Interested" style="display:none; width:100px;">Withdrawn - Not Interested</label><td>
+		<td class="divider-vertical"></td>
+		<td><label id="Withdrawn_Bogus" style="display:none; width:100px;">Withdrawn - Bogus</label><td>
+		<td class="divider-vertical"></td>
+		<td><label id="Withdrawn_NTO" style="display:none; width:100px;">Withdrawn - NTO</label><td>
+		<td class="divider-vertical"></td>
+		<td><label id="Withdrawn_Incomplete" style="display:none; width:100px;">Withdrawn - Incomplete</label><td>
+		<td class="divider-vertical"></td>
+		<td><label id="Withdrawn_Rated_Rejected" style="display:none; width:100px;">Withdrawn - Rated-Rejected</label><td>
+		<td class="divider-vertical"></td>
+		<td><label id="Withdrawn_No_Response" style="display:none; width:100px;">Withdrawn - No Response</label><td>
+		<td class="divider-vertical"></td>
+		<td><label id="Withdrawn_Uninsurable" style="display:none; width:100px;">Withdrawn - Uninsurable</label><td>
+		<td class="divider-vertical"></td>
+		<td><label id="App_Sent_NER"  style="display:none; width:100px;">App Sent - NER</label><td>
+		<td><label id="App_Sent_Instant_Issue" style="display:none; width:100px;">App Sent - Instant Issue</label><td>
+		<td><label id="App_Sent_eSign" style="display:none; width:100px;">App Sent - eSign</label><td>
+		<td><label id="Application_Submitted_App_Submitted" style="display:none; width:100px;">Application Submitted - App Submitted</label><td>
+		<td><label id="Withdrawn_Deceased" style="display:none; width:100px;">Withdrawn - Deceased</label><td>
+		<td><label id="App_Sent_Docusign" style="display:none; width:100px;">App Sent - Docusign</label><td>
+		<td><label id="Approved_Reissued_Case" style="display:none; width:100px;">Approved - Reissued Case</label><td>
+		<td><label id="Application_Submitted_Instant_Issue" style="display:none; width:100px;">Application Submitted - Instant Issue</label><td>
+		<td><label id="Withdrawn_Test_Lead" style="display:none; width:100px;">Withdrawn - Test Lead</label><td>
+		<td><label id="Request_Received_EZ" style="display:none; width:100px;">Request Received - EZ</label><td>
+		<td><label id="Contact_Made_EZ" style="display:none; width:100px;">Contact - Made EZ</label><td>
+		<td><label id="Request_Received_LI2D" style="display:none; width:100px;">Request Received - LI2D</label><td>
+		<td><label id="Contact_Attempted_PEM" style="display:none; width:100px;">Contact - Attempted PEM</label><td>
+		<td><label id="Contact_Made_PEM" style="display:none; width:100px;">Contact - Made PEM</label><td>
+		<td><label id="Withdrawn_Invalid_Number_Bogus" style="display:none; width:100px;">Withdrawn - Invalid Number--Bogus</label><td>
+		<td><label id="Request_Received_GSFP" style="display:none; width:100px;">Request Received - GSFP</label><td>
+		<td><label id="Contact_Attempted" style="display:none; width:100px;">Contact - Attempted</label><td>
+		<td><label id="Contact_Attempted_EZ" style="display:none; width:100px;">Contact - Attempted EZ</label><td>
+		<td><label id="Issued_Inforce" style="display:none; width:100px;">Issued - Inforce</label><td>
+		<td><label id="App_Sent_No_Exam_EZ" style="display:none; width:100px;">App Sent - No Exam EZ</label><td>
+		<td><label id="App_Sent_Vendor" style="display:none; width:100px;">App Sent - Vendor</label><td>
+		<td><label id="App_Sent_Reg_60" style="display:none; width:100px;">App Sent - Reg 60</label><td>
+		<td><label id="Approved_Tentative_Offer" style="display:none; width:100px;">Approved - Tentative Offer</label><td>
+		<td><label id="Approved_Awaiting_Funds" style="display:none; width:100px;">Approved - Awaiting Funds/1035 Exchange</label><td>
+		<td><label id="Application_Submitted_Application_Received" style="display:none; width:100px;">Application Submitted - Application Received</label><td>
+		<td><label id="Issued_Holding" style="display:none; width:100px;">Issued - Holding</label><td>
+		<td><label id="Application_Submitted_Awaiting_Missing_Info" style="display:none; width:100px;">Application Submitted - Awaiting Missing Info</label><td>
+		<td><label id="App_Sent_Paper_EZ" style="display:none; width:100px;">App Sent - Paper EZ</label><td>
+		<td><label id="Application_Submitted_Pre_Appointment_Hold" style="display:none; width:100px;">Application Submitted - Pre-Appointment Hold</label><td>
+		<td><label id="Request_Received_Datalot_Warm_Transfer" style="display:none; width:100px;">Request Received - Datalot Warm Transfer</label><td>
+		<td><label id="Request_Received_Special_Contact_Time" style="display:none; width:100px;">Request Received - Special Contact Time</label><td>
+		<td><label id="Withdrawn_App_Sent_No_Response" style="display:none; width:100px;">Withdrawn - App Sent No Response</label><td>
+		<td><label id="Withdrawn_App_Sent_Not_Interested" style="display:none; width:100px;">Withdrawn - App Sent Not Interested</label><td>
+		<td><label id="Request_Received_Request_Received_VFP" style="display:none; width:100px;">Request Received - Request Received VFP</label><td>
+		<td><label id="App_Sent_LQR_Genworth" style="display:none; width:100px;">App Sent - LQR- Genworth</label><td>
+		<td><label id="App_Sent_Banner_App_Assist" style="display:none; width:100px;">App Sent - Banner App Assist</label><td>
+		<td><label id="Application_Submitted_Banner_App_Assist" style="display:none; width:100px;">Application Submitted - Banner App Assist</label><td>
+		<td><label id="Request_Received_Sent_to_Dialer" style="display:none; width:100px;">Request Received - Sent to Dialer</label><td>
+		<td><label id="Quoted_Qualified" style="display:none; width:100px;">Quoted Qualified</label><td>
+		<td><label id="Quoted_Carrier" style="display:none; width:100px;">Quoted Carrier</label><td>
+		<td><label id="Quoted_Policy_Type" style="display:none; width:100px;">Quoted Policy Type</label><td>
+		<td><label id="Quoted_Plan_Name" style="display:none; width:100px;">Quoted Plan Name</label><td>
+		<td><label id="Quoted_Table_Rating" style="display:none; width:100px;">Quoted Table Rating</label><td>
+		<td><label id="Quoted_Health_Class" style="display:none; width:100px;">Quoted Health Class</label><td>
+		<td><label id="Quoted_Carrier_Health_Class" style="display:none; width:100px;">Quoted Carrier Health Class</label><td>
+		<td><label id="Quoted_Term_Category" style="display:none; width:100px;">Quoted Term Category</label><td>
+		<td><label id="Quoted_Coverage_Amount" style="display:none; width:100px;">Quoted Coverage Amount</label><td>
+		<td><label id="Quoted_Premium_Mode" style="display:none; width:100px;">Quoted Premium Mode</label><td>
+		<td><label id="Quoted_Planned_Modal_Premium" style="display:none; width:100px;">Quoted Planned Modal Premium</label><td>
+		<td><label id="Quoted_Annual_Premium" style="display:none; width:100px;">Quoted Annual Premium</label><td>
+		<td><label id="Submitted_Carrier" style="display:none; width:100px;">Submitted Carrier</label><td>
+		<td><label id="Submitted_Policy_Type" style="display:none; width:100px;">Submitted Policy Type</label><td>
+		<td><label id="Submitted_Plan_Name" style="display:none; width:100px;">Submitted Plan Name</label><td>
+		<td><label id="Submitted_Table_Rating" style="display:none; width:100px;">Submitted Table Rating</label><td>
+		<td><label id="Submitted_Health_Class" style="display:none; width:100px;">Submitted Health Class</label><td>
+		<td><label id="Submitted_Carrier_Health_Class" style="display:none; width:100px;">Submitted Carrier Health Class</label><td>
+		<td><label id="Submitted_Term_Category" style="display:none; width:100px;">Submitted Term Category</label><td>
+		<td><label id="Submitted_Coverage_Amount" style="display:none; width:100px;">Submitted Coverage Amount</label><td>
+		<td><label id="Submitted_Premium_Mode" style="display:none; width:100px;">Submitted Premium Mode</label><td>
+		<td><label id="Submitted_Planned_Modal_Premium" style="display:none; width:100px;">Submitted Planned ModalPremium</label><td>
+		<td><label id="Submitted_Annual_Premium" style="display:none; width:100px;">Submitted Annual Premium</label><td>
+		<td><label id="Approved_Carrier" style="display:none; width:100px;">Approved Carrier</label><td>
+		<td><label id="Approved_Policy_Type" style="display:none; width:100px;">Approved Policy Type</label><td>
+		<td><label id="Approved_Plan_Name" style="display:none; width:100px;">Approved Plan Name</label><td>
+		<td><label id="Approved_Table_Rating" style="display:none; width:100px;">Approved Table Rating</label><td>
+		<td><label id="Approved_Health_Class" style="display:none; width:100px;">Approved Health Class</label><td>
+		<td><label id="Approved_Carrier_Health_Class" style="display:none; width:100px;">Approved Carrier Health Class</label><td>
+		<td><label id="Approved_Term_Category" style="display:none; width:100px;">Approved Term Category</label><td>
+		<td><label id="Approved_Coverage_Amount" style="display:none; width:100px;">Approved Coverage Amount</label><td>
+		<td><label id="Approved_Premium_Mode" style="display:none; width:100px;">Approved Premium Mode</label><td>
+		<td><label id="Approved_Planned_Modal_Premium" style="display:none; width:100px;">Approved Planned Modal Premium</label><td>
+		<td><label id="Approved_Annual_Premium" style="display:none; width:100px;">Approved Annual Premium</label><td>
+	  </tr>
+	  </table>
+  	</div>
+	<%= ajax_will_paginate @crm_connections %>
+	<table>
+	<tr>  <% @crm_connections.each do |connection| %>
+		<td style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td style="display:none; width:100px;" id="first_name"><%= connection.try(:first_name) %></td>
+		<td class="divider-vertical"></td>
+		<td style="display:none; width:100px;" id="middle_name"><%= connection.try(:middle_name) %></td>
+		<td class="divider-vertical"></td>
+		<td style="display:none; width:100px;" id="last_name"><%= connection.try(:last_name) %></td>
+		<td class="divider-vertical"></td>
+		<td style="width:100px;"><%= connection.try(:gender) %></td>
+		<td class="divider-vertical"></td>
+		<td style="display:none; width:100px;" id="birth"><%= connection.try(:birth) %></td>
+		<td class="divider-vertical"></td>
+		<td style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td style="display:none; width:100px;" id="address_value">
+		  <% connection.try(:contact_info).try(:addresses).each do |contact_info_address| %>
+		    <%= contact_info_address.try(:value) %>
+		  <% end %>
+		</td>
+		<td class="divider-vertical"></td>
+		<td style="display:none; width:100px;" id="state_name"><%= connection.try(:contact_info).try(:state).try(:name) %></td>
+		<td class="divider-vertical"></td>
+		<td style="display:none; width:100px;" id="city"><%= connection.try(:city) %></td>
+		<td class="divider-vertical"></td>
+		<td style="display:none; width:100px;" id="zip"><%= connection.try(:zip) %></td>
+		<td class="divider-vertical"></td>
+		<td><% connection.try(:contact_info).try(:phones).each do |contact_info_phone| %>
+			  <%= contact_info_phone.try(:value) %>
+			<% end %>
+		</td>
+		<td class="divider-vertical"></td>
+		<td style="display:none; width:100px;" id="email_id">
+		  <% connection.try(:contact_info).try(:emails).each do |contact_info_email| %>
+		    <%= contact_info_email.try(:value) %>
+		  <% end %>
+		</td>
+		<td class="divider-vertical"></td>
+		<td style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td  style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td style="width:100px;"></td>
+		<td class="divider-vertical"></td>
+		<td style="display:none; width:100px;" id="quote_car">
+		  <% connection.try(:cases).each do |connection_cases| %>
+		    <%= connection_cases.try(:quoted_details).try(:carrier).try(:name) %>
+		  <% end %>
+		</td>
+		<td class="divider-vertical"></td>
+		<td style="display:none; width:100px;" id="quote_policy">
+		  <% connection.try(:cases).each do |connection_cases| %>
+		    <%= connection_cases.try(:quoted_details).try(:policy_type).try(:name) %>
+		  <% end %>
+		</td>
+		<td class="divider-vertical"></td>
+		<td style="display:none; width:100px;" id="quote_plan">
+		  <% connection.try(:cases).each do |connection_cases| %>
+		    <%= connection_cases.try(:quoted_details).try(:plan_name) %>
+		  <% end %>
+		</td>
+		<td class="divider-vertical"></td>
+		<td></td>
+		<td class="divider-vertical"></td>
+		<td></td>
+		<td class="divider-vertical"></td>
+		<td style="display:none; width:100px;" id="quote_car_health">
+		  <% connection.try(:cases).each do |connection_cases| %>
+		    <%= connection_cases.try(:quoted_details).try(:carrier_health_class) %>
+		  <% end %>
+		</td>
+		<td class="divider-vertical"></td>
+		<td style="display:none; width:100px;" id="quote_plan_mod">
+		  <% connection.try(:cases).each do |connection_cases| %>
+		    <%= connection_cases.try(:quoted_details).try(:planned_modal_premium) %>
+		  <% end %>
+		</td>
+		<td class="divider-vertical"></td>
+		<td style="display:none; width:100px;" id="quote_an_pre">
+		  <% connection.try(:cases).each do |connection_cases| %>
+		    <%= connection_cases.try(:quoted_details).try(:monthly_premium).to_i*12 %>
+		  <% end %>
+		</td>
+		<td class="divider-vertical"></td>
+		<td style="display:none; width:100px;" id="sub_car">
+		  <% connection.try(:cases).each do |connection_cases| %>
+		    <%= connection_cases.try(:submitted_details).try(:carrier).try(:name) %>
+		  <% end %>
+		</td>
+		<td class="divider-vertical"></td>
+		<td style="display:none; width:100px;" id="sub_policy">
+		  <% connection.try(:cases).each do |connection_cases| %>
+		    <%= connection_cases.try(:submitted_details).try(:policy_type).try(:name) %>
+		  <% end %>
+		</td>
+		<td class="divider-vertical"></td>
+		<td style="display:none; width:100px;" id="sub_plan">
+		  <% connection.try(:cases).each do |connection_cases| %>
+		    <%= connection_cases.try(:submitted_details).try(:plan_name) %>
+		  <% end %>
+		</td>
+		<td class="divider-vertical"></td>
+		<td></td>
+		<td class="divider-vertical"></td>
+		<td></td>
+		<td class="divider-vertical"></td>
+		<td style="display:none; width:100px;" id="sub_car_health">
+		  <% connection.try(:cases).each do |connection_cases| %>
+		    <%= connection_cases.try(:submitted_details).try(:carrier_health_class) %>
+		  <% end %>
+		</td>
+		<td class="divider-vertical"></td>
+		<td style="display:none; width:100px;" id="sub_plan_mod">
+		  <% connection.try(:cases).each do |connection_cases| %>
+		    <%= connection_cases.try(:submitted_details).try(:planned_modal_premium) %>
+		  <% end %>
+		</td>
+		<td class="divider-vertical"></td>
+		<td style="display:none; width:100px;" id="sub_an_pre">
+		  <% connection.try(:cases).each do |connection_cases| %>
+		    <%= connection_cases.try(:submitted_details).try(:monthly_premium).to_i*12 %>
+		  <% end %>
+		</td>
+		<td class="divider-vertical"></td>
+		<td style="display:none; width:100px;" id="ap_car">
+		  <% connection.try(:cases).each do |connection_cases| %>
+		    <%= connection_cases.try(:approved_details).try(:carrier).try(:name) %>
+		  <% end %>
+		</td>
+		<td class="divider-vertical"></td>
+		<td style="display:none; width:100px;" id="ap_policy">
+		  <% connection.try(:cases).each do |connection_cases| %>
+		    <%= connection_cases.try(:approved_details).try(:policy_type).try(:name) %>
+		  <% end %>
+		</td>
+		<td class="divider-vertical"></td>
+		<td style="display:none; width:100px;" id="ap_plan">
+		  <% connection.try(:cases).each do |connection_cases| %>
+		    <%= connection_cases.try(:approved_details).try(:plan_name) %>
+		  <% end %>
+		</td>
+		<td class="divider-vertical"></td>
+		<td></td>
+		<td class="divider-vertical"></td>
+		<td></td>
+		<td class="divider-vertical"></td>
+		<td style="display:none; width:100px;" id="ap_car_health">
+		  <% connection.try(:cases).each do |connection_cases| %>
+		    <%= connection_cases.try(:approved_details).try(:carrier_health_class) %>
+		  <% end %>
+		</td>
+		<td class="divider-vertical"></td>
+		<td style="display:none; width:100px;" id="ap_plan_mod">
+		  <% connection.try(:cases).each do |connection_cases| %>
+		    <%= connection_cases.try(:approved_details).try(:planned_modal_premium) %>
+		  <% end %>
+		</td>
+		<td class="divider-vertical"></td>
+		<td style="display:none; width:100px;" id="ap_an_pre">
+		  <% connection.try(:cases).each do |connection_cases| %>
+		    <%= connection_cases.try(:approved_details).try(:monthly_premium).to_i*12 %>
+		  <% end %>
+		</td>
+		<td class="divider-vertical"></td>
+		<td></td>
+		<% end %>
+	  </tr>
+	  </table>
+</div>	 
+
+
+ 
+<script>
+
+	function show_div(obj1)
+	{
+		$(obj1).toggle();
+	};
+
+	function show_checks(obj1, obj2, obj3, obj4, obj5, obj6, obj7, obj8, obj9, obj10, obj11, obj12, obj13, obj14, obj15, obj16, obj17, obj18, obj19, obj20, obj21, obj22, obj23, obj24, obj25, obj26, obj27, obj28, obj29, obj30, obj31, obj32, obj33, obj34, obj35, obj36, obj37, obj38, obj39, obj40, obj41, obj42, obj43, obj44, obj45, obj46, obj47, obj48, obj49, obj50, obj51, obj52, obj53, obj54, obj55, obj56, obj57, obj58, obj59, obj60, obj61, obj62, obj63, obj64, obj65, obj66, obj67, obj68, obj69, obj70, obj71, obj72, obj73, obj74, obj75, obj76, obj77, obj78, obj79, obj80, obj81, obj82, obj83, obj84, obj85, obj86, obj87, obj88, obj89, obj90, obj91, obj92, obj93, obj94, obj95, obj96, obj97, obj98, obj99, obj100, obj101, obj102, obj103, obj104, obj105, obj106, obj107, obj108, obj109, obj110, obj111, obj112, obj113, obj114, obj115, obj116, obj117, obj118, obj119)	
+	{
+		if($(obj1).is(':checked'))
+		{
+			$(obj2).prop("checked", true);
+			$(obj3).prop("checked", true);
+			$(obj4).prop("checked", true);
+			$(obj5).prop("checked", true);
+			$(obj6).prop("checked", true);
+			$(obj7).prop("checked", true);
+			$(obj8).prop("checked", true);
+			$(obj9).prop("checked", true);
+			$(obj10).prop("checked", true);
+			$(obj11).prop("checked", true);
+			$(obj12).prop("checked", true);
+			$(obj13).prop("checked", true);
+			$(obj14).prop("checked", true);
+			$(obj15).prop("checked", true);
+			$(obj16).prop("checked", true);
+			$(obj17).prop("checked", true);
+			$(obj18).prop("checked", true);
+			$(obj19).prop("checked", true);
+			$(obj20).prop("checked", true);
+			$(obj21).prop("checked", true);
+			$(obj22).prop("checked", true);
+			$(obj23).prop("checked", true);
+			$(obj24).prop("checked", true);
+			$(obj25).prop("checked", true);
+			$(obj26).prop("checked", true);
+			$(obj27).prop("checked", true);
+			$(obj28).prop("checked", true);
+			$(obj29).prop("checked", true);
+			$(obj30).prop("checked", true);
+			$(obj31).prop("checked", true);
+			$(obj32).prop("checked", true);
+			$(obj33).prop("checked", true);
+			$(obj34).prop("checked", true);
+			$(obj35).prop("checked", true);
+			$(obj36).prop("checked", true);
+			$(obj37).prop("checked", true);
+			$(obj38).prop("checked", true);
+			$(obj39).prop("checked", true);
+			$(obj40).prop("checked", true);
+			$(obj41).prop("checked", true);
+			$(obj42).prop("checked", true);
+			$(obj43).prop("checked", true);
+			$(obj44).prop("checked", true);
+			$(obj45).prop("checked", true);
+			$(obj46).prop("checked", true);
+			$(obj47).prop("checked", true);
+			$(obj48).prop("checked", true);
+			$(obj49).prop("checked", true);
+			$(obj50).prop("checked", true);
+			$(obj51).prop("checked", true);
+			$(obj52).prop("checked", true);
+			$(obj53).prop("checked", true);
+			$(obj54).prop("checked", true);
+			$(obj55).prop("checked", true);
+			$(obj56).prop("checked", true);
+			$(obj57).prop("checked", true);
+			$(obj58).prop("checked", true);
+			$(obj59).prop("checked", true);
+			$(obj60).prop("checked", true);
+			$(obj61).prop("checked", true);
+			$(obj62).prop("checked", true);
+			$(obj63).prop("checked", true);
+			$(obj64).prop("checked", true);
+			$(obj65).prop("checked", true);
+			$(obj66).prop("checked", true);
+			$(obj67).prop("checked", true);
+			$(obj68).prop("checked", true);
+			$(obj69).prop("checked", true);
+			$(obj70).prop("checked", true);
+			$(obj71).prop("checked", true);
+			$(obj72).prop("checked", true);
+			$(obj73).prop("checked", true);
+			$(obj74).prop("checked", true);
+			$(obj75).prop("checked", true);
+			$(obj76).prop("checked", true);
+			$(obj77).prop("checked", true);
+			$(obj78).prop("checked", true);
+			$(obj79).prop("checked", true);
+			$(obj80).prop("checked", true);
+			$(obj81).prop("checked", true);
+			$(obj82).prop("checked", true);
+			$(obj83).prop("checked", true);
+			$(obj84).prop("checked", true);
+			$(obj85).prop("checked", true);
+			$(obj86).prop("checked", true);
+			$(obj87).prop("checked", true);
+			$(obj88).prop("checked", true);
+			$(obj89).prop("checked", true);
+			$(obj90).prop("checked", true);
+			$(obj91).prop("checked", true);
+			$(obj92).prop("checked", true);
+			$(obj93).prop("checked", true);
+			$(obj94).prop("checked", true);
+			$(obj95).prop("checked", true);
+			$(obj96).prop("checked", true);
+			$(obj97).prop("checked", true);
+			$(obj98).prop("checked", true);
+			$(obj99).prop("checked", true);
+			$(obj100).prop("checked", true);
+			$(obj101).prop("checked", true);
+			$(obj102).prop("checked", true);
+			$(obj103).prop("checked", true);
+			$(obj104).prop("checked", true);
+			$(obj105).prop("checked", true);
+			$(obj106).prop("checked", true);
+			$(obj107).prop("checked", true);
+			$(obj108).prop("checked", true);
+			$(obj109).prop("checked", true);
+			$(obj110).prop("checked", true);
+			$(obj111).prop("checked", true);
+			$(obj112).prop("checked", true);
+			$(obj113).prop("checked", true);
+			$(obj114).prop("checked", true);
+			$(obj115).prop("checked", true);
+			$(obj116).prop("checked", true);
+			$(obj117).prop("checked", true);
+			$(obj118).prop("checked", true);
+			$(obj119).prop("checked", true);
+		}
+		else
+		{
+			$(obj2).prop("checked", false);
+			$(obj3).prop("checked", false);
+			$(obj4).prop("checked", false);
+			$(obj5).prop("checked", false);
+			$(obj6).prop("checked", false);
+			$(obj7).prop("checked", false);
+			$(obj8).prop("checked", false);
+			$(obj9).prop("checked", false);
+			$(obj10).prop("checked", false);
+			$(obj11).prop("checked", false);
+			$(obj12).prop("checked", false);
+			$(obj13).prop("checked", false);
+			$(obj14).prop("checked", false);
+			$(obj15).prop("checked", false);
+			$(obj16).prop("checked", false);
+			$(obj17).prop("checked", false);
+			$(obj18).prop("checked", false);
+			$(obj19).prop("checked", false);
+			$(obj20).prop("checked", false);
+			$(obj21).prop("checked", false);
+			$(obj22).prop("checked", false);
+			$(obj23).prop("checked", false);
+			$(obj24).prop("checked", false);
+			$(obj25).prop("checked", false);
+			$(obj26).prop("checked", false);
+			$(obj27).prop("checked", false);
+			$(obj28).prop("checked", false);
+			$(obj29).prop("checked", false);
+			$(obj30).prop("checked", false);
+			$(obj31).prop("checked", false);
+			$(obj32).prop("checked", false);
+			$(obj33).prop("checked", false);
+			$(obj34).prop("checked", false);
+			$(obj35).prop("checked", false);
+			$(obj36).prop("checked", false);
+			$(obj37).prop("checked", false);
+			$(obj38).prop("checked", false);
+			$(obj39).prop("checked", false);
+			$(obj40).prop("checked", false);
+			$(obj41).prop("checked", false);
+			$(obj42).prop("checked", false);
+			$(obj43).prop("checked", false);
+			$(obj44).prop("checked", false);
+			$(obj45).prop("checked", false);
+			$(obj46).prop("checked", false);
+			$(obj47).prop("checked", false);
+			$(obj48).prop("checked", false);
+			$(obj49).prop("checked", false);
+			$(obj50).prop("checked", false);
+			$(obj51).prop("checked", false);
+			$(obj52).prop("checked", false);
+			$(obj53).prop("checked", false);
+			$(obj54).prop("checked", false);
+			$(obj55).prop("checked", false);
+			$(obj56).prop("checked", false);
+			$(obj57).prop("checked", false);
+			$(obj58).prop("checked", false);
+			$(obj59).prop("checked", false);
+			$(obj60).prop("checked", false);
+			$(obj61).prop("checked", false);
+			$(obj62).prop("checked", false);
+			$(obj63).prop("checked", false);
+			$(obj64).prop("checked", false);
+			$(obj65).prop("checked", false);
+			$(obj66).prop("checked", false);
+			$(obj67).prop("checked", false);
+			$(obj68).prop("checked", false);
+			$(obj69).prop("checked", false);
+			$(obj70).prop("checked", false);
+			$(obj71).prop("checked", false);
+			$(obj72).prop("checked", false);
+			$(obj73).prop("checked", false);
+			$(obj74).prop("checked", false);
+			$(obj75).prop("checked", false);
+			$(obj76).prop("checked", false);
+			$(obj77).prop("checked", false);
+			$(obj78).prop("checked", false);
+			$(obj79).prop("checked", false);
+			$(obj80).prop("checked", false);
+			$(obj81).prop("checked", false);
+			$(obj82).prop("checked", false);
+			$(obj83).prop("checked", false);
+			$(obj84).prop("checked", false);
+			$(obj85).prop("checked", false);
+			$(obj86).prop("checked", false);
+			$(obj87).prop("checked", false);
+			$(obj88).prop("checked", false);
+			$(obj89).prop("checked", false);
+			$(obj90).prop("checked", false);
+			$(obj91).prop("checked", false);
+			$(obj92).prop("checked", false);
+			$(obj93).prop("checked", false);
+			$(obj94).prop("checked", false);
+			$(obj95).prop("checked", false);
+			$(obj96).prop("checked", false);
+			$(obj97).prop("checked", false);
+			$(obj98).prop("checked", false);
+			$(obj99).prop("checked", false);
+			$(obj100).prop("checked", false);
+			$(obj101).prop("checked", false);
+			$(obj102).prop("checked", false);
+			$(obj103).prop("checked", false);
+			$(obj104).prop("checked", false);
+			$(obj105).prop("checked", false);
+			$(obj106).prop("checked", false);
+			$(obj107).prop("checked", false);
+			$(obj108).prop("checked", false);
+			$(obj109).prop("checked", false);
+			$(obj110).prop("checked", false);
+			$(obj111).prop("checked", false);
+			$(obj112).prop("checked", false);
+			$(obj113).prop("checked", false);
+			$(obj114).prop("checked", false);
+			$(obj115).prop("checked", false);
+			$(obj116).prop("checked", false);
+			$(obj117).prop("checked", false);
+			$(obj118).prop("checked", false);
+			$(obj119).prop("checked", false);
+		}
+	}
+	
+	function show_ele(obj1, obj2, obj3, obj4, obj5, obj6, obj7, obj8, obj9, obj10, obj11, obj12, obj13, obj14, obj15, obj16, obj17, obj18, obj19, obj20, obj21, obj22, obj23, obj24, obj25, obj26, obj27, obj28, obj29, obj30, obj31, obj32, obj33, obj34, obj35, obj36, obj37, obj38, obj39, obj40, obj41, obj42, obj43, obj44, obj45, obj46, obj47, obj48, obj49, obj50, obj51, obj52, obj53, obj54, obj55, obj56, obj57, obj58, obj59, obj60, obj61, obj62, obj63, obj64, obj65, obj66, obj67, obj68, obj69, obj70, obj71, obj72, obj73, obj74, obj75, obj76, obj77, obj78, obj79, obj80, obj81, obj82, obj83, obj84, obj85, obj86, obj87, obj88, obj89, obj90, obj91, obj92, obj93, obj94, obj95, obj96, obj97, obj98, obj99, obj100, obj101, obj102, obj103, obj104, obj105, obj106, obj107, obj108, obj109, obj110, obj111, obj112, obj113, obj114, obj115, obj116, obj117, obj118, obj119, obj120, obj121, obj122, obj123, obj124, obj125, obj126, obj127, obj128, obj129, obj130, obj131, obj132, obj133, obj134, obj135, obj136, obj137, obj138, obj139)
+	{
+		if($(obj1).is(':checked'))
+		{
+			$(obj2).show();
+			$(obj3).show();
+			$(obj4).show();
+			$(obj5).show();
+			$(obj6).show();
+			$(obj7).show();
+			$(obj8).show();
+			$(obj9).show();
+			$(obj10).show();
+			$(obj11).show();
+			$(obj12).show();
+			$(obj13).show();
+			$(obj14).show();
+			$(obj15).show();
+			$(obj16).show();
+			$(obj17).show();
+			$(obj18).show();
+			$(obj19).show();
+			$(obj20).show();
+			$(obj21).show();
+			$(obj22).show();
+			$(obj23).show();
+			$(obj24).show();
+			$(obj25).show();
+			$(obj26).show();
+			$(obj27).show();
+			$(obj28).show();
+			$(obj29).show();
+			$(obj30).show();
+			$(obj31).show();
+			$(obj32).show();
+			$(obj33).show();
+			$(obj34).show();
+			$(obj35).show();
+			$(obj36).show();
+			$(obj37).show();
+			$(obj38).show();
+			$(obj39).show();
+			$(obj40).show();
+			$(obj41).show();
+			$(obj42).show();
+			$(obj43).show();
+			$(obj44).show();
+			$(obj45).show();
+			$(obj46).show();
+			$(obj47).show();
+			$(obj48).show();
+			$(obj49).show();
+			$(obj50).show();
+			$(obj51).show();
+			$(obj52).show();
+			$(obj53).show();
+			$(obj54).show();
+			$(obj55).show();
+			$(obj56).show();
+			$(obj57).show();
+			$(obj58).show();
+			$(obj59).show();
+			$(obj60).show();
+			$(obj61).show();
+			$(obj62).show();
+			$(obj63).show();
+			$(obj64).show();
+			$(obj65).show();
+			$(obj66).show();
+			$(obj67).show();
+			$(obj68).show();
+			$(obj69).show();
+			$(obj70).show();
+			$(obj71).show();
+			$(obj72).show();
+			$(obj73).show();
+			$(obj74).show();
+			$(obj75).show();
+			$(obj76).show();
+			$(obj77).show();
+			$(obj78).show();
+			$(obj79).show();
+			$(obj80).show();
+			$(obj81).show();
+			$(obj82).show();
+			$(obj83).show();
+			$(obj84).show();
+			$(obj85).show();
+			$(obj86).show();
+			$(obj87).show();
+			$(obj88).show();
+			$(obj89).show();
+			$(obj90).show();
+			$(obj91).show();
+			$(obj92).show();
+			$(obj93).show();
+			$(obj94).show();
+			$(obj95).show();
+			$(obj96).show();
+			$(obj97).show();
+			$(obj98).show();
+			$(obj99).show();
+			$(obj100).show();
+			$(obj101).show();
+			$(obj102).show();
+			$(obj103).show();
+			$(obj104).show();
+			$(obj105).show();
+			$(obj106).show();
+			$(obj107).show();
+			$(obj108).show();
+			$(obj109).show();
+			$(obj110).show();
+			$(obj111).show();
+			$(obj112).show();
+			$(obj113).show();
+			$(obj114).show();
+			$(obj115).show();
+			$(obj116).show();
+			$(obj117).show();
+			$(obj118).show();
+			$(obj119).show();
+			$(obj120).show();
+			$(obj121).show();
+			$(obj122).show();
+			$(obj123).show();
+			$(obj124).show();
+			$(obj125).show();
+			$(obj126).show();
+			$(obj127).show();
+			$(obj128).show();
+			$(obj129).show();
+			$(obj130).show();
+			$(obj131).show();
+			$(obj132).show();
+			$(obj133).show();
+			$(obj134).show();
+			$(obj135).show();
+			$(obj136).show();
+			$(obj137).show();
+			$(obj138).show();
+			$(obj139).show();
+		}
+		else
+		{
+			$(obj2).hide();
+			$(obj3).hide();
+			$(obj4).hide();
+			$(obj5).hide();
+			$(obj6).hide();
+			$(obj7).hide();
+			$(obj8).hide();
+			$(obj9).hide();
+			$(obj10).hide();
+			$(obj11).hide();
+			$(obj12).hide();
+			$(obj13).hide();
+			$(obj14).hide();
+			$(obj15).hide();
+			$(obj16).hide();
+			$(obj17).hide();
+			$(obj18).hide();
+			$(obj19).hide();
+			$(obj20).hide();
+			$(obj21).hide();
+			$(obj22).hide();
+			$(obj23).hide();
+			$(obj24).hide();
+			$(obj25).hide();
+			$(obj26).hide();
+			$(obj27).hide();
+			$(obj28).hide();
+			$(obj29).hide();
+			$(obj30).hide();
+			$(obj31).hide();
+			$(obj32).hide();
+			$(obj33).hide();
+			$(obj34).hide();
+			$(obj35).hide();
+			$(obj36).hide();
+			$(obj37).hide();
+			$(obj38).hide();
+			$(obj39).hide();
+			$(obj40).hide();
+			$(obj41).hide();
+			$(obj42).hide();
+			$(obj43).hide();
+			$(obj44).hide();
+			$(obj45).hide();
+			$(obj46).hide();
+			$(obj47).hide();
+			$(obj48).hide();
+			$(obj49).hide();
+			$(obj50).hide();
+			$(obj51).hide();
+			$(obj52).hide();
+			$(obj53).hide();
+			$(obj54).hide();
+			$(obj55).hide();
+			$(obj56).hide();
+			$(obj57).hide();
+			$(obj58).hide();
+			$(obj59).hide();
+			$(obj60).hide();
+			$(obj61).hide();
+			$(obj62).hide();
+			$(obj63).hide();
+			$(obj64).hide();
+			$(obj65).hide();
+			$(obj66).hide();
+			$(obj67).hide();
+			$(obj68).hide();
+			$(obj69).hide();
+			$(obj70).hide();
+			$(obj71).hide();
+			$(obj72).hide();
+			$(obj73).hide();
+			$(obj74).hide();
+			$(obj75).hide();
+			$(obj76).hide();
+			$(obj77).hide();
+			$(obj78).hide();
+			$(obj79).hide();
+			$(obj80).hide();
+			$(obj81).hide();
+			$(obj82).hide();
+			$(obj83).hide();
+			$(obj84).hide();
+			$(obj85).hide();
+			$(obj86).hide();
+			$(obj87).hide();
+			$(obj88).hide();
+			$(obj89).hide();
+			$(obj90).hide();
+			$(obj91).hide();
+			$(obj92).hide();
+			$(obj93).hide();
+			$(obj94).hide();
+			$(obj95).hide();
+			$(obj96).hide();
+			$(obj97).hide();
+			$(obj98).hide();
+			$(obj99).hide();
+			$(obj100).hide();
+			$(obj101).hide();
+			$(obj102).hide();
+			$(obj103).hide();
+			$(obj104).hide();
+			$(obj105).hide();
+			$(obj106).hide();
+			$(obj107).hide();
+			$(obj108).hide();
+			$(obj109).hide();
+			$(obj110).hide();
+			$(obj111).hide();
+			$(obj112).hide();
+			$(obj113).hide();
+			$(obj114).hide();
+			$(obj115).hide();
+			$(obj116).hide();
+			$(obj117).hide();
+			$(obj118).hide();
+			$(obj119).hide();
+			$(obj120).hide();
+			$(obj121).hide();
+			$(obj122).hide();
+			$(obj123).hide();
+			$(obj124).hide();
+			$(obj125).hide();
+			$(obj126).hide();
+			$(obj127).hide();
+			$(obj128).hide();
+			$(obj129).hide();
+			$(obj130).hide();
+			$(obj131).hide();
+			$(obj132).hide();
+			$(obj133).hide();
+			$(obj134).hide();
+			$(obj135).hide();
+			$(obj136).hide();
+			$(obj137).hide();
+			$(obj138).hide();
+			$(obj139).hide();
+		}
+	};
+	
+</script>

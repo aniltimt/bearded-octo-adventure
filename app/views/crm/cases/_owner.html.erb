@@ -1,0 +1,69 @@
+<div class="span8" id='tab-content'>
+  <div class="row" style="margin-left:0px;">
+    <div class="span4" id="update-owner-info">
+      <label class="crm-case-owner-label">Owner:</label>
+
+      <a href="#" class="owner-fields" data-name="genre_id" data-type="select" data-source="/crm/cases/get_owner_beneficiary_type" data-value="<%= @owner.try(:genre).try(:id) %>">
+        <%= get_field_name_for_inline_editing(@owner.try(:genre).try(:name).try(:capitalize)) %>
+      </a>
+
+      <label class="crm-case-owner-label">Name:</label>
+      <a href="#" class="owner-fields" data-name="name" data-type="text" data-value="<%= @owner.name %>">
+        <%= get_field_name_for_inline_editing(@owner.name) %>
+      </a>
+
+      <label class="crm-case-owner-label">Address:</label>
+      <a href="#" class="owner-contact-info-update" data-name="address" data-type="text" data-value="<%= @owner.try(:address) %>">
+        <%= get_field_name_for_inline_editing(@owner.try(:address)) %>
+      </a>
+
+      <label class="crm-case-owner-label">Phone:</label>
+      <a href="#" class="owner-contact-info-update" data-name="phone" data-type="text" data-value="<%= @owner.try(:phone) %>">
+        <%= get_field_name_for_inline_editing(@owner.try(:phone)) %>
+      </a>
+
+      <label class="crm-case-owner-label">Email:</label>
+      <a href="#" class="owner-contact-info-update" data-name="email" data-type="text" data-value="<%= @owner.try(:email) %>">
+        <%= get_field_name_for_inline_editing(@owner.try(:email)) %>
+      </a>
+
+      <label class="crm-case-owner-label">Relationship:</label>
+      <a href="#" class="owner-fields" data-name="relationship" data-type="text" data-value="<%= @owner.relationship %>">
+        <%= get_field_name_for_inline_editing(@owner.relationship) %>
+      </a>
+
+      <label class="crm-case-owner-label">Date of Birth:</label>
+        <a href="#" class="owner-fields" data-name="birth_or_trust_date" data-type="date" data-value="<%= @owner.birth_or_trust_date %>">
+        <%= get_field_name_for_inline_editing(@owner.birth_or_trust_date) %>
+      </a>
+    </div>
+  </div>
+  <script>
+    $(document).ready(function(){
+      $('#update-owner-info').editable({
+        selector: 'a.owner-fields',
+        pk: <%= @owner.try(:id) %>,
+        url: "/crm/cases/owners_update",
+        params: function(params) {
+          params.case_id = <%= @crm_case.id %>;
+          return params;
+        }
+      });
+      $('.owner-contact-info-update').editable({
+        pk: <%= @owner.try(:id) %>,
+        url: "/crm/cases/owner_contact_info_update",
+        params: function(params) {
+          params.case_id = <%= @crm_case.id %>;
+          return params;
+        }
+      });
+    });
+  </script>
+
+  <style>
+    .crm-case-owner-label {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</div>

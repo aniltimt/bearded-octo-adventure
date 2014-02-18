@@ -1,0 +1,1 @@
+$('#flash-error').html("You (Agent <%= current_user.try(:id).inspect %>) do not have permission to access this record. C_id <%= @crm_connection.try(:id).inspect %>, A_id: <%=j @crm_connection.try(:agent_id).inspect %>.");

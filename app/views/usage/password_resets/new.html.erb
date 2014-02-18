@@ -1,0 +1,12 @@
+<div style="margin-left:300px;">
+<h1>Reset Password</h1>
+<%= form_tag usage_password_resets_path, :method => :post do %>
+  <div class="row">
+    <div class="span12" style>
+      <%= label_tag :email %>
+      <%= text_field_tag :email, params[:email] %>
+    </div>
+    <%= submit_tag "Reset Password" %>
+  </div>
+<% end %>
+</div>

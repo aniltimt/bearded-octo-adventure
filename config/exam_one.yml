@@ -1,0 +1,19 @@
+development:
+  global_site_id: "0200000620"
+  wsdl: "https://wssim.labone.com/services/eoservice.asmx?WSDL"
+  username: ""
+  password: ""
+  passphrase: "3xam0n3"
+  web_url: "https://services2.examone.com/ScheduleNow2/ScheduleNow/SchedulingEntry.aspx?"
+
+test:
+  web_url: "http://test.com?"
+  passphrase: "lol"
+
+production:
+  global_site_id: "0360000005"
+  wsdl: "https://ws.labone.com/services/eoservice.asmx?WSDL"
+  username: ""
+  password: ""
+  passphrase: "3xam0n3"
+  web_url: "https://services2.examone.com/ScheduleNow2/ScheduleNow/SchedulingEntry.aspx?"

@@ -1,0 +1,17 @@
+<div id="login">
+<h1>Login</h1>
+<%= form_for @user_session, :url => { :action => "create" } do |f| %>
+  <div class="row">
+    <div class="span12" style>
+      <%= f.label :login %>
+      <%= f.text_field :login %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password %><br />
+
+      <%= f.submit "Login" %>
+    </div>
+    <%= link_to "Forgot your password?", new_usage_password_reset_path %>
+  </div>
+<% end %>
+</div>

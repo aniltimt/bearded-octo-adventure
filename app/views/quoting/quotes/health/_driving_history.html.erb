@@ -1,0 +1,29 @@
+<h4>Driving History Information</h4>
+
+<p class=pull-right>
+	<%= view_toggling_radio_and_label_tags :driving_history, input:{'data-disable-hidden' => 1} %>
+</p>
+<p>Have you had your license suspended or revoked or had more than one ticket or accident in the past 5 years?</p>
+
+<div id='_driving_history' class='indent hide'>
+
+	<%= driving_history_block f, :years_since_dui_dwi, 'Have you ever been convicted of drunk driving DUI/DWI?' %>
+
+	<%= driving_history_block f, :years_since_reckless_driving, 'Have you ever been convicted of reckless driving?' %>
+
+	<%= driving_history_block f, :years_since_dl_suspension, 'Have you ever had your license suspended/revoked?' %>
+
+	<%= driving_history_block f, :years_since_penultimate_car_accident, 'Have you ever had more than one accident? (Enter years since penultimate accident.)' %>
+
+	<p>Please indicate the total number of moving violations/tickets (not parking tickets) that you have received in each of the last time periods:</p>
+	<%= f.fields_for :moving_violation_history, f.object.moving_violation_history || Crm::MovingViolationHistory.new do |ff| %>
+		<% %w[6_mo 1_yr 2_yr 3_yr 5_yr].each do |col| %>
+			<% col_name = "last_#{col}" %>
+			<div class=row>
+				<span class=span2><%= col_name.humanize %></span>
+				<span><%= ff.text_field col_name %></span>
+			</div>
+		<% end %>
+	<% end %>
+
+</div>

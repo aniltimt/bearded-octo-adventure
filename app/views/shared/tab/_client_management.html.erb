@@ -1,0 +1,17 @@
+<div style="background-color: #1B1B1B; margin: 0 0 0 0;" class="tabbable">
+  <ul style="margin-bottom: 0;" class="nav nav-tabs" id="client-connection-tabs">
+    <%= client_management_tab 'Personal', personal_crm_connection_url(@crm_connection), {}, active_if:[nil,'','personal'] %>
+    <%= client_management_tab 'Financial', financial_crm_connection_path(@crm_connection) %>
+    <%= client_management_tab 'Health', edit_quoting_quote_path(@crm_connection) %>
+    <%= client_management_tab 'Policy', crm_cases_url(connection_id:@crm_connection.id, :case_detail => params[:case_detail], :case_id => params[:case_id]), {}, active_if:'cases_index' %>
+    <%= client_management_tab 'Tags', "/tagging/tags?connection_id=#{@crm_connection.id}&connection_summary=true", {}, active_if:'connection_tags' %>
+    <%= client_management_tab 'Tracking', tracking_crm_connection_path(@crm_connection) %>
+    <%= client_management_tab 'Notes', crm_notes_url(send_case_or_connection_id_in_params) %>
+  </ul>
+</div>
+<script>
+  $('div.tabbable a').click(function(){
+    $('div.tabbable li').removeClass('active');
+    $(this).closest('li').addClass('active');
+  });
+</script>

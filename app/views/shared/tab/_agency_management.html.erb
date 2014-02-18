@@ -1,0 +1,46 @@
+<ul class="nav nav-tabs" style="margin-bottom: -1px" id="myTab">
+  <li class="<%= 'active' if tab == 'users'%>" id="users">
+    <%= link_to "Users", usage_users_path, :remote => true %>
+  </li>
+  
+  <li class="<%= tab == 'privileges' ? 'active' : '' %>" id="privileges">
+    <%= link_to "Privileges", permissions_usage_users_path, :remote => true %>
+  </li>
+  
+  <li class="<%= tab == 'personal' ? 'active' : ''%>" id="peronal">
+    <%= link_to "Personal", personal_usage_users_path(:user_id=> (@usage_user.try(:id) || current_user.try(:id))), :remote => true %>
+  </li>
+  <li class="<%= tab == 'l_and_c' ? 'active' : ''%>" id="l_and_c">
+    <%= link_to "Lic. & Contracting", l_and_c_usage_users_path(:user_id=> (@usage_user.try(:id) || current_user.try(:id))), :remote => true %>
+  </li>
+  <li id="bookofbus" class="<%= tab == 'bookofbus' ? 'active' : ''%>">
+    <%= link_to "Book of Business", book_of_business_crm_cases_path(:mgr => true, :tab_selected => "a_mng_tab"), :remote => true %>
+  </li>
+  <li id="opportunities" class="<%= tab == 'conn_prospects' ? 'active' : ''%>">
+    <%= link_to "Prospects",prospects_crm_connections_path(:mgr => true, :tab_selected => "a_mng_tab"), :remote => true %>
+  </li>
+  <li class="<%= tab == 'activity' ? 'active' : ''%>" id="activity">
+    <%= link_to "Activity", crm_activities_path(:mgr => true), :remote => true %>
+  </li>
+  <li id="prod-sum" class="<%= tab == 'base_sum' ? 'active' : ''%>">
+    <%= link_to "Production Summary","/reporting/base/summary", :remote => true %>
+  </li>
+  <li class="<%= tab == 'memberships' ? 'active' : ''%>" id="memberships">
+    <%= link_to "Memberships", memberships_usage_users_path(:user_id=> (@usage_user.try(:id) || current_user.try(:id))), :remote => true %>
+  </li>
+  <li class="<%= tab == 'profiles' ? 'active' : ''%>" id="social">
+    <%= link_to "Profiles", usage_profiles_path, :remote => true %>
+  </li>
+  <li class="<%= tab == 'tasks' ? 'active' : ''%>" id="social">
+    <%= link_to "Tasks", tasks_usage_users_path(:user_id=> (@usage_user.try(:id) || current_user.try(:id))), :remote => true %>
+  </li>
+  <li class="<%= tab == 'staff_assignment' ? 'active' : ''%>" id="social" style="display:none" >
+    <%= link_to 'Staff Assignment', "/usage/staff_assignment/new", :remote => true %>
+  </li>
+  <li class="<%= tab == 'tagging' ? 'active' : ''%>">
+    <%= link_to "Tagging", tagging_tags_path(:user_id=> (@usage_user.try(:id) || current_user.try(:id))), :remote => true %>
+  </li>
+</ul>
+<script>
+  $( "li#<%= tab %>" ).addClass('active');
+</script>

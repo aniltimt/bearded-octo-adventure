@@ -1,0 +1,14 @@
+/*
+#main-container {
+  background-color: white !important;
+  color: #1B1B1B !important;
+}
+*/
+
+.crm-tag {
+	background-color: #B4DB98 !important;
+}
+
+ul#crm-cases-tabs li.active a {
+	color:#fff !important;
+}

@@ -1,0 +1,7 @@
+<div>
+	<ul>
+  <% partials.each do |partial| %>
+    <li class="progress_<%= partial %>"><%= content_tag :a, partial.to_s.humanize, onclick:"showFromSiblings('##{partial}')" %></li>
+  <% end %>
+  	</ul>
+</div>

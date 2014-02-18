@@ -1,0 +1,19 @@
+development:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: clu2_dev
+  pool: 5
+  username: 
+  password: 
+  host: localhost
+
+test:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: clu2_test
+  pool: 5
+  username: 
+  password: 
+  host: localhost

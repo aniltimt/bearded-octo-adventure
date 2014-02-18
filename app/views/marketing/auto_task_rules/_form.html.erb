@@ -1,0 +1,17 @@
+<%= form_for(@marketing_auto_task_rule) do |f| %>
+  <% if @marketing_auto_task_rule.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@marketing_auto_task_rule.errors.count, "error") %> prohibited this marketing_auto_task_rule from being saved:</h2>
+
+      <ul>
+      <% @marketing_auto_task_rule.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,20 @@
+
+  <br /><b>Search Result</b><br />
+
+	<% if @reporting_search.viewable?(current_user) %>
+     <br /><b>Search Name:</b>&nbsp;<%= @reporting_search.name %><br />
+     <b>Search Query:</b>&nbsp;<%= @reporting_search.query %><br />
+    <% else %>
+	<script>
+	  $('#flash-container').html('You don\'t have permission to access it.');
+	</script>
+    <% end %>
+      </li>
+    </ul>
+ </div></div>
+
+<% @crm_cases.each do |crm_case| %>
+  Crm exam company: <%= crm_case.exam_company %><br />
+  Crm exam status: <%= crm_case.exam_status %><br />
+  Crm Connection First Name: <%= crm_case.connection.first_name %><br /><br /><br />
+<% end%>

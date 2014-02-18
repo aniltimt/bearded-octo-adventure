@@ -1,0 +1,209 @@
+<div style="padding-top: 20px; padding-bottom: 10px;" class="row title-row">
+  <div class="span6"><h4 class="title">Personal</h4></div>
+  <div class="span3"></div>
+  <div class="span3">
+    <%= link_to 'New Quote', {controller:'/quoting/quotes', action:'edit', id:@connection || @crm_connection}, {class:'btn btn-small btn-primary', remote:true} %>
+  </div>
+</div>
+
+<input type="hidden" value="<%= @crm_connection.id %>" id="crm-connection-id">
+
+<div style="width: 99%;" class="row-fluid" id="update-crm-connection">
+  <div class="span4">
+    <label>First Name:</label>
+    <a href="#" class="editable-click connection-field" data-type="text" data-name="first_name" data-value="<%= @crm_connection.first_name %>">
+      <%= get_field_name_for_inline_editing(@crm_connection.first_name) %>
+    </a>
+
+    <label>Middle Name:</label>
+    <a href="#" class="editable-click connection-field" data-type="text" data-name="middle_name" data-value="<%= @crm_connection.middle_name %>">
+      <%= get_field_name_for_inline_editing(@crm_connection.middle_name) %>
+    </a>
+
+    <label>Last Name:</label>
+    <a href="#" class="editable-click connection-field" data-type="text" data-name="last_name" data-value="<%= @crm_connection.last_name %>">
+      <%= get_field_name_for_inline_editing(@crm_connection.last_name) %>
+    </a>
+
+    <label>Marital Status:</label>
+    <a href="#" data-type="select" data-source="/crm/connections/get_marrital_statuses" class="editable-click connection-field" data-name="marital_status_id" data-value="<%= @crm_connection.marital_status_id %>">
+      <%= get_field_name_for_inline_editing(@crm_connection.marital_status.try(:name)) %>
+    </a>
+
+    <label>Home Address:</label>
+    <a href="#" id="home-address-value" data-type="text" class="editable-click" data-name="value" data-value="<%= @crm_connection.contact_info.try(:addresses).try(:first).try(:value) %>" data-pk="<%= @crm_connection.contact_info.try(:addresses).try(:first).try(:id) %>">
+      <%= @crm_connection.contact_info.try(:addresses).try(:first).try(:value) %>
+    </a>
+
+    <label>Mailing Address:</label>
+    <a href="#" id="mailing-address-value" data-type="text" class="editable-click" data-name="value" data-value="<%= @crm_connection.contact_info.try(:addresses).try(:first).try(:value) %>" data-pk="<%= @crm_connection.contact_info.try(:addresses).try(:last).try(:id) %>">
+      <%= @crm_connection.contact_info.try(:addresses).try(:last).try(:value) %>
+    </a>
+
+    <label>City:</label>
+    <a href="#" data-type="text" class="crm-connection-contact-info" class="editable-click" data-name="city" data-value="<%= @crm_connection.contact_info.try(:city) %>" data-pk="<%= @crm_connection.contact_info.try(:id) %>">
+      <%= get_field_name_for_inline_editing(@crm_connection.contact_info.try(:city)) %>
+    </a>
+
+    <label>State:</label>
+    <a href="#" data-type="select" data-source="/home/get_states" class="editable-click crm-connection-contact-info" data-name="state_id" data-value="<%= @crm_connection.contact_info.try(:state_id) %>" data-pk="<%= @crm_connection.contact_info.try(:id) %>">
+      <%= @crm_connection.contact_info.try(:state).try(:name) || "Empty" %>
+    </a>
+
+    <label>Zip Code:</label>
+    <a href="#" data-type="text" class="crm-connection-contact-info" class="editable-click" data-name="zip" data-value="<%= @crm_connection.contact_info.try(:zip) %>" data-pk="<%= @crm_connection.contact_info.try(:id) %>">
+      <%= get_field_name_for_inline_editing(@crm_connection.contact_info.try(:zip)) %>
+    </a>
+
+    <label>Phone(s):</label>
+    <% if @crm_connection.contact_info.try(:phones) %>
+      <% @crm_connection.contact_info.try(:phones).each do |p| %>
+        <a class="update-crm-connection-phone ajax" id="<%= p.id %>" data-toggle="modal">
+          <% output = "#{p.phone_type.try(:name).try(:capitalize)}: #{p.value}" %>
+          <% output << " ext. #{p.ext}" unless p.ext.blank? %>
+          <%= output %>
+        </a><br>
+      <% end %>
+    <% end %>
+    Fax:
+    <a href="#" class="crm-connection-contact-info" data-type="text" class="editable-click" data-name="fax" data-value="<%= @crm_connection.contact_info.try(:fax) %>" data-pk="<%= @crm_connection.contact_info.try(:id) %>">
+      <%= get_field_name_for_inline_editing(@crm_connection.contact_info.try(:fax)) %>
+    </a><br>
+    <a id="add-crm-connection-phone" role="button" class="ajax" data-connection-id="<%= @crm_connection.id %>" data-contact-info-id="<%= @crm_connection.contact_info.try(:id)%>" data-toggle="modal">
+      + Add More
+    </a>
+
+  </div>
+
+  <div class="span3">
+    <label>Email(s):</label>
+    <% if @crm_connection.contact_info.try(:emails) %>
+      <% @crm_connection.contact_info.try(:emails).each do |email| %>
+        <a href="#" id="email-value<%=email.id%>" data-type="text" class="editable-click" data-name="value" data-value="<%= email.value %>" data-pk="<%= email.id %>">
+          <%= email.value %>
+        </a><br>
+        <script>
+          $("#email-value<%=email.id%>").editable({
+            url: "/email_address/<%=email.id%>",
+            ajaxOptions: {
+              type: 'PUT'
+            },
+            params: function(params) {
+              params.connection_id = <%= @crm_connection.id %>;
+              return params;
+            }
+          });
+        </script>
+      <% end %>
+    <% end %>
+    <a id="add-crm-connection-email-address" role="button" class="ajax" data-connection-id="<%= @crm_connection.id %>" data-contact-info-id="<%= @crm_connection.contact_info.try(:id)%>" data-toggle="modal">
+      + Add More
+    </a>
+
+    <label>Driver's License:</label>
+    <a href="#" class="editable-click connection-field" data-type="text" data-name="dln" data-value="<%= @crm_connection.dln %>">
+      <%= get_field_name_for_inline_editing(@crm_connection.dln) %>
+    </a>
+
+    <label>Social Security Number:</label>
+    <a href="#" class="editable-click connection-field" data-type="text" data-name="ssn" data-value="<%= @crm_connection.ssn %>">
+      <%= get_field_name_for_inline_editing(@crm_connection.ssn) %>
+    </a>
+
+    <label>Citizenship:</label>
+    <a href="#" data-type="select" data-source="/crm/connections/get_citizenships" class="editable-click connection-field" data-name="citizenship_id" data-value="<%= @crm_connection.citizenship_id %>">
+      <%= get_field_name_for_inline_editing(@crm_connection.citizenship.try(:name)) %>
+    </a>
+
+    <label>Country Born:</label>
+    <a href="#" class="editable-click connection-field" data-type="text" data-name="birth_country" data-value="<%= @crm_connection.birth_country %>">
+      <%= get_field_name_for_inline_editing(@crm_connection.birth_country) %>
+    </a>
+
+    <label>State Born:</label>
+    <a href="#" data-type="select" data-source="/home/get_states" class="editable-click connection-field" data-name="birth_state_id" data-value="<%= @crm_connection.birth_state_id %>">
+      <%= @crm_connection.birth_state.try(:name) || "Empty" %>
+    </a>
+
+    <label>Spouse:</label>
+    <% if @crm_connection.spouse %>
+      <%= @crm_connection.spouse.try(:full_name) %>
+    <% else %>
+      none<br>
+      <a id="add-spouse-to-connection" role="button" class="ajax" data-toggle="modal">
+        + Add
+      </a>
+    <% end %>
+
+    <label>Connection Type:</label>
+    <a href="#" data-type="select" data-source="/crm/connections/get_connection_types" class="editable-click connection-field" data-name="connection_type_id" data-value="<%= @crm_connection.connection_type_id %>">
+      <%= get_field_name_for_inline_editing(@crm_connection.connection_type.try(:name)) %>
+    </a>
+
+  </div>
+
+  <div class="span4">
+    <label>Personal Notes (ex: hobbies/interests):</label>
+  <div id="user-notes">
+    <a href="#" class="editable-click connection-field" data-type="textarea" data-name="note" data-value="<%= @crm_connection.note %>">
+      <%= get_field_name_for_inline_editing(@crm_connection.note) %>
+    </a>
+  </div>
+  </div>
+</div>
+
+<div id="container-contact-info-modal-pop-up" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="color:black;">
+  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+  <div class="modal-body">
+  </div>
+</div>
+
+<div id="container-spouse-modal-pop-up" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="color:black;">
+</div>
+
+<script>
+  $(document).ready(function(){
+    $('#update-crm-connection').editable({
+      selector: 'a.connection-field',
+      url: '/crm/connections/' + <%= @crm_connection.id %>,
+      ajaxOptions: {
+        type: 'PUT',
+      },
+      pk: <%= @crm_connection.id %>
+    });
+
+    $('#home-address-value').editable({
+      url: '/address/' + $('#home-address-value').data('pk'),
+      ajaxOptions: {
+        type: 'PUT',
+      },
+      params: function(params) {
+        params.connection_id = <%= @crm_connection.id %>;
+        return params;
+      }
+    });
+
+    $('#mailing-address-value').editable({
+      url: '/address/' + $('#mailing-address-value').data('pk'),
+      ajaxOptions: {
+        type: 'PUT',
+      },
+      params: function(params) {
+        params.connection_id = <%= @crm_connection.id %>;
+        return params;
+      }
+    });
+
+    $('.crm-connection-contact-info').editable({
+      url: '/contact_info/' + $('.crm-connection-contact-info').data('pk'),
+      ajaxOptions: {
+        type: 'PUT',
+      },
+      params: function(params) {
+        params.connection_id = <%= @crm_connection.id %>;
+        return params;
+      }
+    });
+
+  });
+</script>

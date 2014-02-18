@@ -1,0 +1,59 @@
+
+<tr>
+  <th>LIC</th>
+  <th>Effective</th>
+  <th>Expires</th>
+  <th>L/H/P&C/V</th>
+  <th>Status</th>
+  <th></th>
+  <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AML</th>
+</tr>
+  <% @usage_user.agent_field_set.licenses.where("state_id = #{state} ").each do |usage_license|%>
+
+  <script>
+    $(document).ready(function(){
+      $('#name_<%= state %>').editable();
+      $('#completion_<%= state %>').editable();
+      $('[name="number_<%= state %>"]').editable();
+      $('[name="effective_date_<%= state %>"]').editable();
+      $('[name="expiration_<%= state %>"]').editable();
+    });
+  </script>
+<tr>
+  <td><%= link_to "Edit", edit_usage_license_path(usage_license), :remote => true %>
+  <a href="#" id="number" name="number_<%= state %>" data-type="text" data-pk="<%= usage_license.try(:id)%>" data-url="/usage/users/update_usage_license"><%= usage_license.try(:number) %></a></td>
+  <td><a href="#" id="effective_date" name="effective_date_<%= state %>" data-type="text" data-pk="<%= usage_license.try(:id)%>" data-url="/usage/users/update_usage_license"><%= usage_license.try(:effective_date) %></a></td>
+  <td><a href="#" id="expiration" name="expiration_<%= state %>" data-type="text" data-pk="<%= usage_license.try(:id)%>" data-url="/usage/users/update_usage_license"><%= usage_license.try(:expiration) %></a></td>
+  <td><% if usage_license.life == true %>
+        <input type="checkbox" checked="checked">
+      <% else %>
+        <input type="checkbox" disabled="true">
+      <% end %>
+      <% if usage_license.home == true %>
+        <input type="checkbox" checked="checked">
+      <% else %>
+        <input type="checkbox" disabled="true">
+      <% end %>
+      <% if usage_license.p_and_c == true %>
+        <input type="checkbox" checked="checked">
+      <% else %>
+        <input type="checkbox" disabled="true">
+      <% end %>
+      <% if usage_license.vehicle == true %>
+        <input type="checkbox" checked="checked">
+      <% else %>
+        <input type="checkbox" disabled="true">
+      <% end %>
+  </td>
+  <td><%= usage_license.status.try(:value) %>
+  <% if usage_license.corporate == true %>
+    <i class="icon-building"></i>
+  <% else %>
+    <i class="icon-user-md"></i>
+  <% end %>
+  <% if usage_license.expiration_warning_sent == true %>
+    <i class="icon-envelope-alt"></i>
+  <% end %><td>
+  <td><%= @aml_vendor.try(:name) %>&nbsp;&nbsp;&nbsp;<%= @aml.try(:completion)%></td>
+</tr>
+<% end %>

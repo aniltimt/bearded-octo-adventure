@@ -1,0 +1,12 @@
+<div>
+  <span class="span4">
+    <%= smtp_server.id %>
+  </span>
+  <span class="span4">
+    <%= smtp_server.host %>
+  </span>
+  <span class="span4">
+      <%= link_to '<i class="icon-pencil"></i>'.html_safe, edit_marketing_email_smtp_server_path(:id => smtp_server.id), :remote => true, :method => :get %>
+      <%= link_to "<i class='icon-trash'></i>".html_safe, marketing_email_smtp_server_path(:id => smtp_server.id), :confirm => "Are you sure?", :remote => true, :method => :delete %>
+  </span>
+</div>

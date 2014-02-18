@@ -1,0 +1,13 @@
+<div style="margin-left: 35px; margin-top: 3px;">
+  <input class="input-medium" type="text" placeholder="Search" id="input-search-users<%= @box_id %>" style="width:75px;">
+  <a style="margin-bottom: 9px;" class="btn btn-small btn-primary button-search-agency-users ajax" type="button" data-box-id="<%= @box_id %>">
+    <i class="icon-search icon-white"></i>
+  </a>
+</div>
+<%= link_to "/usage/users/new?user_id=#{@usage_user.id}", :remote => true  do %>
+  New User
+<% end %>
+
+<div id="users-list-box<%= @box_id %>">
+  <%= render :partial => "agency_user_children", :collection=>@childrens %>
+</div>

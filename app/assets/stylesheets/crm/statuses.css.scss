@@ -1,0 +1,39 @@
+// Place all the styles related to the Crm::Statuses controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.system-management-top {
+	margin: 10px 0 10px -10px !important;
+}
+
+#status-rules-left {
+	width: 175px;
+	margin-left: 10px;
+	margin-right: 0px;
+	float: left;
+	border-right: 1px solid black;
+	min-height: 600px;
+}
+
+#status-rules-header {
+	font-size: 14px;
+	color: black;
+	font-weight: 0;
+}
+
+.status-rules-main {
+	float: right;
+	background-color: #d9deec;
+	color: #000;
+	width: 79%;
+	height: 600px;
+	overflow: auto;
+}
+
+.status-change-header {
+	font-size: 18px;
+	font-weight: bold;
+	margin: 20px 25px 0 25px;
+	border-bottom: 1px solid #631A0B;
+	padding-bottom: 5px;
+}

@@ -1,0 +1,10 @@
+{
+	"connection": null<%#= @connection.valid? %>,
+	"contactInfo": null<%#= @connection.contact_info.valid? %>,
+	"healthInfo": null<%#= @connection.health_info.valid? %>,
+	"healthHist": null<%#= @connection.health_info.health_history.valid? %>,
+	"drivingHist": null<%#= @connection.health_info.moving_violation_history.valid? %>,
+	"case": null<%#= @case.valid? %>,
+	"details": null<%#= @case.quoted_details.valid? %>,
+	"end": true
+}

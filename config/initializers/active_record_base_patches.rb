@@ -1,0 +1,3 @@
+require 'active_record_base_search_scopes'
+require 'active_record_base_pseudo_date_methods'
+require 'active_record_base_find_or_build_by_default'

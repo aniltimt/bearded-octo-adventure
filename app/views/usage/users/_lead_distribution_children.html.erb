@@ -1,0 +1,24 @@
+<tr class="agent_container_div" id="agent_container_div_<%= ch.id %>" >
+  <td>
+    <%= link_to ch.full_name,  usage_lead_distribution_weights_path(:agent_id => ch.id), :remote => true, :style => "display: block; width: 100%; height: 100%;"%>
+  </td>
+  <td>
+    <% if ch.agent_field_set%>
+      <%= render :partial => 'temporary_suspension', :locals => {:ch => ch}%>
+    <% end %>
+  </td>
+  <td>
+  <span id="weights_container_<%= ch.id %>">
+    <% ch.lead_distribution_weights.each do |weight|%>
+      <span class="span5 only_tag_value">
+        <%= weight.tag_value.value %>
+      </span>
+    <% end %>
+  </span>
+  </td>
+  <td>
+    <% if ch.agent_field_set%>
+      <%#= text_field_tag :premium_limit, ch.agent_field_set.premium_limit, :class => "field_set_premium_limit", :id => "field_set_premium_limit_#{ch.agent_field_set.id}", 'data-id' => ch.id %>
+    <% end %>
+  </td>
+</tr>

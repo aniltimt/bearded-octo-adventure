@@ -1,0 +1,46 @@
+<%= render :partial => "shared/tab/agency_management", :locals => {:tab => params[:tab] == "users" ? "users" : "privileges"} %>
+
+<div style="background-color:#fff; height:500px">
+<div class="navbar">
+  <div class="navbar-inner"><h4 style="color:black">Staff Assignment</h4></div>
+</div>
+<div style="float:left; width:175px;">
+  <br /><br /><br /><br /><br /><br /><i class="icon-plus-sign icon-blue"></i>
+  <%= link_to 'New Staff Assignment', new_usage_staff_assignment_path(:tab => params[:tab]), :remote => true %>
+ </div>
+<div id="staff_assignment" style="float:right; background-color:#d9deec; color:#000; width:80%; height:435px; overflow: auto;  ">
+
+<h1 align="center"> Listing Staff Assignments </h1>
+
+<table border = "2">
+  <tr>
+     <th> Administrative Assistant </th>
+     <th> Case Manager </th>
+     <th> Manager </th>
+     <th> Policy Specialist </th>
+     <th> Sales Assistant </th>
+     <th> Sales Coordinator </th>
+     <th> Sales Support </th>
+     <th></th>
+     <th></th>
+  </tr>
+
+  <% @staffs.each do |staff| %>
+  <tr>
+     <td><%= staff.administrative_assistant.first_name unless staff.administrative_assistant.blank? %></td>
+     <td><%= staff.case_manager.first_name unless staff.case_manager.blank? %></td>
+     <td><%= staff.manager.first_name unless staff.manager.blank? %></td>
+     <td><%= staff.policy_specialist.first_name unless staff.policy_specialist.blank? %></td>
+     <td><%= staff.sales_assistant.first_name unless staff.sales_assistant.blank? %></td>
+     <td><%= staff.sales_coordinator.first_name unless staff.sales_coordinator.blank? %></td>
+     <td><%= staff.sales_support.first_name unless staff.sales_support.blank? %></td>
+     <td><%= link_to 'Edit', edit_usage_staff_assignment_path(staff.id, :tab => params[:tab]), :remote => true %></td>
+     <td><%= link_to 'Destroy', "/usage/staff_assignment/destroy?id=#{staff.id}&tab=#{params[:tab]}", :confirm => "Are you sure you want to continue with deletion of the staff assignment?", :remote => true %></td>
+  </tr>
+  <% end %>
+
+  </table>
+
+  <br/>
+</div>
+

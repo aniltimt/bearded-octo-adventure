@@ -1,0 +1,35 @@
+<%# update form action %>
+$('#quoter_form').attr('action','<%=j url_for controller:"/quoting/quotes", action:"update", id:@connection %>');
+
+<%# get results holder %>
+$quotes = $('#quotes');
+
+<%# empty results holder %>
+$quotes.html('');
+
+<%# add error messages to results holder in DOM %>
+<% [
+  @case, 
+  @case.try(:quoted_details),
+  @case.try(:crm_connection),
+  @case.try(:crm_connection).try(:health_info),
+  @case.try(:crm_connection).try(:contact_info)].each do |obj| %>
+  <% if obj.errors.present? %>
+    $quotes.append("<%=j render 'errors', object:obj %>");
+  <% end %>
+<% end %>
+
+<%# add results to results holder in DOM %>
+<% if @results %>
+  $quotes.append("<% @results.each do |r| %><%=j render 'quote', quote:r %><% end %>");
+  window.crmConnectionId = <%= @connection %>;
+  window.crmCaseParams = <%=j params.to_json.html_safe %>;
+  console.log crmCaseParams;
+<% end %>
+
+<%# toggle what's visible %>
+$('#waiting').hide();
+$('#quotes').show();
+
+<%# fire callback %>
+quotesLoadedCallback();

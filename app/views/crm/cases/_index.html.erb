@@ -1,0 +1,55 @@
+<input type="hidden" id="container-to-update" value='case-pane-tab-content'>
+
+<div class="row title-row" style="margin:0px;">
+  <div class="span6"><h4 class="title system-management-row">Policy</h4></div>
+  <div class="span6">
+    <div class="pull-right">
+      <a class="btn btn-primary" style="margin:15px 15px 0px 0px;" type="button" href="/crm/cases/new?connection_id=<%= @crm_connection.id if @crm_connection %>">
+        Policy Questionnaire
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="row" style="margin:0px;">
+  <div class="span2" id="awesome_raptor">
+    <ul class="nav nav-tabs nav-stacked" id="crm-cases-tabs">
+      <% if @crm_cases %>
+        <% case_ids = @crm_cases.map(&:id) %>
+        <% @crm_cases.each_with_index do |crm_case, index| %>
+          <%= content_tag :li, class:(@crm_case && case_ids.include?(@crm_case.id) ? (@crm_case.id==crm_case.id ? 'active' : '') : (index === 0 ? 'active' : '')) do %>
+            <a href="#<%= crm_case.id %>" data-toggle="tab" class="ajax tab" data-crm-case-status-id="<%= crm_case.status_id %>">
+              <% if crm_case.current_details %>
+                <%= crm_case.current_details.policy_type.try(:name) %><br>
+                <%= crm_case.current_details.category.try(:name) %> /
+                <%= crm_case.current_details.face_amount %><br>
+                Quoted: <%= strf_date(crm_case.quoted_details.try(:created_at)) %>
+              <% else %>
+                Case created:<br><%= crm_case.created_at.to_date %>
+              <% end %>
+            </a>
+          <% end %>
+        <% end %>
+      <% end %>
+      <li>
+        <%= link_to "Add New", edit_quoting_quote_path(@crm_connection), :style => 'background-position:0px;', class:"btn btn-primary", remote:true %>
+      </li>
+    </ul>
+  </div>
+
+  <%= render 'case_nav' %>
+
+  <div id='case-pane-tab-content' class="span8" style="margin-top:15px;">
+    <%= yield(:case_pane) if content_for?(:case_pane) %>
+  </div>
+</div>
+
+<% if params[:case_id].present? %>
+<script>
+  $(function(){
+    if ( $("ul#crm-cases-tabs li.active a").length > 0 ) {
+      $("ul#crm-case-detail-tabs li.active a").trigger("click");
+    }
+  });
+</script>
+<% end %>

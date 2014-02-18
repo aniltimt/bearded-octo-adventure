@@ -1,0 +1,65 @@
+<%= form_for(@usage_contract, :remote => true) do |f| %>
+  <% if @usage_contract.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@usage_contract.errors.count, "error") %> prohibited this tagging_membership from being saved:</h2>
+    <ul>
+      <% @usage_contract.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+    </ul>
+    </div>
+  <% end %>
+
+    <tr class="field"><br />
+      <td style="width:10%"></td>
+      <td>Carrier Id:</td>
+      <td><%= f.select "carrier_id", @contract_carriers.collect {|c| [ c.name, c.id ] }, {:include_blank => 'None'} %></td>
+    </tr>
+    <tr class="field"><br />
+      <td style="width:10%"></td>
+      <td>Carrier Contract Id:</td>
+          <%= f.hidden_field "agent_field_set_id", :value => (@usage_user.try(:agent_field_set_id) || @usage_contract.try(:agent_field_set_id)) %>
+      <td><%= f.text_field "carrier_contract_id" %></td>
+    </tr>
+
+    <tr class="field"><br />
+      <td style="width:10%"></td>
+      <td>Effective Date:</td>
+      <td><%= f.datepicker "effective_date" %></td>
+  </tr>
+    <tr class="field"><br />
+      <td style="width:10%"></td>
+      <td>Expiration Date:</td>
+      <td><%= f.datepicker "expiration" %></td>
+  </tr>
+    <tr class="field"><br />
+      <td style="width:10%"></td>
+      <td>Status:</td>
+      <td><%= f.select "status_id",@usage_contract_status.collect {|s| [s.value, s.id] }, {:include_blank => 'None'} %></td>
+  </tr>
+  <tr class="field"><br />
+    <td style="width:10%"></td>
+    <td>State:</td>
+    <td><%= f.select "state_id", @states.collect {|p| [ p.name, p.id ] }, {:include_blank => 'None'} %></td>
+  </tr>
+  <tr class="field"><br />
+    <td style="width:10%"></td>
+    <td>Appointment:</td>
+    <td><%= f.text_field "appointment" %></td>
+    </tr>
+    <tr class="field"><br />
+      <td style="width:10%"></td>
+      <td><%= f.check_box "corporate" %></td>
+    <td>Corporate:</td>
+  </tr>
+    <div class="actions">
+      <%= f.submit %>
+    </div> 
+<% end %>
+
+<%#= link_to "Back Page", l_and_c_usage_users_path, :remote => true %>
+<script>
+  $("#myDateField").datepicker({ dateFormat: 'MM dd, yyyy' });
+</script>
+
+  

@@ -1,0 +1,29 @@
+<div style="height: 400px; font-size: 12px; overflow: auto;">
+  <table class="table table-condensed">
+    <tr style="background-color:#E0E0E0;">
+	  <th>Requirement</th>
+	  <th>Required Of</th>
+	  <th>Ordered</th>
+	  <th>Received</th>
+	  <th>Type</th>
+	  <th>Status</th>
+	</tr>
+	<tbody>
+	<% if @case_requirements.blank? %>
+	<tr>
+	  <td><%= "No Case Requirement" %></td>
+	</tr>
+	<% else %>
+      <% @case_requirements.each do |case_requirement| %>
+	<tr>
+	  <td><%= case_requirement.name %></td>
+      <td><%= case_requirement.required_of %></td>
+	  <td><%= case_requirement.ordered %></td>
+	  <td><%= case_requirement.recieved %></td>
+	  <td><%= case_requirement.requirement_type %></td>
+	  <td><%= case_requirement.status %></td>
+	</tr>
+	  <% end %>								 				 
+	<% end%>
+  </table>
+</div>

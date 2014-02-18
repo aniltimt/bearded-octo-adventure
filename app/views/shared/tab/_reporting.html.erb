@@ -1,0 +1,10 @@
+<ul class="nav nav-tabs" style="margin-bottom: -1px" id="myTab">
+  <% if current_user.role.super? %>
+    <li class="<%= selected=='Memberships' ? 'active' : ''%>">
+      <%= link_to "Memberships", reporting_memberships_path, :remote => true %>
+    </li>
+  <% end %>
+  <li class="<%= selected=='Searches' ? 'active' : ''%>">
+    <%= link_to "Searches", reporting_searches_path, :remote => true %>
+  </li>
+</ul>

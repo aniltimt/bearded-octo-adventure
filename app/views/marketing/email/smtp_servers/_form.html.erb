@@ -1,0 +1,34 @@
+<%= nested_form_for(@smtp_server, :remote => true, :multipart => true, :html => { :multipart => true }) do |f| %>
+  <div class="row">
+    <div class="span4">
+      <%= f.label :ownership_id, "Ownership" %>
+      <%= f.select :ownership_id, Ownership.all.map{ |c| [c.value, c.id] } %>
+
+      <%= f.label :host %>
+      <%= f.text_field :host %>
+      
+      <%= f.label :port %>
+      <%= f.text_field :port %>
+
+      <%= f.label :ssl %>
+      <%= f.check_box :ssl %>
+
+      <%= f.label :address %>
+      <%= f.text_field :address %>
+
+      <%= f.label :username %>
+      <%= f.text_field :username %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+
+      <div style="margin-bottom:10px;">
+        <%= f.submit "Submit", :class => 'btn btn-primary' %>
+      </div>
+    </div>
+<% end %>
+<%if @smtp_server.persisted? %>
+  <div class="span4">
+    <%= link_to "<i class='icon-trash'></i>".html_safe, marketing_email_smtp_server_path(:id => @smtp_server.id), :confirm => "Are you sure?", :remote => true, :method => :delete %>
+  </div>
+<% end %>

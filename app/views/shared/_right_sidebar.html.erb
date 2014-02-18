@@ -1,0 +1,64 @@
+<div id="rightbar" class="sidebar pull-right sidebar-position">
+  <ul style="display: block;" class="unstyled nav nav-tabs nav-stacked">
+    <li>
+      <% if current_user %>
+        <%= link_to logout_path, 'data-original-title' => 'Logout' do %>
+          <i class="icon icon-signout"></i>
+        <% end %>
+      <% else %>
+        <%= link_to login_path, 'data-original-title' => 'Login' do %>
+          <i class="icon icon-signin"></i>
+        <% end %>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to sidebar_crm_system_tasks_path, remote:true do %>
+        <i class="icon icon-check"></i>
+      <% end %>
+    </li>
+    <div class="hidden">
+					<li class="">
+							<a href="/">
+									<i class="icon icon-user"></i>
+							</a>
+					</li>
+					<li>
+							<a href="/">
+									<i class="icon icon-search"></i>
+							</a>
+					</li>
+					<li>
+							<a href="/">
+									<i class="icon icon-calendar"></i>
+							</a>
+					</li>
+					<li>
+							<a href="grid.html">
+									<i class="icon icon-th-list"></i>
+							</a>
+					</li>
+					<li>
+							<a href="grid.html">
+									<i class="icon icon-exclamation-sign"></i>
+							</a>
+					</li>
+					<li>
+							<a href="/">
+									<i class="icon icon-retweet"></i>
+							</a>
+					</li>
+					<li>
+							<a href="/">
+									<i class="icon icon-comments-alt"></i>
+							</a>
+					</li>
+					<li>
+							<a href="/">
+									<i class="icon icon-envelope"></i>
+							</a>
+					</li>
+    </div>
+  </ul>
+  <div id="container-rightbar-nav" style="display:none;"></div>
+</div>
+

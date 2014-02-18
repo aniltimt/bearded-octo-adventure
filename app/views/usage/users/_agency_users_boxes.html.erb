@@ -1,0 +1,10 @@
+<span style="margin-top: 0px;">View:</span> <%= collection_select(:select_agency_users, :for_agency, @users_for_select, :id, :full_name) %>
+<div class="row-fluid">
+  <div class="span4" id="index-box1" style="height: 280px; border: .1em solid #888; background-color: #D9DEEC; margin-left: 1px; margin-bottom: 5px;">
+   <%= render :partial => "agency_users_box" %> 
+  </div>
+  <div class="span4" id="index-box2" style="height: 280px; border: .1em solid #888; background-color: #D9DEEC; margin-left: 3px; margin-bottom: 5px;">
+  </div>
+  <div class="span4" id="index-box3" style="height: 280px; border: .1em solid #888; background-color: #D9DEEC; margin-left: 3px; margin-bottom: 5px;">
+  </div>
+</div>

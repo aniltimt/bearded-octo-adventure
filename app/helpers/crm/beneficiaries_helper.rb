@@ -1,0 +1,2 @@
+module Crm::BeneficiariesHelper
+end

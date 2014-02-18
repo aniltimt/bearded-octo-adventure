@@ -1,0 +1,23 @@
+<table style="width:80%">
+  <tr class="field">
+      <td style="width:10%"></td>
+      <td>Tag Value:</td>
+      <td><%= text_field_tag "tag_name" %></td>
+  </tr>
+  <tr class="field">
+      <td style="width:10%"></td>
+      <td></td>
+      <td>
+        <% if !params[:user_id].blank? %>
+          <%= hidden_field_tag "user_id", params[:user_id] %>
+        <% else %>
+          <%= hidden_field_tag "connection_id", params[:connection_id] %>
+        <% end %>
+      </td>
+  </tr>
+  <tr>
+      <td style="width:10%"></td>
+      <td></td>
+      <td class="actions"><%= submit_tag 'Save tag', :onclick => "$('#container-for-tagging-tags').modal('hide')" %></td>
+  </tr>
+</table>

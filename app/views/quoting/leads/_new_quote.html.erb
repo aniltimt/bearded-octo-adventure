@@ -1,0 +1,76 @@
+<h1>Policy Information</h1>
+<p>Enter the quote information received from your Brokerage Director.</p>
+<%= form_for @case, url:{controller:'/quoting/leads', action:'create_quote', connection_id:@connection.id}, html:{remote:true} do |f| %>
+  <%= f.fields_for :quoted_details do |qf| %>
+    <label>Carrier name</label>
+    <%= qf.autocomplete_field :carrier_name, autocomplete_carrier_name_crm_cases_path, placeholder:'(field autocompletes)' %>
+    <%= qf.label :plan_name %>
+    <%= qf.text_field :plan_name %>
+  <% end %>
+  <label>Illustration file (if any)</label>
+  <%= f.fields_for :quoted_details do |qf| %>
+    <%= qf.file_field :illustration %>
+    <%= qf.label :health_class_id, 'Health class' %>
+    <%= qf.collection_select :health_class_id, Quoting::TliHealthClassOption.all, :id, :name %>
+    <%= qf.label :premium_mode_id %>
+    <%= qf.collection_select :premium_mode_id, Quoting::PremiumModeOption.all, :id, :name %>
+    <%= qf.label :annual_premium %>
+    <%= qf.text_field :annual_premium %>
+    <%= qf.label :monthly_premium %>
+    <%= qf.text_field :monthly_premium %>
+  <% end %>
+
+  <div class=clear></div>
+
+  <span class=pull-right>
+    <%= view_toggling_radio_and_label_tags( :flat_extra ) %>
+  </span>
+  <label>Flat extra</label>
+  <div id='_flat_extra' class='hide indent'>
+    <label>How much?</label>
+    <%= f.text_field :flat_extra %>
+    <label>How long?</label>
+    <%= f.text_field :flat_extra_years %>
+  </div>
+
+  <div class=clear></div>
+
+  <span class=pull-right>
+    <%= view_toggling_radio_and_label_tags( :incl_1035 ) %>
+  </span>
+  <label>Include 1035 exchange?</label>
+  <div id='_incl_1035' class='hide indent'>
+    <label>Approximate amount</label>
+    <%= f.text_field :incl_1035 %>
+  </div>
+
+  <div class=clear></div>
+
+  <hr>
+
+  <div id='notes-container'>
+    <%= f.fields_for :notes do |nf| %>
+      <%= render 'note_fields', builder:nf %>
+    <% end %>
+  </div>
+  <a class='btn' onclick='addFromTemplate("#notes-container","note-template")'>
+    Add Note
+  </a>
+  <script type='text/template' id='note-template'>
+    <%= f.fields_for :notes, Crm::Note.new, child_index:'__i__' do |nf| %>
+      <%= render 'note_fields', builder:nf %>
+    <% end %>
+  </script>
+
+  <hr>
+
+  <p>
+    For in-depth quoting options, check the
+    <%= link_to 'XRAE health screening tool', 'https://direct.xrae.com/PinneyExternal/New/01F20F96' %>
+  </p>
+
+  <hr>
+
+  <%= submit_tag 'Continue' %>
+
+<% end %>

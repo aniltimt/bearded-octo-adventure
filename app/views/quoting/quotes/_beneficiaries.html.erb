@@ -1,0 +1,50 @@
+<p>If something happens to you, who or what is this policy going to protect financially?</p>
+  
+<script type='text/template' id='child-beneficiary'>
+  <div>
+    <%= builder.fields_for :beneficiary do |f| %>
+      <%= f.hidden_field :relationship, value:'offspring' %>
+      <%= f.hidden_field :genre_id, value:Crm::BeneficiaryOrOwnerType.find_by_name('person').id %>
+      <%= checkbox_and_label_tags :contingent, 'Will he/she be the primary beneficiary?', {form:f, label:{class:'inline'}}, '0', '1' %>
+      <%= label_tag nil, "What's his/her/their name?" %>
+      <%= f.text_field :name %>
+    <% end %>
+  </div>
+</script>
+<div id='beneficiary'>
+
+  <p><%= checkbox_and_label_tags :beneficiary_spouse, "Spouse/Partner", label:{class:'inline'}, radio:{'data-show' => '', 'data-hide' => ''} %></p>
+
+  <div id='_spouse'>
+    <%= builder.fields_for :beneficiary do |f| %>
+      <%= f.hidden_field :relationship, value:'spouse' %>
+      <%= f.hidden_field :genre_id, value:Crm::BeneficiaryOrOwnerType.find_by_name('person').id %>
+      <%= checkbox_and_label_tags :contingent, 'Will he/she be the primary beneficiary?', {form:f, label:{class:'inline'}}, '0', '1' %>
+      <label>What's his/her name?</label>
+      <%= f.text_field :name %>
+      <label>How many children do you have, if any?</label>
+      <%= text_field_tag :child_beneficiary_count, nil, onblur:'buildOrDestroyChildBeneficiaryFieldSets(this)', class:'sync-dup' %>
+    <% end %>
+  </div>
+  
+  <p><%= checkbox_and_label_tags :beneficiary_children, "Children", label:{class:'inline'} %></p>
+
+  <div id='_children'>
+    <label>How many children do you have?</label>
+    <%= text_field_tag :child_beneficiary_count, nil, onblur:'buildOrDestroyChildBeneficiaryFieldSets(this)', class:'sync-dup' %>
+    <div id='child-bene-field-sets'>
+    </div>
+    <label>What is your marital status?</label>
+    <%= %>
+  </div>
+
+  <p><%= checkbox_and_label_tags :beneficiary_business, "Business", label:{class:'inline'} %></p>
+
+  <div id='_business'>
+  </div>
+
+  <p><%= checkbox_and_label_tags :beneficiary_other, "Other", label:{class:'inline'} %></p>
+
+  <div id='_other'>
+  </div>
+</div>

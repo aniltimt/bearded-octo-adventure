@@ -1,0 +1,29 @@
+development:
+  encryption_key: c4bbcb1fbec99d65bf59d85c8cb62ee2db963f0fe106f483d9afa73bd4e39a8a
+  message_media:
+    user_id: 
+    password: 
+  pinney_quoter_url: http://localhost:3002
+  ezl_api_url: http://ezlifesite:Serv1ceAcc0unt!@clu.pinneyapps.com/
+  error_email_recipient: nwest@pinneyinsurance.com
+test:
+  encryption_key: c4bbcb1fbec99d65bf59d85c8cb62ee2db963f0fe106f483d9afa73bd4e39a8a
+  message_media:
+    user_id: 
+    password: 
+  pinney_quoter_url: http://qa.pinneyquoter.pinneyapps.com
+  ezl_api_url: http://ezlifesite:Serv1ceAcc0unt!@clu.pinneyapps.com/
+production:
+  encryption_key: 
+  message_media:
+    user_id: 
+    password: 
+  pinney_quoter_url: 
+  ezl_api_url: http://ezlifesite:Serv1ceAcc0unt!@clu.pinneyapps.com/
+all:
+  date_format: '%m/%d/%Y'
+  default_mail_sender: pinneysystems@pinneyapps.com
+  email:
+    admin: nwest@pinneyinsurance.com
+    developers: developers@pinneyinsurance.com
+    sender: pinneysystems@pinneyinsurance.com

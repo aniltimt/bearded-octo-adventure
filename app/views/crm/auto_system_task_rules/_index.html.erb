@@ -1,0 +1,32 @@
+<table class="table table-condensed">
+  <tr>
+    <th colspan="8">
+      Status Change
+      <span style="float:right;">
+        <%= link_to "crm/auto_system_task_rules/new?id=#{params[:id]}", :remote => true do %>
+          Add new auto system task rule
+        <% end %>
+      </span>
+      <br/>
+      <hr/>
+    </th>
+  </tr>
+  <tr>
+    <th>Role</th>
+    <th>Task Type</th>
+    <th>Template</th>
+    <th>Delay</th>
+    <th>Label</th>
+    <th>Name</th>
+  </tr>
+  <% @auto_system_task_rules.each do |auto_system_task_rule| %>
+    <tr>
+      <td><%= auto_system_task_rule.role.name %></td>
+      <td><%= auto_system_task_rule.task_type.try(:name) %></td>
+      <td><%= auto_system_task_rule.template_id %></td>
+      <td><%= auto_system_task_rule.delay %></td>
+      <td><%= auto_system_task_rule.label %></td>
+      <td><%= auto_system_task_rule.name %></td>
+    </tr>
+  <% end %>
+</table>

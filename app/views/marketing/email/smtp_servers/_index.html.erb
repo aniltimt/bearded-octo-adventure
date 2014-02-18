@@ -1,0 +1,16 @@
+<%= render :partial => "shared/tab/marketing", :locals => {:selected => "SmtpServer"} %>
+<div style="background-color:#fff;min-height: 500px;">
+  <%= link_to 'New Email Message'.html_safe, new_marketing_email_smtp_server_path, :class => 'button', :remote => true%>
+  <div>
+    <span class="span4">
+      <label>SmtpServerId</label>
+    </span>
+    <span class="span4">
+      <label>Host</label>
+    </span>
+    <span class="span4">
+      
+    </span>
+  </div>
+  <%= render :partial => :smtp_server, :collection => @smtp_servers%>
+</div>

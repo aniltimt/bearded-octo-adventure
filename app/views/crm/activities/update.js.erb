@@ -1,0 +1,2 @@
+$("#activity_time_<%= @activity.id %>").html("<%= @activity.created_at.strftime("%H:%M %P") %>");
+$('#flash-container').html("<%= @update_status_text %>");

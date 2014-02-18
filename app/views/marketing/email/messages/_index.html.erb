@@ -1,0 +1,16 @@
+<%= render :partial => "shared/tab/marketing", :locals => {:selected => "EmailMessages"} %>
+<div style="background-color:#fff;min-height: 500px;">
+  <%= link_to 'New Email Message'.html_safe, new_marketing_email_message_path, :class => 'button', :remote => true%>
+  <div>
+    <span class="span2">
+      <label>MessageId</label>
+    </span>
+    <span class="span7">
+      <label>Recipient</label>
+    </span>
+    <span class="span3">
+
+    </span>
+  </div>
+  <%= render :partial => :message, :collection => @messages%>
+</div>
